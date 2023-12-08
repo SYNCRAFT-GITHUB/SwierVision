@@ -1,0 +1,11 @@
+dev-host.json
+.DS_Store
+.idea/
+IDEXScreen.conf
+custom.json
+__pycache__/
+*.py[cod]
+*$py.class
+dist/
+build/
+venv/

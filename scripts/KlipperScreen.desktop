@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=IDEXScreen
+GenericName=Touch screen GUI for Klipper via Moonraker
+Icon=IDEXScreen
+Exec=sh -c "$HOME/.IDEXScreen-env/bin/python $HOME/IDEXScreen/screen.py"
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Engineering;
+Keywords=3D;Printing
+StartupNotify=false
+StartupWMClass=klipper-screen

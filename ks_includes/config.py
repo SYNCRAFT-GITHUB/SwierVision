@@ -198,30 +198,16 @@ class KlipperScreenConfig:
     def materials_path(self, custom: bool) -> str:
         core_path = os.path.join('/home', 'pi', 'SyncraftCore')
 
-        if self.linux('dev'):
+        if os.path.exists(core_path):
+            if custom:
+                return os.path.join(core_path, "materials", "custom.json")
+            else:
+                return os.path.join(core_path, "materials", "stock.json")
+        else:
             if custom:
                 return os.path.join(os.getcwd(), "ks_includes", "custom.json")
             else:
                 return os.path.join(os.getcwd(), "ks_includes", "materials.json")
-
-        if self.linux('buster'):
-            if custom:
-                return os.path.join("/home", "pi", "custom.json")
-            else:
-                return os.path.join(os.getcwd(), "ks_includes", "materials.json")
-
-        if not self.linux('buster'):
-
-            if os.path.exists(core_path):
-                if custom:
-                    return os.path.join(core_path, "materials", "custom.json")
-                else:
-                    return os.path.join(core_path, "materials", "stock.json")
-            else:
-                if custom:
-                    return os.path.join(os.getcwd(), "ks_includes", "custom.json")
-                else:
-                    return os.path.join(os.getcwd(), "ks_includes", "materials.json")
 
     def internet_connection(self) -> bool:
         try:

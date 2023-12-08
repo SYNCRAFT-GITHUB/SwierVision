@@ -197,7 +197,7 @@ class BedLevelPanel(ScreenPanel):
         else:
             label = Gtk.Label(
                 _("Bed screw configuration:") + f" {nscrews}\n\n"
-                + _("Not supported for auto-detection, it needs to be configured in idexscreen.conf")
+                + _("Not supported for auto-detection, it needs to be configured in klipperscreen.conf")
             )
             label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
             label.set_line_wrap(True)

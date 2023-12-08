@@ -1,10 +1,10 @@
-site_name: IDEXScreen
-site_url: https://idexscreen.readthedocs.io
+site_name: KlipperScreen
+site_url: https://klipperscreen.readthedocs.io
 site_description: >-
-  IDEXScreen documentation.
+  KlipperScreen documentation.
 
-repo_name: jordanruthe/IDEXScreen/
-repo_url: https://github.com/jordanruthe/IDEXScreen/
+repo_name: jordanruthe/KlipperScreen/
+repo_url: https://github.com/jordanruthe/KlipperScreen/
 nav:
     - Home: index.md
     - Setup:

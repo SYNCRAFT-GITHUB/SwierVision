@@ -26,14 +26,14 @@ SCREEN_BLANKING_OPTIONS = [
     14400,  # 4 Hours
 ]
 
-idexscreendir = pathlib.Path(__file__).parent.resolve().parent
+klipperscreendir = pathlib.Path(__file__).parent.resolve().parent
 
 class ConfigError(Exception):
     pass
 
-class IDEXScreenConfig:
+class KlipperScreenConfig:
     config = None
-    configfile_name = "IDEXScreen.conf"
+    configfile_name = "KlipperScreen.conf"
     do_not_edit_line = "#~# --- Do not edit below this line. This section is auto generated --- #~#"
     do_not_edit_prefix = "#~#"
 
@@ -43,7 +43,7 @@ class IDEXScreenConfig:
         self.fix_option: str = "NONE"
         self.nozzle: str = "NONE"
         self.show_saved_from_usb: bool = False
-        self.default_config_path = os.path.join(idexscreendir, "ks_includes", "defaults.conf")
+        self.default_config_path = os.path.join(klipperscreendir, "ks_includes", "defaults.conf")
         self.config = configparser.ConfigParser()
         self.config_path = self.get_config_file_location(configfile)
         logging.debug(f"Config path location: {self.config_path}")
@@ -144,11 +144,11 @@ class IDEXScreenConfig:
         self._create_configurable_options(screen)
 
     def create_translations(self):
-        lang_path = os.path.join(idexscreendir, "ks_includes", "locales")
+        lang_path = os.path.join(klipperscreendir, "ks_includes", "locales")
         self.lang_list = [d for d in os.listdir(lang_path) if not os.path.isfile(os.path.join(lang_path, d))]
         self.lang_list.sort()
         for lng in self.lang_list:
-            self.langs[lng] = gettext.translation('IDEXScreen', localedir=lang_path, languages=[lng], fallback=True)
+            self.langs[lng] = gettext.translation('KlipperScreen', localedir=lang_path, languages=[lng], fallback=True)
 
         lang = self.get_main_config().get("language", None)
         logging.debug(f"Selected lang: {lang} OS lang: {locale.getdefaultlocale()[0]}")
@@ -385,7 +385,7 @@ class IDEXScreenConfig:
         for lang in self.lang_list:
             lang_opt.append({"name": lang, "value": lang})
 
-        t_path = os.path.join(idexscreendir, 'styles')
+        t_path = os.path.join(klipperscreendir, 'styles')
         themes = [d for d in os.listdir(t_path) if (not os.path.isfile(os.path.join(t_path, d)) and d != "Industrial")]
         themes.sort()
         theme_opt = self.configurable_options[1]['theme']['options']
@@ -510,15 +510,15 @@ class IDEXScreenConfig:
         self.show_saved_from_usb = value
 
     def get_config_file_location(self, file):
-        # Passed config (-c) by default is ~/IDEXScreen.conf
+        # Passed config (-c) by default is ~/KlipperScreen.conf
         logging.info(f"Passed config (-c): {file}")
         if os.path.exists(file):
             return file
 
-        file = os.path.join(idexscreendir, self.configfile_name)
+        file = os.path.join(klipperscreendir, self.configfile_name)
         if os.path.exists(file):
             return file
-        file = os.path.join(idexscreendir, self.configfile_name.lower())
+        file = os.path.join(klipperscreendir, self.configfile_name.lower())
         if os.path.exists(file):
             return file
 

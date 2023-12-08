@@ -2,7 +2,7 @@
 
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 KSPATH=$(sed 's/\/scripts//g' <<< $SCRIPTPATH)
-KSENV="${KLIPPERSCREEN_VENV:-${HOME}/.IDEXScreen-env}"
+KSENV="${KLIPPERSCREEN_VENV:-${HOME}/.KlipperScreen-env}"
 
 XSERVER="xinit xinput x11-xserver-utils xserver-xorg-input-evdev xserver-xorg-input-libinput"
 FBDEV="xserver-xorg-video-fbdev"
@@ -47,14 +47,14 @@ install_packages()
         sudo apt-get -f install
         output=$(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' | grep -E ^.[^nci])
         if [ $? -eq 0 ]; then
-            echo_error "Unable to fix broken packages. These must be fixed before IDEXScreen can be installed"
+            echo_error "Unable to fix broken packages. These must be fixed before KlipperScreen can be installed"
             exit 1
         fi
     else
         echo_ok "No broken packages"
     fi
 
-    echo_text "Installing IDEXScreen dependencies"
+    echo_text "Installing KlipperScreen dependencies"
     sudo apt-get install -y $XSERVER
     if [ $? -eq 0 ]; then
         echo_ok "Installed X"
@@ -111,13 +111,13 @@ create_virtualenv()
     fi
 
     source ${KSENV}/bin/activate
-    pip --disable-pip-version-check install -r ${KSPATH}/scripts/IDEXScreen-requirements.txt
+    pip --disable-pip-version-check install -r ${KSPATH}/scripts/KlipperScreen-requirements.txt
     if [ $? -gt 0 ]; then
         echo_error "Error: pip install exited with status code $?"
         echo_text "Trying again with new tools..."
         sudo apt-get install -y build-essential cmake
         pip install --upgrade pip setuptools
-        pip install -r ${KSPATH}/scripts/IDEXScreen-requirements.txt
+        pip install -r ${KSPATH}/scripts/KlipperScreen-requirements.txt
         if [ $? -gt 0 ]; then
             echo_error "Unable to install dependencies, aborting install."
             deactivate
@@ -130,9 +130,9 @@ create_virtualenv()
 
 install_systemd_service()
 {
-    echo_text "Installing IDEXScreen unit file"
+    echo_text "Installing KlipperScreen unit file"
 
-    SERVICE=$(<$SCRIPTPATH/IDEXScreen.service)
+    SERVICE=$(<$SCRIPTPATH/KlipperScreen.service)
     KSPATH_ESC=$(sed "s/\//\\\\\//g" <<< $KSPATH)
     KSENV_ESC=$(sed "s/\//\\\\\//g" <<< $KSENV)
 
@@ -140,10 +140,10 @@ install_systemd_service()
     SERVICE=$(sed "s/KS_ENV/$KSENV_ESC/g" <<< $SERVICE)
     SERVICE=$(sed "s/KS_DIR/$KSPATH_ESC/g" <<< $SERVICE)
 
-    echo "$SERVICE" | sudo tee /etc/systemd/system/IDEXScreen.service > /dev/null
-    sudo systemctl unmask IDEXScreen.service
+    echo "$SERVICE" | sudo tee /etc/systemd/system/KlipperScreen.service > /dev/null
+    sudo systemctl unmask KlipperScreen.service
     sudo systemctl daemon-reload
-    sudo systemctl enable IDEXScreen
+    sudo systemctl enable KlipperScreen
 }
 
 modify_user()
@@ -165,17 +165,17 @@ update_x11()
 
 add_desktop_file()
 {
-    DESKTOP=$(<$SCRIPTPATH/IDEXScreen.desktop)
+    DESKTOP=$(<$SCRIPTPATH/KlipperScreen.desktop)
     mkdir -p $HOME/.local/share/applications/
-    echo "$DESKTOP" | tee $HOME/.local/share/applications/IDEXScreen.desktop > /dev/null
-    sudo cp $SCRIPTPATH/../styles/icon.svg /usr/share/icons/hicolor/scalable/apps/IDEXScreen.svg
+    echo "$DESKTOP" | tee $HOME/.local/share/applications/KlipperScreen.desktop > /dev/null
+    sudo cp $SCRIPTPATH/../styles/icon.svg /usr/share/icons/hicolor/scalable/apps/KlipperScreen.svg
 }
 
-start_IDEXScreen()
+start_KlipperScreen()
 {
     echo_text "Starting service..."
-    sudo systemctl stop IDEXScreen
-    sudo systemctl start IDEXScreen
+    sudo systemctl stop KlipperScreen
+    sudo systemctl start KlipperScreen
 }
 if [ "$EUID" == 0 ]
     then echo_error "Please do not run this script as root"
@@ -186,6 +186,6 @@ create_virtualenv
 modify_user
 install_systemd_service
 update_x11
-echo_ok "IDEXScreen was installed"
+echo_ok "KlipperScreen was installed"
 add_desktop_file
-start_IDEXScreen
+start_KlipperScreen

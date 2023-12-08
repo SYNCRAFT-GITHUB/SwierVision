@@ -2,7 +2,7 @@ import os
 import subprocess
 
 base_directory = os.path.dirname(os.path.abspath(__file__))
-bash_command = "msgfmt IDEXScreen.po -o IDEXScreen.mo"
+bash_command = "msgfmt KlipperScreen.po -o KlipperScreen.mo"
 
 def execute_bash_in_folders(directory):
     for root, dirs, files in os.walk(directory):

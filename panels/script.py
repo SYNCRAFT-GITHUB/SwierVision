@@ -53,35 +53,35 @@ class ExecuteScript(ScreenPanel):
             return None
 
         if (fix_option == "FILES"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/files.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/files.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "FILES_BOWDEN"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/files_bowden.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/files_bowden.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "KLIPPERSCREEN"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/idexscreen.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/klipperscreen.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "MAINSAIL"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/mainsail.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/mainsail.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "CAMERA"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/camera.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/camera.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "LIGHT"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/light.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/light.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "CLEANGCODEFILES"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/cleangcodefiles.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/cleangcodefiles.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "MOONRAKER"):
-            script_path = '/home/pi/IDEXScreen/scripts/fix/moonraker.sh'
+            script_path = '/home/pi/KlipperScreen/scripts/fix/moonraker.sh'
             subprocess.call(['bash', script_path])
 
         if (fix_option == "EXPORTCUSTOMMATERIALSTOUSB"):
@@ -92,7 +92,7 @@ class ExecuteScript(ScreenPanel):
                     message: str = _("USB not inserted into Printer")
                     self._screen.show_popup_message(message, level=2)
                 else:
-                    script_path = '/home/pi/IDEXScreen/scripts/fix/exportmaterialstousb.sh'
+                    script_path = '/home/pi/KlipperScreen/scripts/fix/exportmaterialstousb.sh'
                     subprocess.call(['bash', script_path])
                     self._screen.restart_ks()
             else:
@@ -107,7 +107,7 @@ class ExecuteScript(ScreenPanel):
                     message: str = _("USB not inserted into Printer")
                     self._screen.show_popup_message(message, level=2)
                 else:
-                    script_path = '/home/pi/IDEXScreen/scripts/fix/importmaterialsfromusb.sh'
+                    script_path = '/home/pi/KlipperScreen/scripts/fix/importmaterialsfromusb.sh'
                     subprocess.call(['bash', script_path])
                     self._screen.restart_ks()
             else:
@@ -122,7 +122,7 @@ class ExecuteScript(ScreenPanel):
                     message: str = _("USB not inserted into Printer")
                     self._screen.show_popup_message(message, level=2)
                 else:
-                    script_path = '/home/pi/IDEXScreen/scripts/fix/exportlogstousb.sh'
+                    script_path = '/home/pi/KlipperScreen/scripts/fix/exportlogstousb.sh'
                     subprocess.call(['bash', script_path])
                     self._screen.restart_ks()
             else:

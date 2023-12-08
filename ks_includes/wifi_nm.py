@@ -1,5 +1,5 @@
-# Network in IDEXScreen is a connection in NetworkManager
-# Interface in IDEXScreen is a device in NetworkManager
+# Network in KlipperScreen is a connection in NetworkManager
+# Interface in KlipperScreen is a device in NetworkManager
 
 import logging
 import uuid

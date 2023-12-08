@@ -238,7 +238,7 @@ class AddCustomMaterial(ScreenPanel):
         with open(self.custom_json_path, 'w') as json_file:
             json.dump(custom_json_file, json_file, indent=4)
 
-        os.system('service IDEXScreen restart')
+        os.system('service KlipperScreen restart')
         self._screen.restart_ks()
         return None
 
@@ -257,7 +257,7 @@ class AddCustomMaterial(ScreenPanel):
         with open(self.custom_json_path, 'w') as file:
             json.dump([], file)
 
-        os.system('service IDEXScreen restart')
+        os.system('service KlipperScreen restart')
         self._screen.restart_ks()
         return None
     

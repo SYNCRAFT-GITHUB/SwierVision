@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IDEXScreen\n"
+"Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
 "PO-Revision-Date: 2022-11-28 11:36-0300\n"
@@ -434,8 +434,8 @@ msgstr "Klipper正在启动"
 msgid "Klipper will reboot"
 msgstr "Klipper将重新启动"
 
-msgid "IDEXScreen will reboot"
-msgstr "IDEXScreen 将重新启动"
+msgid "KlipperScreen will reboot"
+msgstr "KlipperScreen 将重新启动"
 
 msgid "Language"
 msgstr "语言"
@@ -525,7 +525,7 @@ msgid "New"
 msgstr "新的"
 
 msgid ""
-"Not supported for auto-detection, it needs to be configured in idexscreen."
+"Not supported for auto-detection, it needs to be configured in klipperscreen."
 "conf"
 msgstr ""
 
@@ -600,7 +600,7 @@ msgstr "探头偏移"
 msgid "Profile Name:"
 msgstr "配置文件名称:"
 
-msgid "Provide IDEXScreen.log when asking for help.\n"
+msgid "Provide KlipperScreen.log when asking for help.\n"
 msgstr "寻求帮助时提供系统日志。\n"
 
 msgid "Quad Gantry Level"
@@ -891,10 +891,10 @@ msgstr ""
 #~ msgstr "Bltouch 发现应用的偏移量"
 
 #~ msgid ""
-#~ "Check /tmp/IDEXScreen.log for more information.\n"
+#~ "Check /tmp/KlipperScreen.log for more information.\n"
 #~ "Please submit an issue on GitHub for help."
 #~ msgstr ""
-#~ "检查/tmp/IDEXScreen.log以获取更多信息。\n"
+#~ "检查/tmp/KlipperScreen.log以获取更多信息。\n"
 #~ "请在GitHub上提交问题以寻求帮助。"
 
 #~ msgid "Probe found applied offset"
@@ -938,8 +938,8 @@ msgstr ""
 #~ "Klipper 遇到错误。\n"
 #~ "使用”FIRMWARE_RESTART“命令尝试解决此问题。"
 
-#~ msgid "IDEXScreen Version"
-#~ msgstr "IDEXScreen 版本"
+#~ msgid "KlipperScreen Version"
+#~ msgstr "KlipperScreen 版本"
 
 #~ msgid "Show Only Heaters in Temp."
 #~ msgstr "仅显示使用中的加热器."

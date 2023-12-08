@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: IDEXScreen\n"
+"Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
 "PO-Revision-Date: \n"
@@ -432,8 +432,8 @@ msgstr "Klipperは起動中です"
 msgid "Klipper will reboot"
 msgstr "Klipperは再起動します"
 
-msgid "IDEXScreen will reboot"
-msgstr "IDEXScreenは再起動します"
+msgid "KlipperScreen will reboot"
+msgstr "KlipperScreenは再起動します"
 
 msgid "Language"
 msgstr "言語"
@@ -523,7 +523,7 @@ msgid "New"
 msgstr "新"
 
 msgid ""
-"Not supported for auto-detection, it needs to be configured in idexscreen."
+"Not supported for auto-detection, it needs to be configured in klipperscreen."
 "conf"
 msgstr ""
 
@@ -598,8 +598,8 @@ msgstr "プローブオフセット"
 msgid "Profile Name:"
 msgstr "プロファイル:"
 
-msgid "Provide IDEXScreen.log when asking for help.\n"
-msgstr "助けを求めるときは、IDEXScreen.log を提供してください。\n"
+msgid "Provide KlipperScreen.log when asking for help.\n"
+msgstr "助けを求めるときは、KlipperScreen.log を提供してください。\n"
 
 msgid "Quad Gantry Level"
 msgstr "ガントリーレベル"

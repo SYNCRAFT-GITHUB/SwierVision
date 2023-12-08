@@ -6,7 +6,7 @@ import logging
 import os
 import subprocess
 import pathlib
-import traceback 
+import traceback  # noqa
 import locale
 import sys
 import gi
@@ -26,7 +26,7 @@ from ks_includes.files import KlippyFiles
 from ks_includes.KlippyGtk import KlippyGtk
 from ks_includes.printer import Printer
 from ks_includes.widgets.keyboard import Keyboard
-from ks_includes.config import IDEXScreenConfig
+from ks_includes.config import KlipperScreenConfig
 from panels.base_panel import BasePanel
 
 logging.getLogger("urllib3").setLevel(logging.WARNING)
@@ -50,7 +50,7 @@ PRINTER_BASE_STATUS_OBJECTS = [
     'exclude_object',
 ]
 
-idexscreendir = pathlib.Path(__file__).parent.resolve()
+klipperscreendir = pathlib.Path(__file__).parent.resolve()
 
 
 
@@ -58,7 +58,7 @@ def state_execute(callback):
     callback()
 
 
-class IDEXScreen(Gtk.Window):
+class KlipperScreen(Gtk.Window):
     """ Class for creating a screen for Klipper via HDMI """
     _cur_panels = []
     connecting = False
@@ -94,7 +94,7 @@ class IDEXScreen(Gtk.Window):
 
         configfile = os.path.normpath(os.path.expanduser(args.configfile))
 
-        self._config = IDEXScreenConfig(configfile, self)
+        self._config = KlipperScreenConfig(configfile, self)
 
         self.connect("key-press-event", self._key_press_event)
         self.connect("configure_event", self.update_size)
@@ -121,7 +121,7 @@ class IDEXScreen(Gtk.Window):
         self.show_cursor = self._config.get_main_config().getboolean("show_cursor", fallback=False)
         self.gtk = KlippyGtk(self)
         self.init_style()
-        self.set_icon_from_file(os.path.join(idexscreendir, "styles", "icon.svg"))
+        self.set_icon_from_file(os.path.join(klipperscreendir, "styles", "icon.svg"))
 
         self.base_panel = BasePanel(self, title="Base Panel")
         self.add(self.base_panel.main_grid)
@@ -393,8 +393,8 @@ class IDEXScreen(Gtk.Window):
         scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         scroll.add(message)
 
-        help_msg = _("Provide IDEXScreen.log when asking for help.\n")
-        help_msg += _("IDEXScreen will reboot")
+        help_msg = _("Provide KlipperScreen.log when asking for help.\n")
+        help_msg += _("KlipperScreen will reboot")
         help_notice = Gtk.Label(label=help_msg)
         help_notice.set_line_wrap(True)
 
@@ -418,18 +418,18 @@ class IDEXScreen(Gtk.Window):
     def restart_ks(self, *args):
         logging.debug(f"Restarting {sys.executable} {' '.join(sys.argv)}")
         os.execv(sys.executable, ['python'] + sys.argv)
-        self._ws.send_method("machine.services.restart", {"service": "IDEXScreen"})  # Fallback
+        self._ws.send_method("machine.services.restart", {"service": "KlipperScreen"})  # Fallback
 
     def init_style(self):
         settings = Gtk.Settings.get_default()
         settings.set_property("gtk-theme-name", "Adwaita")
         settings.set_property("gtk-application-prefer-dark-theme", False)
-        css_data = pathlib.Path(os.path.join(idexscreendir, "styles", "base.css")).read_text()
+        css_data = pathlib.Path(os.path.join(klipperscreendir, "styles", "base.css")).read_text()
 
-        with open(os.path.join(idexscreendir, "styles", "base.conf")) as f:
+        with open(os.path.join(klipperscreendir, "styles", "base.conf")) as f:
             style_options = json.load(f)
         # Load custom theme
-        theme = os.path.join(idexscreendir, "styles", self.theme)
+        theme = os.path.join(klipperscreendir, "styles", self.theme)
         theme_style = os.path.join(theme, "style.css")
         theme_style_conf = os.path.join(theme, "style.conf")
 
@@ -738,7 +738,7 @@ class IDEXScreen(Gtk.Window):
             if 'message' in data and 'Error' in data['message']:
                 logging.error(f"{action}:{data['message']}")
                 self.show_popup_message(data['message'], 3)
-                if "IDEXScreen" in data['message']:
+                if "KlipperScreen" in data['message']:
                     self.restart_ks()
         elif action == "notify_power_changed":
             logging.debug("Power status changed: %s", data)
@@ -794,7 +794,7 @@ class IDEXScreen(Gtk.Window):
         if self.confirm is not None:
             self.gtk.remove_dialog(self.confirm)
         self.confirm = self.gtk.Dialog(self, buttons, label, self._confirm_send_action_response, method, params)
-        self.confirm.set_title("IDEXScreen")
+        self.confirm.set_title("KlipperScreen")
 
     def _confirm_send_action_response(self, dialog, response_id, method, params):
         self.gtk.remove_dialog(dialog)
@@ -1003,19 +1003,19 @@ class IDEXScreen(Gtk.Window):
 
 def main():
     version = functions.get_software_version()
-    parser = argparse.ArgumentParser(description="IDEXScreen - A GUI for Klipper")
+    parser = argparse.ArgumentParser(description="KlipperScreen - A GUI for Klipper")
     homedir = os.path.expanduser("~")
 
     parser.add_argument(
-        "-c", "--configfile", default=os.path.join(homedir, "IDEXScreen.conf"), metavar='<configfile>',
-        help="Location of IDEXScreen configuration file"
+        "-c", "--configfile", default=os.path.join(homedir, "KlipperScreen.conf"), metavar='<configfile>',
+        help="Location of KlipperScreen configuration file"
     )
     logdir = os.path.join(homedir, "printer_data", "logs")
     if not os.path.exists(logdir):
         logdir = "/tmp"
     parser.add_argument(
-        "-l", "--logfile", default=os.path.join(logdir, "IDEXScreen.log"), metavar='<logfile>',
-        help="Location of IDEXScreen logfile output"
+        "-l", "--logfile", default=os.path.join(logdir, "KlipperScreen.log"), metavar='<logfile>',
+        help="Location of KlipperScreen logfile output"
     )
     args = parser.parse_args()
 
@@ -1026,12 +1026,12 @@ def main():
 
     functions.patch_threading_excepthook()
 
-    logging.info(f"IDEXScreen version: {version}")
+    logging.info(f"KlipperScreen version: {version}")
     if not Gtk.init_check(None)[0]:
         logging.critical("Failed to initialize Gtk")
         raise RuntimeError
     try:
-        win = IDEXScreen(args, version)
+        win = KlipperScreen(args, version)
     except Exception as e:
         logging.exception("Failed to initialize window")
         raise RuntimeError from e

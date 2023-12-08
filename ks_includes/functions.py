@@ -124,11 +124,11 @@ def patch_threading_excepthook():
 
 
 # Rotating file handler based on Klipper and Moonraker's implementation
-class IDEXScreenLoggingHandler(logging.handlers.RotatingFileHandler):
+class KlipperScreenLoggingHandler(logging.handlers.RotatingFileHandler):
     def __init__(self, software_version, filename, **kwargs):
-        super(IDEXScreenLoggingHandler, self).__init__(filename, **kwargs)
+        super(KlipperScreenLoggingHandler, self).__init__(filename, **kwargs)
         self.rollover_info = {
-            'header': f"{'-' * 20}IDEXScreen Log Start{'-' * 20}",
+            'header': f"{'-' * 20}KlipperScreen Log Start{'-' * 20}",
             'version': f"Git Version: {software_version}",
         }
         lines = [line for line in self.rollover_info.values() if line]
@@ -139,7 +139,7 @@ class IDEXScreenLoggingHandler(logging.handlers.RotatingFileHandler):
         self.rollover_info[name] = item
 
     def doRollover(self):
-        super(IDEXScreenLoggingHandler, self).doRollover()
+        super(KlipperScreenLoggingHandler, self).doRollover()
         lines = [line for line in self.rollover_info.values() if line]
         if self.stream is not None:
             self.stream.write("\n".join(lines) + "\n")
@@ -159,7 +159,7 @@ def setup_logging(log_file, software_version):
     stdout_hdlr.setFormatter(stdout_fmt)
     fh = listener = None
     try:
-        fh = IDEXScreenLoggingHandler(software_version, log_file, maxBytes=4194304, backupCount=1)
+        fh = KlipperScreenLoggingHandler(software_version, log_file, maxBytes=4194304, backupCount=1)
         formatter = logging.Formatter('%(asctime)s [%(filename)s:%(funcName)s()] - %(message)s')
         fh.setFormatter(formatter)
         listener = logging.handlers.QueueListener(queue, fh, stdout_hdlr)
@@ -167,7 +167,7 @@ def setup_logging(log_file, software_version):
         print(
             f"Unable to create log file at '{os.path.normpath(log_file)}'.\n"
             f"Make sure that the folder '{os.path.dirname(log_file)}' exists\n"
-            f"and IDEXScreen has Read/Write access to the folder.\n"
+            f"and KlipperScreen has Read/Write access to the folder.\n"
             f"{e}\n"
         )
     if listener is None:

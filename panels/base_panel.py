@@ -316,23 +316,23 @@ class BasePanel(ScreenPanel):
             if not os.path.exists('/home/pi/printer_data/config/variables.cfg'):
                 self.titlelbl.set_label(f" ")
                 return
-            nozzle = self._config.variables_value_reveal('nozzle')
-            current_ext = self._config.variables_value_reveal('currentextruder')
-            material_ext0 = self._config.variables_value_reveal('material_ext0')
-            material_ext1 = self._config.variables_value_reveal('material_ext1')
+            try:
+                current_ext = self._config.variables_value_reveal('active_carriage')
+                material_ext0 = self._config.variables_value_reveal('material_ext0')
+                material_ext1 = self._config.variables_value_reveal('material_ext1')
+            except:
+                current_ext = '?'
+                material_ext0 = '?'
+                material_ext1 = '?'
 
             if current_ext == False:
                 current_ext = _("Error")
-            elif '1' in current_ext:
-                current_ext = f'{_("Feeder")[0]}2'
-            else:
-                current_ext = f'{_("Feeder")[0]}1'
 
             material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0[1:-1]
             material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1[1:-1]
 
             if self._config.empty_title:
-                self.titlelbl.set_label(f"{current_ext} {nozzle[1:-1]} - {material_ext0}, {material_ext1}")
+                self.titlelbl.set_label(f"{_('Feeder')[0]}{current_ext} - {material_ext0}, {material_ext1}")
                 return
             if not title:
                 self.titlelbl.set_label(f"{self._screen.connecting_to_printer}")

@@ -420,6 +420,18 @@ class KlipperScreenConfig:
             print("Unable to find 'variables.cfg' file. Returning 'False'!")
             return False
 
+    def variables_value_reveal(self, key) -> str:
+        config = configparser.ConfigParser()
+        pdc_path = os.path.join('/home', 'pi', 'printer_data', 'config')
+        variables_path = os.path.join(pdc_path, 'variables.cfg')
+        try:
+            with open(variables_path, 'r') as variab:
+                config.read_file(variab, source=variables_path)
+                return config.get('Variables', str(key).lower())
+        except:
+            print("Unable to read 'variables.cfg' file.")
+            return False
+
     def exclude_from_config(self, config):
         exclude_list = ['preheat']
         if not self.defined_config.getboolean('main', "use_default_menu", fallback=True):

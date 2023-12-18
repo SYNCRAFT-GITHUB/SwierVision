@@ -210,7 +210,7 @@ class FilamentPanel(ScreenPanel):
                 self.titlelbl.set_label(f" ")
             else:
                 try:
-                    current_ext = self._config.variables_value_reveal('active_carriage')
+                    current_ext = int(self._config.variables_value_reveal('active_carriage')) + 1
                     material_ext0 = self._config.variables_value_reveal('material_ext0')
                     material_ext1 = self._config.variables_value_reveal('material_ext1')
                 except:

@@ -167,6 +167,27 @@ class MovePanel(ScreenPanel):
             return
         if action != "notify_status_update":
             return
+
+        if self._config.get_main_config().getboolean('materials_on_top', True):
+            if not os.path.exists('/home/pi/printer_data/config/variables.cfg'):
+                self.titlelbl.set_label(f" ")
+            else:
+                try:
+                    current_ext = self._config.variables_value_reveal('active_carriage')
+                    material_ext0 = self._config.variables_value_reveal('material_ext0')
+                    material_ext1 = self._config.variables_value_reveal('material_ext1')
+                except:
+                    current_ext = '?'
+                    material_ext0 = '?'
+                    material_ext1 = '?'
+
+                if current_ext == False:
+                    current_ext = _("Error")
+
+                material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0[1:-1]
+                material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1[1:-1]
+                self._screen.base_panel.set_title(f"{_('Feeder')[0]}{current_ext} - {material_ext0}, {material_ext1}")
+                
         homed_axes = self._printer.get_stat("toolhead", "homed_axes")
         if homed_axes == "xyz":
             if "gcode_move" in data and "gcode_position" in data["gcode_move"]:

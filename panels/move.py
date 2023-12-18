@@ -1,5 +1,5 @@
 import logging
-
+import os
 import gi
 
 gi.require_version("Gtk", "3.0")
@@ -187,7 +187,7 @@ class MovePanel(ScreenPanel):
                 material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0[1:-1]
                 material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1[1:-1]
                 self._screen.base_panel.set_title(f"{_('Feeder')[0]}{current_ext} - {material_ext0}, {material_ext1}")
-                
+
         homed_axes = self._printer.get_stat("toolhead", "homed_axes")
         if homed_axes == "xyz":
             if "gcode_move" in data and "gcode_position" in data["gcode_move"]:

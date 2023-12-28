@@ -8,6 +8,7 @@ from gi.repository import GLib, Gtk, Pango
 from jinja2 import Environment
 from datetime import datetime
 from math import log
+import subprocess
 from contextlib import suppress
 from ks_includes.screen_panel import ScreenPanel
 

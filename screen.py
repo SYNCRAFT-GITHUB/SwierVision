@@ -711,8 +711,6 @@ class KlipperScreen(Gtk.Window):
 
     def state_paused(self):
         self.state_printing()
-        if self._config.get_main_config().getboolean("auto_open_extrude", fallback=True):
-            self.show_panel("extrude", _("Extrude"))
 
     def state_printing(self):
         self.close_screensaver()
@@ -734,8 +732,6 @@ class KlipperScreen(Gtk.Window):
         else:
             self.show_panel(self.first_panel, None, remove_all=True, items=self._config.get_menu_items("__main"))
 
-
-        #self.show_panel("main_menu", None, remove_all=True, items=self._config.get_menu_items("__main"))
 
     def state_startup(self):
         self.printer_initializing(_("Klipper is attempting to start"))

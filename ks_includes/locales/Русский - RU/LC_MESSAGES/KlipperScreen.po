@@ -206,7 +206,7 @@ msgid "Cancelling"
 msgstr "Отменить"
 
 msgid "Cannot connect to Moonraker"
-msgstr "Не удается подключиться к Moonraker"
+msgstr "Невозможно подключиться к внутренней системе"
 
 msgid "Channel"
 msgstr "Канал"
@@ -238,6 +238,10 @@ msgstr "Соединенный"
 #, python-format
 msgid "Connecting to %s"
 msgstr "Соединенный с  %s"
+
+#, python-format
+msgid "Starting %s"
+msgstr "Запуск %s"
 
 msgid "Console"
 msgstr "Консоль"
@@ -511,7 +515,7 @@ msgid "Modified"
 msgstr "Изменено"
 
 msgid "Moonraker: connected"
-msgstr "Moonraker: подключен"
+msgstr "Внутренняя система: подключен"
 
 msgid "Move"
 msgstr "Двигать"
@@ -854,6 +858,12 @@ msgid_plural "hours"
 msgstr[0] "час"
 msgstr[1] "часа"
 msgstr[2] "часа"
+
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "минута"
+msgstr[1] "минуты"
+msgstr[2] "минут"
 
 msgid "minutes"
 msgstr "минут"
@@ -1525,6 +1535,15 @@ msgstr "Рекомендуется использовать материалы �
 
 msgid "Both feeders must have materials inserted"
 msgstr "Подтвердите наличие материалов в обоих питателях."
+
+msgid "Change material for non-active feeder"
+msgstr "Изменить материал для неактивного питателя"
+
+msgid "Auto-open Extrude On Pause"
+msgstr "Автоматическое открытие экструзии при паузе"
+
+msgid "Show Scrollbars Buttons"
+msgstr "Показывать кнопки полос прокрутки"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"

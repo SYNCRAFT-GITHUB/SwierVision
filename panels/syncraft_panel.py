@@ -10,10 +10,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return BusterSyncraftPanel(*args)
-
-class BusterSyncraftPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -46,7 +43,7 @@ class BusterSyncraftPanel(ScreenPanel):
 
             self.button = self._gtk.Button(btn.icon, btn.title, f"color{random.randint(1, 4)}")
             
-            self.button.connect("clicked", self.menu_item_clicked, btn.panel, {
+            self.button.connect("clicked", self.menu_item_clicked, {
                 "name": btn.title,
                 "panel": btn.panel
             })

@@ -9,11 +9,7 @@ from gi.repository import Gtk, Pango
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return SystemPanel(*args)
-
-
-class SystemPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
@@ -71,7 +67,6 @@ class SystemPanel(ScreenPanel):
     def activate(self):
         self.check_power_status()
         self._screen.base_panel.show_heaters(False)
-        self._screen.base_panel.show_estop(False)
 
     def check_power_status(self):
         if 'power' in self.labels:

@@ -1,11 +1,13 @@
-dev-host.json
+.vscode
 .DS_Store
 .idea/
-IDEXScreen.conf
-custom.json
+KlipperScreen.conf
 __pycache__/
 *.py[cod]
 *$py.class
 dist/
 build/
 venv/
+dev-host.json
+IDEXScreen.conf
+custom.json

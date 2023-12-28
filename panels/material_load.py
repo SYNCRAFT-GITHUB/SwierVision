@@ -56,10 +56,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
     except json.JSONDecodeError:
         print(f"Error decoding JSON: {file_path}")
 
-def create_panel(*args):
-    return ChMaterialPanel(*args)
-
-class ChMaterialPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -177,7 +174,7 @@ class ChMaterialPanel(ScreenPanel):
                     while index != 4:
                         size += 1
                         index += 1
-                    index_button = self._gtk.Button("circle-red", _("Generic"), "color4")
+                    index_button = self._gtk.Button("circle-red", _("Generic"), "color2")
                     index_button.connect("clicked", self.confirm_print_generic)
                     gridvariable.attach(index_button, repeat_three, i, size, 1)
 
@@ -197,8 +194,7 @@ class ChMaterialPanel(ScreenPanel):
 
     def confirm_print_default(self, widget, code, temp: int):
         self._screen._ws.klippy.gcode_script(Gcode.load_filament(temp, code, self.nozzle))
-        for _ in range(0,2):
-            self._screen._menu_go_back()
+        self._screen._menu_go_back()
 
     def confirm_print_experimental(self, widget, code, temp: int):
         script = Gcode.load_filament(temp, code, self.nozzle)
@@ -209,8 +205,7 @@ class ChMaterialPanel(ScreenPanel):
             "printer.gcode.script",
             params
         )
-        for _ in range(0,2):
-            self._screen._menu_go_back()
+        self._screen._menu_go_back()
 
     def confirm_print_custom(self, widget, temp: int):
         script = Gcode.load_filament(temp, "GENERIC", self.nozzle)
@@ -221,8 +216,7 @@ class ChMaterialPanel(ScreenPanel):
             "printer.gcode.script",
             params
         )
-        for _ in range(0,2):
-            self._screen._menu_go_back()
+        self._screen._menu_go_back()
 
     def confirm_print_generic(self, widget):
         generic_temp: int = 255
@@ -234,8 +228,7 @@ class ChMaterialPanel(ScreenPanel):
             "printer.gcode.script",
             params
         )
-        for _ in range(0,2):
-                self._screen._menu_go_back()
+        self._screen._menu_go_back()
 
     def load_invalid_material(self, widget=None):
         message: str = _("Incompatible Material")

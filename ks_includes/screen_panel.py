@@ -14,7 +14,7 @@ class ScreenPanel:
     _gtk = None
     ks_printer_cfg = None
 
-    def __init__(self, screen, title):
+    def __init__(self, screen, title, **kwargs):
         self.menu = None
         ScreenPanel._screen = screen
         ScreenPanel._config = screen._config
@@ -60,11 +60,22 @@ class ScreenPanel:
             return self._gtk.PixbufFromHttp(loc[1], width, height)
         return None
 
-    def menu_item_clicked(self, widget, panel, item):
-        self._screen.show_panel(panel, item['panel'], item['name'], 1, False)
+    def menu_item_clicked(self, widget, item):
+        if 'extra' in item:
+            self._screen.show_panel(item['panel'], item['name'], extra=item['extra'])
+            return
+        self._screen.show_panel(item['panel'], item['name'])
+
+    def set_bool_config_option(self, section, option, boolean: bool):
+        if section not in self._config.get_config().sections():
+            self._config.get_config().add_section(section)
+        self._config.set(section, option, "True" if boolean else "False")
+        self._config.save_user_config_options()
 
     def load_menu(self, widget, name, title=None):
+        logging.info(f"loading menu {name}")
         if f"{name}_menu" not in self.labels:
+            logging.error(f"{name} not in labels")
             return
 
         for child in self.content.get_children():
@@ -114,21 +125,15 @@ class ScreenPanel:
         if callback is not None:
             callback(switch.get_active())
 
-    def set_bool_config_option(self, section, option, boolean: bool):
-        if section not in self._config.get_config().sections():
-            self._config.get_config().add_section(section)
-        self._config.set(section, option, "True" if boolean else "False")
-        self._config.save_user_config_options()
-
     @staticmethod
     def format_time(seconds):
-        if seconds is None or seconds <= 0:
+        if seconds is None or seconds < 1:
             return "-"
         days = seconds // 86400
         seconds %= 86400
         hours = seconds // 3600
         seconds %= 3600
-        minutes = seconds // 60
+        minutes = round(seconds / 60)
         seconds %= 60
         return f"{f'{days:2.0f}d ' if days > 0 else ''}" \
                f"{f'{hours:2.0f}h ' if hours > 0 else ''}" \
@@ -187,9 +192,13 @@ class ScreenPanel:
                 # The label should wrap, but it doesn't work
                 # this is a workaround
                 new_label_text += "\n  "
-            new_label_text += f" {int(power*100):3}%"
+            new_label_text += f" {int(power * 100):3}%"
 
         if dev in self.labels:
             self.labels[dev].set_label(new_label_text)
+            if show_power:
+                self.labels[dev].get_style_context().add_class("heater-grid-temp-power")
+            else:
+                self.labels[dev].get_style_context().remove_class("heater-grid-temp-power")
         elif dev in self.devices:
             self.devices[dev]["temp"].get_child().set_label(new_label_text)

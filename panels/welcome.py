@@ -10,10 +10,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return WelcomePanel(*args)
-
-class WelcomePanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -51,19 +48,19 @@ class WelcomePanel(ScreenPanel):
             'STEP_04': self._gtk.Button("settings", _("Customize"), "color4"),
             'FINISH': self._gtk.Button("complete", _("Finish"), None),
         }
-        self.buttons['STEP_01'].connect("clicked", self.menu_item_clicked, "STEP_01", {
+        self.buttons['STEP_01'].connect("clicked", self.menu_item_clicked, {
             "name": _("Network"),
             "panel": "network"
         })
-        self.buttons['STEP_02'].connect("clicked", self.menu_item_clicked, "STEP_02", {
+        self.buttons['STEP_02'].connect("clicked", self.menu_item_clicked, {
             "name":_("Update"),
             "panel": "update"
         })
-        self.buttons['STEP_03'].connect("clicked", self.menu_item_clicked, "STEP_03", {
+        self.buttons['STEP_03'].connect("clicked", self.menu_item_clicked, {
             "name": _("Calibrate"),
             "panel": "zcalibrate"
         })
-        self.buttons['STEP_04'].connect("clicked", self.menu_item_clicked, "STEP_04", {
+        self.buttons['STEP_04'].connect("clicked", self.menu_item_clicked, {
             "name": _("Customize"),
             "panel": "settings"
         })

@@ -10,10 +10,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return Configurations(*args)
-
-class Configurations(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -33,7 +30,6 @@ class Configurations(ScreenPanel):
             ConfigurationButton(button='CALIBRATE', panel='calibrate', title=_("Calibrate"), icon='calibrate'),
             ConfigurationButton(button='SETTINGS', panel='settings', title=_("Settings"), icon='settings'),
             ConfigurationButton(button='POWER', panel='power', title=_("Power"), icon='shutdown'),
-            ConfigurationButton(button='FILAMENT_NEW', panel='filament_new', title="FILAMENT_NEW", icon='custom-script'),
         ]
 
         grid = self._gtk.HomogeneousGrid()
@@ -48,7 +44,7 @@ class Configurations(ScreenPanel):
 
             self.button = self._gtk.Button(btn.icon, btn.title, f"color{random.randint(1, 4)}")
             
-            self.button.connect("clicked", self.menu_item_clicked, btn.panel, {
+            self.button.connect("clicked", self.menu_item_clicked, {
                 "name": _(btn.title),
                 "panel": btn.panel
             })

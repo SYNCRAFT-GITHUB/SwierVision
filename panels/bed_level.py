@@ -1,18 +1,12 @@
 import logging
 import re
 import math
-
 import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-
 from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
-
-
-def create_panel(*args):
-    return BedLevelPanel(*args)
 
 
 # Find the screw closest to the point,
@@ -38,7 +32,7 @@ def find_closest(screws, point, max_distance, remove=False):
     return closest
 
 
-class BedLevelPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
@@ -49,20 +43,21 @@ class BedLevelPanel(ScreenPanel):
         self.x_cnt = 0
         self.x_offset = 0
         self.y_offset = 0
-        self.buttons = {'dm': self._gtk.Button("motor-off", _("Disable XY"), "color3")}
+        self.buttons = {'dm': self._gtk.Button("motor-off", _("Disable Motors"), "color3")}
         self.buttons['dm'].connect("clicked", self.disable_motors)
         screw_positions = []
         rotation = None
+        self.probe_z_height = 0
+        self.lift_speed = 5
+        self.horizontal_move_z = 5
+        self.horizontal_speed = 50
 
         grid = self._gtk.HomogeneousGrid()
         grid.attach(self.buttons['dm'], 0, 0, 1, 1)
 
         if "screws_tilt_adjust" in self._printer.get_config_section_list():
-            self.buttons['screws'] = self._gtk.Button("screw-adjust", _("Screws Adjust"), "color4")
-            self.buttons['screws'].connect("clicked", self.menu_item_clicked, "screws_adjust", {
-            "name": _("Screws Adjust"),
-            "panel": "screws_adjust"
-        })
+            self.buttons['screws'] = self._gtk.Button("refresh", _("Screws Adjust"), "color4")
+            self.buttons['screws'].connect("clicked", self.screws_tilt_calculate)
             grid.attach(self.buttons['screws'], 0, 1, 1, 1)
 
             self.screws = self._get_screws("screws_tilt_adjust")
@@ -88,6 +83,7 @@ class BedLevelPanel(ScreenPanel):
         elif "bed_screws" in self._printer.get_config_section_list():
             self.screws = self._get_screws("bed_screws")
             logging.info(f"bed_screws: {self.screws}")
+
         nscrews = len(self.screws)
         # KS config
         valid_positions = True
@@ -114,9 +110,6 @@ class BedLevelPanel(ScreenPanel):
             if nscrews in (3, 5, 7):
                 valid_positions = False
             screw_positions = valid_screws
-        if 'bed_screws' in self._config.get_config():
-            rotation = self._config.get_config()['bed_screws'].getint("rotation", 0)
-            logging.debug(f"Rotation: {rotation}")
 
         # get dimensions
         x_positions = {x[0] for x in self.screws}
@@ -170,7 +163,7 @@ class BedLevelPanel(ScreenPanel):
         self.buttons['rm'] = self._gtk.Button("bed-level-r-m", scale=button_scale)
         self.buttons['fm'] = self._gtk.Button("bed-level-b-m", scale=button_scale)
         self.buttons['bm'] = self._gtk.Button("bed-level-t-m", scale=button_scale)
-        self.buttons['center'] = self._gtk.Button("increase", scale=button_scale)
+        self.buttons['center'] = self._gtk.Button("increase", scale=button_scale / 2)
 
         bedgrid = Gtk.Grid()
 
@@ -295,39 +288,38 @@ class BedLevelPanel(ScreenPanel):
                 'lm': lm
             }
         self.screw_dict['center'] = center
+        remove_list = []
+        for screw in self.screw_dict:
+            if screw not in screw_positions:
+                remove_list.append(screw)
+        for screw in remove_list:
+            self.screw_dict.pop(screw)
+
         grid.attach(bedgrid, 1, 0, 3, 2)
         self.content.add(grid)
-
-    def activate(self):
-        for key, value in self.screw_dict.items():
-            self.buttons[key].set_label(f"{value}")
 
     def home(self):
         # Test if all axes have been homed. Home if necessary.
         if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
-            self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME)
+            self._screen._ws.klippy.gcode_script("G28")
             # do Z_TILT_CALIBRATE if applicable.
             if self._printer.config_section_exists("z_tilt"):
-                self._screen._ws.klippy.gcode_script(KlippyGcodes.Z_TILT)
+                self._screen._ws.klippy.gcode_script("Z_TILT_ADJUST")
 
     def go_to_position(self, widget, position):
+        widget.set_sensitive(False)
         self.home()
         logging.debug(f"Going to position: {position}")
         script = [
             f"{KlippyGcodes.MOVE_ABSOLUTE}",
-            "G1 Z7 F800\n",
-            f"G1 X{position[0]} Y{position[1]} F3600\n",
-            "G1 Z.1 F300\n"
+            f"G1 Z{self.horizontal_move_z} F{self.lift_speed * 60}\n",
+            f"G1 X{position[0]} Y{position[1]} F{self.horizontal_speed * 60}\n",
+            f"G1 Z{self.probe_z_height} F{self.lift_speed * 60}\n"
         ]
-
-        self._screen._ws.klippy.gcode_script(
-            "\n".join(script)
-        )
+        self._screen._send_action(widget, "printer.gcode.script", {"script": "\n".join(script)})
 
     def disable_motors(self, widget):
-        self._screen._ws.klippy.gcode_script(
-            "M18"  # Disable motors
-        )
+        self._screen._send_action(widget, "printer.gcode.script", {"script": "M18"})
 
     def process_busy(self, busy):
         for button in self.buttons:
@@ -385,18 +377,29 @@ class BedLevelPanel(ScreenPanel):
     def _get_screws(self, config_section_name):
         screws = []
         config_section = self._printer.get_config_section(config_section_name)
+        logging.debug(config_section_name)
         for item in config_section:
-            logging.debug(f"{config_section_name}: {config_section[item]}")
-            result = re.match(r"([\-0-9\.]+)\s*,\s*([\-0-9\.]+)", config_section[item])
-            if result:
-                screws.append([
-                    round(float(result[1]), 1),
-                    round(float(result[2]), 1)
-                ])
+            logging.debug(f"{item}: {config_section[item]}")
+            if item == 'probe_speed':
+                self.lift_speed = float(config_section[item])
+            elif item == 'speed':
+                self.horizontal_speed = float(config_section[item])
+            elif item == 'horizontal_move_z':
+                self.horizontal_move_z = float(config_section[item])
+            elif item == 'probe_height':
+                self.probe_z_height = float(config_section[item])
+            else:
+                result = re.match(r"([\-0-9\.]+)\s*,\s*([\-0-9\.]+)", config_section[item])
+                if result:
+                    screws.append([
+                        round(float(result[1]), 1),
+                        round(float(result[2]), 1)
+                    ])
         return sorted(screws, key=lambda s: (float(s[1]), float(s[0])))
 
     def screws_tilt_calculate(self, widget):
+        widget.set_sensitive(False)
         self.home()
         self.response_count = 0
         self.buttons['screws'].set_sensitive(False)
-        self._screen._ws.klippy.gcode_script("SCREWS_TILT_CALCULATE")
+        self._screen._send_action(widget, "printer.gcode.script", {"script": "SCREWS_TILT_CALCULATE"})

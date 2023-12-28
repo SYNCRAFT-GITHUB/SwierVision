@@ -2,20 +2,20 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return SettingsPanel(*args)
-
-
-class SettingsPanel(ScreenPanel):
+class Panel(ScreenPanel):
     def __init__(self, screen, title):
         super().__init__(screen, title)
-        self.printers = self.settings = {}
+        self.printers = self.settings = self.langs = {}
         self.menu = ['settings_menu']
         options = self._config.get_configurable_options().copy()
+        options.append({"lang": {
+            "name": _("Language"),
+            "type": "menu",
+            "menu": "lang"
+        }})
         options.append({"change_system_timezone": {
             "name": _("Change Timezone"),
             "type": "panel",
@@ -36,7 +36,8 @@ class SettingsPanel(ScreenPanel):
         }})
         options.append({"clear_gcodes": {
             "name": _("Clear GCodes Folder"),
-            "type": "script",
+            "type": "panel",
+            "panel": "script",
             "script": "CLEAR_GCODES",
             "icon": "custom-script"
         }})
@@ -60,7 +61,8 @@ class SettingsPanel(ScreenPanel):
         }})
         options.append({"factory_reset": {
             "name": _("Factory Reset"),
-            "type": "script",
+            "type": "panel",
+            "panel": "script",
             "script": "REVERT_ALL",
             "icon": "stock"
         }})
@@ -71,6 +73,16 @@ class SettingsPanel(ScreenPanel):
         for option in options:
             name = list(option)[0]
             self.add_option('settings', self.settings, name, option[name])
+
+        self.labels['lang_menu'] = self._gtk.ScrolledWindow()
+        self.labels['lang'] = Gtk.Grid()
+        self.labels['lang_menu'].add(self.labels['lang'])
+        for lang in self._config.lang_list:
+            self.langs[lang] = {
+                "name": lang,
+                "type": "lang",
+            }
+            self.add_option("lang", self.langs, lang, self.langs[lang])
 
         self.content.add(self.labels['settings_menu'])
 
@@ -85,15 +97,16 @@ class SettingsPanel(ScreenPanel):
         return False
 
     def add_option(self, boxname, opt_array, opt_name, option):
+        
+        if option['type'] is None:
+            return
 
         try:
             if option['section'] == 'hidden':
                 return
         except Exception as e:
             print (f'e: {e}')
-            
-        if option['type'] is None:
-            return
+
         name = Gtk.Label()
         name.set_markup(f"<big><b>{option['name']}</b></big>")
         name.set_hexpand(True)
@@ -111,16 +124,6 @@ class SettingsPanel(ScreenPanel):
         dev.set_hexpand(True)
         dev.set_vexpand(False)
         dev.set_valign(Gtk.Align.CENTER)
-
-        if self._config.get_hidden_config().getboolean('welcome', True):
-            allowed_options = [
-                _("Change Screen Brightness"),
-                _("Language"),
-                _("Icon Theme"),
-                _("Font Size"),
-            ]
-            if not option['name'] in allowed_options:
-                return None
 
         dev.add(labels)
         if option['type'] == "binary":
@@ -155,26 +158,26 @@ class SettingsPanel(ScreenPanel):
             box.add(label)
             dev.add(box)
         elif option['type'] == "menu":
-            open_menu = self._gtk.Button("list", style="color3")
+            open_menu = self._gtk.Button("settings", style="color3")
             open_menu.connect("clicked", self.load_menu, option['menu'], option['name'])
             open_menu.set_hexpand(False)
             open_menu.set_halign(Gtk.Align.END)
             dev.add(open_menu)
+        elif option['type'] == "lang":
+            select = self._gtk.Button("load", style="color3")
+            select.connect("clicked", self._screen.change_language, option['name'])
+            select.set_hexpand(False)
+            select.set_halign(Gtk.Align.END)
+            dev.add(select)
         elif option['type'] == "panel":
             open_panel = self._gtk.Button(option['icon'], style="color3")
-            open_panel.connect("clicked", self.menu_item_clicked, option['panel'], {
+            try:
+                open_panel.connect("clicked", self.set_fix_option_to, option['script'])
+            except:
+                pass
+            open_panel.connect("clicked", self.menu_item_clicked, {
             "name": option['name'],
             "panel": option['panel']
-            })
-            open_panel.set_hexpand(False)
-            open_panel.set_halign(Gtk.Align.END)
-            dev.add(open_panel)
-        elif option['type'] == "script":
-            open_panel = self._gtk.Button(option['icon'], style="color3")
-            open_panel.connect("clicked",self.set_fix_option_to, option['script'])
-            open_panel.connect("clicked", self.menu_item_clicked, "script", {
-            "name": option['name'],
-            "panel": "script"
             })
             open_panel.set_hexpand(False)
             open_panel.set_halign(Gtk.Align.END)

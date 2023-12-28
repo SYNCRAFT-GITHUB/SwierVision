@@ -1,25 +1,15 @@
 # -*- coding: utf-8 -*-
 import logging
 import os
-import shutil
-import re
-import zipfile as zip
-
 import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib, Pango
 from datetime import datetime
-
 from ks_includes.screen_panel import ScreenPanel
 
-home = os.path.expanduser("~")
 
-def create_panel(*args):
-    return PrintPanel(*args)
-
-
-class PrintPanel(ScreenPanel):
+class Panel(ScreenPanel):
     cur_directory = "gcodes"
     dir_panels = {}
     filelist = {'gcodes': {'directories': [], 'files': []}}
@@ -43,18 +33,21 @@ class PrintPanel(ScreenPanel):
         self.labels['files'] = {}
         self.source = ""
         self.time_24 = self._config.get_main_config().getboolean("24htime", True)
+        self.space = '  ' if self._screen.width > 480 else '\n'
         logging.info(f"24h time is {self.time_24}")
 
         sbox = Gtk.Box(spacing=0)
         sbox.set_vexpand(False)
         for i, (name, val) in enumerate(self.sort_items.items(), start=1):
             s = self._gtk.Button(None, val, f"color{i % 4}", .5, Gtk.PositionType.RIGHT, 1)
+            s.get_style_context().add_class("buttons_slim")
             if name == self.sort_current[0]:
                 s.set_image(self._gtk.Image(self.sort_icon[self.sort_current[1]], self._gtk.img_scale * self.bts))
             s.connect("clicked", self.change_sort, name)
             self.labels[f'sort_{name}'] = s
             sbox.add(s)
         refresh = self._gtk.Button("refresh", style="color4", scale=self.bts)
+        refresh.get_style_context().add_class("buttons_slim")
         refresh.connect('clicked', self._refresh_files)
         sbox.add(refresh)
         sbox.set_hexpand(True)
@@ -89,8 +82,13 @@ class PrintPanel(ScreenPanel):
 
     def add_directory(self, directory, show=True):
         parent_dir = os.path.dirname(directory)
+        modified = 0
+        for x in self._files.directories:
+            if x['dirname'] == os.path.split(directory)[-1]:
+                modified = x['modified']
+                break
         if directory not in self.filelist:
-            self.filelist[directory] = {'directories': [], 'files': [], 'modified': 0}
+            self.filelist[directory] = {'directories': [], 'files': [], 'modified': modified}
             self.filelist[parent_dir]['directories'].append(directory)
 
         if directory not in self.labels['directories']:
@@ -121,22 +119,22 @@ class PrintPanel(ScreenPanel):
             curdir = os.path.join(*d[:i])
             newdir = os.path.join(*d[:i + 1])
             if newdir not in self.filelist[curdir]['directories']:
-                if d[i].startswith("."):
+                if newdir.startswith("."):
                     return
                 self.add_directory(newdir)
 
         if filename not in self.filelist[directory]['files']:
             for i in range(1, len(d)):
                 curdir = os.path.join(*d[:i + 1])
-                if curdir != "gcodes" and fileinfo['modified'] > self.filelist[curdir]['modified']:
-                    self.filelist[curdir]['modified'] = fileinfo['modified']
-                    if self.time_24:
-                        time = f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %H:%M}</b>'
-                    else:
-                        time = f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %I:%M %p}</b>'
-                    info = _("Modified") + time
-                    info += "\n" + _("Size") + f':<b>  {self.format_size(fileinfo["size"])}</b>'
-                    self.labels['directories'][curdir]['info'].set_markup(info)
+                if self.time_24:
+                    time = f":<b>{self.space}" \
+                           f"{datetime.fromtimestamp(self.filelist[curdir]['modified']):%Y/%m/%d %H:%M}</b>"
+                else:
+                    time = f":<b>{self.space}" \
+                           f"{datetime.fromtimestamp(self.filelist[curdir]['modified']):%Y/%m/%d %I:%M %p}</b>"
+                info = _("Modified") + time
+                info += "\n" + _("Size") + f':<b>{self.space}{self.format_size(fileinfo["size"])}</b>'
+                self.labels['directories'][curdir]['info'].set_markup(info)
             self.filelist[directory]['files'].append(filename)
 
         if filepath not in self.files:
@@ -155,50 +153,23 @@ class PrintPanel(ScreenPanel):
         self.dir_panels[directory].attach(self.files[filepath], 0, pos, 1, 1)
         if show is True:
             self.dir_panels[directory].show_all()
+        return False
 
     def _create_row(self, fullpath, filename=None):
         name = Gtk.Label()
         name.get_style_context().add_class("print-filename")
-
-        def is_usb(string):
-            if string.endswith("/USB"):
-                return True
-            else:
-                return False
-
-        def is_usb_device(string):
-            pattern = r'/'
-            occurrences = re.findall(pattern, string)
-            if string.startswith("gcodes/USB/") and len(occurrences) == 2:
-                return True
-            else:
-                return False
-
-        def is_usb_prints(string):
-            if string.endswith("/USB_PRINTS"):
-                return True
-            else:
-                return False
-
-        if is_usb_prints(fullpath) and self._config.get_main_config().get('show_saved_from_usb') != "True":
-            return
-
-        if filename: # Normal File
+        if filename:
             name.set_markup(f'<big><b>{os.path.splitext(filename)[0].replace("_", " ")}</b></big>')
-        elif not is_usb(fullpath) and not is_usb_device(fullpath) and not is_usb_prints(fullpath): # Normal Folder
-            name.set_markup(f'<big><b>{os.path.split(fullpath)[-1].replace("_", " ")}</b></big>')
-        elif is_usb(fullpath): # USB System Link
-            name.set_markup(f'<big><b>{_("Access Files on USB")}</b></big>')
-        elif is_usb_device(fullpath): # USB Device Inside System Link
-            name.set_markup(f'<big><b>{_("USB")}</b></big>')
-        elif is_usb_prints(fullpath):
-            name.set_markup(f'<big><b>{_("Files saved from USB")}</b></big>')
+        else:
+            name.set_markup(f"<big><b>{os.path.split(fullpath)[-1]}</b></big>")
         name.set_hexpand(True)
         name.set_halign(Gtk.Align.START)
         name.set_line_wrap(True)
         name.set_line_wrap_mode(Pango.WrapMode.CHAR)
 
         info = Gtk.Label()
+        name.set_line_wrap(True)
+        info.set_line_wrap_mode(Pango.WrapMode.CHAR)
         info.set_hexpand(True)
         info.set_halign(Gtk.Align.START)
         info.get_style_context().add_class("print-info")
@@ -209,7 +180,7 @@ class PrintPanel(ScreenPanel):
         rename.set_hexpand(False)
 
         if filename:
-            action = self._gtk.Button("resume", style="color3")
+            action = self._gtk.Button("print", style="color3")
             action.connect("clicked", self.confirm_print, fullpath)
             info.set_markup(self.get_file_info_str(fullpath))
             icon = Gtk.Button()
@@ -217,13 +188,7 @@ class PrintPanel(ScreenPanel):
             delete.connect("clicked", self.confirm_delete_file, f"gcodes/{fullpath}")
             rename.connect("clicked", self.show_rename, f"gcodes/{fullpath}")
             GLib.idle_add(self.image_load, fullpath)
-        if is_usb(fullpath) or is_usb_device(fullpath) or is_usb_prints(fullpath):
-            print (f"IS_USB_DEVICE: {is_usb_device(fullpath)}.")
-            action = self._gtk.Button("load", style="color3")
-            action.connect("clicked", self.change_dir, fullpath)
-            icon = self._gtk.Button("usb" if not is_usb_prints(fullpath) else "usb-save")
-            icon.connect("clicked", self.change_dir, fullpath)
-        elif not filename:
+        else:
             action = self._gtk.Button("load", style="color3")
             action.connect("clicked", self.change_dir, fullpath)
             icon = self._gtk.Button("folder")
@@ -234,20 +199,19 @@ class PrintPanel(ScreenPanel):
         action.set_hexpand(False)
         action.set_halign(Gtk.Align.END)
 
+        delete.connect("clicked", self.confirm_delete_file, f"gcodes/{fullpath}")
+
         row = Gtk.Grid()
         row.get_style_context().add_class("frame-item")
         row.set_hexpand(True)
         row.set_vexpand(False)
         row.attach(icon, 0, 0, 1, 2)
-        if is_usb(fullpath) or is_usb_device(fullpath) or is_usb_prints(fullpath):
-            row.attach(name, 1, 0, 3, 3)
-        else:
-            row.attach(name, 1, 0, 3, 1)
-            row.attach(info, 1, 1, 1, 1)
-            row.attach(rename, 2, 1, 1, 1)
-            row.attach(delete, 3, 1, 1, 1)
+        row.attach(name, 1, 0, 3, 1)
+        row.attach(info, 1, 1, 1, 1)
+        row.attach(rename, 2, 1, 1, 1)
+        row.attach(delete, 3, 1, 1, 1)
 
-        if not filename or (filename and os.path.splitext(filename)[1] in [".gcode", ".g", ".gco", ".ufp"]):
+        if not filename or (filename and os.path.splitext(filename)[1] in [".gcode", ".g", ".gco"]):
             row.attach(action, 4, 0, 1, 2)
 
         if filename is not None:
@@ -271,6 +235,7 @@ class PrintPanel(ScreenPanel):
             self.labels['files'][filepath]['icon'].set_image(Gtk.Image.new_from_pixbuf(pixbuf))
         else:
             self.labels['files'][filepath]['icon'].set_image(self._gtk.Image("file"))
+        return False
 
     def confirm_delete_file(self, widget, filepath):
         logging.debug(f"Sending delete_file {filepath}")
@@ -338,18 +303,8 @@ class PrintPanel(ScreenPanel):
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL}
         ]
 
-        job_path: str = f"{home}/printer_data/gcodes/.JOB"
-        if not os.path.exists(job_path):
-            os.makedirs(job_path)
-        destination = os.path.join(job_path, os.path.basename(filename))
-        filetocopy = os.path.join(f"{home}/printer_data/gcodes", filename)
-        if filetocopy != destination:
-            shutil.copy2(filetocopy, destination)
-        filename = f".JOB/{os.path.basename(filename)}"
-        filename = filename.replace(".ufp", ".gcode")
-
         label = Gtk.Label()
-        label.set_markup(f"<b>{os.path.basename(filename)}</b>\n")
+        label.set_markup(f"<b>{filename}</b>\n")
         label.set_hexpand(True)
         label.set_halign(Gtk.Align.CENTER)
         label.set_vexpand(True)
@@ -363,22 +318,19 @@ class PrintPanel(ScreenPanel):
         grid.set_valign(Gtk.Align.CENTER)
         grid.add(label)
 
-        pixbuf = self.get_file_image(filename, self._screen.width * .9, self._screen.height * .6)
+        height = self._screen.height * .9 - self._gtk.font_size * 10
+        pixbuf = self.get_file_image(filename, self._screen.width * .9, height)
         if pixbuf is not None:
             image = Gtk.Image.new_from_pixbuf(pixbuf)
-            image.set_vexpand(False)
             grid.attach_next_to(image, label, Gtk.PositionType.BOTTOM, 1, 1)
-        
-        dialog = self._gtk.Dialog(self._screen, buttons, grid, self.confirm_print_response, filename)
-        dialog.set_title(_("Print"))
-       
+
+        self._gtk.Dialog(_("Print") + f' {filename}', buttons, grid, self.confirm_print_response, filename)
 
     def confirm_print_response(self, dialog, response_id, filename):
         self._gtk.remove_dialog(dialog)
-        if response_id == Gtk.ResponseType.CANCEL:
-            return
-        logging.info(f"Starting print: {filename}")
-        self._screen._ws.klippy.print_start(filename)
+        if response_id == Gtk.ResponseType.OK:
+            logging.info(f"Starting print: {filename}")
+            self._screen._ws.klippy.print_start(filename)
 
     def delete_file(self, filename):
         directory = os.path.join("gcodes", os.path.dirname(filename)) if os.path.dirname(filename) else "gcodes"
@@ -421,14 +373,14 @@ class PrintPanel(ScreenPanel):
             return
         info = _("Uploaded")
         if self.time_24:
-            info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %H:%M}</b>\n'
+            info += f':<b>{self.space}{datetime.fromtimestamp(fileinfo["modified"]):%Y/%m/%d %H:%M}</b>\n'
         else:
-            info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %I:%M %p}</b>\n'
+            info += f':<b>{self.space}{datetime.fromtimestamp(fileinfo["modified"]):%Y/%m/%d %I:%M %p}</b>\n'
 
         if "size" in fileinfo:
-            info += _("Size") + f':  <b>{self.format_size(fileinfo["size"])}</b>\n'
+            info += _("Size") + f':{self.space}<b>{self.format_size(fileinfo["size"])}</b>\n'
         if "estimated_time" in fileinfo:
-            info += _("Print Time") + f':  <b>{self.format_time(fileinfo["estimated_time"])}</b>'
+            info += _("Print Time") + f':{self.space}<b>{self.format_time(fileinfo["estimated_time"])}</b>'
         return info
 
     def reload_files(self, widget=None):
@@ -440,32 +392,31 @@ class PrintPanel(ScreenPanel):
         flist = sorted(self._screen.files.get_file_list(), key=lambda item: '/' in item)
         for file in flist:
             GLib.idle_add(self.add_file, file)
+        return False
 
     def update_file(self, filename):
         if filename not in self.labels['files']:
             logging.debug(f"Cannot update file, file not in labels: {filename}")
             return
 
-        logging.info(f"Updating file {filename}")
         self.labels['files'][filename]['info'].set_markup(self.get_file_info_str(filename))
 
         # Update icon
         GLib.idle_add(self.image_load, filename)
 
     def _callback(self, newfiles, deletedfiles, updatedfiles=None):
-        logging.debug(f"newfiles: {newfiles}")
         for file in newfiles:
             self.add_file(file)
-        logging.debug(f"deletedfiles: {deletedfiles}")
         for file in deletedfiles:
             self.delete_file(file)
         if updatedfiles is not None:
-            logging.debug(f"updatefiles: {updatedfiles}")
             for file in updatedfiles:
                 self.update_file(file)
+        return False
 
     def _refresh_files(self, widget=None):
         self._files.refresh_files()
+        return False
 
     def show_rename(self, widget, fullpath):
         self.source = fullpath

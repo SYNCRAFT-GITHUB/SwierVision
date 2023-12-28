@@ -1,19 +1,14 @@
 import logging
 import os
-
 import gi
 import netifaces
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, GLib, Pango
+from gi.repository import Gtk, GLib, Pango
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return NetworkPanel(*args)
-
-
-class NetworkPanel(ScreenPanel):
+class Panel(ScreenPanel):
     initialized = False
 
     def __init__(self, screen, title):
@@ -24,7 +19,10 @@ class NetworkPanel(ScreenPanel):
         self.prev_network = None
         self.update_timeout = None
         self.network_interfaces = netifaces.interfaces()
-        self.wireless_interfaces = [iface for iface in self.network_interfaces if iface.startswith('w')]
+        self.wireless_interfaces = [
+            iface for iface in self.network_interfaces
+            if iface.startswith('wlan') or iface.startswith('wlp')
+        ]
         self.wifi = None
         self.use_network_manager = os.system('systemctl is-active --quiet NetworkManager.service') == 0
         if len(self.wireless_interfaces) > 0:
@@ -96,7 +94,7 @@ class NetworkPanel(ScreenPanel):
             if self.update_timeout is None:
                 self.update_timeout = GLib.timeout_add_seconds(5, self.update_all_networks)
         else:
-            self.labels['networkinfo'] = Gtk.Label("")
+            self.labels['networkinfo'] = Gtk.Label()
             self.labels['networkinfo'].get_style_context().add_class('temperature_entry')
             box.pack_start(self.labels['networkinfo'], False, False, 0)
             self.update_single_network_info()
@@ -115,6 +113,7 @@ class NetworkPanel(ScreenPanel):
             self.add_network(net, False)
         self.update_all_networks()
         self.content.show_all()
+        return False
 
     def add_network(self, ssid, show=True):
 
@@ -143,7 +142,7 @@ class NetworkPanel(ScreenPanel):
         if connected_ssid == ssid:
             display_name += " (" + _("Connected") + ")"
 
-        name = Gtk.Label("")
+        name = Gtk.Label()
         name.set_markup(f"<big><b>{display_name}</b></big>")
         name.set_hexpand(True)
         name.set_halign(Gtk.Align.START)
@@ -286,8 +285,7 @@ class NetworkPanel(ScreenPanel):
         self.labels['connecting_info'].set_halign(Gtk.Align.START)
         self.labels['connecting_info'].set_valign(Gtk.Align.START)
         scroll.add(self.labels['connecting_info'])
-        dialog = self._gtk.Dialog(self._screen, buttons, scroll, self._gtk.remove_dialog)
-        dialog.set_title(_("Starting WiFi Association"))
+        self._gtk.Dialog(_("Starting WiFi Association"), buttons, scroll, self._gtk.remove_dialog)
         self._screen.show_all()
 
         if ssid in list(self.networks):
@@ -401,10 +399,35 @@ class NetworkPanel(ScreenPanel):
         if "channel" in netinfo:
             chan = _("Channel") + f' {netinfo["channel"]}'
         if "signal_level_dBm" in netinfo:
-            lvl = f'{netinfo["signal_level_dBm"]} ' + _("dBm")
+            lvl = f'{netinfo["signal_level_dBm"]} '
+            if self.use_network_manager:
+                lvl += '%'
+            else:
+                lvl += _("dBm")
+            icon = self.signal_strength(int(netinfo["signal_level_dBm"]))
+            if 'icon' not in self.labels['networks'][ssid]:
+                self.labels['networks'][ssid]['row'].add(icon)
+                self.labels['networks'][ssid]['row'].reorder_child(icon, 0)
+                self.labels['networks'][ssid]['icon'] = icon
+            self.labels['networks'][ssid]['icon'] = icon
 
         self.labels['networks'][ssid]['info'].set_markup(f"{info} <small>{encr}  {freq}  {chan}  {lvl}</small>")
-        self.labels['networks'][ssid]['info'].show_all()
+        self.labels['networks'][ssid]['row'].show_all()
+
+    def signal_strength(self, signal_level):
+        # networkmanager uses percentage not dbm
+        # the bars of nmcli are aligned near this breakpoints
+        exc = 77 if self.use_network_manager else -50
+        good = 60 if self.use_network_manager else -60
+        fair = 35 if self.use_network_manager else -70
+        if signal_level > exc:
+            return self._gtk.Image('wifi_excellent')
+        elif signal_level > good:
+            return self._gtk.Image('wifi_good')
+        elif signal_level > fair:
+            return self._gtk.Image('wifi_fair')
+        else:
+            return self._gtk.Image('wifi_weak')
 
     def update_single_network_info(self):
 
@@ -428,6 +451,7 @@ class NetworkPanel(ScreenPanel):
 
         self.labels['networkinfo'].set_markup(connected)
         self.labels['networkinfo'].show_all()
+        return True
 
     def reload_networks(self, widget=None):
         self.networks = {}

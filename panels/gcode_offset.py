@@ -10,10 +10,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return GCodeOffsetPanel(*args)
-
-class GCodeOffsetPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -28,10 +25,10 @@ class GCodeOffsetPanel(ScreenPanel):
         grid = self._gtk.HomogeneousGrid()
         self.labels['gcode_offset_panel'] = self._gtk.HomogeneousGrid()
         
-        self.labels['y+'] = self._gtk.Button("y_increase", None, "color1")
-        self.labels['x+'] = self._gtk.Button("x_increase", None, "color1")
-        self.labels['y-'] = self._gtk.Button("y_decrease", None, "color2")
-        self.labels['x-'] = self._gtk.Button("x_decrease", None, "color2")
+        self.labels['y+'] = self._gtk.Button(None, "Y+", "color1")
+        self.labels['x+'] = self._gtk.Button(None, "X+", "color1")
+        self.labels['y-'] = self._gtk.Button(None, "Y-", "color2")
+        self.labels['x-'] = self._gtk.Button(None, "X-", "color2")
         self.labels['ok'] = self._gtk.Button("complete", None, "color3")
         self.labels['reset'] = self._gtk.Button("refresh", None, None)
         self.labels['reset'].set_property("opacity", 0.3)

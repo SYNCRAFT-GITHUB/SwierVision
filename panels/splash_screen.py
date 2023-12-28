@@ -9,11 +9,7 @@ from gi.repository import Gtk, Pango
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return SplashScreenPanel(*args)
-
-
-class SplashScreenPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
@@ -133,7 +129,7 @@ class SplashScreenPanel(ScreenPanel):
             os.system("systemctl reboot")
 
     def retry(self, widget):
-        self.update_text((_("Connecting to %s") % self._screen.connecting_to_printer))
+        self.update_text((_("Starting %s") % self._screen.connecting_to_printer))
         if self._screen._ws and not self._screen._ws.connecting:
             self._screen._ws.retry()
         else:

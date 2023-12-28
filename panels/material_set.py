@@ -56,10 +56,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
     except json.JSONDecodeError:
         print(f"Error decoding JSON: {file_path}")
 
-def create_panel(*args):
-    return SetMaterialPanel(*args)
-
-class SetMaterialPanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 

@@ -10,10 +10,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return CalibratePanel(*args)
-
-class CalibratePanel(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -26,7 +23,7 @@ class CalibratePanel(ScreenPanel):
         }
         self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
 
-        self.buttons['CALIB_Z'].connect("clicked", self.menu_item_clicked, "calib_z", {
+        self.buttons['CALIB_Z'].connect("clicked", self.menu_item_clicked, {
             "name":_("Z Calibrate"),
             "panel": "zcalibrate"
         })

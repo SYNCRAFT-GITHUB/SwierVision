@@ -10,19 +10,15 @@ from datetime import datetime
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return ConsolePanel(*args)
-
-
 COLORS = {
-    "command": "#bad8ff",
-    "error": "#ff6975",
+    "command": "#c9dcf5",
+    "error": "#f2b2ac",
     "response": "#b8b8b8",
     "time": "grey",
     "warning": "#c9c9c9"
 }
 
-class ConsolePanel(ScreenPanel):
+class Panel(ScreenPanel):
     def __init__(self, screen, title):
         super().__init__(screen, title)
         self.autoscroll = True
@@ -50,23 +46,14 @@ class ConsolePanel(ScreenPanel):
         g28 = self._gtk.Button("console", _("Home All") + ' ', None, self.bts , Gtk.PositionType.RIGHT, 1)
         g28.connect("clicked", self.send_command, "G28")
 
-        bed_mesh_calibrate = self._gtk.Button("console", _("Calibrar Malha") + ' ', None, self.bts , Gtk.PositionType.RIGHT, 1)
+        bed_mesh_calibrate = self._gtk.Button("console", _("Mesh calibrate") + ' ', None, self.bts , Gtk.PositionType.RIGHT, 1)
         bed_mesh_calibrate.connect("clicked", self.send_command, "BED_MESH_CALIBRATE")
 
         options = Gtk.Grid()
         options.set_vexpand(False)
-        if self._screen.vertical_mode:
-            #options.attach(o1_lbl, 0, 0, 1, 1)
-            options.attach(bed_mesh_calibrate, 0, 1, 1, 1)
-            #options.attach(o2_lbl, 1, 0, 1, 1)
-            options.attach(g28, 1, 1, 1, 1)
-            options.attach(o3_button, 3, 0, 1, 2)
-        else: # This
-            #options.attach(o1_lbl, 0, 0, 1, 1)
-            options.attach(bed_mesh_calibrate, 1, 0, 1, 1)
-            #options.attach(o2_lbl, 2, 0, 1, 1)
-            options.attach(g28, 3, 0, 1, 1)
-            options.attach(o3_button, 4, 0, 1, 1)
+        options.attach(bed_mesh_calibrate, 1, 0, 1, 1)
+        options.attach(g28, 3, 0, 1, 1)
+        options.attach(o3_button, 4, 0, 1, 1)
 
         sw = Gtk.ScrolledWindow()
         sw.set_hexpand(True)
@@ -97,9 +84,6 @@ class ConsolePanel(ScreenPanel):
         enter = self._gtk.Button("resume", " " + _('Send') + " ", None, .66, Gtk.PositionType.RIGHT, 1)
         enter.set_hexpand(False)
         enter.connect("clicked", self._send_command)
-
-        #ebox.add(entry)
-        #ebox.add(enter)
 
         self.labels.update({
             "entry": entry,

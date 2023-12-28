@@ -13,11 +13,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return SystemInfo(*args)
-
-
-class SystemInfo(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -61,7 +57,7 @@ class SystemInfo(ScreenPanel):
                 prop = yaml.safe_load(prop)
                 return prop.get('model')
         except:
-            return 'X1'
+            return 'Syncraft IDEX'
 
     def get_mac_address(self, ip_address):
         arp_command = ['arp', '-n', ip_address]

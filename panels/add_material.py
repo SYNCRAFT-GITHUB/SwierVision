@@ -12,9 +12,6 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 from .material_load import CustomPrinterMaterial
 
-def create_panel(*args):
-    return AddCustomMaterial(*args)
-
 error_messages = [
     _("An error has occurred"),
     _("This name cannot be used"),
@@ -22,7 +19,7 @@ error_messages = [
     _("The maximum limit has been reached")
 ]
 
-class AddCustomMaterial(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)

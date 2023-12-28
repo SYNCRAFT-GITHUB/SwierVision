@@ -9,10 +9,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
 
-def create_panel(*args):
-    return UsbActions(*args)
-
-class UsbActions(ScreenPanel):
+class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
 
@@ -25,17 +22,17 @@ class UsbActions(ScreenPanel):
             'SLICER': self._gtk.Button("cura", _("Export Syncraft Packs"), "color1"),
         }
         self.buttons['UPDATE'].connect("clicked",self.set_fix_option_to,"UPDATE_USB")
-        self.buttons['UPDATE'].connect("clicked", self.menu_item_clicked, "script", {
+        self.buttons['UPDATE'].connect("clicked", self.menu_item_clicked, {
             "name":_("System"),
             "panel": "script"
         })
         self.buttons['LOGS'].connect("clicked",self.set_fix_option_to,"USB_LOGS")
-        self.buttons['LOGS'].connect("clicked", self.menu_item_clicked, "script", {
+        self.buttons['LOGS'].connect("clicked", self.menu_item_clicked, {
             "name":_("System"),
             "panel": "script"
         })
         self.buttons['SLICER'].connect("clicked",self.set_fix_option_to,"USB_SLICER")
-        self.buttons['SLICER'].connect("clicked", self.menu_item_clicked, "script", {
+        self.buttons['SLICER'].connect("clicked", self.menu_item_clicked, {
             "name": _("System"),
             "panel": "script"
         })

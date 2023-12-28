@@ -8,7 +8,7 @@ from gi.repository import Gtk, GLib
 
 
 class Keyboard(Gtk.Box):
-    langs = ["de", "en", "fr", "es"]
+    langs = ["Deutsch - DE", "English - EN", "Français - FR", "Español - ES"]
 
     def __init__(self, screen, close_cb, entry=None):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -21,7 +21,7 @@ class Keyboard(Gtk.Box):
         self.entry = entry
 
         language = self.detect_language(screen._config.get_main_config().get("language", None))
-        logging.info(f"Keyboard {language}")
+        logging.info(f"Keyboard Lang: {language}")
 
         if language == "Deutsch - DE":
             self.keys = [

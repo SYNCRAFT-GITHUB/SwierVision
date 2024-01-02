@@ -56,4 +56,4 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f"NOZZLE_SET CARRIAGE=0 NZ='{nozzle}'")
 
     def process_update(self, action, data):
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
+        self.extruder_option = self._config.get_extruder_option()

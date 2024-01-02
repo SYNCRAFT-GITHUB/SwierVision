@@ -10,6 +10,7 @@ from gi.repository import Gtk, Pango
 from ks_includes.KlippyGcodes import KlippyGcodes
 from ks_includes.screen_panel import ScreenPanel
 
+
 class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
@@ -21,16 +22,20 @@ class Panel(ScreenPanel):
         self.load_filament = any("LOAD_FILAMENT" in macro.upper() for macro in macros)
         self.unload_filament = any("UNLOAD_FILAMENT" in macro.upper() for macro in macros)
 
+        self.distance: int = 10
         self.speed: int = 2
 
-        self.current_extruder = self.get_variable('currentextruder')
-        self.nozzle = self.get_variable('nozzle')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
+        self.nozzle0 = self._config.variables_value_reveal('nozzle0')
+        self.nozzle1 = self._config.variables_value_reveal('nozzle1')
 
         self.buttons = {
             'load': self._gtk.Button("arrow-up", _("Load"), "color3", Gtk.PositionType.BOTTOM, 3),
             'unload': self._gtk.Button("arrow-down", _("Unload"), "color2", Gtk.PositionType.BOTTOM, 3),
             'material_ext0': self._gtk.Button("filament", None, "color1", .68),
             'material_ext1': self._gtk.Button("filament", None, "color1", .68),
+            'settings_ext0': self._gtk.Button("settings", None, "color3", .68),
+            'settings_ext1': self._gtk.Button("settings", None, "color3", .68),
         }
 
         grid = self._gtk.HomogeneousGrid()
@@ -38,6 +43,8 @@ class Panel(ScreenPanel):
         grid.attach(self.buttons['unload'], 3, 0, 3, 3)
         grid.attach(self.buttons['material_ext0'], 0, 3, 1, 1)
         grid.attach(self.buttons['material_ext1'], 5, 3, 1, 1)
+        grid.attach(self.buttons['settings_ext0'], 0, 4, 1, 1)
+        grid.attach(self.buttons['settings_ext1'], 5, 4, 1, 1)
 
         self.buttons['unload'].connect("clicked", self.load_unload, "-")
         self.buttons['load'].connect("clicked", self.reset_material_panel)
@@ -58,9 +65,21 @@ class Panel(ScreenPanel):
             "panel": "material_set"
         })
 
+        self.buttons['settings_ext0'].connect("clicked", self.change_extruder, 'extruder')
+        self.buttons['settings_ext0'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Settings"),
+            "panel": "filament_gear"
+        })
+
+        self.buttons['settings_ext1'].connect("clicked", self.change_extruder, 'extruder1')
+        self.buttons['settings_ext1'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Settings"),
+            "panel": "filament_gear"
+        })
+
         self.ext_feeder = {
-            'extruder_stepper extruder1': 'extruder1',
-            'extruder': 'extruder'
+            'extruder1': '1',
+            'extruder': '0'
         }
 
         i = 1
@@ -73,6 +92,23 @@ class Panel(ScreenPanel):
             grid.attach(self.labels[extruder], (i+(i/2)), 3, 2, 1)
             i += 1
 
+        self.buttons['select_ext0'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        self.buttons['select_ext1'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        
+        self.buttons['select_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
+        self.buttons['select_ext0'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Select Extruder"),
+            "panel": "nozzle"
+        })
+        self.buttons['select_ext1'].connect("clicked", self.replace_extruder_option, 'extruder1')
+        self.buttons['select_ext1'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Select Extruder"),
+            "panel": "nozzle"
+        })
+
+        grid.attach(self.buttons['select_ext0'], 1, 4, 2, 1)
+        grid.attach(self.buttons['select_ext1'], 3, 4, 2, 1)
+
         self.proextruders = {
             'Standard 0.25mm': 'nozzle-ST025',
             'Standard 0.4mm': 'nozzle-ST04',
@@ -80,21 +116,6 @@ class Panel(ScreenPanel):
             'Metal 0.4mm': 'nozzle-METAL04',
             'Fiber 0.6mm': 'nozzle-FIBER06',
         }
-
-        i: int = 0
-        for key, value in self.proextruders.items():
-            self.labels[key] = self._gtk.Button(value, None, None)
-            self.labels[key].connect("clicked", self.nozzlegcodescript, key)
-            grid.attach(self.labels[key], i, 4, 1, 1)
-            i += 1
-
-        self.labels['settings'] = self._gtk.Button("settings", None, None)
-        grid.attach(self.labels['settings'], i, 4, 1, 1)
-
-        self.labels['settings'].connect("clicked", self.menu_item_clicked, {
-            "name": _("Filament"),
-            "panel": "filament_gear"
-        })
 
         self.content.add(grid)
 
@@ -123,19 +144,11 @@ class Panel(ScreenPanel):
             else:
                 self._screen._ws.klippy.gcode_script(f"LOAD_FILAMENT SPEED={self.speed * 60}")
 
-    def get_variable(self, key) -> str:
-        return self._config.variables_value_reveal(key)
-
     def process_busy(self, busy):
         for button in self.buttons:
             self.buttons[button].set_sensitive((not busy))
-        try:
-            for key, value in self.proextruders.items():
-                self.labels[key].set_sensitive((not busy))
-            for extruder in self._printer.get_tools():
-                self.labels[extruder].set_sensitive((not busy))
-        except:
-            pass
+        for extruder in self._printer.get_tools():
+            self.labels[extruder].set_sensitive((not busy))
 
     def process_update(self, action, data):
         if action == "notify_busy":
@@ -144,13 +157,13 @@ class Panel(ScreenPanel):
         if action != "notify_status_update":
             return
 
-        self.current_extruder = self.get_variable('currentextruder')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for extruder in self._printer.get_tools():
             if '1' in extruder:
-                material = self.get_variable('material_ext1')
+                material = self._config.variables_value_reveal('material_ext1')
             else:
-                material = self.get_variable('material_ext0')
+                material = self._config.variables_value_reveal('material_ext0')
             if 'empty' in material:
                 material = _("Empty")
             self.labels[extruder].set_label(material)
@@ -159,12 +172,17 @@ class Panel(ScreenPanel):
             else:
                 self.labels[extruder].set_property("opacity", 1.0)
 
-        if self.get_variable('nozzle') not in self.proextruders:
+        if self._config.variables_value_reveal('nozzle0') not in self.proextruders:
             pass
         else:
-            self.labels[self.nozzle].get_style_context().remove_class("button_active")
-            self.nozzle = self.get_variable('nozzle')
-            self.labels[self.nozzle].get_style_context().add_class("button_active")
+            self.nozzle0 = self._config.variables_value_reveal('nozzle0')
+            self.buttons['select_ext0'].set_label(f"{self.nozzle0}")
+
+        if self._config.variables_value_reveal('nozzle1') not in self.proextruders:
+            pass
+        else:
+            self.nozzle1 = self._config.variables_value_reveal('nozzle1')
+            self.buttons['select_ext1'].set_label(f"{self.nozzle1}")
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):
             if x in data:
@@ -184,7 +202,3 @@ class Panel(ScreenPanel):
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")
         self._screen._ws.klippy.gcode_script(f"T{self._printer.get_tool_number(extruder)}")
-
-    def nozzlegcodescript(self, widget, nozzle: str):
-        self._config.replace_nozzle(newvalue=nozzle)
-        self._screen._ws.klippy.gcode_script(f"NOZZLE_SET NZ='{nozzle}'")

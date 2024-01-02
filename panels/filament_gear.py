@@ -12,7 +12,7 @@ class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
-        self.current_extruder = self._printer.get_stat("toolhead", "extruder")
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         macros = self._printer.get_config_section_list("gcode_macro ")
         self.load_filament = any("LOAD_FILAMENT" in macro.upper() for macro in macros)
         self.unload_filament = any("UNLOAD_FILAMENT" in macro.upper() for macro in macros)
@@ -146,7 +146,14 @@ class Panel(ScreenPanel):
         if self._printer.state == "printing":
             self.enable_buttons(False)
 
+    def process_busy(self, busy):
+        for button in self.buttons:
+            self.buttons[button].set_sensitive((not busy))
+
     def process_update(self, action, data):
+        if action == "notify_busy":
+            self.process_busy(data)
+            return
         if action == "notify_gcode_response":
             if "action:cancel" in data or "action:paused" in data:
                 self.enable_buttons(True)
@@ -167,10 +174,7 @@ class Panel(ScreenPanel):
 
         if ("toolhead" in data and "extruder" in data["toolhead"] and
                 data["toolhead"]["extruder"] != self.current_extruder):
-            for extruder in self._printer.get_tools():
-                self.labels[extruder].get_style_context().remove_class("button_active")
-            self.current_extruder = data["toolhead"]["extruder"]
-            self.labels[self.current_extruder].get_style_context().add_class("button_active")
+            self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for x in self._printer.get_filament_sensors():
             if x in data:

@@ -606,7 +606,7 @@ trough progress {
 }
 
 .filament_sensor {
-    border-radius: 3em;
+    border-radius: 1em;
 }
 
 .filament_sensor switch {

@@ -93,7 +93,7 @@ class KlipperScreenConfig:
 
         printers = [i for i in self.config.sections() if i.startswith("printer ")]
         if len(printers) == 0:
-            printers.append("Printer Syncraft X1")
+            printers.append("Printer Syncraft IDEX")
 
         host_json_path = os.path.join(os.getcwd(), "ks_includes", "dev-host.json")
         if os.path.exists(host_json_path):
@@ -449,15 +449,18 @@ class KlipperScreenConfig:
                     saved_def.append(line[(len(self.do_not_edit_prefix) + 1):])
         return ["\n".join(user_def), None if saved_def is None else "\n".join(saved_def)]
 
-    def variables_value_reveal(self, key) -> str:
+    def variables_value_reveal(self, key, isString=True) -> str:
         config = configparser.ConfigParser()
         pdc_path = os.path.join('/home', 'pi', 'printer_data', 'config')
         variables_path = os.path.join(pdc_path, 'variables.cfg')
-        # variables_path = '/Users/rafael/variables.cfg'
+        variables_path = '/Users/rafael/variables.cfg'
         try:
             with open(variables_path, 'r') as variab:
                 config.read_file(variab, source=variables_path)
-                return str(config.get('Variables', str(key).lower())[1:-1])
+                if isString:
+                    return str(config.get('Variables', str(key).lower())[1:-1])
+                else:
+                    return str(config.get('Variables', str(key).lower()))
         except:
             print(f"Unable to read 'variables.cfg' to get value from key '{key}'.")
             return 'none'

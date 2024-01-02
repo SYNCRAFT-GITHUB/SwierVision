@@ -21,7 +21,7 @@ class Panel(ScreenPanel):
         macros = self._printer.get_gcode_macros()
 
         self.current_extruder = self.get_variable('currentextruder')
-        self.nozzle = self.get_variable('nozzle')
+        self.nozzle = self.get_variable('nozzle0')
 
         self.content.add(self._gtk.Label("\n\n"))
 
@@ -82,9 +82,9 @@ class Panel(ScreenPanel):
 
     def replace_extruder_option_with_opposite(self, button):
         if "extruder1" in self.current_extruder:
-            self._config.replace_extruder_option(newvalue="extruder")
+            self._config.replace_extruder_option(newvalue="0")
         else:
-            self._config.replace_extruder_option(newvalue="extruder1")
+            self._config.replace_extruder_option(newvalue="1")
 
     def get_variable(self, key) -> str:
         return self._config.variables_value_reveal(key)
@@ -106,12 +106,12 @@ class Panel(ScreenPanel):
                 material = _("Empty")
             self.labels[extruder].set_label(material)
 
-        if self.get_variable('nozzle') not in self.proextruders:
+        if self.get_variable('nozzle0') not in self.proextruders:
             pass
         else:
             for key, value in self.proextruders.items():
                 self.labels[key].set_property("opacity", 0.3)
-            self.nozzle = self.get_variable('nozzle')
+            self.nozzle = self.get_variable('nozzle0')
             self.labels[self.nozzle].set_property("opacity", 1.0)
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):

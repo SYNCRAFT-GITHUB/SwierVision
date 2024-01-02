@@ -23,7 +23,7 @@ class Panel(ScreenPanel):
                     self.distances = dis
                     self.distance = self.distances[-2]
 
-        self.current_extruder = self._config.variables_value_reveal('currentextruder')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         self.settings = {}
         self.menu = ['move_menu']
         self.pos_x = self.pos_y = self.pos_z = self.pos_text = ""
@@ -83,8 +83,8 @@ class Panel(ScreenPanel):
         grid.attach(self.buttons['motors_off'], 2, 0, 1, 1)
 
         self.ext_feeder = {
-            'extruder_stepper extruder1': 'extruder1',
-            'extruder': 'extruder'
+            'extruder1': '1',
+            'extruder': '0'
         }
 
         extgrid = self._gtk.HomogeneousGrid()
@@ -161,7 +161,7 @@ class Panel(ScreenPanel):
         if action != "notify_status_update":
             return
 
-        self.current_extruder = self._config.variables_value_reveal('currentextruder')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for extruder in self._printer.get_tools():
             if self.ext_feeder[extruder] != self.current_extruder:

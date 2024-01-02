@@ -30,13 +30,13 @@ class Panel(ScreenPanel):
             ConfigurationButton(button='CALIBRATE', panel='calibrate', title=_("Calibrate"), icon='calibrate'),
             ConfigurationButton(button='SETTINGS', panel='settings', title=_("Settings"), icon='settings'),
             ConfigurationButton(button='POWER', panel='power', title=_("Power"), icon='shutdown'),
-            ConfigurationButton(button='DEV02', panel='input_shaper', title="input_shaper", icon='custom-script'),
-            ConfigurationButton(button='DEV03', panel='gcode_macros', title="gcode_macros", icon='custom-script'),
-            ConfigurationButton(button='DEV04', panel='led', title="led", icon='custom-script'),
-            ConfigurationButton(button='DEV05', panel='limits', title="limits", icon='custom-script'),
-            ConfigurationButton(button='DEV06', panel='notifications', title="notifications", icon='custom-script'),
-            ConfigurationButton(button='DEV07', panel='retraction', title="retraction", icon='custom-script'),
-            ConfigurationButton(button='DEV08', panel='spoolman', title="spoolman", icon='custom-script'),
+            # ConfigurationButton(button='DEV02', panel='input_shaper', title="input_shaper", icon='custom-script'),
+            # ConfigurationButton(button='DEV03', panel='gcode_macros', title="gcode_macros", icon='custom-script'),
+            # ConfigurationButton(button='DEV04', panel='led', title="led", icon='custom-script'),
+            # ConfigurationButton(button='DEV05', panel='limits', title="limits", icon='custom-script'),
+            # ConfigurationButton(button='DEV06', panel='notifications', title="notifications", icon='custom-script'),
+            # ConfigurationButton(button='DEV07', panel='retraction', title="retraction", icon='custom-script'),
+            # ConfigurationButton(button='DEV08', panel='spoolman', title="spoolman", icon='custom-script'),
         ]
 
         grid = self._gtk.HomogeneousGrid()

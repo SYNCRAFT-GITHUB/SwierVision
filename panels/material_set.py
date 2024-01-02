@@ -63,13 +63,12 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['material_set_menu']
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         self.extruder_option = self._config.get_extruder_option()
         self.nozzle = "none"
 
-        if int(self.current_extruder) == 1:
+        if '1' in str(self.extruder_option):
             self.nozzle = self._config.variables_value_reveal('nozzle1')
-        elif int(self.current_extruder) == 0:
+        else:
             self.nozzle = self._config.variables_value_reveal('nozzle0')
 
         self.materials_json_path = self._config.materials_path(custom=False)

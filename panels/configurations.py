@@ -31,6 +31,7 @@ class Panel(ScreenPanel):
             ConfigurationButton(button='SETTINGS', panel='settings', title=_("Settings"), icon='settings'),
             ConfigurationButton(button='POWER', panel='power', title=_("Power"), icon='shutdown'),
             ConfigurationButton(button='DEV00', panel='filament', title="filament", icon='custom-script'),
+            ConfigurationButton(button='DEVa', panel='old_console', title="old_console", icon='custom-script'),
             ConfigurationButton(button='DEV01', panel='filament_new', title="filament_new", icon='custom-script'),
             ConfigurationButton(button='DEV02', panel='input_shaper', title="input_shaper", icon='custom-script'),
             ConfigurationButton(button='DEV03', panel='gcode_macros', title="gcode_macros", icon='custom-script'),

@@ -135,6 +135,8 @@ class Panel(ScreenPanel):
     def process_busy(self, busy):
             for button in self.buttons:
                 self.buttons[button].set_sensitive((not busy))
+            for extruder in self._printer.get_tools():
+                self.labels[extruder].set_sensitive((not busy))
 
     def process_update(self, action, data):
         if action == "notify_busy":

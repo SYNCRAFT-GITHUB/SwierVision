@@ -75,14 +75,14 @@ class Panel(ScreenPanel):
         
         class SCRIPT:
             class UPDATE:
-                DOWNLOAD = os.path.join(core, 'core', 'update', 'apply.py')
+                DOWNLOAD = os.path.join(core, 'core', 'update.py')
                 APPLY = os.path.join(core, 'state', 'upgrade', 'apply.sh')
             class REVERT:
                 APPLY = os.path.join(core, 'state', 'downgrade', 'apply.sh')
             class USB:
-                UPDATE = os.path.join(core, 'usb', 'update','apply.sh')
-                SLICER = os.path.join(core, 'usb', 'slicer','apply.sh')
-                LOGS = os.path.join(core, 'usb', 'logs','apply.sh')
+                UPDATE = os.path.join(core, 'usb', 'update.sh')
+                SLICER = os.path.join(core, 'usb', 'slicer','transfer.sh')
+                LOGS = os.path.join(core, 'usb', 'export_logs.sh')
             class MACHINE:
                 APPLY = os.path.join(core, 'machine', 'apply.sh')
                 SXUSB = os.path.join(core, 'machine', 'usbsxservice', 'apply.sh')

@@ -20,7 +20,7 @@ class Panel(ScreenPanel):
 
         macros = self._printer.get_gcode_macros()
 
-        self.current_extruder = self.get_variable('currentextruder')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         self.nozzle = self.get_variable('nozzle0')
 
         self.content.add(self._gtk.Label("\n\n"))
@@ -95,7 +95,7 @@ class Panel(ScreenPanel):
         if action != "notify_status_update":
             return
 
-        self.current_extruder = self.get_variable('currentextruder')
+        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for extruder in self._printer.get_tools():
             if '1' in extruder:

@@ -42,7 +42,8 @@ class KlipperScreenConfig:
         self.errors = []
         self.fix_option: str = "NONE"
         self.extruder_option: str = "NONE"
-        self.nozzle: str = self.variables_value_reveal('nozzle')
+        self.nozzle0: str = self.variables_value_reveal('nozzle0')
+        self.nozzle1: str = self.variables_value_reveal('nozzle1')
         self.default_config_path = os.path.join(klipperscreendir, "ks_includes", "defaults.conf")
         self.config = configparser.ConfigParser()
         self.config_path = self.get_config_file_location(configfile)
@@ -453,7 +454,7 @@ class KlipperScreenConfig:
         config = configparser.ConfigParser()
         pdc_path = os.path.join('/home', 'pi', 'printer_data', 'config')
         variables_path = os.path.join(pdc_path, 'variables.cfg')
-        variables_path = '/Users/rafael/variables.cfg'
+        # variables_path = '/Users/rafael/variables.cfg'
         try:
             with open(variables_path, 'r') as variab:
                 config.read_file(variab, source=variables_path)
@@ -471,17 +472,11 @@ class KlipperScreenConfig:
     def get_extruder_option (self) -> str:
         return self.extruder_option
 
-    def get_nozzle (self) -> str:
-        return self.nozzle
-
     def replace_fix_option (self, newvalue) -> str:
         self.fix_option = newvalue
 
     def replace_extruder_option (self, newvalue) -> str:
         self.extruder_option = newvalue
-
-    def replace_nozzle (self, newvalue) -> str:
-        self.nozzle = newvalue
 
     def get_config_file_location(self, file):
         # Passed config (-c) by default is ~/KlipperScreen.conf

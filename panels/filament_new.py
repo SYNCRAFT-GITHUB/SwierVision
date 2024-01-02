@@ -80,11 +80,22 @@ class Panel(ScreenPanel):
             grid.attach(self.labels[extruder], (i+(i/2)), 3, 2, 1)
             i += 1
 
-        self.labels['select_ext0'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
-        self.labels['select_ext1'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        self.buttons['select_ext0'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        self.buttons['select_ext1'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        
+        self.buttons['select_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
+        self.buttons['select_ext0'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Nozzle"),
+            "panel": "nozzle"
+        })
+        self.buttons['select_ext1'].connect("clicked", self.replace_extruder_option, 'extruder1')
+        self.buttons['select_ext1'].connect("clicked", self.menu_item_clicked, {
+            "name": _("Nozzle"),
+            "panel": "nozzle"
+        })
 
-        grid.attach(self.labels['select_ext0'], 1, 4, 2, 1)
-        grid.attach(self.labels['select_ext1'], 3, 4, 2, 1)
+        grid.attach(self.buttons['select_ext0'], 1, 4, 2, 1)
+        grid.attach(self.buttons['select_ext1'], 3, 4, 2, 1)
 
         self.proextruders = {
             'Standard 0.25mm': 'nozzle-ST025',
@@ -133,7 +144,7 @@ class Panel(ScreenPanel):
             return
 
         self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-        print(f'current: {self.current_extruder}')
+
         for extruder in self._printer.get_tools():
             if '1' in extruder:
                 material = self._config.variables_value_reveal('material_ext1')
@@ -151,13 +162,13 @@ class Panel(ScreenPanel):
             pass
         else:
             self.nozzle0 = self._config.variables_value_reveal('nozzle0')
-            self.labels['select_ext0'].set_label(f"{self.nozzle0}")
+            self.buttons['select_ext0'].set_label(f"{self.nozzle0}")
 
         if self._config.variables_value_reveal('nozzle1') not in self.proextruders:
             pass
         else:
             self.nozzle1 = self._config.variables_value_reveal('nozzle1')
-            self.labels['select_ext1'].set_label(f"{self.nozzle1}")
+            self.buttons['select_ext1'].set_label(f"{self.nozzle1}")
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):
             if x in data:
@@ -177,7 +188,3 @@ class Panel(ScreenPanel):
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")
         self._screen._ws.klippy.gcode_script(f"T{self._printer.get_tool_number(extruder)}")
-
-    def nozzlegcodescript(self, widget, nozzle: str):
-        self._config.replace_nozzle(newvalue=nozzle)
-        self._screen._ws.klippy.gcode_script(f"NOZZLE_SET NZ='{nozzle}'")

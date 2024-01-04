@@ -5,6 +5,7 @@ import os
 import socket
 import shutil
 import datetime
+import time
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
@@ -99,7 +100,9 @@ class Panel(ScreenPanel):
 
         if (fix_option == "REVERT_ALL"):
             core_script(SCRIPT.REVERT.APPLY)
+            a(5)
             core_script(SCRIPT.SXUSB)
+            time.sleep(3)
             os.system('sudo reboot')
 
         if (fix_option == "USB_SLICER"):

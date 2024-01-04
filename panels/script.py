@@ -1,8 +1,8 @@
 import logging
 import gi
 import subprocess
-import os
 import socket
+import os
 import shutil
 import datetime
 import time
@@ -92,27 +92,33 @@ class Panel(ScreenPanel):
         if (fix_option == "UPDATE_USB"):
             core_script(SCRIPT.USB.UPDATE)
             os.system('sudo reboot')
+            return None
         
         if (fix_option == "UPDATE_ALL"):
             core_script(SCRIPT.UPDATE.DOWNLOAD)
             core_script(SCRIPT.UPDATE.APPLY)
             os.system('sudo reboot')
+            return None
 
         if (fix_option == "REVERT_ALL"):
             core_script(SCRIPT.REVERT.APPLY)
-            a(5)
+            time.sleep(5)
             core_script(SCRIPT.SXUSB)
             time.sleep(3)
             os.system('sudo reboot')
+            return None
 
         if (fix_option == "USB_SLICER"):
             core_script(SCRIPT.USB.SLICER)
             self._screen.reload_panels()
+            return None
 
         if (fix_option == "USB_LOGS"):
             core_script(SCRIPT.USB.LOGS)
             self._screen.reload_panels()
+            return None
 
         if (fix_option == "CLEAR_GCODES"):
             core_script(SCRIPT.MACHINE.SXUSB)
             os.system('sudo reboot')
+            return None

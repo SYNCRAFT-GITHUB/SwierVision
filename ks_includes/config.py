@@ -1,6 +1,7 @@
 from ks_includes.host import Moonraker as M
 import configparser
 import gettext
+import socket
 import os
 import logging
 import json

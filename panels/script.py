@@ -47,15 +47,16 @@ class Panel(ScreenPanel):
         def core_script(core_script_dir: str, usb = False, web=False):
 
             usb_machine_path: str = os.path.join('/home', 'pi', 'printer_data', 'gcodes', 'USB')
-            if os.path.exists(usb_machine_path):
-                if len(os.listdir(usb_machine_path)) == 0:
-                    message: str = _("USB not inserted into Printer")
+            if usb:
+                if os.path.exists(usb_machine_path):
+                    if len(os.listdir(usb_machine_path)) == 0:
+                        message: str = _("USB not inserted into Printer")
+                        self._screen.show_popup_message(message, level=2)
+                        return None
+                else:
+                    message: str = _("An error has occurred")
                     self._screen.show_popup_message(message, level=2)
                     return None
-            else:
-                message: str = _("An error has occurred")
-                self._screen.show_popup_message(message, level=2)
-                return None
             if not self._config.internet_connection() and web:
                 message: str = _("This procedure requires internet connection")
                 self._screen.show_popup_message(message, level=2)

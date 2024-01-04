@@ -103,9 +103,6 @@ class Panel(ScreenPanel):
         if (fix_option == "REVERT_ALL"):
             core_script(SCRIPT.REVERT.APPLY)
             time.sleep(5)
-            core_script(SCRIPT.SXUSB)
-            time.sleep(3)
-            os.system('sudo reboot')
             return None
 
         if (fix_option == "USB_SLICER"):

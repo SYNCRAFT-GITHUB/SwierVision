@@ -12,9 +12,11 @@ from ks_includes.KlippyGcodes import KlippyGcodes as Gcode
 from ks_includes.screen_panel import ScreenPanel
 
 class PrinterMaterial:
-    def __init__ (self, name: str, code: str, compatible: [str] = [], experimental: [str] = [], temp: int=0):
+    def __init__ (self, name: str, code: str, brand: str, color: str, compatible: [str] = [], experimental: [str] = [], temp: int=0):
         self.name = name
         self.code = code
+        self.brand = brand
+        self.color = color
         self.compatible = compatible
         self.experimental = experimental
         self.temp = temp
@@ -45,6 +47,8 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
+                        brand=item['brand'],
+                        color=item['color'],
                         compatible=item['compatible'],
                         experimental=item['experimental'],
                         temp=item['temp'],

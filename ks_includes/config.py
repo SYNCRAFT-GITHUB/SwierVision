@@ -384,10 +384,16 @@ class KlipperScreenConfig:
 
     def materials_path(self, custom: bool) -> str:
         core_path = os.path.join('/home', 'pi', 'SyncraftCore')
-        if custom:
-            return os.path.join(os.getcwd(), "ks_includes", "custom.json")
+        if not os.path.exists(core_path):
+            if custom:
+                return os.path.join(os.getcwd(), "ks_includes", "custom.json")
+            else:
+                return os.path.join(os.getcwd(), "ks_includes", "materials.json")
         else:
-            return os.path.join(os.getcwd(), "ks_includes", "materials.json")
+            if custom:
+                return os.path.join(core_path, "materials", "stock.json")
+            else:
+                return os.path.join(core_path, "materials", "custom.json")
 
     def internet_connection(self) -> bool:
         try:

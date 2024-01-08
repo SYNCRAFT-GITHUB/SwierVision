@@ -92,8 +92,8 @@ class Panel(ScreenPanel):
             grid.attach(self.labels[extruder], (i+(i/2)), 3, 2, 1)
             i += 1
 
-        self.buttons['select_ext0'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
-        self.buttons['select_ext1'] = self._gtk.Button(None, "NOZZLE_NAME", "color2")
+        self.buttons['select_ext0'] = self._gtk.Button(None, _("Extruder"), "color2")
+        self.buttons['select_ext1'] = self._gtk.Button(None, _("Extruder"), "color2")
         
         self.buttons['select_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
         self.buttons['select_ext0'].connect("clicked", self.menu_item_clicked, {

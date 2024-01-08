@@ -11,12 +11,12 @@ class KnownError(Gtk.Window):
 
 known_errors = [
     KnownError(
-        error= '!PROEXTRUDER_DOESNT_MATCH_GCODE',
+        error= 'The inserted Extruder is incompatible with this File',
         message= 'The inserted Extruder is incompatible with this File',
         code=None
         ),
     KnownError(
-        error= '!MATERIAL_DOESNT_MATCH_GCODE',
+        error= 'The material you\'re using is not compatible with this file',
         message= 'The material you\'re using is not compatible with this file',
         code=None
         ),
@@ -26,12 +26,12 @@ known_errors = [
         code=None
         ),
     KnownError(
-        error= '!PRINTER_MODEL_MISMATCH',
+        error= 'The file you are trying to print is for a different printer model',
         message= 'The file you are trying to print is for a different printer model',
         code=None
         ),
     KnownError(
-        error= '!BOTH_CANNOT_BE_EMPTY',
+        error= 'Both feeders must have materials inserted',
         message= 'Both feeders must have materials inserted',
         code=None
         ),

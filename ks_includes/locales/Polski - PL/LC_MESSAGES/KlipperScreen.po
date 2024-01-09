@@ -1488,6 +1488,33 @@ msgstr "Automatyczne otwieranie ekstruzji w czasie pauzy"
 msgid "Show Scrollbars Buttons"
 msgstr "Pokaż przyciski pasków przewijania"
 
+msgid "Mechanical Calibration"
+msgstr "Kalibracja Mechaniczna"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "Dostosuj śruby drugiego ekstrudera po prawej stronie."
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "Po zakończeniu procedury kliknij aby zakończyć."
+
+msgid "Help"
+msgstr "Pomoc"
+
+msgid "Assistive Images"
+msgstr "Obrazki Pomocnicze"
+
+msgid "Quick help"
+msgstr "Szybka pomoc"
+
+msgid "Cutting the Filament Correctly"
+msgstr "Prawidłowe Przycinanie Filamentu"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "Instalacja Pakietów Cura na MacOS"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "Instalacja Pakietów Cura na Windows"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

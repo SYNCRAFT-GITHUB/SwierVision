@@ -1,4 +1,6 @@
 from ks_includes.host import Moonraker as M
+from ks_includes.questions import Question
+from ks_includes.questions import questions
 import configparser
 import gettext
 import socket
@@ -43,6 +45,7 @@ class KlipperScreenConfig:
         self.errors = []
         self.fix_option: str = "NONE"
         self.extruder_option: str = "NONE"
+        self.selected_question: Question = None
         self.nozzle0: str = self.variables_value_reveal('nozzle0')
         self.nozzle1: str = self.variables_value_reveal('nozzle1')
         self.default_config_path = os.path.join(klipperscreendir, "ks_includes", "defaults.conf")
@@ -492,11 +495,17 @@ class KlipperScreenConfig:
     def get_extruder_option (self) -> str:
         return self.extruder_option
 
-    def replace_fix_option (self, newvalue) -> str:
+    def get_question (self) -> Question:
+        return self.selected_question
+
+    def replace_fix_option (self, newvalue):
         self.fix_option = newvalue
 
-    def replace_extruder_option (self, newvalue) -> str:
+    def replace_extruder_option (self, newvalue):
         self.extruder_option = newvalue
+
+    def replace_question (self, question: Question):
+        self.selected_question = question
 
     def get_config_file_location(self, file):
         # Passed config (-c) by default is ~/KlipperScreen.conf

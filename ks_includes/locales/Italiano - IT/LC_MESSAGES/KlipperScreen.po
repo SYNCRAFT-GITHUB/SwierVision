@@ -1496,6 +1496,33 @@ msgstr "Apri automaticamente l'estrusione in pausa"
 msgid "Show Scrollbars Buttons"
 msgstr "Mostra pulsanti barre di scorrimento"
 
+msgid "Mechanical Calibration"
+msgstr "Calibrazione Meccanica"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "Regolare le viti dell'estrusore posizionate a destra."
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "Una volta completata la procedura, fare clic su Fine."
+
+msgid "Help"
+msgstr "Aiuto"
+
+msgid "Assistive Images"
+msgstr "Immagini di Assistenza"
+
+msgid "Quick help"
+msgstr "Aiuto Rapido"
+
+msgid "Cutting the Filament Correctly"
+msgstr "Taglio del Filamento Correttamente"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "Installazione dei Pacchetti Cura su MacOS"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "Installazione dei Pacchetti Cura su Windows"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

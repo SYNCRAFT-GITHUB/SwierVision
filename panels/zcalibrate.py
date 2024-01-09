@@ -180,7 +180,7 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f'G0 X{x_position} Y{y_position} F3000')
         elif "delta" in self._printer.get_config_section("printer")['kinematics']:
             logging.info("Detected delta kinematics calibrating at 0,0")
-            self._screen._ws.klippy.gcode_script('G0 X0 Y0 F3000')
+            self._screen._ws.klippy.gcode_script('G0 X0 Y0 F2800')
         else:
             self._calculate_position()
 

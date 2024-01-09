@@ -1552,6 +1552,33 @@ msgstr "Ouverture automatique de l'extrusion en pause"
 msgid "Show Scrollbars Buttons"
 msgstr "Afficher les boutons de barre de défilement"
 
+msgid "Mechanical Calibration"
+msgstr "Calibration Mécanique"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "Ajustez les vis du deuxième extrudeur, du côté droit."
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "Après avoir terminé la procédure, appuyez sur le bouton pour finir."
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Assistive Images"
+msgstr "Images d'Assistance"
+
+msgid "Quick help"
+msgstr "Aide Rapide"
+
+msgid "Cutting the Filament Correctly"
+msgstr "Couper le Filament Correctement"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "Installation des Paquets Cura sur MacOS"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "Installation des Paquets Cura sur Windows"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

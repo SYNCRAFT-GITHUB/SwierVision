@@ -5,12 +5,11 @@ from gi.repository import Gtk
 
 
 class Keypad(Gtk.Box):
-    def __init__(self, screen, change_temp, pid_calibrate, close_function):
+    def __init__(self, screen, change_temp, close_function):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
 
         self.labels = {}
         self.change_temp = change_temp
-        self.pid_calibrate = pid_calibrate
         self.screen = screen
         self._gtk = screen.gtk
 
@@ -50,24 +49,16 @@ class Keypad(Gtk.Box):
         self.labels['entry'].props.xalign = 0.5
         self.labels['entry'].connect("activate", self.update_entry, "E")
 
-        self.pid = self._gtk.Button('heat-up', _('Calibrate') + ' PID', None, .66, Gtk.PositionType.LEFT, 1)
-        self.pid.connect("clicked", self.update_entry, "PID")
-        self.pid.set_sensitive(False)
-        self.pid.set_no_show_all(True)
         b = self._gtk.Button('cancel', _('Close'), None, .66, Gtk.PositionType.LEFT, 1)
         b.connect("clicked", close_function)
 
         self.add(self.labels['entry'])
         self.add(numpad)
         self.bottom = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.bottom.add(self.pid)
         self.bottom.add(b)
         self.add(self.bottom)
 
         self.labels["keypad"] = numpad
-
-    def show_pid(self, can_pid):
-        self.pid.set_visible(can_pid)
 
     def clear(self):
         self.labels['entry'].set_text("")
@@ -82,14 +73,10 @@ class Keypad(Gtk.Box):
         elif digit == 'E':
             self.change_temp(temp)
             self.labels['entry'].set_text("")
-        elif digit == 'PID':
-            self.pid_calibrate(temp)
-            self.labels['entry'].set_text("")
         elif len(text + digit) > 3:
             return
         else:
             self.labels['entry'].set_text(text + digit)
-        self.pid.set_sensitive(self.validate_temp(self.labels['entry'].get_text()) > 9)
 
     @staticmethod
     def validate_temp(temp):

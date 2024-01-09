@@ -1432,6 +1432,33 @@ msgstr "일시 중지 시 자동으로 추출 열기"
 msgid "Show Scrollbars Buttons"
 msgstr "스크롤바 버튼 표시"
 
+msgid "Mechanical Calibration"
+msgstr "기계 보정"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "우측에서 이차 추출기의 나사를 조절하십시오."
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "절차를 완료한 후 버튼을 눌러 완료하십시오."
+
+msgid "Help"
+msgstr "도움말"
+
+msgid "Assistive Images"
+msgstr "보조 이미지"
+
+msgid "Quick help"
+msgstr "빠른 도움말"
+
+msgid "Cutting the Filament Correctly"
+msgstr "필라멘트 올바르게 자르기"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "MacOS에 Cura 패키지 설치"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "Windows에 Cura 패키지 설치"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

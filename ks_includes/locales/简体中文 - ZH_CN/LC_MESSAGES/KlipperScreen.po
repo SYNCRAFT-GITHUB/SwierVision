@@ -1505,6 +1505,33 @@ msgstr "暂停时自动打开挤出"
 msgid "Show Scrollbars Buttons"
 msgstr "显示滚动条按钮"
 
+msgid "Mechanical Calibration"
+msgstr "机械校准"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "调整右侧的二次挤出机螺丝。"
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "完成过程后，按下按钮以完成。"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Assistive Images"
+msgstr "辅助图片"
+
+msgid "Quick help"
+msgstr "快速帮助"
+
+msgid "Cutting the Filament Correctly"
+msgstr "正确切割丝料"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "在MacOS上安装Cura软件包"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "在Windows上安装Cura软件包"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

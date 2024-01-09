@@ -1365,6 +1365,33 @@ msgstr "一時停止時の自動エクストルード開き"
 msgid "Show Scrollbars Buttons"
 msgstr "スクロールバーのボタンを表示"
 
+msgid "Mechanical Calibration"
+msgstr "機械キャリブレーション"
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr "右側のセカンダリエクストルーダーのネジを調整してください。"
+
+msgid "After completing the procedure, press the button to finish."
+msgstr "手順を完了したら、ボタンを押して終了してください。"
+
+msgid "Help"
+msgstr "ヘルプ"
+
+msgid "Assistive Images"
+msgstr "支援画像"
+
+msgid "Quick help"
+msgstr "クイックヘルプ"
+
+msgid "Cutting the Filament Correctly"
+msgstr "フィラメントの正しいカット"
+
+msgid "Installing Cura Packages on MacOS"
+msgstr "MacOSへのCuraパッケージのインストール"
+
+msgid "Installing Cura Packages on Windows"
+msgstr "WindowsへのCuraパッケージのインストール"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

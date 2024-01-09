@@ -1358,6 +1358,36 @@ msgstr ""
 msgid "Show Scrollbars Buttons"
 msgstr ""
 
+msgid "Mechanical Calibration"
+msgstr ""
+
+msgid "Adjust the screws of the secondary extruder, on the right side."
+msgstr ""
+
+msgid "After completing the procedure, press the button to finish."
+msgstr ""
+
+msgid "After completing the procedure, press the button to finish."
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Assistive Images"
+msgstr ""
+
+msgid "Quick help"
+msgstr ""
+
+msgid "Cutting the Filament Correctly"
+msgstr ""
+
+msgid "Installing Cura Packages on MacOS"
+msgstr ""
+
+msgid "Installing Cura Packages on Windows"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

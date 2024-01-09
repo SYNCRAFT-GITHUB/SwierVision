@@ -133,7 +133,6 @@ class KlippyGtk:
         try:
             return GdkPixbuf.Pixbuf.new_from_file_at_size(filename, int(width), int(height))
         except Exception as e:
-            logging.exception(e)
             logging.error(f"Unable to find image {filename}")
             return None
 

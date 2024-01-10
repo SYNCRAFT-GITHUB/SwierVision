@@ -1572,6 +1572,9 @@ msgstr "Установка пакетов Cura на MacOS"
 msgid "Installing Cura Packages on Windows"
 msgstr "Установка пакетов Cura на Windows"
 
+msgid "Click to navigate between Images"
+msgstr "Нажмите на экран, чтобы увидеть следующие изображения."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

@@ -68,7 +68,4 @@ class Panel(ScreenPanel):
         self._config.replace_question(question)
 
     def reset_steps_panel(self, button):
-        try:
-            del self._screen.panels['steps']
-        except:
-            pass
+        self._screen.delete_temporary_panels()

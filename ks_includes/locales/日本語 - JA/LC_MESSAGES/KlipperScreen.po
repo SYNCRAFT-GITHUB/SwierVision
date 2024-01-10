@@ -1392,6 +1392,9 @@ msgstr "MacOSへのCuraパッケージのインストール"
 msgid "Installing Cura Packages on Windows"
 msgstr "WindowsへのCuraパッケージのインストール"
 
+msgid "Click to navigate between Images"
+msgstr "사용 가능한 모든 이미지를 보려면 화면을 클릭하세요."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

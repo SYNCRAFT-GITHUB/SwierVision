@@ -100,7 +100,7 @@ class KlipperScreen(Gtk.Window):
 
     def __init__(self, args):
         try:
-            super().__init__(title="KlipperScreen")
+            super().__init__(title="Syncraft")
         except Exception as e:
             logging.exception(f"{e}\n\n{traceback.format_exc()}")
             raise RuntimeError from e
@@ -398,6 +398,14 @@ class KlipperScreen(Gtk.Window):
             GLib.timeout_add_seconds(popup_screentime, self.close_popup_message)
 
         return False
+
+    def delete_temporary_panels(self):
+        temp = ["material_load", "material_set", "steps"]
+        for panel in temp:
+            try:
+                del self.panels[panel]
+            except:
+                pass
 
     def close_popup_message(self, widget=None, *args):
         if self.popup_message is None:

@@ -1555,6 +1555,9 @@ msgstr "Instalando Paquetes de Cura en MacOS"
 msgid "Installing Cura Packages on Windows"
 msgstr "Instalando Paquetes de Cura en Windows"
 
+msgid "Click to navigate between Images"
+msgstr "Haz clic para navegar entre las imágenes"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

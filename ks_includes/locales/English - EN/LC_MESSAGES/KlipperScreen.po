@@ -1388,6 +1388,9 @@ msgstr ""
 msgid "Installing Cura Packages on Windows"
 msgstr ""
 
+msgid "Click to navigate between Images"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

@@ -1523,6 +1523,9 @@ msgstr "Installazione dei Pacchetti Cura su MacOS"
 msgid "Installing Cura Packages on Windows"
 msgstr "Installazione dei Pacchetti Cura su Windows"
 
+msgid "Click to navigate between Images"
+msgstr "Fai clic per navigare tra le immagini"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

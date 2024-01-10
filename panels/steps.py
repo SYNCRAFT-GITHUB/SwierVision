@@ -20,7 +20,7 @@ class Panel(ScreenPanel):
 
         grid = self._gtk.HomogeneousGrid()
 
-        self.labels['text'] = Gtk.Label(f"\n")
+        self.labels['text'] = Gtk.Label(f"\n{_('Click to navigate between Images')}\n")
         self.content.add(self.labels['text'])
         
         self.above = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3)

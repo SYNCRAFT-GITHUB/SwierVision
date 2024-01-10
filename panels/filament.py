@@ -120,14 +120,7 @@ class Panel(ScreenPanel):
         self.content.add(grid)
 
     def reset_material_panel(self, button):
-        try:
-            del self._screen.panels['material_load']
-        except:
-            pass
-        try:
-            del self._screen.panels['material_set']
-        except:
-            pass
+        self._screen.delete_temporary_panels()
 
     def replace_extruder_option(self, button, newvalue):
         self._config.replace_extruder_option(newvalue=newvalue)

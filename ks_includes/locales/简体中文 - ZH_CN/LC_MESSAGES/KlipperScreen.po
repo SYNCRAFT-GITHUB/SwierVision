@@ -1532,6 +1532,9 @@ msgstr "在MacOS上安装Cura软件包"
 msgid "Installing Cura Packages on Windows"
 msgstr "在Windows上安装Cura软件包"
 
+msgid "Click to navigate between Images"
+msgstr "单击屏幕可查看所有可用图像"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

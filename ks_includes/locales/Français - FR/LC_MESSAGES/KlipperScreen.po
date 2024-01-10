@@ -1579,6 +1579,9 @@ msgstr "Installation des Paquets Cura sur MacOS"
 msgid "Installing Cura Packages on Windows"
 msgstr "Installation des Paquets Cura sur Windows"
 
+msgid "Click to navigate between Images"
+msgstr "Cliquez pour naviguer entre les images"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

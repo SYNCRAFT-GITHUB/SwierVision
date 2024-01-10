@@ -376,6 +376,7 @@ class Panel(ScreenPanel):
             'save_offset_probe': self._gtk.Button("letter-z", _("Save") + " Probe", None),
             'save_offset_endstop': self._gtk.Button("letter-z", _("Save") + " Endstop", None),
             'gcode_offset': self._gtk.Button("calibrate", _("Calibrate"), "color2"),
+            'idex_offset': self._gtk.Button("idex", _("Calibrate"), None),
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
         self.buttons['control'].connect("clicked", self._screen._go_to_submenu, "")
@@ -389,6 +390,8 @@ class Panel(ScreenPanel):
         self.buttons['save_offset_endstop'].connect("clicked", self.save_offset, "endstop")
         self.buttons['gcode_offset'].connect("clicked", self.menu_item_clicked, {
             "panel": "gcode_offset", "name": "gcode_offset"})
+        self.buttons['idex_offset'].connect("clicked", self.menu_item_clicked, {
+            "panel": "idex_offset", "name": "idex_offset"})
 
     def save_offset(self, widget, device):
         sign = "+" if self.zoffset > 0 else "-"
@@ -768,7 +771,7 @@ class Panel(ScreenPanel):
                 self.buttons['button_grid'].attach(Gtk.Label(""), 1, 0, 1, 1)
 
             if self.state != "cancelling":
-                self.buttons['button_grid'].attach(self.buttons["save_offset_endstop"], 0, 0, 1, 1)
+                self.buttons['button_grid'].attach(self.buttons["idex_offset"], 0, 0, 1, 1)
                 self.buttons['button_grid'].attach(self.buttons["save_offset_probe"], 1, 0, 1, 1)
                 self.buttons['button_grid'].attach(self.buttons['restart'], 2, 0, 1, 1)
                 self.buttons['button_grid'].attach(self.buttons['menu'], 3, 0, 1, 1)

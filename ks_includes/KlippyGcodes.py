@@ -22,6 +22,10 @@ class KlippyGcodes:
         return f"SET_GCODE_OFFSET X={x} Y={y} Z={z}"
 
     @staticmethod
+    def idex_offset(x, y):
+        return f"IDEX_OFFSET X={x} Y={y}"
+
+    @staticmethod
     def set_ext_temp(temp, tool=0):
         return f"M104 T{tool} S{temp}"
 

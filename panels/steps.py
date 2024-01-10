@@ -23,7 +23,7 @@ class Panel(ScreenPanel):
         self.labels['text'] = Gtk.Label(f"\n{_('Click to navigate between Images')}\n")
         self.content.add(self.labels['text'])
         
-        self.above = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3)
+        self.container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3)
 
         self.spacer = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.spacer.set_vexpand(True)
@@ -32,11 +32,11 @@ class Panel(ScreenPanel):
 
         self.place_image()
 
-        self.content.add(self.above)
+        self.content.add(self.container)
         
-    def create_image_button(self, image_path, box, universal=True):
+    def create_image_button(self, image_path, box, univ=True):
         self.event_box = Gtk.EventBox()
-        image = self._gtk.Image(image_path, self._gtk.content_width * 7, self._gtk.content_height * .7, universal=universal)
+        image = self._gtk.Image(image_path, self._gtk.content_width * 7, self._gtk.content_height * .7, universal=univ)
         self.event_box.add(image)
         self.event_box.connect("button-press-event", self.on_image_clicked)
         box.pack_start(self.event_box, True, True, 8)
@@ -46,22 +46,22 @@ class Panel(ScreenPanel):
         images_amount: int = len(self._config.get_question().images)
 
         try:
-            self.content.remove(self.above)
-            self.above.remove(self.event_box)
+            self.content.remove(self.container)
+            self.container.remove(self.event_box)
         except:
             pass
 
         if self.page <= 0:
-            self.create_image_button(self.image_name(), self.above)
+            self.create_image_button(self.image_name(), self.container)
             self.page += 1
         elif self.page in range(1, images_amount):
-            self.create_image_button(self.image_name(), self.above)
+            self.create_image_button(self.image_name(), self.container)
             self.page += 1
         else:
             self.page = 0
-            self.create_image_button("complete", self.above, universal=False)
+            self.create_image_button("complete", self.container, univ=False)
 
-        self.content.add(self.above)
+        self.content.add(self.container)
         self.content.show_all()
 
 

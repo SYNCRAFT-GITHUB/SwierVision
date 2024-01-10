@@ -18,6 +18,10 @@ class KlippyGcodes:
         return f"M140 S{temp}"
 
     @staticmethod
+    def gcode_offset(x, y, z):
+        return f"SET_GCODE_OFFSET X={x} Y={y} Z={z}"
+
+    @staticmethod
     def set_ext_temp(temp, tool=0):
         return f"M104 T{tool} S{temp}"
 

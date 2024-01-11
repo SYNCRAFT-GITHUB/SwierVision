@@ -1,5 +1,5 @@
-from ks_includes.questions import Question
-from ks_includes.questions import questions
+from ks_includes.topic import Topic
+from ks_includes.topic import topics
 import logging
 import random
 import os
@@ -20,16 +20,16 @@ class Panel(ScreenPanel):
         self.menu = ['help_panel']
 
         class ConfigurationButton:
-            def __init__(self, reference: str, title: str, question: Question):
+            def __init__(self, reference: str, title: str, topic: Topic):
                 self.reference = reference
                 self.title = title
-                self.question = question
+                self.topic = topic
 
         self.config_buttons = []
 
-        for q in questions:
+        for t in topics:
             self.config_buttons.append(
-                ConfigurationButton(reference=q.reference, title=_(q.title), question=q)
+                ConfigurationButton(reference=t.reference, title=_(t.title), topic=t)
             )
 
         grid = self._gtk.HomogeneousGrid()
@@ -45,7 +45,7 @@ class Panel(ScreenPanel):
             self.button = self._gtk.Button("help", btn.title, f"color{random.randint(1, 4)}", self.bts, Gtk.PositionType.RIGHT, 1)
 
             self.button.connect("clicked", self.reset_steps_panel)
-            self.button.connect("clicked", self.replace_question, btn.question)
+            self.button.connect("clicked", self.replace_topic, btn.topic)
             self.button.connect("clicked", self.menu_item_clicked, {
                 "name": _(btn.title),
                 "panel": "steps"
@@ -64,8 +64,8 @@ class Panel(ScreenPanel):
 
         self.content.add(self.labels['help_panel'])
 
-    def replace_question(self, button, question):
-        self._config.replace_question(question)
+    def replace_topic(self, button, topic):
+        self._config.replace_topic(topic)
 
     def reset_steps_panel(self, button):
         self._screen.delete_temporary_panels()

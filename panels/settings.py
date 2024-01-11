@@ -20,7 +20,7 @@ class Panel(ScreenPanel):
             "name": _("Change Timezone"),
             "type": "panel",
             "panel": "timezone",
-            "icon": "world-web"
+            "icon": "timezone"
         }})
         options.append({"system_info": {
             "name": _("System Information"),
@@ -124,6 +124,16 @@ class Panel(ScreenPanel):
         dev.set_hexpand(True)
         dev.set_vexpand(False)
         dev.set_valign(Gtk.Align.CENTER)
+
+        if self._config.get_hidden_config().getboolean('welcome', True):
+            allowed_options = [
+                _("Change Screen Brightness"),
+                _("Language"),
+                _("Icon Theme"),
+                _("Font Size"),
+            ]
+            if not option['name'] in allowed_options:
+                return None
 
         dev.add(labels)
         if option['type'] == "binary":

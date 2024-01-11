@@ -3,14 +3,14 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-class Question(Gtk.Window):
+class Topic(Gtk.Window):
     def __init__(self, title, reference, images):
         self.title = title
         self.reference = reference
         self.images = images
 
-questions = [
-    Question(
+topics = [
+    Topic(
         title="Cutting the Filament Correctly",
         reference="cut-filament",
         images=[
@@ -20,7 +20,7 @@ questions = [
             "cut-filament-4"
             ]
     ),
-    Question(
+    Topic(
         title="Installing Cura Packages on MacOS",
         reference="cura-mac",
         images=[
@@ -31,7 +31,7 @@ questions = [
             "cura-mac-5"
             ]
     ),
-    Question(
+    Topic(
         title="Installing Cura Packages on Windows",
         reference="cura-win",
         images=[

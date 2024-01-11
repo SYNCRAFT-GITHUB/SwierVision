@@ -1,5 +1,5 @@
-from ks_includes.questions import Question
-from ks_includes.questions import questions
+from ks_includes.topic import Topic
+from ks_includes.topic import topics
 import logging
 
 import gi
@@ -43,7 +43,7 @@ class Panel(ScreenPanel):
 
     def place_image(self):
 
-        images_amount: int = len(self._config.get_question().images)
+        images_amount: int = len(self._config.get_topic().images)
 
         try:
             self.content.remove(self.container)
@@ -69,5 +69,5 @@ class Panel(ScreenPanel):
         self.place_image()
 
     def image_name(self) -> str:
-        return f"help-{(self._config.get_question()).images[self.page]}"
+        return f"help-{(self._config.get_topic()).images[self.page]}"
     

@@ -18,8 +18,7 @@ class Panel(ScreenPanel):
         self.menu = ['syncraft_panel']
 
         class SyncraftPanelButton:
-            def __init__(self, button: str, title: str, icon: str, panel='', show: bool = True):
-                self.button = button
+            def __init__(self, title: str, icon: str, panel='', show: bool = True):
                 self.icon = icon
                 self.title = title
                 self.show = show
@@ -27,8 +26,8 @@ class Panel(ScreenPanel):
 
         
         self.config_buttons = [
-            SyncraftPanelButton(button='UPDATE', panel='update', title=_("Update via Internet"), icon='update'),
-            SyncraftPanelButton(button='USB_ACTIONS', panel='usb_actions', title=_("USB Device"), icon='usb'),
+            SyncraftPanelButton(panel='update', title=_("Update via Internet"), icon='update'),
+            SyncraftPanelButton(panel='usb_actions', title=_("USB Device"), icon='usb'),
         ]
 
         grid = self._gtk.HomogeneousGrid()

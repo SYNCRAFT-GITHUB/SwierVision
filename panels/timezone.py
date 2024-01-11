@@ -10,8 +10,6 @@ class Panel(ScreenPanel):
     def __init__(self, screen, title):
         super().__init__(screen, title)
 
-        self.show_custom: bool = False
-
         class Timezone:
             def __init__ (self, region: str, location: str):
                 self.region = region
@@ -20,7 +18,7 @@ class Panel(ScreenPanel):
                 index: str = f"{self.region}/{self.location}"
                 return index
             def name (self):
-                index: str = f"{self.region[:3].upper()}. {self.location}"
+                index: str = f"{self.region[:2].upper()} {self.location}"
                 return (index.replace("_", " ")).replace("/", " ")
 
         self.timezones = [
@@ -88,7 +86,8 @@ class Panel(ScreenPanel):
 
         for i, timezone in enumerate(self.timezones):
             name: str = timezone.name()
-            self.labels[name] = self._gtk.Button("world-web", f"{name}", f"color{1 + i % 4}")
+            name = f"{name[:13]}." if len(name) > 13 else name
+            self.labels[name] = self._gtk.Button("timezone", f"{name}", f"color{1 + i % 4}")
             self.labels[name].connect("clicked", self.apply_timezone, timezone.code())
             if self._screen.vertical_mode:
                 row = i % columns
@@ -139,7 +138,6 @@ class Panel(ScreenPanel):
 
         self.content.add(self.labels['insert_timezone'])
         self.labels['timezone_name'].grab_focus_without_selecting()
-        self.show_custom = True
 
     def apply_timezone(self, widget, code):
         command = f"sudo timedatectl set-timezone {code}"
@@ -150,7 +148,7 @@ class Panel(ScreenPanel):
 
         code = self.labels['timezone_name'].get_text()
 
-        magic_words = ['welcome', 'help']
+        magic_words = ['welcome', 'help', 'kill']
         if code in magic_words:
             self.magic(code=code)
             return
@@ -172,3 +170,7 @@ class Panel(ScreenPanel):
             message: str = _("Let me guess... Someone stole your Sweetroll")
             self._screen.show_popup_message(message, level=1)
             self._screen.remove_keyboard()
+
+        if code == 'kill':
+            kill_command = "sudo service KlipperScreen stop"
+            subprocess.call(kill_command, shell=True)

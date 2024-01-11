@@ -18,10 +18,16 @@ class Panel(ScreenPanel):
         self.menu = ['calibrate_panel']
 
         self.buttons = {
+            'CALIB_MEC': self._gtk.Button("screw-adjust", _("Mechanical Calibration"), "color3"),
             'CALIB_IDEX': self._gtk.Button("idex", _("Calibrate IDEX"), "color4"),
             'CALIB_Z': self._gtk.Button ("bed-level", _("Z Calibrate"), "color2"),
         }
         self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
+
+        self.buttons['CALIB_MEC'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Mechanical Calibration"),
+            "panel": "mcalibrate"
+        })
 
         self.buttons['CALIB_Z'].connect("clicked", self.menu_item_clicked, {
             "name":_("Z Calibrate"),
@@ -30,8 +36,9 @@ class Panel(ScreenPanel):
 
         grid = self._gtk.HomogeneousGrid()
 
-        grid.attach(self.buttons['CALIB_IDEX'], 0, 0, 1, 1)
-        grid.attach(self.buttons['CALIB_Z'], 1, 0, 1, 1)
+        grid.attach(self.buttons['CALIB_MEC'], 0, 0, 1, 1)
+        grid.attach(self.buttons['CALIB_IDEX'], 1, 0, 1, 1)
+        grid.attach(self.buttons['CALIB_Z'], 2, 0, 1, 1)
 
         self.labels['calibrate_panel'] = self._gtk.HomogeneousGrid()
         self.labels['calibrate_panel'].attach(grid, 0, 0, 1, 2)

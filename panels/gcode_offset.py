@@ -19,43 +19,48 @@ class Panel(ScreenPanel):
         self.distances = ['.01', '.02', '.05', '0.1', '0.2', '0.5']
         self.distance = self.distances[-2]
 
-        self.x: double = 0.0
-        self.y: double = 0.0
-        self.z: double = 0.0
+        self.x = self.y = self.z = 0.0
 
         grid = self._gtk.HomogeneousGrid()
-        self.labels['gcode_offset_panel'] = self._gtk.HomogeneousGrid()
-        
-        self.labels['y+'] = self._gtk.Button(None, "Y+", "color1")
-        self.labels['x+'] = self._gtk.Button(None, "X+", "color1")
-        self.labels['y-'] = self._gtk.Button(None, "Y-", "color2")
-        self.labels['x-'] = self._gtk.Button(None, "X-", "color2")
-        self.labels['z+'] = self._gtk.Button(None, "Z+", "color3")
-        self.labels['z-'] = self._gtk.Button(None, "Z-", "color3")
-        self.labels['ok'] = self._gtk.Button("complete", None, "color3")
-        self.labels['reset'] = self._gtk.Button("refresh", None, None)
-        self.labels['reset'].set_property("opacity", 0.3)
 
-        self.labels['y+'].connect("clicked", self.increment, False, True, False)
-        self.labels['x+'].connect("clicked", self.increment, True, False, False)
-        self.labels['y-'].connect("clicked", self.decrease, False, True, False)
-        self.labels['x-'].connect("clicked", self.decrease, True, False, False)
-        self.labels['z+'].connect("clicked", self.increment, False, False, True)
-        self.labels['z-'].connect("clicked", self.decrease, False, False, True)
-        self.labels['ok'].connect("clicked", self.apply)
+        self.labels['gcode_offset_panel'] = self._gtk.HomogeneousGrid()
+
+        self.labels['xyz'] = Gtk.Label(self.label_format())
+
+        self.labels['reset'] = self._gtk.Button("refresh", None, None)
+        self.labels['reset'].set_property("opacity", 0.5)
         self.labels['reset'].connect("clicked", self.reset_values)
 
-        grid.attach(self.labels['y+'], 1, 0, 1, 1)
-        grid.attach(self.labels['z+'], 0, 0, 1, 1)
-        grid.attach(self.labels['x-'], 0, 1, 1, 1)
-        grid.attach(self.labels['z-'], 0, 2, 1, 1)
-        grid.attach(self.labels['ok'], 1, 1, 1, 1)
-        grid.attach(self.labels['x+'], 2, 1, 1, 1)
-        grid.attach(self.labels['y-'], 1, 2, 1, 1)
-        grid.attach(self.labels['reset'], 2, 2, 1, 1)
+        self.labels['ok'] = self._gtk.Button("complete", None, "color4")
+        self.labels['ok'].connect("clicked", self.apply)
 
-        self.labels['xyz'] = Gtk.Label(f"X: {self.x}\nY: {self.y}\nZ: {self.z}")
-        grid.attach(self.labels['xyz'], 2, 0, 1, 1)
+        self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")
+        self.labels['x-'] = self._gtk.Button("x-decrease", None, "color2")
+        self.labels['x+'].connect("clicked", self.increment, True, False, False)
+        self.labels['x-'].connect("clicked", self.decrease, True, False, False)
+
+        self.labels['y+'] = self._gtk.Button("y-increase", None, "color1")
+        self.labels['y-'] = self._gtk.Button("y-decrease", None, "color2")
+        self.labels['y+'].connect("clicked", self.increment, False, True, False)
+        self.labels['y-'].connect("clicked", self.decrease, False, True, False)
+
+        self.labels['z+'] = self._gtk.Button("z-increase", None, "color3")
+        self.labels['z-'] = self._gtk.Button("z-decrease", None, "color3")
+        self.labels['z+'].connect("clicked", self.increment, False, False, True)
+        self.labels['z-'].connect("clicked", self.decrease, False, False, True)
+
+        grid.attach(self.labels['reset'], 0, 0, 1, 1)
+        grid.attach(self.labels['xyz'], 1, 0, 1, 1)
+        grid.attach(self.labels['ok'], 2, 0, 1, 1)
+
+        grid.attach(self.labels['x+'], 0, 1, 1, 1)
+        grid.attach(self.labels['x-'], 0, 2, 1, 1)
+
+        grid.attach(self.labels['y+'], 1, 1, 1, 1)
+        grid.attach(self.labels['y-'], 1, 2, 1, 1)
+
+        grid.attach(self.labels['z+'], 2, 1, 1, 1)
+        grid.attach(self.labels['z-'], 2, 2, 1, 1)
 
         distgrid = Gtk.Grid()
         for j, i in enumerate(self.distances):
@@ -84,11 +89,12 @@ class Panel(ScreenPanel):
         self.labels[f"{distance}"].get_style_context().add_class("distbutton_active")
         self.distance = distance
 
+    def label_format(self) -> str:
+        return f"X: {self.x}\nY: {self.y}\nZ: {self.z}"
+
     def reset_values(self, widget):
-        self.x = 0.0
-        self.y = 0.0
-        self.z = 0.0
-        self.labels['xyz'].set_label(f"X: {self.x}\nY: {self.y}\nZ: {self.z}")
+        self.x = self.y = self.z = 0
+        self.labels['xyz'].set_label(self.label_format())
 
     def increment(self, widget, x=False, y=False, z=False):
         if x != False:
@@ -97,7 +103,7 @@ class Panel(ScreenPanel):
             self.y = round(self.y + float(self.distance), 3)
         if z != False:
             self.z = round(self.z + float(self.distance), 3)
-        self.labels['xyz'].set_label(f"X: {self.x}\nY: {self.y}\nZ: {self.z}")
+        self.labels['xyz'].set_label(self.label_format())
 
     def decrease(self, widget, x=False, y=False, z=False):
         if x != False:
@@ -106,10 +112,9 @@ class Panel(ScreenPanel):
             self.y = round(self.y - float(self.distance), 3)
         if z != False:
             self.z = round(self.z - float(self.distance), 3)
-        self.labels['xyz'].set_label(f"X: {self.x}\nY: {self.y}\nZ: {self.z}")
+        self.labels['xyz'].set_label(self.label_format())
 
     def apply(self, widget):
-        print(f"{KlippyGcodes.gcode_offset(x=self.x, y=self.y, z=self.z)}")
         self._screen._ws.klippy.gcode_script(KlippyGcodes.gcode_offset(x=self.x, y=self.y, z=self.z))
         self.reset_values(widget=widget)
         self._screen._menu_go_back()

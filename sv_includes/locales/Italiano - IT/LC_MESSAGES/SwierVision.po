@@ -431,7 +431,7 @@ msgid "Klipper will reboot"
 msgstr "Klipper sarà riavviato"
 
 msgid "SwierVision will reboot"
-msgstr "SwierVision sarà riavviato"
+msgstr "Vision sarà riavviato"
 
 msgid "Language"
 msgstr "Lingua"

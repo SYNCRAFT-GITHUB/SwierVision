@@ -45,19 +45,17 @@ class Panel(ScreenPanel):
         pobox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         space: str = '   '
 
-        if "Z_ENDSTOP_CALIBRATE" in self._printer.available_commands:
-            self._add_button(f'1: {_("Calibrate")} Endstop{space}', "endstop", pobox)
-            functions.append("endstop")
-        self._add_button(f'{space}2: {_("Screws Adjust")}{space}', "screws", pobox)
+        self._add_button(f'1: {_("Screws Adjust")}{space}', "screws", pobox)
+        functions.append("screws")
         if "PROBE_CALIBRATE" in self._printer.available_commands:
-            self._add_button(f'{space}3: {_("Calibrate")} Probe', "probe", pobox)
+            self._add_button(f'{space}2: {_("Calibrate")} Probe', "probe", pobox)
             functions.append("probe")
         if "BED_MESH_CALIBRATE" in self._printer.available_commands and "probe" not in functions:
             # This is used to do a manual bed mesh if there is no probe
             self._add_button("Bed mesh", "mesh", pobox)
             functions.append("mesh")
         if "DELTA_CALIBRATE" in self._printer.available_commands:
-            if "probe" in functions:
+            if "probe" in functions: 
                 self._add_button("Delta Automatic", "delta", pobox)
                 functions.append("delta")
             # Since probes may not be accturate enough for deltas, always show the manual method

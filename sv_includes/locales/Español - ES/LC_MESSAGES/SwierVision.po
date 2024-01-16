@@ -874,7 +874,7 @@ msgid "mm³/s"
 msgstr "mm³/s"
 
 #~ msgid "SwierVision will be restarted"
-#~ msgstr "SwierVision se reiniciará"
+#~ msgstr "Vision se reiniciará"
 
 #~ msgid "Sort:"
 #~ msgstr "Ordenar:"

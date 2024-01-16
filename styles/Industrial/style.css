@@ -6,7 +6,7 @@
 }
 
 window {
-    background-color: #121212;
+    background-color: #0f0f0f;
 }
 
 .active_device {
@@ -14,7 +14,7 @@ window {
 }
 
 button {
-    background-color: #121212;
+    background-color: #0f0f0f;
 }
 
 button:active {
@@ -40,7 +40,7 @@ button.color1:active, button.color2:active, button.color3:active, button.color4:
 
 button.update {
     color: #2196f3;
-    background-color: #121212;
+    background-color: #0f0f0f;
     border-color: #2196f3;
     border-radius: .5em;
     border-width: .1em;
@@ -72,7 +72,7 @@ button.updated {
 
 combobox box button {
     background-color: #252525;
-    border-color: #121212;
+    border-color: #0f0f0f;
     border-radius: .5em;
 }
 
@@ -81,7 +81,7 @@ switch {
 }
 
 switch:checked {
-    background-color: #686868;
+    background-color: #7f7f7f;
 }
 
 label {
@@ -89,12 +89,12 @@ label {
 }
 
 menu {
-    background-color: #121212;
+    background-color: #0f0f0f;
     border-color: #a2a2a2;
 }
 
 menuitem {
-    background-color: #121212;
+    background-color: #0f0f0f;
     border-color: #282828;
 }
 
@@ -102,14 +102,14 @@ trough {
     background-color: #202020;
     color: #e2e2e2;
     border-radius: .5em;
-    border-color: #121212;
+    border-color: #0f0f0f;
 }
 
 trough highlight, trough progress {
-    background-color: #686868;
+    background-color: #7f7f7f;
     color: #e2e2e2;
     border-radius: .5em;
-    border-color: #121212;
+    border-color: #0f0f0f;
 }
 
 scale-mark {
@@ -117,7 +117,7 @@ scale-mark {
 }
 
 scrollbar, scrollbar button, scrollbar trough {
-    background-color: #121212;
+    background-color: #0f0f0f;
 }
 
 scrollbar slider {
@@ -134,7 +134,7 @@ textview .time {
 
 .dialog {
     border: 0;
-    background-color: #121212;
+    background-color: #0f0f0f;
 }
 
 .dialog button {
@@ -210,7 +210,7 @@ textview .time {
 
 .message button {
     background-color: #e2e2e2;
-    color: #121212;
+    color: #0f0f0f;
 }
 
 .warning {

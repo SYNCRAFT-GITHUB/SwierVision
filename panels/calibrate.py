@@ -37,8 +37,8 @@ class Panel(ScreenPanel):
         grid = self._gtk.HomogeneousGrid()
 
         grid.attach(self.buttons['CALIB_MEC'], 0, 0, 1, 1)
-        grid.attach(self.buttons['CALIB_IDEX'], 1, 0, 1, 1)
-        grid.attach(self.buttons['CALIB_Z'], 2, 0, 1, 1)
+        grid.attach(self.buttons['CALIB_Z'], 0, 1, 1, 1)
+        grid.attach(self.buttons['CALIB_IDEX'], 0, 2, 1, 1)
 
         self.labels['calibrate_panel'] = self._gtk.HomogeneousGrid()
         self.labels['calibrate_panel'].attach(grid, 0, 0, 1, 2)

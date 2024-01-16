@@ -443,7 +443,7 @@ msgid "Klipper will reboot"
 msgstr "Klipper uruchomi się ponownie"
 
 msgid "SwierVision will reboot"
-msgstr "SwierVision uruchomi się ponownie"
+msgstr "Vision uruchomi się ponownie"
 
 msgid "Language"
 msgstr "Język"

@@ -26,7 +26,7 @@ class Panel(ScreenPanel):
 
         self.config_buttons = [
             ConfigurationButton(panel="syncraft_panel", title=_("Syncraft"), icon='syncraft'),
-            ConfigurationButton(panel='calibrate', title=_("Calibrate"), icon='calibrate'),
+            ConfigurationButton(panel='actions', title=_("Actions"), icon='wrench'),
             ConfigurationButton(panel='settings', title=_("Settings"), icon='settings'),
             ConfigurationButton(panel='power', title=_("Power"), icon='shutdown'),
         ]

@@ -28,6 +28,7 @@ class Panel(ScreenPanel):
         self.config_buttons = [
             SyncraftPanelButton(panel='update', title=_("Update via Internet"), icon='update'),
             SyncraftPanelButton(panel='usb_actions', title=_("USB Device"), icon='usb'),
+            SyncraftPanelButton(panel='help', title=_("Quick help"), icon='help'),
         ]
 
         grid = self._gtk.HomogeneousGrid()
@@ -46,9 +47,6 @@ class Panel(ScreenPanel):
                 "name": btn.title,
                 "panel": btn.panel
             })
-
-            if btn.panel == 'script':
-                self.button.connect("clicked", self.set_fix_option_to, btn.button)
 
             if self._screen.vertical_mode:
                 row = i % columns

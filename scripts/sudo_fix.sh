@@ -48,9 +48,9 @@ create_sudoers_file()
 ### /sbin/systemctl "reboot", /sbin/apt "update", .....
 Cmnd_Alias IWLIST = /sbin/iwlist wlan[0-9] scan
 Cmnd_Alias IWCONFIG = /sbin/iwconfig wlan[0-9]
-Cmnd_Alias SYSTEMCTL_KS_RESTART = /bin/systemctl restart SwierVision
+Cmnd_Alias SYSTEMCTL_SV_RESTART = /bin/systemctl restart SwierVision
 
-%GROUPNAME ALL=(ALL) NOPASSWD: IWCONFGI, IWLIST, SYSTEMCTL_KS_RESTART
+%GROUPNAME ALL=(ALL) NOPASSWD: IWCONFGI, IWLIST, SYSTEMCTL_SV_RESTART
 #EOF
 
   report_status "\e[1;32m...done\e[0m"

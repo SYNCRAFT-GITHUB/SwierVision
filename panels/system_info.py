@@ -20,7 +20,7 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['system_info']
 
-        self.image = self._gtk.Image(f"settings", self._gtk.content_width * 4, self._gtk.content_height * .6)
+        self.image = self._gtk.Image(f"logo", self._gtk.content_width * 4, self._gtk.content_height * .6, universal=True)
         self.core_path = os.path.join('/home', 'pi', 'SyncraftCore')
         self.info = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.info.pack_start(self.image, True, True, 8)
@@ -29,7 +29,6 @@ class Panel(ScreenPanel):
 
         self.text: str = f"""
         {_('Hostname')}: {socket.gethostname()}
-        {_('Platform')}: {platform.platform()}
         {_('Version')}: {platform.release()}
         {_('System')}: {platform.system()}
         {_('Mac')}: {getmac.get_mac_address()}

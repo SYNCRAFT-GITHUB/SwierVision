@@ -1,0 +1,17 @@
+[Unit]
+Description=SwierVision
+After=moonraker.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=SV_USER
+SupplementaryGroups=swiervision
+WorkingDirectory=SV_DIR
+Environment="SV_XCLIENT=SV_ENV/bin/python SV_DIR/screen.py"
+ExecStart="SV_DIR/scripts/SwierVision-start.sh"
+
+[Install]
+WantedBy=multi-user.target

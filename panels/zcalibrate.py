@@ -3,7 +3,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -143,9 +143,9 @@ class Panel(ScreenPanel):
         x_position = y_position = None
         z_hop = speed = None
         # Get position from config
-        if self.ks_printer_cfg is not None:
-            x_position = self.ks_printer_cfg.getfloat("calibrate_x_position", None)
-            y_position = self.ks_printer_cfg.getfloat("calibrate_y_position", None)
+        if self.sv_printer_cfg is not None:
+            x_position = self.sv_printer_cfg.getfloat("calibrate_x_position", None)
+            y_position = self.sv_printer_cfg.getfloat("calibrate_y_position", None)
 
         if self.probe:
             if "sample_retract_dist" in self.probe:

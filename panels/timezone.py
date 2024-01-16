@@ -3,7 +3,7 @@ import subprocess
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -142,7 +142,7 @@ class Panel(ScreenPanel):
     def apply_timezone(self, widget, code):
         command = f"sudo timedatectl set-timezone {code}"
         subprocess.call(command, shell=True)
-        self._screen.restart_ks()
+        self._screen.restart_sv()
 
     def apply_timezone_by_text(self, widget):
 
@@ -158,7 +158,7 @@ class Panel(ScreenPanel):
         code = code.replace(" ", "_")
         command = f"sudo timedatectl set-timezone {code}"
         subprocess.call(command, shell=True)
-        self._screen.restart_ks()
+        self._screen.restart_sv()
 
     def magic(self, code):
 
@@ -172,5 +172,5 @@ class Panel(ScreenPanel):
             self._screen.remove_keyboard()
 
         if code == 'kill':
-            kill_command = "sudo service KlipperScreen stop"
+            kill_command = "sudo service SwierVision stop"
             subprocess.call(kill_command, shell=True)

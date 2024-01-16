@@ -4,9 +4,9 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
-from ks_includes.widgets.bedmap import BedMap
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
+from sv_includes.widgets.bedmap import BedMap
 
 
 class Panel(ScreenPanel):

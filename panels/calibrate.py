@@ -6,8 +6,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -46,7 +46,7 @@ class Panel(ScreenPanel):
         self.content.add(self.labels['calibrate_panel'])
 
     def calibrate_idex(self, button):
-        calib_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'ks_includes', 'idex_calibrate.gcode')
+        calib_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate.gcode')
         gcodes_path = os.path.join('/home', 'pi', 'printer_data', 'gcodes')
         calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))
         if os.path.exists(calib_file_path):

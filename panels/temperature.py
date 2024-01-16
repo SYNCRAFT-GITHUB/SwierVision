@@ -4,9 +4,9 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 from contextlib import suppress
-from ks_includes.screen_panel import ScreenPanel
-from ks_includes.widgets.heatergraph import HeaterGraph
-from ks_includes.widgets.keypad import Keypad
+from sv_includes.screen_panel import ScreenPanel
+from sv_includes.widgets.heatergraph import HeaterGraph
+from sv_includes.widgets.keypad import Keypad
 
 
 class Panel(ScreenPanel):

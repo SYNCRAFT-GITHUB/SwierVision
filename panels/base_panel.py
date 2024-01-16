@@ -10,7 +10,7 @@ from datetime import datetime
 from math import log
 import subprocess
 from contextlib import suppress
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 class BasePanel(ScreenPanel):
@@ -330,11 +330,11 @@ class BasePanel(ScreenPanel):
             self.time_format = confopt
         return True
 
-    def set_ks_printer_cfg(self, printer):
-        ScreenPanel.ks_printer_cfg = self._config.get_printer_config(printer)
-        if self.ks_printer_cfg is not None:
-            self.titlebar_name_type = self.ks_printer_cfg.get("titlebar_name_type", None)
-            titlebar_items = self.ks_printer_cfg.get("titlebar_items", None)
+    def set_sv_printer_cfg(self, printer):
+        ScreenPanel.sv_printer_cfg = self._config.get_printer_config(printer)
+        if self.sv_printer_cfg is not None:
+            self.titlebar_name_type = self.sv_printer_cfg.get("titlebar_name_type", None)
+            titlebar_items = self.sv_printer_cfg.get("titlebar_items", None)
             if titlebar_items is not None:
                 self.titlebar_items = [str(i.strip()) for i in titlebar_items.split(',')]
                 logging.info(f"Titlebar name type: {self.titlebar_name_type} items: {self.titlebar_items}")

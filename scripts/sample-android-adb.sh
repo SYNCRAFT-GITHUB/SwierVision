@@ -33,7 +33,7 @@ done
 echo ""
 if [ $timeout -lt 60 ]
 then
-    DISPLAY=:100 $KS_XCLIENT
+    DISPLAY=:100 $SV_XCLIENT
     exit 0
 else
     exit 1

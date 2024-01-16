@@ -4,8 +4,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -15,8 +15,8 @@ class Panel(ScreenPanel):
     def __init__(self, screen, title):
         super().__init__(screen, title)
 
-        if self.ks_printer_cfg is not None:
-            dis = self.ks_printer_cfg.get("move_distances", '0.1, 0.5, 1, 50, 10, 25, 50')
+        if self.sv_printer_cfg is not None:
+            dis = self.sv_printer_cfg.get("move_distances", '0.1, 0.5, 1, 50, 10, 25, 50')
             if re.match(r'^[0-9,\.\s]+$', dis):
                 dis = [str(i.strip()) for i in dis.split(',')]
                 if 1 < len(dis) <= 7:
@@ -202,7 +202,7 @@ class Panel(ScreenPanel):
 
         dist = f"{direction}{self.distance}"
         config_key = "move_speed_z" if axis == "Z" else "move_speed_xy"
-        speed = None if self.ks_printer_cfg is None else self.ks_printer_cfg.getint(config_key, None)
+        speed = None if self.sv_printer_cfg is None else self.sv_printer_cfg.getint(config_key, None)
         if speed is None:
             speed = self._config.get_config()['main'].getint(config_key, 20)
         speed = 60 * max(1, speed)

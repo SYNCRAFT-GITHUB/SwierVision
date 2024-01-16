@@ -1,13 +1,13 @@
-# A wrapper for the popular script for KlipperScreen on Android over adb over USB.
-# https://klipper.discourse.group/t/how-to-klipperscreen-on-android-smart-phones/1196
+# A wrapper for the popular script for SwierVision on Android over adb over USB.
+# https://klipper.discourse.group/t/how-to-swiervision-on-android-smart-phones/1196
 #
 # Keeps the process alive while the server is active
 # to mimic default X's behaviour and keep the service happy
 
-if  [ -f $PWD/launch_klipperscreen.sh ]; then
-	exec $PWD/launch_klipperscreen.sh
-elif [ ! -f $PWD/launch_klipperscreen.sh ]; then
-	echo "launch_klipperscreen.sh does not exist"
+if  [ -f $PWD/launch_swiervision.sh ]; then
+	exec $PWD/launch_swiervision.sh
+elif [ ! -f $PWD/launch_swiervision.sh ]; then
+	echo "launch_swiervision.sh does not exist"
 	exit
 fi
 

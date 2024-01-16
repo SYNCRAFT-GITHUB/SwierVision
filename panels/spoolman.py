@@ -5,8 +5,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GdkPixbuf, GObject, Pango, Gdk
-from ks_includes.screen_panel import ScreenPanel
-from ks_includes.KlippyRest import KlippyRest
+from sv_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyRest import KlippyRest
 from datetime import datetime
 
 try:
@@ -99,12 +99,12 @@ class SpoolmanSpool(GObject.GObject):
     def icon(self):
         if self._icon is None:
             if SpoolmanSpool._spool_icon is None:
-                klipperscreendir = pathlib.Path(__file__).parent.resolve().parent
+                swiervisiondir = pathlib.Path(__file__).parent.resolve().parent
                 _spool_icon_path = os.path.join(
-                    klipperscreendir, "styles", SpoolmanSpool.theme_path, "images", "spool.svg"
+                    swiervisiondir, "styles", SpoolmanSpool.theme_path, "images", "spool.svg"
                 )
                 if not os.path.isfile(_spool_icon_path):
-                    _spool_icon_path = os.path.join(klipperscreendir, "styles", "spool.svg")
+                    _spool_icon_path = os.path.join(swiervisiondir, "styles", "spool.svg")
                 SpoolmanSpool._spool_icon = pathlib.Path(_spool_icon_path).read_text()
 
             loader = GdkPixbuf.PixbufLoader()

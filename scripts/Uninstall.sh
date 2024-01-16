@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "Uninstalling KlipperScreen"
+echo "Uninstalling SwierVision"
 echo ""
 echo "* Stopping service"
-sudo service KlipperScreen stop
+sudo service SwierVision stop
 echo "* Removing unit file"
-sudo rm /etc/systemd/system/KlipperScreen.service
+sudo rm /etc/systemd/system/SwierVision.service
 echo "* Removing enviroment"
-sudo rm -rf ~/.KlipperScreen-env
+sudo rm -rf ~/.SwierVision-env
 echo "!! Please remove $(dirname `pwd`) manually"
 echo "Done"

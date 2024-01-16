@@ -5,7 +5,7 @@ import netifaces
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib, Pango
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -29,10 +29,10 @@ class Panel(ScreenPanel):
             logging.info(f"Found wireless interfaces: {self.wireless_interfaces}")
             if self.use_network_manager:
                 logging.info("Using NetworkManager")
-                from ks_includes.wifi_nm import WifiManager
+                from sv_includes.wifi_nm import WifiManager
             else:
                 logging.info("Using wpa_cli")
-                from ks_includes.wifi import WifiManager
+                from sv_includes.wifi import WifiManager
             self.wifi = WifiManager(self.wireless_interfaces[0])
 
         # Get IP Address

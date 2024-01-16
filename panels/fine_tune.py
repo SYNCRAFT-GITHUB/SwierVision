@@ -4,8 +4,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -20,8 +20,8 @@ class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
-        if self.ks_printer_cfg is not None:
-            bs = self.ks_printer_cfg.get("z_babystep_values", "0.01, 0.05")
+        if self.sv_printer_cfg is not None:
+            bs = self.sv_printer_cfg.get("z_babystep_values", "0.01, 0.05")
             if re.match(r'^[0-9,\.\s]+$', bs):
                 bs = [str(i.strip()) for i in bs.split(',')]
                 if 1 < len(bs) < 3:

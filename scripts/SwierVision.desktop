@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SwierVision
+GenericName=Touch screen GUI for Klipper via Moonraker
+Icon=SwierVision
+Exec=sh -c "$HOME/.SwierVision-env/bin/python $HOME/SwierVision/screen.py"
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Engineering;
+Keywords=3D;Printing
+StartupNotify=false
+StartupWMClass=swier-vision

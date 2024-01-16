@@ -6,7 +6,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango, GLib
 
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 # Same as ALLOWED_SERVICES in moonraker
@@ -18,6 +18,8 @@ ALLOWED_SERVICES = (
     "moonraker-telegram-bot",
     "klipper",
     "KlipperScreen",
+    "Display",
+    "SwierVision",
     "sonar",
     "webcamd",
 )

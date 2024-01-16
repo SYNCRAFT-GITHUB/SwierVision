@@ -18,16 +18,16 @@ from jinja2 import Environment
 from signal import SIGTERM
 from datetime import datetime
 
-from ks_includes import functions
-from ks_includes.error import KnownError
-from ks_includes.error import known_errors
-from ks_includes.KlippyWebsocket import KlippyWebsocket
-from ks_includes.KlippyRest import KlippyRest
-from ks_includes.files import KlippyFiles
-from ks_includes.KlippyGtk import KlippyGtk
-from ks_includes.printer import Printer
-from ks_includes.widgets.keyboard import Keyboard
-from ks_includes.config import KlipperScreenConfig
+from sv_includes import functions
+from sv_includes.error import KnownError
+from sv_includes.error import known_errors
+from sv_includes.KlippyWebsocket import KlippyWebsocket
+from sv_includes.KlippyRest import KlippyRest
+from sv_includes.files import KlippyFiles
+from sv_includes.KlippyGtk import KlippyGtk
+from sv_includes.printer import Printer
+from sv_includes.widgets.keyboard import Keyboard
+from sv_includes.config import SwierVisionConfig
 from panels.base_panel import BasePanel
 
 logging.getLogger("urllib3").setLevel(logging.WARNING)
@@ -52,7 +52,7 @@ PRINTER_BASE_STATUS_OBJECTS = [
     'manual_probe',
 ]
 
-klipperscreendir = pathlib.Path(__file__).parent.resolve()
+swiervisiondir = pathlib.Path(__file__).parent.resolve()
 
 
 def set_text_direction(lang=None):
@@ -75,7 +75,7 @@ def state_execute(callback):
     return False
 
 
-class KlipperScreen(Gtk.Window):
+class SwierVision(Gtk.Window):
     """ Class for creating a screen for Klipper via HDMI """
     _cur_panels = []
     connecting = False
@@ -113,7 +113,7 @@ class KlipperScreen(Gtk.Window):
 
         configfile = os.path.normpath(os.path.expanduser(args.configfile))
 
-        self._config = KlipperScreenConfig(configfile, self)
+        self._config = SwierVisionConfig(configfile, self)
         self.lang_ltr = set_text_direction(self._config.get_main_config().get("language", None))
         self.env = Environment(extensions=["jinja2.ext.i18n"], autoescape=True)
         self.env.install_gettext_translations(self._config.get_lang())
@@ -150,7 +150,7 @@ class KlipperScreen(Gtk.Window):
         self.show_cursor = self._config.get_main_config().getboolean("show_cursor", fallback=False)
         self.gtk = KlippyGtk(self)
         self.init_style()
-        self.set_icon_from_file(os.path.join(klipperscreendir, "styles", "icon.svg"))
+        self.set_icon_from_file(os.path.join(swiervisiondir, "styles", "icon.svg"))
 
         self.base_panel = BasePanel(self, title="Base Panel")
         self.add(self.base_panel.main_grid)
@@ -162,14 +162,14 @@ class KlipperScreen(Gtk.Window):
         else:
             self.get_window().set_cursor(
                 Gdk.Cursor.new_for_display(Gdk.Display.get_default(), Gdk.CursorType.BLANK_CURSOR))
-            os.system("xsetroot  -cursor ks_includes/emptyCursor.xbm ks_includes/emptyCursor.xbm")
+            os.system("xsetroot  -cursor sv_includes/emptyCursor.xbm sv_includes/emptyCursor.xbm")
         self.base_panel.activate()
         if self._config.errors:
             self.show_error_modal("Invalid config file", self._config.get_errors())
             # Prevent this dialog from being destroyed
             self.dialogs = []
         self.set_screenblanking_timeout(self._config.get_main_config().get('screen_blanking'))
-        self.log_notification("KlipperScreen Started", 1)
+        self.log_notification("SwierVision Started", 1)
         self.initial_connection()
 
     def initial_connection(self):
@@ -332,8 +332,11 @@ class KlipperScreen(Gtk.Window):
         if self.popup_message is not None:
             self.close_popup_message()
 
-        if 'timeout' in message.lower():
-            return
+        ignore_list = ['timeout', 'inotify']
+
+        for keyword in ignore_list:
+            if keyword in message.lower():
+                return
 
         known_error = None
         for er in known_errors:
@@ -428,7 +431,7 @@ class KlipperScreen(Gtk.Window):
         version = Gtk.Label(label=f"{functions.get_software_version()}")
         version.set_halign(Gtk.Align.END)
 
-        help_msg = _("Provide KlipperScreen.log when asking for help.\n")
+        help_msg = _("Provide SwierVision.log when asking for help.\n")
         message = Gtk.Label(label=f"{help_msg}\n\n{e}")
         message.set_line_wrap(True)
         scroll = self.gtk.ScrolledWindow(steppers=False)
@@ -453,23 +456,23 @@ class KlipperScreen(Gtk.Window):
 
     def error_modal_response(self, dialog, response_id):
         self.gtk.remove_dialog(dialog)
-        self.restart_ks()
+        self.restart_sv()
 
-    def restart_ks(self, *args):
+    def restart_sv(self, *args):
         logging.debug(f"Restarting {sys.executable} {' '.join(sys.argv)}")
         os.execv(sys.executable, ['python'] + sys.argv)
-        self._ws.send_method("machine.services.restart", {"service": "KlipperScreen"})  # Fallback
+        self._ws.send_method("machine.services.restart", {"service": "SwierVision"})  # Fallback
 
     def init_style(self):
         settings = Gtk.Settings.get_default()
         settings.set_property("gtk-theme-name", "Adwaita")
         settings.set_property("gtk-application-prefer-dark-theme", False)
-        css_data = pathlib.Path(os.path.join(klipperscreendir, "styles", "base.css")).read_text()
+        css_data = pathlib.Path(os.path.join(swiervisiondir, "styles", "base.css")).read_text()
 
-        with open(os.path.join(klipperscreendir, "styles", "base.conf")) as f:
+        with open(os.path.join(swiervisiondir, "styles", "base.conf")) as f:
             style_options = json.load(f)
         # Load custom theme
-        theme = os.path.join(klipperscreendir, "styles", self.theme)
+        theme = os.path.join(swiervisiondir, "styles", self.theme)
         theme_style = os.path.join(theme, "style.css")
         theme_style_conf = os.path.join(theme, "style.conf")
 
@@ -507,7 +510,7 @@ class KlipperScreen(Gtk.Window):
                 style_options['graph_colors']['sensor']['colors'][i]
             )
 
-        css_data = css_data.replace("KS_FONT_SIZE", f"{self.gtk.font_size}")
+        css_data = css_data.replace("SV_FONT_SIZE", f"{self.gtk.font_size}")
 
         style_provider = Gtk.CssProvider()
         style_provider.load_from_data(css_data.encode())
@@ -796,8 +799,8 @@ class KlipperScreen(Gtk.Window):
             if 'message' in data and 'Error' in data['message']:
                 logging.error(f"{action}:{data['message']}")
                 self.show_popup_message(data['message'], 3)
-                if "KlipperScreen" in data['message']:
-                    self.restart_ks()
+                if "SwierVision" in data['message']:
+                    self.restart_sv()
         elif action == "notify_power_changed":
             logging.debug("Power status changed: %s", data)
             self.printer.process_power_update(data)
@@ -850,7 +853,7 @@ class KlipperScreen(Gtk.Window):
         if self.confirm is not None:
             self.gtk.remove_dialog(self.confirm)
         self.confirm = self.gtk.Dialog(
-            "KlipperScreen", buttons, label, self._confirm_send_action_response, method, params
+            "SwierVision", buttons, label, self._confirm_send_action_response, method, params
         )
 
     def _confirm_send_action_response(self, dialog, response_id, method, params):
@@ -918,7 +921,7 @@ class KlipperScreen(Gtk.Window):
             return False
         self.connecting = not self._ws.connected
         self.connected_printer = self.connecting_to_printer
-        self.base_panel.set_ks_printer_cfg(self.connected_printer)
+        self.base_panel.set_sv_printer_cfg(self.connected_printer)
 
         # Moonraker is ready, set a loop to init the printer
         self.reinit_count += 1
@@ -1043,7 +1046,7 @@ class KlipperScreen(Gtk.Window):
         if os.path.isfile(usrkbd):
             env["MB_KBD_CONFIG"] = usrkbd
         else:
-            env["MB_KBD_CONFIG"] = "ks_includes/locales/keyboard.xml"
+            env["MB_KBD_CONFIG"] = "sv_includes/locales/keyboard.xml"
         p = subprocess.Popen(["matchbox-keyboard", "--xid"], stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE, env=env)
         xid = int(p.stdout.readline())
@@ -1101,19 +1104,19 @@ def main():
         logging.error(f"python {sys.version_info.major}.{sys.version_info.minor} "
                       f"does not meet the minimum requirement {minimum[0]}.{minimum[1]}")
         sys.exit(1)
-    parser = argparse.ArgumentParser(description="KlipperScreen - A GUI for Klipper")
+    parser = argparse.ArgumentParser(description="SwierVision - A GUI for Klipper")
     homedir = os.path.expanduser("~")
 
     parser.add_argument(
-        "-c", "--configfile", default=os.path.join(homedir, "KlipperScreen.conf"), metavar='<configfile>',
-        help="Location of KlipperScreen configuration file"
+        "-c", "--configfile", default=os.path.join(homedir, "SwierVision.conf"), metavar='<configfile>',
+        help="Location of SwierVision configuration file"
     )
     logdir = os.path.join(homedir, "printer_data", "logs")
     if not os.path.exists(logdir):
         logdir = "/tmp"
     parser.add_argument(
-        "-l", "--logfile", default=os.path.join(logdir, "KlipperScreen.log"), metavar='<logfile>',
-        help="Location of KlipperScreen logfile output"
+        "-l", "--logfile", default=os.path.join(logdir, "SwierVision.log"), metavar='<logfile>',
+        help="Location of SwierVision logfile output"
     )
     args = parser.parse_args()
 
@@ -1123,7 +1126,7 @@ def main():
         logging.critical("Failed to initialize Gtk")
         raise RuntimeError
     try:
-        win = KlipperScreen(args)
+        win = SwierVision(args)
     except Exception as e:
         logging.exception(f"Failed to initialize window\n{e}\n\n{traceback.format_exc()}")
         raise RuntimeError from e

@@ -5,8 +5,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 # Find the screw closest to the point,
@@ -85,11 +85,11 @@ class Panel(ScreenPanel):
             logging.info(f"bed_screws: {self.screws}")
 
         nscrews = len(self.screws)
-        # KS config
+        # SV config
         valid_positions = True
         valid_screws = ["bl", "fl", "fr", "br", "bm", "fm", "lm", "rm", "center"]
-        if self.ks_printer_cfg is not None:
-            screw_positions = self.ks_printer_cfg.get("screw_positions", "")
+        if self.sv_printer_cfg is not None:
+            screw_positions = self.sv_printer_cfg.get("screw_positions", "")
             if screw_positions:
                 screw_positions = [str(i.strip()) for i in screw_positions.split(',')]
                 logging.info(f"Positions: {screw_positions}")
@@ -104,7 +104,7 @@ class Panel(ScreenPanel):
                 if nscrews in (3, 5, 7):
                     valid_positions = False
                 screw_positions = valid_screws
-            rotation = self.ks_printer_cfg.getint("screw_rotation", 0)
+            rotation = self.sv_printer_cfg.getint("screw_rotation", 0)
             logging.info(f"Rotation: {rotation}")
         else:
             if nscrews in (3, 5, 7):
@@ -190,7 +190,7 @@ class Panel(ScreenPanel):
         else:
             label = Gtk.Label(
                 _("Bed screw configuration:") + f" {nscrews}\n\n"
-                + _("Not supported for auto-detection, it needs to be configured in klipperscreen.conf")
+                + _("Not supported for auto-detection, it needs to be configured in swiervision.conf")
             )
             label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
             label.set_line_wrap(True)

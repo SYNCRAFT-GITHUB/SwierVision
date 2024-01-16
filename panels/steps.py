@@ -1,5 +1,5 @@
-from ks_includes.topic import Topic
-from ks_includes.topic import topics
+from sv_includes.topic import Topic
+from sv_includes.topic import topics
 import logging
 
 import gi
@@ -7,8 +7,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):

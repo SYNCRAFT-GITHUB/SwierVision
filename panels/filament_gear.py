@@ -4,8 +4,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -19,13 +19,13 @@ class Panel(ScreenPanel):
 
         self.speeds = ['1', '2', '5', '25']
         self.distances = ['5', '10', '15', '25']
-        if self.ks_printer_cfg is not None:
-            dis = self.ks_printer_cfg.get("extrude_distances", '5, 10, 15, 25')
+        if self.sv_printer_cfg is not None:
+            dis = self.sv_printer_cfg.get("extrude_distances", '5, 10, 15, 25')
             if re.match(r'^[0-9,\s]+$', dis):
                 dis = [str(i.strip()) for i in dis.split(',')]
                 if 1 < len(dis) < 5:
                     self.distances = dis
-            vel = self.ks_printer_cfg.get("extrude_speeds", '1, 2, 5, 25')
+            vel = self.sv_printer_cfg.get("extrude_speeds", '1, 2, 5, 25')
             if re.match(r'^[0-9,\s]+$', vel):
                 vel = [str(i.strip()) for i in vel.split(',')]
                 if 1 < len(vel) < 5:

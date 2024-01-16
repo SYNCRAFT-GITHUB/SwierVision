@@ -8,8 +8,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from ks_includes.KlippyGcodes import KlippyGcodes as Gcode
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes as Gcode
+from sv_includes.screen_panel import ScreenPanel
 
 class PrinterMaterial:
     def __init__ (self, name: str, code: str, brand: str, color: str, compatible: [str] = [], experimental: [str] = [], temp: int=0):

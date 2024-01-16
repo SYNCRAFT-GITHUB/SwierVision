@@ -6,7 +6,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 class Panel(ScreenPanel):
@@ -62,8 +62,8 @@ class Panel(ScreenPanel):
     def show_restart_buttons(self):
 
         self.clear_action_bar()
-        if self.ks_printer_cfg is not None and self._screen._ws.connected:
-            power_devices = self.ks_printer_cfg.get("power_devices", "")
+        if self.sv_printer_cfg is not None and self._screen._ws.connected:
+            power_devices = self.sv_printer_cfg.get("power_devices", "")
             if power_devices and self._printer.get_power_devices():
                 logging.info(f"Associated power devices: {power_devices}")
                 self.add_power_button(power_devices)

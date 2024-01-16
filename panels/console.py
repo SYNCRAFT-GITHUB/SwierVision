@@ -7,7 +7,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 from datetime import datetime
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 
 
 COLORS = {

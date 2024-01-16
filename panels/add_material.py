@@ -8,8 +8,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from ks_includes.KlippyGcodes import KlippyGcodes
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.KlippyGcodes import KlippyGcodes
+from sv_includes.screen_panel import ScreenPanel
 from .material_load import CustomPrinterMaterial
 
 error_messages = [
@@ -235,8 +235,8 @@ class Panel(ScreenPanel):
         with open(self.custom_json_path, 'w') as json_file:
             json.dump(custom_json_file, json_file, indent=4)
 
-        os.system('service KlipperScreen restart')
-        self._screen.restart_ks()
+        os.system('service SwierVision restart')
+        self._screen.restart_sv()
         return None
 
     def clear_all(self, button):
@@ -254,8 +254,8 @@ class Panel(ScreenPanel):
         with open(self.custom_json_path, 'w') as file:
             json.dump([], file)
 
-        os.system('service KlipperScreen restart')
-        self._screen.restart_ks()
+        os.system('service SwierVision restart')
+        self._screen.restart_sv()
         return None
     
     def clean_code(self, text: str) -> str:

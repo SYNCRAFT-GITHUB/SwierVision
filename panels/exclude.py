@@ -3,8 +3,8 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
-from ks_includes.screen_panel import ScreenPanel
-from ks_includes.widgets.objectmap import ObjectMap
+from sv_includes.screen_panel import ScreenPanel
+from sv_includes.widgets.objectmap import ObjectMap
 
 
 class Panel(ScreenPanel):

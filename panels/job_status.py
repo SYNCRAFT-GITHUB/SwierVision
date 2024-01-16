@@ -6,7 +6,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import GLib, Gtk, Pango
-from ks_includes.screen_panel import ScreenPanel
+from sv_includes.screen_panel import ScreenPanel
 from math import pi, sqrt
 from statistics import median
 from time import time
@@ -194,8 +194,8 @@ class Panel(ScreenPanel):
                 self.labels['temp_grid'].attach(self.buttons['heater'][dev], n, 0, 1, 1)
                 n += 1
         extra_item = not self._show_heater_power
-        if self.ks_printer_cfg is not None:
-            titlebar_items = self.ks_printer_cfg.get("titlebar_items", "")
+        if self.sv_printer_cfg is not None:
+            titlebar_items = self.sv_printer_cfg.get("titlebar_items", "")
             if titlebar_items is not None:
                 titlebar_items = [str(i.strip()) for i in titlebar_items.split(',')]
                 logging.info(f"Titlebar items: {titlebar_items}")

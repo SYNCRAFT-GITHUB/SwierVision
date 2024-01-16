@@ -28,8 +28,8 @@ button:active {
 }
 
 button.color1, button.color2, button.color3, button.color4 {
-    background-color: #252525;
-    border-color: #252525;
+    background-color: #212121;
+    border-color: #212121;
     border-radius: .25em;
 }
 
@@ -71,7 +71,7 @@ button.updated {
 }
 
 combobox box button {
-    background-color: #252525;
+    background-color: #212121;
     border-color: #0f0f0f;
     border-radius: .5em;
 }
@@ -81,7 +81,7 @@ switch {
 }
 
 switch:checked {
-    background-color: #7f7f7f;
+    background-color: #686868;
 }
 
 label {
@@ -106,7 +106,7 @@ trough {
 }
 
 trough highlight, trough progress {
-    background-color: #7f7f7f;
+    background-color: #686868;
     color: #e2e2e2;
     border-radius: .5em;
     border-color: #0f0f0f;
@@ -138,8 +138,8 @@ textview .time {
 }
 
 .dialog button {
-    background-color: #252525;
-    border-bottom-color: #252525;
+    background-color: #212121;
+    border-bottom-color: #212121;
     border-radius: .25em;
 }
 
@@ -154,7 +154,7 @@ textview .time {
 .tempbutton_top, .tempbutton, .tempbutton_bottom, .distbutton_top, .distbutton, .distbutton_bottom  {
     border-color: #545454;
     border-width: .1em;
-    background-color: #252525;
+    background-color: #212121;
 }
 
 .distbutton_active {
@@ -187,7 +187,7 @@ textview .time {
 
 .numpad_tleft, .numpad_top, .numpad_tright, .numpad_left, .numpad_button, .numpad_right, .numpad_bleft, .numpad_bottom, .numpad_bright {
     border-color: #545454;
-    background-color: #252525;
+    background-color: #212121;
 }
 
 .printing-status {

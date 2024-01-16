@@ -3,6 +3,8 @@ SwierVision is a Fork of KlipperScreen, a Front-End for Klipper.
 SwierVision was designed and optimized for Syncraft printers using IDEX, and works correctly using a specific set of files, settings, and other installed software.
 Trying to use SwierVision on a generic printer will cause the software to malfunction.
 
+SwierVision would not be possible without the KlipperScreen development team, the Syncraft development team is very grateful for their contributions to the Klipper community.
+
 ## Main Menu
 <img width="475" alt="picture5" src="https://github.com/SYNCRAFT-GITHUB/SwierVision/assets/110249038/9df89ce3-2114-479f-8fac-2b55ff765ab1">
 

@@ -31,7 +31,7 @@ class Panel(ScreenPanel):
         self.labels['reset'].set_property("opacity", 0.5)
         self.labels['reset'].connect("clicked", self.reset_values)
 
-        self.labels['ok'] = self._gtk.Button("complete", None, "color4")
+        self.labels['ok'] = self._gtk.Button("complete", None, "color3")
         self.labels['ok'].connect("clicked", self.apply)
 
         self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")
@@ -44,8 +44,8 @@ class Panel(ScreenPanel):
         self.labels['y+'].connect("clicked", self.increment, False, True, False)
         self.labels['y-'].connect("clicked", self.decrease, False, True, False)
 
-        self.labels['z+'] = self._gtk.Button("z-increase", None, "color3")
-        self.labels['z-'] = self._gtk.Button("z-decrease", None, "color3")
+        self.labels['z+'] = self._gtk.Button("z-increase", None, "color1")
+        self.labels['z-'] = self._gtk.Button("z-decrease", None, "color2")
         self.labels['z+'].connect("clicked", self.increment, False, False, True)
         self.labels['z-'].connect("clicked", self.decrease, False, False, True)
 

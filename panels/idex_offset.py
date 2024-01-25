@@ -31,7 +31,7 @@ class Panel(ScreenPanel):
         self.labels['reset'].set_property("opacity", 0.5)
         self.labels['reset'].connect("clicked", self.reset_values)
 
-        self.labels['ok'] = self._gtk.Button("complete", None, "color4")
+        self.labels['ok'] = self._gtk.Button("complete", None, "color3")
         self.labels['ok'].connect("clicked", self.apply)
 
         self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")

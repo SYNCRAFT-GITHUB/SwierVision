@@ -76,18 +76,18 @@ class Panel(ScreenPanel):
         grid.set_row_homogeneous(False)
 
         self.labels['z+'] = self._gtk.Button("z-farther", "Z+", "color1")
-        self.labels['z-'] = self._gtk.Button("z-closer", "Z-", "color1")
+        self.labels['z-'] = self._gtk.Button("z-closer", "Z-", "color2")
         self.labels['zoffset'] = self._gtk.Button("refresh", '  0.00' + _("mm"),
-                                                  "color1", self.bts, Gtk.PositionType.LEFT, 1)
-        self.labels['speed+'] = self._gtk.Button("speed+", _("Speed +"), "color3")
-        self.labels['speed-'] = self._gtk.Button("speed-", _("Speed -"), "color3")
+                                                  "color3", self.bts, Gtk.PositionType.LEFT, 1)
+        self.labels['speed+'] = self._gtk.Button("speed+", _("Speed +"), "color1")
+        self.labels['speed-'] = self._gtk.Button("speed-", _("Speed -"), "color2")
         self.labels['speedfactor'] = self._gtk.Button("refresh", "  100%",
                                                       "color3", self.bts, Gtk.PositionType.LEFT, 1)
 
-        self.labels['extrude+'] = self._gtk.Button("flow+", _("Extrusion +"), "color4")
-        self.labels['extrude-'] = self._gtk.Button("flow-", _("Extrusion -"), "color4")
+        self.labels['extrude+'] = self._gtk.Button("flow+", _("Extrusion +"), "color1")
+        self.labels['extrude-'] = self._gtk.Button("flow-", _("Extrusion -"), "color2")
         self.labels['extrudefactor'] = self._gtk.Button("refresh", "  100%",
-                                                        "color4", self.bts, Gtk.PositionType.LEFT, 1)
+                                                        "color3", self.bts, Gtk.PositionType.LEFT, 1)
         if self._screen.vertical_mode:
             grid.attach(self.labels['z+'], 0, 0, 1, 1)
             grid.attach(self.labels['z-'], 1, 0, 1, 1)

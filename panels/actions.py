@@ -23,7 +23,7 @@ class Panel(ScreenPanel):
         self.scroll.add(self.labels['devices'])
 
         self.hot_unload_label = f'{_("Hot Unload")} (°C)'
-        self.add_button_new(self.hot_unload_label, 'hot', 'color1', 'gcode')
+        self.add_button_new(self.hot_unload_label, 'hot', 'color2', 'gcode')
 
         self.content.add(self.scroll)
 
@@ -73,7 +73,7 @@ class Panel(ScreenPanel):
         scale.set_has_origin(True)
         scale.get_style_context().add_class("fan_slider")
 
-        act_btn = self._gtk.Button(icon, None, "color1", 1)
+        act_btn = self._gtk.Button(icon, None, "color2", 1)
         act_btn.set_hexpand(False)
         act_btn.connect("clicked", self.perform_hot_unload)
 
@@ -121,7 +121,7 @@ class Panel(ScreenPanel):
         scale.get_style_context().add_class("fan_slider")
         scale.connect("button-release-event", self.set_output_pin, pin)
 
-        min_btn = self._gtk.Button("back-fill", None, "color1", 1)
+        min_btn = self._gtk.Button("back-fill", None, "color2", 1)
         min_btn.set_hexpand(False)
         min_btn.connect("clicked", self.update_pin_value, pin, 0)
 

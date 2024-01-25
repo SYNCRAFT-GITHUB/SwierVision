@@ -55,7 +55,7 @@ class Panel(ScreenPanel):
         logging.info(f"Adding fan: {fan}")
         changeable = any(fan.startswith(x) or fan == x for x in CHANGEABLE_FANS)
         name = Gtk.Label()
-        fan_name = _("Part Fan") if fan == "fan" else fan.split()[1]
+        fan_name = _("Part Fan") if fan == "fan" else fan.split()[1].replace('_', ' ').title()
         name.set_markup(f"\n<big><b>{fan_name}</b></big>\n")
         name.set_hexpand(True)
         name.set_vexpand(True)
@@ -65,7 +65,7 @@ class Panel(ScreenPanel):
         name.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
 
         fan_col = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-        stop_btn = self._gtk.Button("cancel", None, "color1")
+        stop_btn = self._gtk.Button("back-fill", None, "color1")
         stop_btn.set_hexpand(False)
         stop_btn.connect("clicked", self.update_fan_speed, fan, 0)
         max_btn = self._gtk.Button("fan-on", _("Max"), "color2")

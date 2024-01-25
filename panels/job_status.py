@@ -92,7 +92,7 @@ class Panel(ScreenPanel):
         fi_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         fi_box.add(self.labels['file'])
         fi_box.add(self.labels['status'])
-        self.grid.attach(fi_box, 1, 0, 3, 1)
+        self.grid.attach(fi_box, 0, 0, 3, 1)
 
         self.labels['darea'] = Gtk.DrawingArea()
         self.labels['darea'].connect("draw", self.on_draw)
@@ -105,9 +105,9 @@ class Panel(ScreenPanel):
         overlay = Gtk.Overlay(hexpand=True)
         overlay.add(self.labels['darea'])
         overlay.add_overlay(box)
-        self.grid.attach(overlay, 0, 0, 1, 1)
+        self.grid.attach(overlay, 3, 0, 1, 1)
 
-        self.labels['thumbnail'] = self._gtk.Button("file")
+        self.labels['thumbnail'] = self._gtk.Button("3dcube")
         self.labels['thumbnail'].connect("clicked", self.show_fullscreen_thumbnail)
         self.labels['thumbnail'].set_hexpand(False)
         self.labels['info_grid'] = Gtk.Grid()
@@ -323,7 +323,7 @@ class Panel(ScreenPanel):
         ctx.translate(w / 2, h / 2)
         ctx.arc(0, 0, r, 0, 2 * pi)
         ctx.stroke()
-        ctx.set_source_rgb(0.718, 0.110, 0.110)
+        ctx.set_source_rgb(0.05, 0.36, 0.38)
         ctx.arc(0, 0, r, 3 / 2 * pi, 3 / 2 * pi + (self.progress * 2 * pi))
         ctx.stroke()
 

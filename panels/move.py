@@ -1,276 +1,129 @@
-import re
 import logging
+import random
+import os
 import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
+
 from sv_includes.KlippyGcodes import KlippyGcodes
 from sv_includes.screen_panel import ScreenPanel
 
+SPEED = 23_350
+EXTRUDER = 1
+BED = 2
+UP = 1
+DOWN = 2
+LEFT = 3
+RIGHT = 4
+
 
 class Panel(ScreenPanel):
-    distances = ['.1', '.5', '1', '5', '10', '25', '50']
-    distance = distances[-2]
 
     def __init__(self, screen, title):
+
         super().__init__(screen, title)
+        self.menu = ['move']
 
-        if self.sv_printer_cfg is not None:
-            dis = self.sv_printer_cfg.get("move_distances", '0.1, 0.5, 1, 50, 10, 25, 50')
-            if re.match(r'^[0-9,\.\s]+$', dis):
-                dis = [str(i.strip()) for i in dis.split(',')]
-                if 1 < len(dis) <= 7:
-                    self.distances = dis
-                    self.distance = self.distances[-2]
-
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-        self.settings = {}
-        self.menu = ['move_menu']
-        self.pos_x = self.pos_y = self.pos_z = self.pos_text = ""
-        self.buttons = {
-            'x+': self._gtk.Button("arrow-right", "X+", "color1"),
-            'x-': self._gtk.Button("arrow-left", "X-", "color1"),
-            'y+': self._gtk.Button("arrow-up", "Y+", "color2"),
-            'y-': self._gtk.Button("arrow-down", "Y-", "color2"),
-            'z+': self._gtk.Button("z-farther", "Z+", "color3"),
-            'z-': self._gtk.Button("z-closer", "Z-", "color3"),
-            'home': self._gtk.Button("home", _("Home All"), "color4"),
-            'motors_off': self._gtk.Button("motor-off", _("Disable Motors"), "color4"),
-        }
-        self.buttons['x+'].connect("clicked", self.move, "X", "+")
-        self.buttons['x-'].connect("clicked", self.move, "X", "-")
-        self.buttons['y+'].connect("clicked", self.move, "Y", "+")
-        self.buttons['y-'].connect("clicked", self.move, "Y", "-")
-        self.buttons['z+'].connect("clicked", self.move, "Z", "+")
-        self.buttons['z-'].connect("clicked", self.move, "Z", "-")
-        self.buttons['home'].connect("clicked", self.home)
-        script = {"script": "M18"}
-        self.buttons['motors_off'].connect("clicked", self._screen._confirm_send_action,
-                                           _("Are you sure you wish to disable motors?"),
-                                           "printer.gcode.script", script)
-        self.adjust = self._gtk.Button("settings", None, "color2", 1, Gtk.PositionType.RIGHT, 1)
-        self.adjust.connect("clicked", self.load_menu, 'options', _('Settings'))
-        self.adjust.set_hexpand(False)
         grid = self._gtk.HomogeneousGrid()
-        if self._screen.vertical_mode:
-            if self._screen.lang_ltr:
-                grid.attach(self.buttons['x+'], 2, 1, 1, 1)
-                grid.attach(self.buttons['x-'], 0, 1, 1, 1)
-                grid.attach(self.buttons['z+'], 2, 2, 1, 1)
-                grid.attach(self.buttons['z-'], 0, 2, 1, 1)
-            else:
-                grid.attach(self.buttons['x+'], 0, 1, 1, 1)
-                grid.attach(self.buttons['x-'], 2, 1, 1, 1)
-                grid.attach(self.buttons['z+'], 0, 2, 1, 1)
-                grid.attach(self.buttons['z-'], 2, 2, 1, 1)
-            grid.attach(self.adjust, 1, 2, 1, 1)
-            grid.attach(self.buttons['y+'], 1, 0, 1, 1)
-            grid.attach(self.buttons['y-'], 1, 1, 1, 1)
 
-        else:
-            if self._screen.lang_ltr:
-                grid.attach(self.buttons['x+'], 2, 1, 1, 1)
-                grid.attach(self.buttons['x-'], 0, 1, 1, 1)
-            else:
-                grid.attach(self.buttons['x+'], 0, 1, 1, 1)
-                grid.attach(self.buttons['x-'], 2, 1, 1, 1)
-            grid.attach(self.buttons['y+'], 1, 0, 1, 1)
-            grid.attach(self.buttons['y-'], 1, 1, 1, 1)
-            grid.attach(self.buttons['z+'], 3, 0, 1, 1)
-            grid.attach(self.buttons['z-'], 3, 1, 1, 1)
-
-        grid.attach(self.buttons['home'], 0, 0, 1, 1)
-        grid.attach(self.buttons['motors_off'], 2, 0, 1, 1)
-
-        self.ext_feeder = {
-            'extruder1': '1',
-            'extruder': '0'
+        self.buttons = {
+            "extruder": self._gtk.Button("extruder-square", None, None),
+            "bed": self._gtk.Button("bed-square", None, None),
+            "up": self._gtk.Button("key-up", None, "color3"),
+            "down": self._gtk.Button("key-down", None, "color2"),
+            "left": self._gtk.Button("key-left", None, "color1"),
+            "right": self._gtk.Button("key-right", None, "color1"),
+            "home": self._gtk.Button("home", "Home All", None),
+            "off": self._gtk.Button("motor-off", "Disable Motors", None),
+            "gear": self._gtk.Button("settings", None, None)
         }
 
-        extgrid = self._gtk.HomogeneousGrid()
-        limit = 5
-        i = 1
-        for extruder in self._printer.get_tools():
-            self.labels[extruder] = self._gtk.Button(f"extruder-{i}", None, None, .68, Gtk.PositionType.LEFT, 1)
-            self.labels[extruder].connect("clicked", self.change_extruder, extruder)
-            if self.ext_feeder[extruder] != self.current_extruder:
-                self.labels[extruder].set_property("opacity", 0.3)
-            extgrid.attach(self.labels[extruder], i, 0, 1, 1)
-            i += 1
+        grid.attach(self.buttons["extruder"], 0, 2, 1, 1)
+        grid.attach(self.buttons["bed"], 1, 2, 1, 1)
 
-        distgrid = Gtk.Grid()
-        for j, i in enumerate(self.distances):
-            self.labels[i] = self._gtk.Button(label=f"{i}{_('mm')}")
-            self.labels[i].set_direction(Gtk.TextDirection.LTR)
-            self.labels[i].connect("clicked", self.change_distance, i)
-            ctx = self.labels[i].get_style_context()
-            if (self._screen.lang_ltr and j == 0) or (not self._screen.lang_ltr and j == len(self.distances) - 1):
-                ctx.add_class("distbutton_top")
-            elif (not self._screen.lang_ltr and j == 0) or (self._screen.lang_ltr and j == len(self.distances) - 1):
-                ctx.add_class("distbutton_bottom")
+        grid.attach(self.buttons["up"], 1, 0, 1, 1)
+        grid.attach(self.buttons["down"], 1, 1, 1, 1)
+        grid.attach(self.buttons["left"], 0, 1, 1, 1)
+        grid.attach(self.buttons["right"], 2, 1, 1, 1)
+
+        grid.attach(self.buttons["home"], 0, 0, 1, 1)
+        grid.attach(self.buttons["off"], 2, 0, 1, 1)
+        grid.attach(self.buttons["gear"], 2, 2, 1, 1)
+
+        self.buttons["home"].connect("clicked", self.home_all)
+        self.buttons["gear"].connect("clicked", self.menu_item_clicked, {
+                "name": _("Move"),
+                "panel": "move_gear"
+            })
+
+        self.buttons["extruder"].connect("clicked", self.orientation, EXTRUDER)
+        self.buttons["bed"].connect("clicked", self.orientation, BED)
+
+        self.buttons["up"].connect("clicked", self.move, UP)
+        self.buttons["down"].connect("clicked", self.move, DOWN)
+        self.buttons["left"].connect("clicked", self.move, LEFT)
+        self.buttons["right"].connect("clicked", self.move, RIGHT)
+        self.buttons["off"].connect("clicked", self._screen._confirm_send_action,
+                                           _("Are you sure you wish to disable motors?"),
+                                           "printer.gcode.script", {"script": "M18"})
+
+        self.labels['move'] = self._gtk.HomogeneousGrid()
+        self.labels['move'].attach(grid, 0, 0, 1, 2)
+
+        self.content.add(self.labels['move'])
+        self.orientation("", EXTRUDER)
+
+    def home_all(self, button):
+        self._screen._ws.klippy.gcode_script("G28")
+
+    def orientation(self, button, value):
+        self.active = value
+        self.buttons["left"].set_sensitive(True)
+        self.buttons["right"].set_sensitive(True)
+        self.buttons["extruder"].set_property("opacity", 0.3)
+        self.buttons["bed"].set_property("opacity", 0.3)
+
+        if self.active == EXTRUDER:
+            self.buttons["extruder"].set_property("opacity", 1.0)
+        if self.active == BED:
+            self.buttons["bed"].set_property("opacity", 1.0)
+            self.buttons["left"].set_sensitive((False))
+            self.buttons["right"].set_sensitive((False))
+
+    def move(self, button, direction):
+
+        if direction == UP:
+            if self.active == EXTRUDER:
+                self._screen._ws.klippy.gcode_script(f"G1 Y300 F{SPEED}")
+                logging.debug("Moving Extruder Up")
             else:
-                ctx.add_class("distbutton")
-            if i == self.distance:
-                ctx.add_class("distbutton_active")
-            distgrid.attach(self.labels[i], j, 0, 1, 1)
-
-        bottomgrid = self._gtk.HomogeneousGrid()
-        bottomgrid.set_direction(Gtk.TextDirection.LTR)
-        bottomgrid.attach(self.adjust, 3, 0, 2, 2)
-        bottomgrid.attach(extgrid, 1, 0, 1, 2)
-
-        self.labels['move_menu'] = self._gtk.HomogeneousGrid()
-        self.labels['move_menu'].attach(grid, 0, 0, 1, 3)
-        self.labels['move_menu'].attach(bottomgrid, 0, 3, 1, 1)
-        self.labels['move_menu'].attach(distgrid, 0, 4, 1, 1)
-
-        self.content.add(self.labels['move_menu'])
-
-        printer_cfg = self._printer.get_config_section("printer")
-        # The max_velocity parameter is not optional in klipper config.
-        max_velocity = int(float(printer_cfg["max_velocity"]))
-        if max_velocity <= 1:
-            logging.error(f"Error getting max_velocity\n{printer_cfg}")
-            max_velocity = 50
-        if "max_z_velocity" in printer_cfg:
-            max_z_velocity = max(int(float(printer_cfg["max_z_velocity"])), 10)
+                self._screen._ws.klippy.gcode_script(f"G1 Z0 F{SPEED}")
+                logging.debug("Moving Bed Up")
+        elif direction == DOWN:
+            if self.active == EXTRUDER:
+                self._screen._ws.klippy.gcode_script(f"G1 Y0 F{SPEED}")
+                logging.debug("Moving Extruder Down")
+            else:
+                self._screen._ws.klippy.gcode_script(f"G1 Z340 F{SPEED}")
+                logging.debug("Moving Bed Down")
+        elif direction == LEFT:
+            self._screen._ws.klippy.gcode_script(f"G1 X0 F{SPEED}")
+            logging.debug("Moving Extruder to the Left")
+        elif direction == RIGHT:
+            self._screen._ws.klippy.gcode_script(f"G1 X320 F{SPEED}")
+            logging.debug("Moving Extruder to the Right")
         else:
-            max_z_velocity = max_velocity
+            print("unknown direction")
 
-        configurable_options = [
-            {"invert_x": {"section": "main", "name": _("Invert X"), "type": "binary", "value": "False"}},
-            {"invert_y": {"section": "main", "name": _("Invert Y"), "type": "binary", "value": "False"}},
-            {"invert_z": {"section": "main", "name": _("Invert Z"), "type": "binary", "value": "False"}},
-            {"move_speed_xy": {
-                "section": "main", "name": _("XY Speed (mm/s)"), "type": "scale", "value": "50",
-                "range": [1, max_velocity], "step": 1}},
-            {"move_speed_z": {
-                "section": "main", "name": _("Z Speed (mm/s)"), "type": "scale", "value": "10",
-                "range": [1, max_z_velocity], "step": 1}}
-        ]
-
-        self.labels['options_menu'] = self._gtk.ScrolledWindow()
-        self.labels['options'] = Gtk.Grid()
-        self.labels['options_menu'].add(self.labels['options'])
-        for option in configurable_options:
-            name = list(option)[0]
-            self.add_option('options', self.settings, name, option[name])
+    def process_busy(self, busy):
+        for button in self.buttons:
+            if button == "gear":
+                continue
+            else:
+                self.buttons[button].set_sensitive(not busy)
 
     def process_update(self, action, data):
-
-        if action != "notify_status_update":
-            return
-
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-
-        for extruder in self._printer.get_tools():
-            if self.ext_feeder[extruder] != self.current_extruder:
-                self.labels[extruder].set_property("opacity", 0.3)
-            else:
-                self.labels[extruder].set_property("opacity", 1.0)
-
-        homed_axes = self._printer.get_stat("toolhead", "homed_axes")
-        if homed_axes == "xyz":
-            if "gcode_move" in data and "gcode_position" in data["gcode_move"]:
-                self.adjust.set_label(f"{self.pos_x} {self.pos_y} {self.pos_z}")
-
-        if "x" in homed_axes:
-            if "gcode_move" in data and "gcode_position" in data["gcode_move"]:
-                self.pos_x = f"X: {data['gcode_move']['gcode_position'][0]:.2f}"
-        else:
-            self.pos_x = "X: ?"
-        if "y" in homed_axes:
-            if "gcode_move" in data and "gcode_position" in data["gcode_move"]:
-                self.pos_y = f"Y: {data['gcode_move']['gcode_position'][1]:.2f}"
-        else:
-            self.pos_y = "Y: ?"
-        if "z" in homed_axes:
-            if "gcode_move" in data and "gcode_position" in data["gcode_move"]:
-                self.pos_z = f"Z: {data['gcode_move']['gcode_position'][2]:.2f}"
-        else:
-            self.pos_z = "Z: ?"
-
-    def change_distance(self, widget, distance):
-        logging.info(f"### Distance {distance}")
-        self.labels[f"{self.distance}"].get_style_context().remove_class("distbutton_active")
-        self.labels[f"{distance}"].get_style_context().add_class("distbutton_active")
-        self.distance = distance
-
-    def move(self, widget, axis, direction):
-        if self._config.get_config()['main'].getboolean(f"invert_{axis.lower()}", False):
-            direction = "-" if direction == "+" else "+"
-
-        dist = f"{direction}{self.distance}"
-        config_key = "move_speed_z" if axis == "Z" else "move_speed_xy"
-        speed = None if self.sv_printer_cfg is None else self.sv_printer_cfg.getint(config_key, None)
-        if speed is None:
-            speed = self._config.get_config()['main'].getint(config_key, 20)
-        speed = 60 * max(1, speed)
-        script = f"{KlippyGcodes.MOVE_RELATIVE}\nG0 {axis}{dist} F{speed}"
-        self._screen._send_action(widget, "printer.gcode.script", {"script": script})
-        if self._printer.get_stat("gcode_move", "absolute_coordinates"):
-            self._screen._ws.klippy.gcode_script("G90")
-
-    def add_option(self, boxname, opt_array, opt_name, option):
-        name = Gtk.Label()
-        name.set_markup(f"<big><b>{option['name']}</b></big>")
-        name.set_hexpand(True)
-        name.set_vexpand(True)
-        name.set_halign(Gtk.Align.START)
-        name.set_valign(Gtk.Align.CENTER)
-        name.set_line_wrap(True)
-        name.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
-
-        dev = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-        dev.get_style_context().add_class("frame-item")
-        dev.set_hexpand(True)
-        dev.set_vexpand(False)
-        dev.set_valign(Gtk.Align.CENTER)
-        dev.add(name)
-
-        if option['type'] == "binary":
-            box = Gtk.Box()
-            box.set_vexpand(False)
-            switch = Gtk.Switch()
-            switch.set_hexpand(False)
-            switch.set_vexpand(False)
-            switch.set_active(self._config.get_config().getboolean(option['section'], opt_name))
-            switch.connect("notify::active", self.switch_config_option, option['section'], opt_name)
-            switch.set_property("width-request", round(self._gtk.font_size * 7))
-            switch.set_property("height-request", round(self._gtk.font_size * 3.5))
-            box.add(switch)
-            dev.add(box)
-        elif option['type'] == "scale":
-            dev.set_orientation(Gtk.Orientation.VERTICAL)
-            scale = Gtk.Scale.new_with_range(orientation=Gtk.Orientation.HORIZONTAL,
-                                             min=option['range'][0], max=option['range'][1], step=option['step'])
-            scale.set_hexpand(True)
-            scale.set_value(int(self._config.get_config().get(option['section'], opt_name, fallback=option['value'])))
-            scale.set_digits(0)
-            scale.connect("button-release-event", self.scale_moved, option['section'], opt_name)
-            dev.add(scale)
-
-        opt_array[opt_name] = {
-            "name": option['name'],
-            "row": dev
-        }
-
-        opts = sorted(list(opt_array), key=lambda x: opt_array[x]['name'])
-        pos = opts.index(opt_name)
-
-        self.labels[boxname].insert_row(pos)
-        self.labels[boxname].attach(opt_array[opt_name]['row'], 0, pos, 1, 1)
-        self.labels[boxname].show_all()
-
-    def back(self):
-        if len(self.menu) > 1:
-            self.unload_menu()
-            return True
-        return False
-
-    def change_extruder(self, widget, extruder):
-        logging.info(f"Changing extruder to {extruder}")
-        self._screen._ws.klippy.gcode_script(f"T{self._printer.get_tool_number(extruder)}")
-
-    def home(self, widget):
-        self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
+            if action == "notify_busy":
+                self.process_busy(data)
+                return

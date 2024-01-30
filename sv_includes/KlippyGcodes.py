@@ -19,7 +19,7 @@ class KlippyGcodes:
 
     @staticmethod
     def gcode_offset(x, y, z):
-        return f"SET_GCODE_OFFSET X={x} Y={y} Z={z}"
+        return f"IDEX_OFFSET X={x} Y={y} Z={z}"
 
     @staticmethod
     def idex_offset(x, y):

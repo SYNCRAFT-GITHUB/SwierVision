@@ -348,7 +348,7 @@ class Panel(ScreenPanel):
             'pause': self._gtk.Button("pause", _("Pause"), "color3"),
             'restart': self._gtk.Button("refresh", _("Restart"), "color3"),
             'resume': self._gtk.Button("unpause", _("Resume"), "color1"),
-            'save_offset_probe': self._gtk.Button("letter-z", _("Save") + "\n" + "Probe", None),
+            'save_probe': self._gtk.Button("letter-z", _("Save") + " Probe", None),
             'idex_offset': self._gtk.Button("idex", _("Calibrate"), None),
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
@@ -361,7 +361,7 @@ class Panel(ScreenPanel):
         self.buttons['pause'].connect("clicked", self.pause)
         self.buttons['restart'].connect("clicked", self.restart)
         self.buttons['resume'].connect("clicked", self.resume)
-        self.buttons['save_offset_probe'].connect("clicked", self.save_offset, "probe")
+        self.buttons['save_probe'].connect("clicked", self.save_offset, "probe")
         self.buttons['idex_offset'].connect("clicked", self.menu_item_clicked, {
             "panel": "idex_offset", "name": _("Calibrate")})
 
@@ -697,10 +697,7 @@ class Panel(ScreenPanel):
             self.zoffset = float(offset[2]) if offset else 0
             if self.zoffset != 0:
                 self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
-                if "Z_OFFSET_APPLY_PROBE" in self._printer.available_commands:
-                    self.buttons['button_grid'].attach(self.buttons["save_offset_probe"], 1, 0, 1, 1)
-                else:
-                    self.buttons['button_grid'].attach(Gtk.Label(), 1, 0, 1, 1)
+                self.buttons['button_grid'].attach(self.buttons["save_probe"], 1, 0, 1, 1)
             else:
                 if not 'idex_calibrate' in self.filename:
                     self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)

@@ -749,6 +749,8 @@ class Panel(ScreenPanel):
         self._gtk.remove_dialog(dialog)
 
     def beauty(self, text):
+        if "idex_calibrate" in text:
+            return _("Calibrate IDEX")
         delete = ["SX1", "SX2", ".JOB/"]
         i = text.replace("_", " ")
         for keyword in delete:

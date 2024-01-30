@@ -36,13 +36,13 @@ class Panel(ScreenPanel):
 
         self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")
         self.labels['x-'] = self._gtk.Button("x-decrease", None, "color2")
-        self.labels['x+'].connect("clicked", self.increment, True, False, False)
-        self.labels['x-'].connect("clicked", self.decrease, True, False, False)
+        self.labels['x+'].connect("clicked", self.increment, True, False)
+        self.labels['x-'].connect("clicked", self.decrease, True, False)
 
         self.labels['y+'] = self._gtk.Button("y-increase", None, "color1")
         self.labels['y-'] = self._gtk.Button("y-decrease", None, "color2")
-        self.labels['y+'].connect("clicked", self.increment, False, True, False)
-        self.labels['y-'].connect("clicked", self.decrease, False, True, False)
+        self.labels['y+'].connect("clicked", self.increment, False, True)
+        self.labels['y-'].connect("clicked", self.decrease, False, True)
 
         grid.attach(self.labels['xy'], 1, 0, 1, 1)
         grid.attach(self.labels['reset'], 2, 0, 1, 1)

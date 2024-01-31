@@ -102,13 +102,13 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f"G1 X0 F{SPEED}")
             logging.debug("Moving Extruder to the Left")
         elif direction == RIGHT:
-            if self.ext() == 1:
+            if self.ext() == 0:
                 self._screen._ws.klippy.gcode_script(f"G1 X280 F{SPEED}")
             else:
                 self._screen._ws.klippy.gcode_script(f"G1 X320 F{SPEED}")
             logging.debug("Moving Extruder to the Right")
         elif direction == LEFT:
-            if self.ext() == 1:
+            if self.ext() == 0:
                 self._screen._ws.klippy.gcode_script(f"G1 X-15 F{SPEED}")
             else:
                 self._screen._ws.klippy.gcode_script(f"G1 X25 F{SPEED}")

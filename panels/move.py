@@ -86,7 +86,7 @@ class Panel(ScreenPanel):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
 
     def ext(self):
-        return self._config.variables_value_reveal('active_carriage', isString=False)
+        return int(self._config.variables_value_reveal('active_carriage', isString=False))
 
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")

@@ -85,7 +85,7 @@ class Panel(ScreenPanel):
     def home_all(self, button):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
 
-    def ext():
+    def ext(self):
         return self._config.variables_value_reveal('active_carriage', isString=False)
 
     def change_extruder(self, widget, extruder):

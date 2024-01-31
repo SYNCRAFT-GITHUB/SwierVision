@@ -191,16 +191,19 @@ class Panel(ScreenPanel):
             return False
         return True
 
+    def ext_int(self) -> int:
+        return 1 if '1' in self.extruder_option else 0
+
     def confirm_set_default(self, widget, code):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.extruder_option))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext_int()))
         self._screen._menu_go_back()
 
     def confirm_set_empty(self, widget):
-            self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.extruder_option))
-            self._screen._menu_go_back()
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext_int()))
+        self._screen._menu_go_back()
 
     def confirm_set_experimental(self, widget, code):
-        script = Gcode.change_material(m=code, ext=self.extruder_option)
+        script = Gcode.change_material(m=code, ext=self.ext_int())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -211,7 +214,7 @@ class Panel(ScreenPanel):
         self._screen._menu_go_back()
 
     def confirm_set_custom(self, widget):
-        script = Gcode.change_material(m='GENERIC', ext=self.extruder_option)
+        script = Gcode.change_material(m='GENERIC', ext=self.ext_int())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

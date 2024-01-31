@@ -159,6 +159,8 @@ class Panel(ScreenPanel):
                 material = self._config.variables_value_reveal('material_ext0')
             if 'empty' in material:
                 material = _("Empty")
+            if 'GENERIC' in material:
+                material = _("Generic")
             self.labels[extruder].set_label(material)
             if self.ext_feeder[extruder] != self.current_extruder:
                 self.labels[extruder].set_property("opacity", 0.3)

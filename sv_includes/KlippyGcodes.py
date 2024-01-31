@@ -6,8 +6,8 @@ class KlippyGcodes:
     EXTRUDE_REL = "M83"
 
     @staticmethod
-    def change_material(m, ext="extruder"):
-        return f"CHANGE_MATERIAL M='{m}' EXT='{ext}'"
+    def change_material(m, ext=0):
+        return f"CHANGE_MATERIAL M='{m}' EXT={ext}"
 
     @staticmethod
     def load_filament(t, m, nz):

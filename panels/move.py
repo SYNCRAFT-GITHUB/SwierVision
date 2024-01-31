@@ -55,11 +55,11 @@ class Panel(ScreenPanel):
         }
 
         for i, extruder in enumerate(self._printer.get_tools()):
-            self.labels[extruder] = self._gtk.Button(f"extruder-{i+1}", None, None, 1.35, Gtk.PositionType.TOP, 1)
-            self.labels[extruder].connect("clicked", self.change_extruder, extruder)
-            if self.ext_feeder[extruder] != self._config.variables_value_reveal('active_carriage', isString=False):
-                self.labels[extruder].set_property("opacity", 0.3)
-            grid.attach(self.labels[extruder], i, 2, 1, 1)
+            self.buttons[extruder] = self._gtk.Button(f"extruder-{i+1}", None, None, 1.35, Gtk.PositionType.TOP, 1)
+            self.buttons[extruder].connect("clicked", self.change_extruder, extruder)
+            if self.ext_feeder[extruder] != self.ext():
+                self.buttons[extruder].set_property("opacity", 0.3)
+            grid.attach(self.buttons[extruder], i, 2, 1, 1)
 
         self.buttons["home"].connect("clicked", self.home_all)
         self.buttons["gear"].connect("clicked", self.menu_item_clicked, {
@@ -85,6 +85,9 @@ class Panel(ScreenPanel):
     def home_all(self, button):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
 
+    def ext():
+        return self._config.variables_value_reveal('active_carriage', isString=False)
+
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")
         self._screen._ws.klippy.gcode_script(f"T{self._printer.get_tool_number(extruder)}")
@@ -99,8 +102,17 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f"G1 X0 F{SPEED}")
             logging.debug("Moving Extruder to the Left")
         elif direction == RIGHT:
-            self._screen._ws.klippy.gcode_script(f"G1 X320 F{SPEED}")
+            if self.ext() == 1:
+                self._screen._ws.klippy.gcode_script(f"G1 X280 F{SPEED}")
+            else:
+                self._screen._ws.klippy.gcode_script(f"G1 X320 F{SPEED}")
             logging.debug("Moving Extruder to the Right")
+        elif direction == LEFT:
+            if self.ext() == 1:
+                self._screen._ws.klippy.gcode_script(f"G1 X-15 F{SPEED}")
+            else:
+                self._screen._ws.klippy.gcode_script(f"G1 X25 F{SPEED}")
+            logging.debug("Moving Extruder to the Left")
         else:
             print("unknown direction")
 
@@ -122,17 +134,15 @@ class Panel(ScreenPanel):
                 self.buttons[button].set_sensitive(not busy)
 
     def process_update(self, action, data):
-        
+
         if action == "notify_busy":
             self.process_busy(data)
             return
         if action != "notify_status_update":
             return
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-
         for extruder in self._printer.get_tools():
-            if self.ext_feeder[extruder] != self.current_extruder:
+            if self.ext_feeder[extruder] != self.ext():
                 self.labels[extruder].set_property("opacity", 0.3)
             else:
                 self.labels[extruder].set_property("opacity", 1.0)

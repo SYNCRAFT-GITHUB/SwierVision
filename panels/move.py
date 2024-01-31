@@ -142,7 +142,7 @@ class Panel(ScreenPanel):
             return
 
         for extruder in self._printer.get_tools():
-            if self.ext_feeder[extruder] != self.ext():
+            if self.ext_feeder[extruder] != str(self.ext()):
                 self.buttons[extruder].set_property("opacity", 0.3)
             else:
                 self.buttons[extruder].set_property("opacity", 1.0)

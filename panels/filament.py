@@ -180,6 +180,7 @@ class Panel(ScreenPanel):
             self.buttons['select_ext1'].set_label(f"{self.nozzle1}")
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):
+            print(f"x: {x}")
             if x in data:
                 if 'enabled' in data[x]:
                     self._printer.set_dev_stat(x, "enabled", data[x]['enabled'])

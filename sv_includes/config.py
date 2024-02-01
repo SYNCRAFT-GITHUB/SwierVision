@@ -55,6 +55,11 @@ class SwierVisionConfig:
         self.defined_config = None
         self.lang = None
         self.langs = {}
+        self.spool_option: str = "NONE"
+        self.filament_activity = {
+            'filament_switch_sensor spool_one': 'entry',
+            'filament_switch_sensor spool_two': 'entry'
+        }
 
         try:
             self.config.read(self.default_config_path)
@@ -182,7 +187,7 @@ class SwierVisionConfig:
             bools = strs = numbers = ()
             if section == 'main':
                 bools = (
-                    'invert_x', 'invert_y', 'invert_z', '24htime', 'only_heaters', 'show_cursor', 'confirm_estop',
+                    'invert_x', 'invert_y', 'invert_z', '24htime', 'only_heaters', 'show_cursor', 'confirm_estop', 'auto_select_material',
                     'autoclose_popups', 'use_dpms', 'use_default_menu', 'side_macro_shortcut', 'use-matchbox-keyboard',
                     'show_heater_power', "show_scroll_steppers", "show_experimental_material", "materials_on_top",
                 )
@@ -300,6 +305,8 @@ class SwierVisionConfig:
                     {"name": _("Medium") + " " + _("(default)"), "value": "medium"},
                     {"name": _("Large"), "value": "large"}]}},
             {"confirm_estop": {"section": "main", "name": _("Confirm Emergency Stop"), "type": "binary",
+                               "value": "True"}},
+            {"auto_select_material": {"section": "main", "name": _("Select Material when inserting filament"), "type": "binary",
                                "value": "True"}},
             {"only_heaters": {"section": "main", "name": _("Hide sensors in Temp."), "type": "binary",
                               "value": "False", "callback": screen.reload_panels}},
@@ -495,6 +502,18 @@ class SwierVisionConfig:
     def get_extruder_option (self) -> str:
         return self.extruder_option
 
+    def get_spool_option (self):
+        return self.spool_option
+        
+    def get_filament_activity (self, x) -> str:
+        return self.filament_activity[x]
+
+    def detected_in_filament_activity (self) -> bool:
+        for sensor, status in self.filament_activity.items():
+            if status == 'detected':
+                return True
+        return False
+
     def get_topic (self) -> Topic:
         return self.selected_topic
 
@@ -503,6 +522,17 @@ class SwierVisionConfig:
 
     def replace_extruder_option (self, newvalue):
         self.extruder_option = newvalue
+
+    def replace_spool_option (self, newvalue) -> str:
+        self.spool_option = newvalue
+
+    def replace_filament_activity (self, x, newvalue, replace=""):
+        if replace == "":
+            self.filament_activity[x] = newvalue
+        else:
+            for sensor, status in self.filament_activity.items():
+                if status == replace:
+                    self.filament_activity[sensor] = newvalue
 
     def replace_topic (self, topic: Topic):
         self.selected_topic = topic

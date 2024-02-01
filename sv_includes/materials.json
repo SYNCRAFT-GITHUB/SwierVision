@@ -321,8 +321,8 @@
         "temp": 235
     },
     {
-        "name": "TPU D64",
-        "code": "TPU D64",
+        "name": "TPU 64D",
+        "code": "TPU 64D",
         "brand": "any",
         "color": "any",
         "compatible": [

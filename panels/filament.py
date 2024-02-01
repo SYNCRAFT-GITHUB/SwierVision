@@ -46,11 +46,8 @@ class Panel(ScreenPanel):
         grid.attach(self.buttons['settings_ext1'], 5, 4, 1, 1)
 
         self.buttons['unload'].connect("clicked", self.load_unload, "-")
-        self.buttons['load'].connect("clicked", self.reset_material_panel)
-        self.buttons['load'].connect("clicked", self.menu_item_clicked, {
-            "name": _("Select the Material"),
-            "panel": "material_load"
-        })
+        self.buttons['load'].connect("clicked", self.load_material)
+        
         self.buttons['material_ext0'].connect("clicked", self.reset_material_panel)
         self.buttons['material_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
         self.buttons['material_ext0'].connect("clicked", self.menu_item_clicked, {
@@ -81,25 +78,24 @@ class Panel(ScreenPanel):
             'extruder': '0'
         }
 
-        i = 1
-        for extruder in self._printer.get_tools():
+        for i, extruder in enumerate(self._printer.get_tools()):
+            i += 1
             self.labels[extruder] = self._gtk.Button(f"extruder-{i}", None, None, .68, Gtk.PositionType.LEFT, 1)
             self.labels[extruder].connect("clicked", self.change_extruder, extruder)
             self.labels[extruder].get_style_context().add_class("filament_sensor")
             if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             grid.attach(self.labels[extruder], (i+(i/2)), 3, 2, 1)
-            i += 1
 
-        self.buttons['select_ext0'] = self._gtk.Button(None, _("Extruder"), "color2")
-        self.buttons['select_ext1'] = self._gtk.Button(None, _("Extruder"), "color2")
+        self.buttons['select_ext0'] = self._gtk.Button("extruder-1", _("Extruder"), "color2", .78, Gtk.PositionType.LEFT, 1)
+        self.buttons['select_ext1'] = self._gtk.Button("extruder-2", _("Extruder"), "color2", .78, Gtk.PositionType.LEFT, 1)
         
-        self.buttons['select_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
+        self.buttons['select_ext0'].connect("clicked", self.replace_extruder_option, "extruder")
         self.buttons['select_ext0'].connect("clicked", self.menu_item_clicked, {
             "name": _("Select Extruder"),
             "panel": "nozzle"
         })
-        self.buttons['select_ext1'].connect("clicked", self.replace_extruder_option, 'extruder1')
+        self.buttons['select_ext1'].connect("clicked", self.replace_extruder_option, "extruder1")
         self.buttons['select_ext1'].connect("clicked", self.menu_item_clicked, {
             "name": _("Select Extruder"),
             "panel": "nozzle"
@@ -123,6 +119,36 @@ class Panel(ScreenPanel):
 
     def replace_extruder_option(self, button, newvalue):
         self._config.replace_extruder_option(newvalue=newvalue)
+
+    def load_material(self, widget):
+
+        active_carriage = self._config.variables_value_reveal('active_carriage', isString=False)
+
+        nozzle = self._config.variables_value_reveal(f'nozzle{active_carriage}')
+
+        if nozzle not in self.proextruders:
+            print(f"self nozzle: {self.nozzle}")
+            message: str = _("Select Syncraft ProExtruder")
+            self._screen.show_popup_message(message, level=2)
+            return
+        
+        self._screen.delete_temporary_panels()
+
+        material = self._config.variables_value_reveal(f"material_ext{active_carriage}")
+
+        if not material in ["empty", "GENERIC"]:
+            try:
+                iter(self.materials)
+            except:
+                self.materials = []
+            for m in self.materials:
+                if m.code == material:
+                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, self.nozzle))
+        else:
+            self.menu_item_clicked(widget=widget, item={
+                "name": _("Select the Material"),
+                "panel": "material_load"
+            })
 
     def load_unload(self, widget, direction):
         if direction == "-":
@@ -153,10 +179,10 @@ class Panel(ScreenPanel):
             return
 
         for extruder in self._printer.get_tools():
-            if '1' in extruder:
-                material = self._config.variables_value_reveal('material_ext1')
-            else:
+            if extruder == "extruder":
                 material = self._config.variables_value_reveal('material_ext0')
+            else:
+                material = self._config.variables_value_reveal('material_ext1')
             if 'empty' in material:
                 material = _("Empty")
             if 'GENERIC' in material:
@@ -180,7 +206,6 @@ class Panel(ScreenPanel):
             self.buttons['select_ext1'].set_label(f"{self.nozzle1}")
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):
-            print(f"x: {x}")
             if x in data:
                 if 'enabled' in data[x]:
                     self._printer.set_dev_stat(x, "enabled", data[x]['enabled'])

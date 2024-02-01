@@ -130,6 +130,7 @@ class SwierVision(Gtk.Window):
         self.height = self._config.get_main_config().getint("height", None)
         if 'XDG_CURRENT_DESKTOP' in os.environ:
             logging.warning("Running inside a desktop environment is not recommended")
+            logging.warning("Are you a developer?")
             if not self.width:
                 self.width = max(int(monitor.get_geometry().width * .5), 480)
             if not self.height:

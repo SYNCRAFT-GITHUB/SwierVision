@@ -1,6 +1,7 @@
 import configparser
 import logging
 import random
+import json
 import os
 import gi
 
@@ -9,6 +10,7 @@ from gi.repository import Gtk, Pango
 
 from sv_includes.KlippyGcodes import KlippyGcodes
 from sv_includes.screen_panel import ScreenPanel
+from panels.material_load import PrinterMaterial
 
 
 class Panel(ScreenPanel):
@@ -24,6 +26,9 @@ class Panel(ScreenPanel):
 
         self.distance: int = 10
         self.speed: int = 2
+
+        self.materials_json_path = self._config.materials_path(custom=False)
+        self.materials = self.read_materials_from_json(self.materials_json_path)
 
         self.nozzle0 = self._config.variables_value_reveal('nozzle0')
         self.nozzle1 = self._config.variables_value_reveal('nozzle1')
@@ -47,7 +52,7 @@ class Panel(ScreenPanel):
 
         self.buttons['unload'].connect("clicked", self.load_unload, "-")
         self.buttons['load'].connect("clicked", self.load_material)
-        
+
         self.buttons['material_ext0'].connect("clicked", self.reset_material_panel)
         self.buttons['material_ext0'].connect("clicked", self.replace_extruder_option, 'extruder')
         self.buttons['material_ext0'].connect("clicked", self.menu_item_clicked, {
@@ -143,7 +148,7 @@ class Panel(ScreenPanel):
                 self.materials = []
             for m in self.materials:
                 if m.code == material:
-                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, self.nozzle))
+                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, nozzle))
         else:
             self.menu_item_clicked(widget=widget, item={
                 "name": _("Select the Material"),
@@ -170,6 +175,28 @@ class Panel(ScreenPanel):
 
     def active_carriage(self):
         return self._config.variables_value_reveal('active_carriage', isString=False)
+
+    def read_materials_from_json(self, file_path: str):
+        try:
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                return_array = []
+                for item in data:
+                        material = PrinterMaterial(
+                            name=item['name'],
+                            code=item['code'],
+                            brand=item['brand'],
+                            color=item['color'],
+                            compatible=item['compatible'],
+                            experimental=item['experimental'],
+                            temp=item['temp'],
+                        )
+                        return_array.append(material)
+                return return_array
+        except FileNotFoundError:
+            print(f"Not found: {file_path}")
+        except json.JSONDecodeError:
+            print(f"Error decoding JSON: {file_path}")
 
     def process_update(self, action, data):
         if action == "notify_busy":

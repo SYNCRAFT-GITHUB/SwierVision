@@ -2,6 +2,7 @@ import configparser
 import logging
 import random
 import json
+import time
 import os
 import gi
 
@@ -233,19 +234,35 @@ class Panel(ScreenPanel):
             self.buttons['select_ext1'].set_label(f"{self.nozzle1}")
 
         for x, extruder in zip(self._printer.get_filament_sensors(), self._printer.get_tools()):
+            if self._config.detected_in_filament_activity() and ((time.time() - self.start_time) > 1.0):
+                self._config.replace_filament_activity(None, "busy", replace="detected")
+                if self._config.get_main_config().getboolean('auto_select_material', False):
+                    self._screen.delete_temporary_panels()
+                    self.start_time = time.time()
+                    self.menu_item_clicked(widget="material_popup", item={
+                                        "name": _("Select the Material"),
+                                        "panel": "material_popup"
+                                    })
             if x in data:
                 if 'enabled' in data[x]:
                     self._printer.set_dev_stat(x, "enabled", data[x]['enabled'])
                 if 'filament_detected' in data[x]:
                     self._printer.set_dev_stat(x, "filament_detected", data[x]['filament_detected'])
                     if self._printer.get_stat(x, "enabled"):
+
                         if data[x]['filament_detected']:
                             self.labels[extruder].get_style_context().remove_class("filament_sensor_empty")
                             self.labels[extruder].get_style_context().add_class("filament_sensor_detected")
                         else:
                             self.labels[extruder].get_style_context().remove_class("filament_sensor_detected")
                             self.labels[extruder].get_style_context().add_class("filament_sensor_empty")
-                logging.info(f"{x}: {self._printer.get_stat(x)}")
+                            self._config.replace_filament_activity(x, "empty")
+
+                        if self._config.get_filament_activity(x) == "empty" and data[x]['filament_detected']:
+                            self.start_time = time.time()
+                            self._config.replace_filament_activity(x, "detected")
+                            self._config.replace_spool_option(x)
+                    logging.info(f"{x}: {self._printer.get_stat(x)}")
 
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")

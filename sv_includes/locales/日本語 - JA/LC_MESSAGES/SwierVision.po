@@ -1383,6 +1383,21 @@ msgstr "支援画像"
 msgid "Quick help"
 msgstr "クイックヘルプ"
 
+msgid "Raise table"
+msgstr "テーブルを上げる"
+
+msgid "Lower table"
+msgstr "テーブルを下げる"
+
+msgid "Select Material when Inserting Filament"
+msgstr "フィラメントを挿入する際に材料を選択"
+
+msgid "Official Website"
+msgstr "メーカーのウェブサイト"
+
+msgid "Online Help"
+msgstr "オンラインヘルプ"
+
 msgid "Cutting the Filament Correctly"
 msgstr "フィラメントの正しいカット"
 

@@ -1395,6 +1395,21 @@ msgstr "Imagens de Ajuda"
 msgid "Quick help"
 msgstr "Ajuda Rápida"
 
+msgid "Raise table"
+msgstr "Levantar mesa"
+
+msgid "Lower table"
+msgstr "Abaixar mesa"
+
+msgid "Select Material when Inserting Filament"
+msgstr "Selecionar material ao inserir filamento"
+
+msgid "Official Website"
+msgstr "Site Oficial"
+
+msgid "Online Help"
+msgstr "Ajuda Online"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Cortando o Filamento Corretamente"
 

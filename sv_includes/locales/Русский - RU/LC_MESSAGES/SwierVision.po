@@ -1563,6 +1563,21 @@ msgstr "Помощь по изображениям"
 msgid "Quick help"
 msgstr "Быстрая помощь"
 
+msgid "Raise table"
+msgstr "Поднять стол"
+
+msgid "Lower table"
+msgstr "Опустить стол"
+
+msgid "Select Material when Inserting Filament"
+msgstr "Панель нити открывается автоматически"
+
+msgid "Official Website"
+msgstr "Официальный сайт"
+
+msgid "Online Help"
+msgstr "Онлайн-помощь"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Правильное обрезание филамента"
 

@@ -1522,6 +1522,21 @@ msgstr "Unterstützende Bilder"
 msgid "Quick help"
 msgstr "Schnelle Hilfe"
 
+msgid "Raise table"
+msgstr "Up Tisch"
+
+msgid "Lower table"
+msgstr "Unterer Tisch"
+
+msgid "Select Material when Inserting Filament"
+msgstr "Automatisches Materialpanel"
+
+msgid "Official Website"
+msgstr "Offizielle Website"
+
+msgid "Online Help"
+msgstr "Online-Hilfe"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Filament richtig schneiden"
 

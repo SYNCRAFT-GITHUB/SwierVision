@@ -1514,6 +1514,21 @@ msgstr "Immagini di Assistenza"
 msgid "Quick help"
 msgstr "Aiuto Rapido"
 
+msgid "Raise table"
+msgstr "Alzare il tavolo"
+
+msgid "Lower table"
+msgstr "Abbassare il tavolo"
+
+msgid "Select Material when Inserting Filament"
+msgstr "Pannello materiale automatico"
+
+msgid "Official Website"
+msgstr "Sito ufficiale"
+
+msgid "Online Help"
+msgstr "Aiuto online"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Taglio del Filamento Correttamente"
 

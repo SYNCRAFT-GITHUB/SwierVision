@@ -1523,6 +1523,21 @@ msgstr "辅助图片"
 msgid "Quick help"
 msgstr "快速帮助"
 
+msgid "Raise table"
+msgstr "升高桌子"
+
+msgid "Lower table"
+msgstr "走到桌子下面去"
+
+msgid "Select Material when Inserting Filament"
+msgstr "插入材料时材料面板自动打开"
+
+msgid "Official Website"
+msgstr "制造商官方网站"
+
+msgid "Online Help"
+msgstr "互联网上的帮助"
+
 msgid "Cutting the Filament Correctly"
 msgstr "正确切割丝料"
 

@@ -1450,6 +1450,21 @@ msgstr "보조 이미지"
 msgid "Quick help"
 msgstr "빠른 도움말"
 
+msgid "Raise table"
+msgstr "탁자 올리기"
+
+msgid "Lower table"
+msgstr "탁자 내리기"
+
+msgid "Select Material when Inserting Filament"
+msgstr "필라멘트 삽입 시 재료 선택"
+
+msgid "Official Website"
+msgstr "제조업체 웹사이트"
+
+msgid "Online Help"
+msgstr "인터넷 도움말"
+
 msgid "Cutting the Filament Correctly"
 msgstr "필라멘트 올바르게 자르기"
 

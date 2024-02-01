@@ -28,8 +28,8 @@ class Panel(ScreenPanel):
         self.buttons = {
             "ext-up": self._gtk.Button("key-up", None, "color3"),
             "ext-down": self._gtk.Button("key-down", None, "color2"),
-            "bed-up": self._gtk.Button("arrow-up", None, "color3"),
-            "bed-down": self._gtk.Button("arrow-down", None, "color2"),
+            "bed-up": self._gtk.Button("arrow-up", _("Raise table"), "color3"),
+            "bed-down": self._gtk.Button("arrow-down", _("Lower table"), "color2"),
             "left": self._gtk.Button("key-left", None, "color1"),
             "right": self._gtk.Button("key-right", None, "color1"),
             "home": self._gtk.Button("home", _("Home All"), None),
@@ -86,7 +86,7 @@ class Panel(ScreenPanel):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
 
     def active_carriage(self):
-        return int(self._config.variables_value_reveal('active_carriage', isString=False))
+        return self._config.variables_value_reveal('active_carriage', isString=False)
 
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")

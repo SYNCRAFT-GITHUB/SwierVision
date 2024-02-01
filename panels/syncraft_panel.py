@@ -29,6 +29,7 @@ class Panel(ScreenPanel):
             SyncraftPanelButton(panel='update', title=_("Update via Internet"), icon='update'),
             SyncraftPanelButton(panel='usb_actions', title=_("USB Device"), icon='usb'),
             SyncraftPanelButton(panel='help', title=_("Quick help"), icon='help'),
+            SyncraftPanelButton(panel='qrcode', title=_("Official Website"), icon='qrcode')
         ]
 
         grid = self._gtk.HomogeneousGrid()

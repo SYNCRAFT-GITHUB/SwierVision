@@ -1570,6 +1570,21 @@ msgstr "Images d'Assistance"
 msgid "Quick help"
 msgstr "Aide Rapide"
 
+msgid "Raise table"
+msgstr "Lever la table"
+
+msgid "Lower table"
+msgstr "Abaisser la table"
+
+msgid "Select Material when Inserting Filament"
+msgstr "Panneau de matériaux automatique"
+
+msgid "Official Website"
+msgstr "Site officiel"
+
+msgid "Online Help"
+msgstr "Aide en ligne"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Couper le Filament Correctement"
 

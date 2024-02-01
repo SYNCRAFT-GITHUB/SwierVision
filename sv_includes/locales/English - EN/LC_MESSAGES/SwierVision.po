@@ -1367,9 +1367,6 @@ msgstr ""
 msgid "After completing the procedure, press the button to finish."
 msgstr ""
 
-msgid "After completing the procedure, press the button to finish."
-msgstr ""
-
 msgid "Help"
 msgstr ""
 
@@ -1377,6 +1374,21 @@ msgid "Assistive Images"
 msgstr ""
 
 msgid "Quick help"
+msgstr ""
+
+msgid "Raise table"
+msgstr ""
+
+msgid "Lower table"
+msgstr ""
+
+msgid "Select Material when Inserting Filament"
+msgstr ""
+
+msgid "Official Website"
+msgstr ""
+
+msgid "Online Help"
 msgstr ""
 
 msgid "Cutting the Filament Correctly"

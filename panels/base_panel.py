@@ -229,12 +229,10 @@ class BasePanel(ScreenPanel):
             current_ext = self._config.variables_value_reveal('active_carriage', isString=False)
             material_ext0 = self._config.variables_value_reveal('material_ext0')
             material_ext1 = self._config.variables_value_reveal('material_ext1')
-            if current_ext == False:
+            try:
+                current_ext = f'{_("Feeder")[0]}{current_ext+1}'
+            except:
                 current_ext = _("Error")
-            elif '1' in str(current_ext):
-                current_ext = f'{_("Feeder")[0]}2'
-            else:
-                current_ext = f'{_("Feeder")[0]}1'
             material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0
             material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1
             self._screen.base_panel.set_title(f"{current_ext} - {material_ext0}, {material_ext1}")

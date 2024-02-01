@@ -57,7 +57,7 @@ class Panel(ScreenPanel):
         for i, extruder in enumerate(self._printer.get_tools()):
             self.buttons[extruder] = self._gtk.Button(f"extruder-{i+1}", None, None, 1.35, Gtk.PositionType.TOP, 1)
             self.buttons[extruder].connect("clicked", self.change_extruder, extruder)
-            if self.ext_feeder[extruder] != self.ext():
+            if self.ext_feeder[extruder] != self.active_carriage():
                 self.buttons[extruder].set_property("opacity", 0.3)
             grid.attach(self.buttons[extruder], i, 2, 1, 1)
 
@@ -85,7 +85,7 @@ class Panel(ScreenPanel):
     def home_all(self, button):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
 
-    def ext(self):
+    def active_carriage(self):
         return int(self._config.variables_value_reveal('active_carriage', isString=False))
 
     def change_extruder(self, widget, extruder):
@@ -102,13 +102,13 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f"G1 X0 F{SPEED}")
             logging.debug("Moving Extruder to the Left")
         elif direction == RIGHT:
-            if self.ext() == 0:
+            if self.active_carriage() == 0:
                 self._screen._ws.klippy.gcode_script(f"G1 X280 F{SPEED}")
             else:
                 self._screen._ws.klippy.gcode_script(f"G1 X320 F{SPEED}")
             logging.debug("Moving Extruder to the Right")
         elif direction == LEFT:
-            if self.ext() == 0:
+            if self.active_carriage() == 0:
                 self._screen._ws.klippy.gcode_script(f"G1 X-15 F{SPEED}")
             else:
                 self._screen._ws.klippy.gcode_script(f"G1 X25 F{SPEED}")
@@ -142,7 +142,7 @@ class Panel(ScreenPanel):
             return
 
         for extruder in self._printer.get_tools():
-            if self.ext_feeder[extruder] != str(self.ext()):
+            if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.buttons[extruder].set_property("opacity", 0.3)
             else:
                 self.buttons[extruder].set_property("opacity", 1.0)

@@ -64,8 +64,6 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['material_set_menu_popup']
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-
         if self._config.get_spool_option() == '1':
             self.nozzle = self._config.variables_value_reveal('nozzle1')
         else:
@@ -112,8 +110,11 @@ class Panel(ScreenPanel):
 
     def process_update(self, action, data):
 
-        for x in self._printer.get_filament_sensors():
+        if data in [True, False]:
+            return
 
+        for x in self._printer.get_filament_sensors():
+        
             if x in data:
                 
                 if 'enabled' in data[x]:
@@ -125,7 +126,7 @@ class Panel(ScreenPanel):
                             self._config.replace_filament_activity(x, "empty")
                             self._screen._menu_go_back()
 
-        if self.get_variable('nozzle') not in self.proextruders:
+        if self.nozzle not in self.proextruders:
             self.generic_button.set_label(_("Select Syncraft ProExtruder"))
             for key, value in self.proextruders.items():
                 try:
@@ -235,18 +236,24 @@ class Panel(ScreenPanel):
             return False
         return True
 
+    def ext(self):
+        if "two" in self._config.get_spool_option():
+            return 1
+        else:
+            return 0
+
     def confirm_set_default(self, widget, code):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self._config.get_extruder_option()))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext()))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
         self._screen._menu_go_back()
 
     def confirm_set_empty(self, widget):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self._config.get_extruder_option()))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
         self._screen._menu_go_back()
 
     def confirm_set_experimental(self, widget, code):
-        script = Gcode.change_material(m=code, ext=self._config.get_extruder_option())
+        script = Gcode.change_material(m=code, ext=self.ext())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -258,7 +265,7 @@ class Panel(ScreenPanel):
         self._screen._menu_go_back()
 
     def confirm_set_custom(self, widget):
-        script = Gcode.change_material(m='GENERIC', ext=self._config.get_extruder_option())
+        script = Gcode.change_material(m='GENERIC', ext=self.ext())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

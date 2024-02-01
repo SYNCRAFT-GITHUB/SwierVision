@@ -63,13 +63,10 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['material_set_menu']
 
-        self.extruder_option = self._config.get_extruder_option()
-        self.nozzle = "none"
-
-        if '1' in str(self.extruder_option):
-            self.nozzle = self._config.variables_value_reveal('nozzle1')
-        else:
+        if self._config.get_extruder_option() == "extruder":
             self.nozzle = self._config.variables_value_reveal('nozzle0')
+        else:
+            self.nozzle = self._config.variables_value_reveal('nozzle1')
 
         self.materials_json_path = self._config.materials_path(custom=False)
         self.custom_json_path = self._config.materials_path(custom=True)
@@ -191,19 +188,19 @@ class Panel(ScreenPanel):
             return False
         return True
 
-    def ext_int(self) -> int:
-        return 1 if '1' in self.extruder_option else 0
+    def ext(self) -> int:
+        return 0 if self._config.get_extruder_option() == "extruder" else 1
 
     def confirm_set_default(self, widget, code):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext_int()))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext()))
         self._screen._menu_go_back()
 
     def confirm_set_empty(self, widget):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext_int()))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
         self._screen._menu_go_back()
 
     def confirm_set_experimental(self, widget, code):
-        script = Gcode.change_material(m=code, ext=self.ext_int())
+        script = Gcode.change_material(m=code, ext=self.ext())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -214,7 +211,7 @@ class Panel(ScreenPanel):
         self._screen._menu_go_back()
 
     def confirm_set_custom(self, widget):
-        script = Gcode.change_material(m='GENERIC', ext=self.ext_int())
+        script = Gcode.change_material(m='GENERIC', ext=self.ext())
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

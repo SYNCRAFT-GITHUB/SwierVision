@@ -289,10 +289,6 @@ class Panel(MenuPanel):
                             self.start_time = time.time()
                             self._config.replace_filament_activity(x, "detected")
                             self._config.replace_spool_option(x)
-                            if 'two' in str(x):
-                                self._config.replace_extruder_option(newvalue='1')
-                            else:
-                                self._config.replace_extruder_option(newvalue='0')
                         elif not data[x]['filament_detected']:
                             self._config.replace_filament_activity(x, "empty")
                 

@@ -29,6 +29,7 @@ class Panel(ScreenPanel):
             ConfigurationButton(panel='actions', title=_("Actions"), icon='wrench'),
             ConfigurationButton(panel='settings', title=_("Settings"), icon='settings'),
             ConfigurationButton(panel='power', title=_("Power"), icon='shutdown'),
+            ConfigurationButton(panel='material_popup', title="material_popup", icon='custom-script'),
         ]
 
         grid = self._gtk.HomogeneousGrid()

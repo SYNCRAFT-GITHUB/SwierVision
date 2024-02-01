@@ -25,7 +25,6 @@ class Panel(ScreenPanel):
         self.distance: int = 10
         self.speed: int = 2
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         self.nozzle0 = self._config.variables_value_reveal('nozzle0')
         self.nozzle1 = self._config.variables_value_reveal('nozzle1')
 
@@ -87,7 +86,7 @@ class Panel(ScreenPanel):
             self.labels[extruder] = self._gtk.Button(f"extruder-{i}", None, None, .68, Gtk.PositionType.LEFT, 1)
             self.labels[extruder].connect("clicked", self.change_extruder, extruder)
             self.labels[extruder].get_style_context().add_class("filament_sensor")
-            if self.ext_feeder[extruder] != self.current_extruder:
+            if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             grid.attach(self.labels[extruder], (i+(i/2)), 3, 2, 1)
             i += 1
@@ -143,14 +142,15 @@ class Panel(ScreenPanel):
         for extruder in self._printer.get_tools():
             self.labels[extruder].set_sensitive((not busy))
 
+    def active_carriage(self):
+        return self._config.variables_value_reveal('active_carriage', isString=False)
+
     def process_update(self, action, data):
         if action == "notify_busy":
             self.process_busy(data)
             return
         if action != "notify_status_update":
             return
-
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for extruder in self._printer.get_tools():
             if '1' in extruder:
@@ -162,7 +162,7 @@ class Panel(ScreenPanel):
             if 'GENERIC' in material:
                 material = _("Generic")
             self.labels[extruder].set_label(material)
-            if self.ext_feeder[extruder] != self.current_extruder:
+            if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             else:
                 self.labels[extruder].set_property("opacity", 1.0)

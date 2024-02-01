@@ -12,7 +12,6 @@ class Panel(ScreenPanel):
 
     def __init__(self, screen, title):
         super().__init__(screen, title)
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         macros = self._printer.get_config_section_list("gcode_macro ")
         self.load_filament = any("LOAD_FILAMENT" in macro.upper() for macro in macros)
         self.unload_filament = any("UNLOAD_FILAMENT" in macro.upper() for macro in macros)
@@ -171,10 +170,6 @@ class Panel(ScreenPanel):
                     self._printer.get_dev_stat(x, "power"),
                     lines=2,
                 )
-
-        if ("toolhead" in data and "extruder" in data["toolhead"] and
-                data["toolhead"]["extruder"] != self.current_extruder):
-            self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
 
         for x in self._printer.get_filament_sensors():
             if x in data:

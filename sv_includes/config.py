@@ -484,14 +484,13 @@ class SwierVisionConfig:
         config = configparser.ConfigParser()
         pdc_path = os.path.join('/home', 'pi', 'printer_data', 'config')
         variables_path = os.path.join(pdc_path, 'variables.cfg')
-        # variables_path = '/Users/rafael/variables.cfg'
         try:
             with open(variables_path, 'r') as variab:
                 config.read_file(variab, source=variables_path)
                 if isString:
                     return str(config.get('Variables', str(key).lower())[1:-1])
                 else:
-                    return str(config.get('Variables', str(key).lower()))
+                    return int(config.get('Variables', str(key).lower()))
         except:
             print(f"Unable to read 'variables.cfg' to get value from key '{key}'.")
             return 'none'

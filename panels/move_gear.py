@@ -23,7 +23,6 @@ class Panel(ScreenPanel):
                     self.distances = dis
                     self.distance = self.distances[-2]
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
         self.settings = {}
         self.menu = ['move_menu']
         self.pos_x = self.pos_y = self.pos_z = self.pos_text = ""
@@ -93,7 +92,7 @@ class Panel(ScreenPanel):
         for extruder in self._printer.get_tools():
             self.labels[extruder] = self._gtk.Button(f"extruder-{i}", None, None, .68, Gtk.PositionType.LEFT, 1)
             self.labels[extruder].connect("clicked", self.change_extruder, extruder)
-            if self.ext_feeder[extruder] != self.current_extruder:
+            if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             extgrid.attach(self.labels[extruder], i, 0, 1, 1)
             i += 1
@@ -156,15 +155,16 @@ class Panel(ScreenPanel):
             name = list(option)[0]
             self.add_option('options', self.settings, name, option[name])
 
+    def active_carriage(self):
+        self._config.variables_value_reveal('active_carriage', isString=False)
+
     def process_update(self, action, data):
 
         if action != "notify_status_update":
             return
 
-        self.current_extruder = self._config.variables_value_reveal('active_carriage', isString=False)
-
         for extruder in self._printer.get_tools():
-            if self.ext_feeder[extruder] != self.current_extruder:
+            if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             else:
                 self.labels[extruder].set_property("opacity", 1.0)

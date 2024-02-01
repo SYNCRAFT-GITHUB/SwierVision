@@ -19,10 +19,17 @@ class Panel(ScreenPanel):
 
         self.buttons = {
             'CALIB_MEC': self._gtk.Button("screw-adjust", _("IDEX Calibration for Z Axis"), "color3"),
-            'CALIB_IDEX': self._gtk.Button("idex", _("IDEX Calibration for XY Axes"), "color4"),
+            'CALIB_IDEX': self._gtk.Button("idex", "  " + _("IDEX Calibration for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
+            'IDEX_OFFSET': self._gtk.Button("settings", None, "color4"),
             'CALIB_Z': self._gtk.Button ("bed-level", _("Bed Calibration"), "color2"),
         }
+
         self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
+        
+        self.buttons['IDEX_OFFSET'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Calibrar IDEX"),
+            "panel": "idex_offset"
+        })
 
         self.buttons['CALIB_MEC'].connect("clicked", self.menu_item_clicked, {
             "name":_("Mechanical Calibration"),
@@ -36,9 +43,10 @@ class Panel(ScreenPanel):
 
         grid = self._gtk.HomogeneousGrid()
 
-        grid.attach(self.buttons['CALIB_MEC'], 0, 0, 1, 1)
-        grid.attach(self.buttons['CALIB_Z'], 0, 1, 1, 1)
-        grid.attach(self.buttons['CALIB_IDEX'], 0, 2, 1, 1)
+        grid.attach(self.buttons['CALIB_MEC'], 0, 0, 5, 1)
+        grid.attach(self.buttons['CALIB_Z'], 0, 1, 5, 1)
+        grid.attach(self.buttons['CALIB_IDEX'], 0, 2, 4, 1)
+        grid.attach(self.buttons['IDEX_OFFSET'], 4, 2, 1, 1)
 
         self.labels['calibrate_panel'] = self._gtk.HomogeneousGrid()
         self.labels['calibrate_panel'].attach(grid, 0, 0, 1, 2)

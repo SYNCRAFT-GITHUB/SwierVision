@@ -1103,7 +1103,7 @@ msgid "Edit User"
 msgstr "사용자 편집"
 
 msgid "Heater Bed"
-msgstr "가열 테이블"
+msgstr "테이블"
 
 msgid "Chamber Fan"
 msgstr "바람 선풍기"
@@ -1464,6 +1464,18 @@ msgstr "제조업체 웹사이트"
 
 msgid "Online Help"
 msgstr "인터넷 도움말"
+
+msgid "IDEX Calibration for XY Axes"
+msgstr "XY 축에 대한 두 개의 압출기 보정"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Z축에 대한 두 개의 압출기 보정"
+
+msgid "Z Axis Calibration"
+msgstr "Z 축 캘리브레이션"
+
+msgid "Bed Calibration"
+msgstr "테이블 교정"
 
 msgid "Cutting the Filament Correctly"
 msgstr "필라멘트 올바르게 자르기"

@@ -166,13 +166,13 @@ msgid "Auto-scroll"
 msgstr "Auto-scroll"
 
 msgid "Bed Level"
-msgstr "Nivelar cama"
+msgstr "Nivelar mesa"
 
 msgid "Bed Mesh"
-msgstr "Malla de cama"
+msgstr "Malla de mesa"
 
 msgid "Bed screw configuration:"
-msgstr "Configuración de tornillos:"
+msgstr "Configuración de tornillos de mesa:"
 
 msgid "Calibrate"
 msgstr "Calibrar"
@@ -1560,6 +1560,18 @@ msgstr "Sitio web oficial"
 
 msgid "Online Help"
 msgstr "Ayuda en línea"
+
+msgid "IDEX Calibration for XY Axes"
+msgstr "Calibración IDEX para ejes XY"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Calibración IDEX para eje Z"
+
+msgid "Z Axis Calibration"
+msgstr "Calibración del eje Z"
+
+msgid "Bed Calibration"
+msgstr "Calibrar Mesa"
 
 msgid "Cutting the Filament Correctly"
 msgstr "Cortando el Filamento Correctamente"

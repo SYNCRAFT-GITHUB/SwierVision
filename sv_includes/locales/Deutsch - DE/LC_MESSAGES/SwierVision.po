@@ -1537,6 +1537,18 @@ msgstr "Offizielle Website"
 msgid "Online Help"
 msgstr "Online-Hilfe"
 
+msgid "IDEX Calibration for XY Axes"
+msgstr "IDEX-Kalibrierung für die XY-Achsen"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "IDEX-Kalibrierung für die Z-Achse"
+
+msgid "Z Axis Calibration"
+msgstr "Z-Achsen-Kalibrierung"
+
+msgid "Bed Calibration"
+msgstr "Druckbettkalibrierung"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Filament richtig schneiden"
 

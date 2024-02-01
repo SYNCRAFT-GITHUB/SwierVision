@@ -684,7 +684,7 @@ msgid "Screen Power Off Time"
 msgstr "Descanso de Tela"
 
 msgid "Screws Adjust"
-msgstr "Niv. Manual"
+msgstr "Nivelamento Manual"
 
 msgid "Select"
 msgstr "Selecionar"
@@ -1409,6 +1409,18 @@ msgstr "Site Oficial"
 
 msgid "Online Help"
 msgstr "Ajuda Online"
+
+msgid "IDEX Calibration for XY Axes"
+msgstr "Calibração IDEX para Eixos XY"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Calibração Mecânica IDEX Z"
+
+msgid "Z Axis Calibration"
+msgstr "Calibração do Eixo Z"
+
+msgid "Bed Calibration"
+msgstr "Calibração da Mesa"
 
 msgid "Cutting the Filament Correctly"
 msgstr "Cortando o Filamento Corretamente"

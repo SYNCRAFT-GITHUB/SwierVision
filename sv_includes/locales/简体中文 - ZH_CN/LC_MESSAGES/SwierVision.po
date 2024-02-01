@@ -166,13 +166,13 @@ msgid "Auto-scroll"
 msgstr "自动滚屏"
 
 msgid "Bed Level"
-msgstr "热床调平"
+msgstr "桌子高度水平"
 
 msgid "Bed Mesh"
-msgstr "热床网格"
+msgstr "桌网"
 
 msgid "Bed screw configuration:"
-msgstr ""
+msgstr "工作台螺丝调整："
 
 msgid "Calibrate"
 msgstr "校准"
@@ -187,7 +187,7 @@ msgid "Calibrating"
 msgstr "执行校准"
 
 msgid "Can't set above the maximum:"
-msgstr "设置值超出最大值："
+msgstr "无法设置超过最大限制："
 
 msgid "Cancel"
 msgstr "取消"
@@ -211,7 +211,7 @@ msgid "Check ADXL Wiring"
 msgstr "检查ADXL的接线"
 
 msgid "Checking for updates, please wait..."
-msgstr ""
+msgstr "在互联网上寻找更新"
 
 msgid "Clear"
 msgstr "清楚"
@@ -264,7 +264,7 @@ msgid "Disable Motors"
 msgstr "关闭电机"
 
 msgid "Disable XY"
-msgstr "关闭 XY 轴电机"
+msgstr "禁用 X 轴和 Y 轴"
 
 msgid "Distance (mm)"
 msgstr "挤出长度（mm）"
@@ -617,10 +617,10 @@ msgid "Recover"
 msgstr "恢复"
 
 msgid "Recover Hard"
-msgstr "重置(Hard)"
+msgstr "恢复（原始方法）"
 
 msgid "Recover Soft"
-msgstr "重置(Soft)"
+msgstr "恢复（温和方法）"
 
 msgid "Reference"
 msgstr "参考"
@@ -1176,7 +1176,7 @@ msgid "Edit User"
 msgstr "编辑用户"
 
 msgid "Heater Bed"
-msgstr "加热桌"
+msgstr "加热台"
 
 msgid "Chamber Fan"
 msgstr "风风扇"
@@ -1537,6 +1537,18 @@ msgstr "制造商官方网站"
 
 msgid "Online Help"
 msgstr "互联网上的帮助"
+
+msgid "IDEX Calibration for XY Axes"
+msgstr "两台挤出机的 XY 轴校准"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Z 轴两个挤出机的校准"
+
+msgid "Z Axis Calibration"
+msgstr "Z轴校准"
+
+msgid "Bed Calibration"
+msgstr "工作台校准"
 
 msgid "Cutting the Filament Correctly"
 msgstr "正确切割丝料"

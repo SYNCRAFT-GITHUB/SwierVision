@@ -1216,7 +1216,7 @@ msgid "Edit User"
 msgstr "Редактировать пользователя"
 
 msgid "Heater Bed"
-msgstr "Таблица печати"
+msgstr "Стол"
 
 msgid "Chamber Fan"
 msgstr "Веер ветра"
@@ -1577,6 +1577,18 @@ msgstr "Официальный сайт"
 
 msgid "Online Help"
 msgstr "Онлайн-помощь"
+
+msgid "IDEX Calibration for XY Axes"
+msgstr "Калибровка IDEX для осей XY"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Калибровка IDEX для оси Z"
+
+msgid "Z Axis Calibration"
+msgstr "Калибровка оси Z"
+
+msgid "Bed Calibration"
+msgstr "Калибровка стола"
 
 msgid "Cutting the Filament Correctly"
 msgstr "Правильное обрезание филамента"

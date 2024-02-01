@@ -18,9 +18,9 @@ class Panel(ScreenPanel):
         self.menu = ['calibrate_panel']
 
         self.buttons = {
-            'CALIB_MEC': self._gtk.Button("screw-adjust", _("Mechanical Calibration"), "color3"),
-            'CALIB_IDEX': self._gtk.Button("idex", _("Calibrate IDEX"), "color4"),
-            'CALIB_Z': self._gtk.Button ("bed-level", _("Z Calibrate"), "color2"),
+            'CALIB_MEC': self._gtk.Button("screw-adjust", _("IDEX Calibration for Z Axis"), "color3"),
+            'CALIB_IDEX': self._gtk.Button("idex", _("IDEX Calibration for XY Axes"), "color4"),
+            'CALIB_Z': self._gtk.Button ("bed-level", _("Bed Calibration"), "color2"),
         }
         self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
 

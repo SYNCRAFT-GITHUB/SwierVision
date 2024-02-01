@@ -1391,6 +1391,18 @@ msgstr ""
 msgid "Online Help"
 msgstr ""
 
+msgid "IDEX Calibration for XY Axes"
+msgstr ""
+
+msgid "IDEX Calibration for Z Axis"
+msgstr ""
+
+msgid "Z Axis Calibration"
+msgstr ""
+
+msgid "Bed Calibration"
+msgstr ""
+
 msgid "Cutting the Filament Correctly"
 msgstr ""
 

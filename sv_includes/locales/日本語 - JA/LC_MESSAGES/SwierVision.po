@@ -1398,6 +1398,18 @@ msgstr "メーカーのウェブサイト"
 msgid "Online Help"
 msgstr "オンラインヘルプ"
 
+msgid "IDEX Calibration for XY Axes"
+msgstr "2 台の押出機の XY 軸の校正"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "2 つの押出機の Z 軸のキャリブレーション"
+
+msgid "Z Axis Calibration"
+msgstr "Z軸のキャリブレーション"
+
+msgid "Bed Calibration"
+msgstr "テーブルキャリブレーション"
+
 msgid "Cutting the Filament Correctly"
 msgstr "フィラメントの正しいカット"
 

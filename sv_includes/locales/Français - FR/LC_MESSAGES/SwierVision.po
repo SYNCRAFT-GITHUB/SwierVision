@@ -1585,6 +1585,18 @@ msgstr "Site officiel"
 msgid "Online Help"
 msgstr "Aide en ligne"
 
+msgid "IDEX Calibration for XY Axes"
+msgstr "Calibration IDEX pour les axes XY"
+
+msgid "IDEX Calibration for Z Axis"
+msgstr "Calibration IDEX pour l'axe Z"
+
+msgid "Z Axis Calibration"
+msgstr "Calibration de l'axe Z"
+
+msgid "Bed Calibration"
+msgstr "Calibrage du tableau"
+
 msgid "Cutting the Filament Correctly"
 msgstr "Couper le Filament Correctement"
 

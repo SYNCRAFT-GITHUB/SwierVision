@@ -1521,7 +1521,7 @@ msgstr "Oficjalna strona"
 msgid "Online Help"
 msgstr "Pomoc online"
 
-msgid "IDEX Calibration for XY Axes"
+msgid "Print IDEX Calibration File for XY Axes"
 msgstr "Kalibracja IDEX dla osi XY"
 
 msgid "IDEX Calibration for Z Axis"

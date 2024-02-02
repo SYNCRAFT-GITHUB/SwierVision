@@ -28,29 +28,28 @@ class Panel(ScreenPanel):
         self.labels['xyz'] = Gtk.Label(self.label_format())
 
         self.labels['reset'] = self._gtk.Button("refresh", None, None)
-        self.labels['reset'].set_property("opacity", 0.5)
         self.labels['reset'].connect("clicked", self.reset_values)
 
-        self.labels['ok'] = self._gtk.Button("complete", None, "color3")
+        self.labels['ok'] = self._gtk.Button("complete", _("Apply"), "color3")
         self.labels['ok'].connect("clicked", self.apply)
 
-        self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")
-        self.labels['x-'] = self._gtk.Button("x-decrease", None, "color2")
+        self.labels['x+'] = self._gtk.Button("key-right", "X+", "color1")
+        self.labels['x-'] = self._gtk.Button("key-left", "X-", "color2")
         self.labels['x+'].connect("clicked", self.increment, True, False, False)
         self.labels['x-'].connect("clicked", self.decrease, True, False, False)
 
-        self.labels['y+'] = self._gtk.Button("y-increase", None, "color1")
-        self.labels['y-'] = self._gtk.Button("y-decrease", None, "color2")
+        self.labels['y+'] = self._gtk.Button("key-up", "Y+", "color1")
+        self.labels['y-'] = self._gtk.Button("key-down", "Y-", "color2")
         self.labels['y+'].connect("clicked", self.increment, False, True, False)
         self.labels['y-'].connect("clicked", self.decrease, False, True, False)
 
-        self.labels['z+'] = self._gtk.Button("z-increase", None, "color1")
-        self.labels['z-'] = self._gtk.Button("z-decrease", None, "color2")
+        self.labels['z+'] = self._gtk.Button("arrow-up", "Z+", "color1")
+        self.labels['z-'] = self._gtk.Button("arrow-down", "Z-", "color2")
         self.labels['z+'].connect("clicked", self.increment, False, False, True)
         self.labels['z-'].connect("clicked", self.decrease, False, False, True)
 
-        grid.attach(self.labels['reset'], 0, 0, 1, 1)
-        grid.attach(self.labels['xyz'], 1, 0, 1, 1)
+        grid.attach(self.labels['xyz'], 0, 0, 1, 1)
+        grid.attach(self.labels['reset'], 1, 0, 1, 1)
         grid.attach(self.labels['ok'], 2, 0, 1, 1)
 
         grid.attach(self.labels['x+'], 0, 1, 1, 1)
@@ -90,7 +89,7 @@ class Panel(ScreenPanel):
         self.distance = distance
 
     def label_format(self) -> str:
-        return f"X: {self.x}\nY: {self.y}\nZ: {self.z}"
+        return f"X\t{self.x}\nY\t{self.y}\nZ\t{self.z}"
 
     def reset_values(self, widget):
         self.x = self.y = self.z = 0

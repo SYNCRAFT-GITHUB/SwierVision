@@ -1410,8 +1410,8 @@ msgstr "Site Oficial"
 msgid "Online Help"
 msgstr "Ajuda Online"
 
-msgid "IDEX Calibration for XY Axes"
-msgstr "Calibração IDEX para Eixos XY"
+msgid "Print IDEX Calibration File for XY Axes"
+msgstr "Imprimir peça de Calibração IDEX XY"
 
 msgid "IDEX Calibration for Z Axis"
 msgstr "Calibração Mecânica IDEX Z"

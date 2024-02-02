@@ -1465,7 +1465,7 @@ msgstr "제조업체 웹사이트"
 msgid "Online Help"
 msgstr "인터넷 도움말"
 
-msgid "IDEX Calibration for XY Axes"
+msgid "Print IDEX Calibration File for XY Axes"
 msgstr "XY 축에 대한 두 개의 압출기 보정"
 
 msgid "IDEX Calibration for Z Axis"

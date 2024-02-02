@@ -1398,7 +1398,7 @@ msgstr "メーカーのウェブサイト"
 msgid "Online Help"
 msgstr "オンラインヘルプ"
 
-msgid "IDEX Calibration for XY Axes"
+msgid "Print IDEX Calibration File for XY Axes"
 msgstr "2 台の押出機の XY 軸の校正"
 
 msgid "IDEX Calibration for Z Axis"

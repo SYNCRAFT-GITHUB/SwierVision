@@ -1391,7 +1391,7 @@ msgstr ""
 msgid "Online Help"
 msgstr ""
 
-msgid "IDEX Calibration for XY Axes"
+msgid "Print IDEX Calibration File for XY Axes"
 msgstr ""
 
 msgid "IDEX Calibration for Z Axis"

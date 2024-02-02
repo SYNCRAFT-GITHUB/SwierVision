@@ -25,26 +25,28 @@ class Panel(ScreenPanel):
         
         self.labels['idex_offset_panel'] = self._gtk.HomogeneousGrid()
 
-        self.labels['xy'] = Gtk.Label(self.label_format())
+        self.labels['x'] = Gtk.Label('?')
+        self.labels['y'] = Gtk.Label('?')
+        self.label_format()
 
         self.labels['reset'] = self._gtk.Button("refresh", None, None)
-        self.labels['reset'].set_property("opacity", 0.5)
         self.labels['reset'].connect("clicked", self.reset_values)
 
-        self.labels['ok'] = self._gtk.Button("complete", None, "color3")
+        self.labels['ok'] = self._gtk.Button("complete", _("Apply"), "color3")
         self.labels['ok'].connect("clicked", self.apply)
 
-        self.labels['x+'] = self._gtk.Button("x-increase", None, "color1")
-        self.labels['x-'] = self._gtk.Button("x-decrease", None, "color2")
+        self.labels['x+'] = self._gtk.Button("key-right", "X+", "color1")
+        self.labels['x-'] = self._gtk.Button("key-left", "X-", "color2")
         self.labels['x+'].connect("clicked", self.increment, True, False)
         self.labels['x-'].connect("clicked", self.decrease, True, False)
 
-        self.labels['y+'] = self._gtk.Button("y-increase", None, "color1")
-        self.labels['y-'] = self._gtk.Button("y-decrease", None, "color2")
+        self.labels['y+'] = self._gtk.Button("key-up", "Y+", "color1")
+        self.labels['y-'] = self._gtk.Button("key-down", "Y-", "color2")
         self.labels['y+'].connect("clicked", self.increment, False, True)
         self.labels['y-'].connect("clicked", self.decrease, False, True)
 
-        grid.attach(self.labels['xy'], 1, 0, 1, 1)
+        grid.attach(self.labels['x'], 0, 0, 1, 1)
+        grid.attach(self.labels['y'], 1, 0, 1, 1)
         grid.attach(self.labels['reset'], 2, 0, 1, 1)
         grid.attach(self.labels['ok'], 2, 1, 1, 2)
 
@@ -81,26 +83,27 @@ class Panel(ScreenPanel):
         self.labels[f"{distance}"].get_style_context().add_class("distbutton_active")
         self.distance = distance
 
-    def label_format(self) -> str:
-        return f"X: {self.x}\nY: {self.y}"
+    def label_format(self):
+        self.labels['x'].set_label(f"X: {self.x}")
+        self.labels['y'].set_label(f"Y: {self.y}")
 
     def reset_values(self, widget):
-        self.x = self.y = 0
-        self.labels['xy'].set_label(self.label_format())
+        self.x = self.y = 0.0
+        self.label_format()
 
     def increment(self, widget, x=False, y=False):
         if x != False:
             self.x = round(self.x + float(self.distance), 3)
         if y != False:
             self.y = round(self.y + float(self.distance), 3)
-        self.labels['xy'].set_label(self.label_format())
+        self.label_format()
 
     def decrease(self, widget, x=False, y=False):
         if x != False:
             self.x = round(self.x - float(self.distance), 3)
         if y != False:
             self.y = round(self.y - float(self.distance), 3)
-        self.labels['xy'].set_label(self.label_format())
+        self.label_format()
 
     def apply(self, widget):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.idex_offset(x=self.x, y=self.y))

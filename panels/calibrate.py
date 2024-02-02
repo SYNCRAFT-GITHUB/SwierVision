@@ -19,8 +19,8 @@ class Panel(ScreenPanel):
 
         self.buttons = {
             'CALIB_MEC': self._gtk.Button("screw-adjust", _("IDEX Calibration for Z Axis"), "color3"),
-            'CALIB_IDEX': self._gtk.Button("idex", "  " + _("IDEX Calibration for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
-            'IDEX_OFFSET': self._gtk.Button("settings", None, "color4"),
+            'CALIB_IDEX': self._gtk.Button("resume", "  " + _("Print IDEX Calibration File for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
+            'IDEX_OFFSET': self._gtk.Button("idex", None, "color4"),
             'CALIB_Z': self._gtk.Button ("bed-level", _("Bed Calibration"), "color2"),
         }
 

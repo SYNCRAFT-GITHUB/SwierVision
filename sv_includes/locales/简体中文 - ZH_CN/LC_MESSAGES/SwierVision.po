@@ -1538,7 +1538,7 @@ msgstr "制造商官方网站"
 msgid "Online Help"
 msgstr "互联网上的帮助"
 
-msgid "IDEX Calibration for XY Axes"
+msgid "Print IDEX Calibration File for XY Axes"
 msgstr "两台挤出机的 XY 轴校准"
 
 msgid "IDEX Calibration for Z Axis"

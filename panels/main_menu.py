@@ -285,7 +285,8 @@ class Panel(MenuPanel):
                 if 'filament_detected' in data[x]:
                     self._printer.set_dev_stat(x, "filament_detected", data[x]['filament_detected'])
                     if self._printer.get_stat(x, "enabled"):
-                        if self._config.get_filament_activity(x) == "empty" and data[x]['filament_detected']:
+                        if self._config.get_filament_activity(x) == "empty" and data[x]['filament_detected'] \
+                            and (time.time() - self._config.get_ready_timestamp() > 4.5):
                             self.start_time = time.time()
                             self._config.replace_filament_activity(x, "detected")
                             self._config.replace_spool_option(x)

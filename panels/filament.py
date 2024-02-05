@@ -258,7 +258,8 @@ class Panel(ScreenPanel):
                             self.labels[extruder].get_style_context().add_class("filament_sensor_empty")
                             self._config.replace_filament_activity(x, "empty")
 
-                        if self._config.get_filament_activity(x) == "empty" and data[x]['filament_detected']:
+                        if self._config.get_filament_activity(x) == "empty" and data[x]['filament_detected'] \
+                        and (time.time() - self._config.get_ready_timestamp() > 4.5):
                             self.start_time = time.time()
                             self._config.replace_filament_activity(x, "detected")
                             self._config.replace_spool_option(x)

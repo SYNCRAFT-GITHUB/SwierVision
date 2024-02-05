@@ -738,6 +738,7 @@ class SwierVision(Gtk.Window):
             logging.debug("Printer not initialized yet")
             self.printer.state = "not ready"
             return
+        self._config.set_ready_timestamp()
         self.first_panel = "welcome" if self._config.get_hidden_config().getboolean('welcome', False) else "main_menu"
         if "welcome" in self.first_panel:
             self.show_panel(self.first_panel, None, remove_all=True)

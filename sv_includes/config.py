@@ -4,6 +4,7 @@ from sv_includes.topic import topics
 import configparser
 import gettext
 import socket
+import time
 import os
 import logging
 import json
@@ -46,6 +47,7 @@ class SwierVisionConfig:
         self.fix_option: str = "NONE"
         self.extruder_option: str = "NONE"
         self.selected_topic: Topic = None
+        self.ready_timestamp = None
         self.nozzle0: str = self.variables_value_reveal('nozzle0')
         self.nozzle1: str = self.variables_value_reveal('nozzle1')
         self.default_config_path = os.path.join(swiervisiondir, "sv_includes", "defaults.conf")
@@ -507,6 +509,9 @@ class SwierVisionConfig:
     def get_filament_activity (self, x) -> str:
         return self.filament_activity[x]
 
+    def get_ready_timestamp(self):
+        return self.ready_timestamp
+
     def detected_in_filament_activity (self) -> bool:
         for sensor, status in self.filament_activity.items():
             if status == 'detected':
@@ -524,6 +529,9 @@ class SwierVisionConfig:
 
     def replace_spool_option (self, newvalue) -> str:
         self.spool_option = newvalue
+
+    def set_ready_timestamp(self):
+        self.ready_timestamp = time.time()
 
     def replace_filament_activity (self, x, newvalue, replace=""):
         if replace == "":

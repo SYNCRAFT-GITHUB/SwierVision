@@ -1,27 +1,5 @@
 [
     {
-        "name": "17-4PH",
-        "code": "17-4PH",
-        "brand": null,
-        "color": null,
-        "compatible": [
-            "Metal 0.4mm"
-        ],
-        "experimental": [],
-        "temp": 260
-    },
-    {
-        "name": "316 L",
-        "code": "316L",
-        "brand": null,
-        "color": null,
-        "compatible": [
-            "Metal 0.4mm"
-        ],
-        "experimental": [],
-        "temp": 260
-    },
-    {
         "name": "Breakaway",
         "code": "Breakaway",
         "brand": null,
@@ -61,6 +39,17 @@
         ],
         "experimental": [],
         "temp": 255
+    },
+    {
+        "name": "BVOH",
+        "code": "BVOH",
+        "brand": null,
+        "color": null,
+        "compatible": [
+            "Standard 0.4mm"
+        ],
+        "experimental": [],
+        "temp": 210
     },
     {
         "name": "CPE",
@@ -146,28 +135,6 @@
             "Metal 0.4mm"
         ],
         "temp": 250
-    },
-    {
-        "name": "BVOH",
-        "code": "BVOH",
-        "brand": null,
-        "color": null,
-        "compatible": [
-            "Standard 0.4mm"
-        ],
-        "experimental": [],
-        "temp": 210
-    },
-    {
-        "name": "PVA",
-        "code": "PVA",
-        "brand": null,
-        "color": null,
-        "compatible": [
-            "Standard 0.4mm"
-        ],
-        "experimental": [],
-        "temp": 210
     },
     {
         "name": "PAHT CF15",
@@ -312,6 +279,17 @@
         "temp": 260
     },
     {
+        "name": "PVA",
+        "code": "PVA",
+        "brand": null,
+        "color": null,
+        "compatible": [
+            "Standard 0.4mm"
+        ],
+        "experimental": [],
+        "temp": 210
+    },
+    {
         "name": "TO. PLA",
         "code": "Tough PLA",
         "brand": null,
@@ -326,6 +304,22 @@
             "Metal 0.4mm"
         ],
         "temp": 225
+    },
+    {
+        "name": "TPU 64D",
+        "code": "TPU 64D",
+        "brand": null,
+        "color": null,
+        "compatible": [
+            "Standard 0.4mm",
+            "Standard 0.8mm"
+        ],
+        "experimental": [
+            "Standard 0.25mm",
+            "Fiber 0.6mm",
+            "Metal 0.4mm"
+        ],
+        "temp": 235
     },
     {
         "name": "TPU 95A",
@@ -344,19 +338,25 @@
         "temp": 235
     },
     {
-        "name": "TPU 64D",
-        "code": "TPU 64D",
+        "name": "17-4PH",
+        "code": "17-4PH",
         "brand": null,
         "color": null,
         "compatible": [
-            "Standard 0.4mm",
-            "Standard 0.8mm"
-        ],
-        "experimental": [
-            "Standard 0.25mm",
-            "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 235
+        "experimental": [],
+        "temp": 260
+    },
+    {
+        "name": "316 L",
+        "code": "316L",
+        "brand": null,
+        "color": null,
+        "compatible": [
+            "Metal 0.4mm"
+        ],
+        "experimental": [],
+        "temp": 260
     }
 ]

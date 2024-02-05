@@ -270,9 +270,9 @@ class Panel(MenuPanel):
                 )
 
         for x in self._printer.get_filament_sensors():
-            if self._config.detected_in_filament_activity() and ((time.time() - self.start_time) > 1.0):
-                self._config.replace_filament_activity(None, "busy", replace="detected")
-                if self._config.get_main_config().getboolean('auto_select_material', False):
+            if self._config.detected_in_filament_activity() and ((time.time() - self.start_time) > 1.0) \
+                and self._config.get_main_config().getboolean('auto_select_material', False):
+                    self._config.replace_filament_activity(None, "busy", replace="detected")
                     self._screen.delete_temporary_panels()
                     self.start_time = time.time()
                     self.menu_item_clicked(widget="material_popup", item={
@@ -289,7 +289,7 @@ class Panel(MenuPanel):
                             self.start_time = time.time()
                             self._config.replace_filament_activity(x, "detected")
                             self._config.replace_spool_option(x)
-                        elif not data[x]['filament_detected']:
+                        elif data[x]['filament_detected'] == False:
                             self._config.replace_filament_activity(x, "empty")
                 
 

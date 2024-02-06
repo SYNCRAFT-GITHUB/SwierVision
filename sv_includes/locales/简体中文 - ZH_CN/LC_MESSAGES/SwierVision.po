@@ -1562,6 +1562,15 @@ msgstr "在Windows上安装Cura软件包"
 msgid "Click to navigate between Images"
 msgstr "单击屏幕可查看所有可用图像"
 
+msgid "Cannot change ProExtruder type during filament insertion"
+msgstr "将细丝插入机器时更换阻塞"
+
+msgid "Using this material may lead to inaccurate printing results."
+msgstr "使用这种材料可能会影响预期的打印质量。"
+
+msgid "Using an untested material may lead to inaccurate print results."
+msgstr "使用未经测试的材料可能会影响最终打印结果的预期质量。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

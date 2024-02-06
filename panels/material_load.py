@@ -82,7 +82,7 @@ class Panel(ScreenPanel):
 
         self.texts = [
             _("This material is considered experimental for the selected Extruder."),
-            _("This action may result in unexpected results."),
+            _("Using this material may lead to inaccurate printing results."),
             _("You are loading untested material, this may result in unexpected results."),
             _("Extrusion Temperature for the Material")
             ]

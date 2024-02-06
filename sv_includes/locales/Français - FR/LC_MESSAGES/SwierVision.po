@@ -1609,6 +1609,15 @@ msgstr "Installation des Paquets Cura sur Windows"
 msgid "Click to navigate between Images"
 msgstr "Cliquez pour naviguer entre les images"
 
+msgid "Cannot change ProExtruder type during filament insertion"
+msgstr "Impossible de changer le type d'extrudeuse lors de l'insertion du filament"
+
+msgid "Using this material may lead to inaccurate printing results."
+msgstr "L'utilisation de ce matériau peut entraîner des résultats d'impression indésirables."
+
+msgid "Using an untested material may lead to inaccurate print results."
+msgstr "L'utilisation d'un matériau non testé peut entraîner des résultats d'impression indésirables."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

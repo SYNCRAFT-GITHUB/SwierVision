@@ -78,7 +78,7 @@ class Panel(ScreenPanel):
 
         self.texts = [
             _("This material is considered experimental for the selected Extruder."),
-            _("This action may result in unexpected results.")
+            _("Using an untested material may lead to inaccurate print results.")
             ]
 
         grid = self._gtk.HomogeneousGrid()

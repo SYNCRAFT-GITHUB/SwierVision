@@ -1553,6 +1553,15 @@ msgstr "Installazione dei Pacchetti Cura su Windows"
 msgid "Click to navigate between Images"
 msgstr "Fai clic per navigare tra le immagini"
 
+msgid "Cannot change ProExtruder type during filament insertion"
+msgstr "Impossibile modificare il tipo di estrusore durante l'inserimento del filamento"
+
+msgid "Using this material may lead to inaccurate printing results."
+msgstr "L'utilizzo di questo materiale potrebbe portare a risultati di stampa indesiderati."
+
+msgid "Using an untested material may lead to inaccurate print results."
+msgstr "L'utilizzo di un materiale non testato può portare a risultati di stampa indesiderati."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

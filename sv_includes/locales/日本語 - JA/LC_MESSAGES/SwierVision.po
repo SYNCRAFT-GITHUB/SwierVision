@@ -1422,6 +1422,15 @@ msgstr "WindowsへのCuraパッケージのインストール"
 msgid "Click to navigate between Images"
 msgstr "사용 가능한 모든 이미지를 보려면 화면을 클릭하세요."
 
+msgid "Cannot change ProExtruder type during filament insertion"
+msgstr "フィラメントの挿入中に変更を加えることができません"
+
+msgid "Using this material may lead to inaccurate printing results."
+msgstr "この素材を使用すると、望ましくない印刷結果が生じる可能性があります。"
+
+msgid "Using an untested material may lead to inaccurate print results."
+msgstr "テストされていない材料を使用すると、望ましくない結果が生じる可能性があります。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

@@ -1415,6 +1415,15 @@ msgstr ""
 msgid "Click to navigate between Images"
 msgstr ""
 
+msgid "Cannot change ProExtruder type during filament insertion"
+msgstr ""
+
+msgid "Using this material may lead to inaccurate printing results."
+msgstr ""
+
+msgid "Using an untested material may lead to inaccurate print results."
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

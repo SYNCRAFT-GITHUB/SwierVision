@@ -1219,7 +1219,7 @@ msgid "Heater Bed"
 msgstr "Стол"
 
 msgid "Chamber Fan"
-msgstr "Веер ветра"
+msgstr "Камера"
 
 msgid "Select Syncraft ProExtruder"
 msgstr "Выберите Syncraft ProExtruder"

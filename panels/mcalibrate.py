@@ -48,7 +48,8 @@ class Panel(ScreenPanel):
     def finish_calibration(self, button):
         self.transparent()
         self._screen._ws.klippy.gcode_script("IDEX_OFFSET Z=0")
-        self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_ALL)
+        self._screen._ws.klippy.gcode_script("G28 Z")
+        self._screen._ws.klippy.gcode_script("M84")
         self._screen._menu_go_back()
 
     def transparent(self):

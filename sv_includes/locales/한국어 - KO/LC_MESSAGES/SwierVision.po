@@ -88,7 +88,7 @@ msgstr "USB를 통한 시스템 업데이트 또는 수정"
 msgid "Fix"
 msgstr "고치다"
 
-msgid "Quick System Fixes"
+msgid "System Fixes"
 msgstr "빠른 시스템 수정"
 
 msgid "Repair"

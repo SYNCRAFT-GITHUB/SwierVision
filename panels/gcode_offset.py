@@ -92,7 +92,7 @@ class Panel(ScreenPanel):
         return f"X\t{self.x}\nY\t{self.y}\nZ\t{self.z}"
 
     def reset_values(self, widget):
-        self.x = self.y = self.z = 0
+        self.x = self.y = self.z = 0.0
         self.labels['xyz'].set_label(self.label_format())
 
     def increment(self, widget, x=False, y=False, z=False):

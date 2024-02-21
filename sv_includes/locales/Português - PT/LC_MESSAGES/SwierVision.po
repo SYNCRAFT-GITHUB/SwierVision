@@ -93,7 +93,7 @@ msgstr "Atualize ou corrigir o sistema via USB"
 msgid "Fix"
 msgstr "Corrigir"
 
-msgid "Quick System Fixes"
+msgid "System Fixes"
 msgstr "Corrigir Sistema"
 
 msgid "Repair"

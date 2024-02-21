@@ -94,7 +94,7 @@ msgstr "Обновить или исправить систему через USB
 msgid "Fix"
 msgstr "Исправить"
 
-msgid "Quick System Fixes"
+msgid "System Fixes"
 msgstr "Быстрые системные исправления"
 
 msgid "Repair"

@@ -88,7 +88,7 @@ msgstr "USB経由でシステムをアップデートまたは修正する"
 msgid "Fix"
 msgstr "修理"
 
-msgid "Quick System Fixes"
+msgid "System Fixes"
 msgstr "クイックシステム修正"
 
 msgid "Repair"

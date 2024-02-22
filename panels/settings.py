@@ -59,12 +59,12 @@ class Panel(ScreenPanel):
             "panel": "sensors",
             "icon": "sensor"
         }})
-        #options.append({"system_fixes": {
-        #    "name": _("System Fixes"),
-        #    "type": "panel",
-        #    "panel": "fix",
-        #    "icon": "compass"
-        #}})
+        options.append({"system_fixes": {
+            "name": _("System Fixes"),
+            "type": "panel",
+            "panel": "fix",
+            "icon": "compass"
+        }})
         options.append({"factory_reset": {
             "name": _("Factory Reset"),
             "type": "panel",

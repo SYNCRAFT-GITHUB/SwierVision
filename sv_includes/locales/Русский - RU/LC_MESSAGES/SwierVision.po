@@ -130,7 +130,7 @@ msgstr "Веб интерфейс"
 msgid "System Firmware"
 msgstr "Прошивка системы"
 
-msgid "Syncraft Team is not responsible for the misuse of the machine, please follow the procedures correctly."
+msgid "If you are constantly using system fixes, please contact Syncraft and let them know."
 msgstr "Команда Syncraft не несет ответственности за неправильное использование машины, пожалуйста, правильно следуйте процедурам."
 
 msgid "Please follow the tutorial to ensure everything performs correctly."

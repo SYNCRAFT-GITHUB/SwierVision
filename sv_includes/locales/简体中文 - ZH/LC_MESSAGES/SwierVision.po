@@ -129,8 +129,8 @@ msgstr "网络界面"
 msgid "System Firmware"
 msgstr "系统固件"
 
-msgid "Syncraft Team is not responsible for the misuse of the machine, please follow the procedures correctly."
-msgstr "Syncraft Team 不对机器的误用负责，请正确按照程序操作。"
+msgid "If you are constantly using system fixes, please contact Syncraft and let them know."
+msgstr "如果您经常使用系统修复程序，请联系 Syncraft 并告知他们。"
 
 msgid "Please follow the tutorial to ensure everything performs correctly."
 msgstr "请遵循教程以确保一切正常执行。"

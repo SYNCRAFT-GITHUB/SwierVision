@@ -130,8 +130,8 @@ msgstr "Interfejs sieciowy"
 msgid "System Firmware"
 msgstr "Oprogramowanie systemowe"
 
-msgid "Syncraft Team is not responsible for the misuse of the machine, please follow the procedures correctly."
-msgstr "Zespół Syncraft nie ponosi odpowiedzialności za niewłaściwe użycie maszyny."
+msgid "If you are constantly using system fixes, please contact Syncraft and let them know."
+msgstr "Jeśli stale korzystasz z poprawek systemowych, skontaktuj się z firmą Syncraft i daj im znać."
 
 msgid "Please follow the tutorial to ensure everything performs correctly."
 msgstr "Postępuj zgodnie z samouczkiem, aby upewnić się, że wszystko działa poprawnie."

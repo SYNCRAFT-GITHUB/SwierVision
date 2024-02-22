@@ -76,6 +76,11 @@ class Panel(ScreenPanel):
         core = os.path.join('/home', 'pi', 'SyncraftCore')
         
         class SCRIPT:
+            class FIXES:
+                MAINSAIL = os.path.join(core, 'fixes', 'mainsail.sh')
+                CAMERA = os.path.join(core, 'fixes', 'camera.sh')
+                LIGHT = os.path.join(core, 'fixes', 'light.sh')
+                MOONRAKER = os.path.join(core, 'fixes', 'moonraker.sh')
             class UPDATE:
                 DOWNLOAD = os.path.join(core, 'core', 'update.py')
                 APPLY = os.path.join(core, 'state', 'upgrade', 'apply.sh')
@@ -89,33 +94,49 @@ class Panel(ScreenPanel):
                 APPLY = os.path.join(core, 'machine', 'apply.sh')
                 SXUSB = os.path.join(core, 'machine', 'usbsxservice', 'apply.sh')
 
+        if (fix_option == "FIX_MAINSAIL"):
+            core_script(SCRIPT.FIXES.MAINSAIL, web=True)
+            return
+
+        if (fix_option == "FIX_CAMERA"):
+            core_script(SCRIPT.FIXES.CAMERA, web=True)
+            return
+
+        if (fix_option == "FIX_LIGHT"):
+            core_script(SCRIPT.FIXES.LIGHT, web=True)
+            return
+
+        if (fix_option == "FIX_MOONRAKER"):
+            core_script(SCRIPT.FIXES.MOONRAKER, web=True)
+            return
+
         if (fix_option == "UPDATE_USB"):
             core_script(SCRIPT.USB.UPDATE)
             os.system('sudo reboot')
-            return None
+            return
         
         if (fix_option == "UPDATE_ALL"):
             core_script(SCRIPT.UPDATE.DOWNLOAD)
             core_script(SCRIPT.UPDATE.APPLY)
             os.system('sudo reboot')
-            return None
+            return
 
         if (fix_option == "REVERT_ALL"):
             core_script(SCRIPT.REVERT.APPLY)
             time.sleep(5)
-            return None
+            return
 
         if (fix_option == "USB_SLICER"):
             core_script(SCRIPT.USB.SLICER)
             self._screen.reload_panels()
-            return None
+            return
 
         if (fix_option == "USB_LOGS"):
             core_script(SCRIPT.USB.LOGS)
             self._screen.reload_panels()
-            return None
+            return
 
         if (fix_option == "CLEAR_GCODES"):
             core_script(SCRIPT.MACHINE.SXUSB)
             os.system('sudo reboot')
-            return None
+            return

@@ -22,7 +22,7 @@ class Panel(ScreenPanel):
             _("Please follow the tutorial to ensure everything performs correctly."),
             _("Do not turn off Syncraft during the procedure, and keep a stable internet connection."),
             _("Interrupting this procedure can result in problems for the internal system."),
-            _("Syncraft Team is not responsible for the misuse of the machine, please follow the procedures correctly."),
+            _("If you are constantly using system fixes, please contact Syncraft and let them know."),
             _("At the end, Syncraft will restart.")
         ]
 

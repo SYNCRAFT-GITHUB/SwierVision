@@ -24,23 +24,23 @@ class Panel(ScreenPanel):
             'FIX_LED': self._gtk.Button("light", _("LED Light Driver"), self.color())
         }
 
-        self.buttons['FIX_MAINSAIL'].connect("clicked", self.set_fix_option_to, "MAINSAIL")
+        self.buttons['FIX_MAINSAIL'].connect("clicked", self.set_fix_option_to, "FIX_MAINSAIL")
         self.buttons['FIX_MAINSAIL'].connect("clicked", self.menu_item_clicked, {
             "name": _("Fix"),
             "panel": "fix_steps"
         })
-        self.buttons['FIX_MOONRAKER'].connect("clicked", self.set_fix_option_to, "MOONRAKER")
+        self.buttons['FIX_MOONRAKER'].connect("clicked", self.set_fix_option_to, "FIX_MOONRAKER")
         self.buttons['FIX_MOONRAKER'].connect("clicked", self.menu_item_clicked, {
             "name": _("Fix"),
             "panel": "fix_steps"
         })
-        self.buttons['FIX_CAMERA'].connect("clicked", self.set_fix_option_to, "CAMERA")
+        self.buttons['FIX_CAMERA'].connect("clicked", self.set_fix_option_to, "FIX_CAMERA")
         self.buttons['FIX_CAMERA'].connect("clicked", self.menu_item_clicked, {
             "name": _("Fix"),
             "panel": "fix_steps"
         })
         
-        self.buttons['FIX_LED'].connect("clicked", self.set_fix_option_to, "LIGHT")
+        self.buttons['FIX_LED'].connect("clicked", self.set_fix_option_to, "FIX_LIGHT")
         self.buttons['FIX_LED'].connect("clicked", self.menu_item_clicked, {
             "name": _("Fix"),
             "panel": "fix_steps"

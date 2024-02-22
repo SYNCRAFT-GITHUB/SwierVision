@@ -129,7 +129,7 @@ msgstr "Webinterface"
 msgid "System Firmware"
 msgstr "System-Firmware"
 
-msgid "Syncraft Team is not responsible for the misuse of the machine, please follow the procedures correctly."
+msgid "If you are constantly using system fixes, please contact Syncraft and let them know."
 msgstr "Das Syncraft-Team übernimmt keine Verantwortung für den Missbrauch der Maschine."
 
 msgid "Please follow the tutorial to ensure everything performs correctly."

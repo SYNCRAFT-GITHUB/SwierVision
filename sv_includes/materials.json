@@ -166,6 +166,8 @@
     {
         "name": "PC/ABS",
         "code": "PC-ABS",
+        "brand": null,
+        "color": null,
         "compatible": [
             "Fiber 0.6mm"
         ],

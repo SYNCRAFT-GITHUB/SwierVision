@@ -130,7 +130,7 @@ msgid "System Firmware"
 msgstr "Firmware do Sistema"
 
 msgid "If you are constantly using system fixes, please contact Syncraft and let them know."
-msgstr "Se você estiver utilizando essas correções com muita frequência, por favor, contate a Syncraft."
+msgstr "Se estiver utilizando correções com muita frequência, por favor, contate a Syncraft."
 
 msgid "Please follow the tutorial to ensure everything performs correctly."
 msgstr "Por favor, siga o tutorial para garantir que tudo funcione corretamente."

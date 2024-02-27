@@ -697,11 +697,9 @@ class Panel(ScreenPanel):
             self.zoffset = float(offset[2]) if offset else 0
             if self.zoffset != 0:
                 self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
-                self.buttons['button_grid'].attach(self.buttons["save_probe"], 1, 0, 1, 1)
             else:
                 if not 'idex_calibrate' in self.filename:
                     self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
-                self.buttons['button_grid'].attach(Gtk.Label(), 1, 0, 1, 1)
 
             if self.filename:
                 self.buttons['button_grid'].attach(self.buttons['restart'], 2, 0, 1, 1)
@@ -711,6 +709,7 @@ class Panel(ScreenPanel):
             if self.state != "cancelling":
                 if 'idex_calibrate' in self.filename:
                     self.buttons['button_grid'].attach(self.buttons["idex_offset"], 0, 0, 1, 1)
+                self.buttons['button_grid'].attach(self.buttons["save_probe"], 1, 0, 1, 1)
                 self.buttons['button_grid'].attach(self.buttons['menu'], 3, 0, 1, 1)
                 self.can_close = True
         self.content.show_all()

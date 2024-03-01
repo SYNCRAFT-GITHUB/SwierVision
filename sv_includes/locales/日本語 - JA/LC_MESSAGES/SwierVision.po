@@ -1431,6 +1431,24 @@ msgstr "この素材を使用すると、望ましくない印刷結果が生じ
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "テストされていない材料を使用すると、望ましくない結果が生じる可能性があります。"
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "プリンターをアプリに接続する"
+
+msgid "Need Help?"
+msgstr "ヘルプが必要ですか？"
+
+msgid "AI Failure Detection"
+msgstr "AIによる故障検知"
+
+msgid "Sync with App"
+msgstr "アプリと同期"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "確認コードを入力してください: "
+
+msgid "Syncraft synchronized successfully!"
+msgstr "プリンターが同期されました！"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

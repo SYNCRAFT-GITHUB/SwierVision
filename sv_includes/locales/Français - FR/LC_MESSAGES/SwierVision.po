@@ -1618,6 +1618,24 @@ msgstr "L'utilisation de ce matériau peut entraîner des résultats d'impressio
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "L'utilisation d'un matériau non testé peut entraîner des résultats d'impression indésirables."
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "Connecter un Syncraft à l'application mobile"
+
+msgid "Need Help?"
+msgstr "Besoin d'aide ?"
+
+msgid "AI Failure Detection"
+msgstr "Détection des défaillances de l'IA"
+
+msgid "Sync with App"
+msgstr "Synchronisation avec l'application"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "Entrez le code de vérification à 6 chiffres :"
+
+msgid "Syncraft synchronized successfully!"
+msgstr "Syncraft synchronisé avec succès !"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

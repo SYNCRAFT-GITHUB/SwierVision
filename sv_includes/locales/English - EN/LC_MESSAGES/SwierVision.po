@@ -1424,6 +1424,24 @@ msgstr ""
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr ""
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr ""
+
+msgid "Need Help?"
+msgstr ""
+
+msgid "AI Failure Detection"
+msgstr ""
+
+msgid "Sync with App"
+msgstr ""
+
+msgid "Enter the 6-digit verification code:"
+msgstr ""
+
+msgid "Syncraft synchronized successfully!"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

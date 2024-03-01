@@ -21,6 +21,21 @@ topics = [
             ]
     ),
     Topic(
+        title="Connecting a Syncraft to the Mobile App",
+        reference="obico",
+        images=[
+            "obico-1",
+            "obico-2",
+            "obico-3",
+            "obico-4",
+            "obico-5",              
+            "obico-6",
+            "obico-7",
+            "obico-8",
+            "obico-9"  
+            ]
+    ),
+    Topic(
         title="Installing Cura Packages on MacOS",
         reference="cura-mac",
         images=[

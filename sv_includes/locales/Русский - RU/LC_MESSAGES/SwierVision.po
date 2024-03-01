@@ -1611,6 +1611,24 @@ msgstr "Używanie tego materiału może prowadzić do złych lub niepożądanych
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "Использование непроверенного материала может привести к нежелательным результатам."
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "Подключение принтера к приложению"
+
+msgid "Need Help?"
+msgstr "Нужна помощь?"
+
+msgid "AI Failure Detection"
+msgstr "Обнаружение сбоев с помощью ИИ"
+
+msgid "Sync with App"
+msgstr "Синхронизация с приложением"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "Введите код подтверждения:"
+
+msgid "Syncraft synchronized successfully!"
+msgstr "Принтер синхронизирован!"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

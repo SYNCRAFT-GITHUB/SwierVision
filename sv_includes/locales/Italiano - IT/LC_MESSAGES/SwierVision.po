@@ -1562,6 +1562,24 @@ msgstr "L'utilizzo di questo materiale potrebbe portare a risultati di stampa in
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "L'utilizzo di un materiale non testato può portare a risultati di stampa indesiderati."
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "Collegamento di una stampante all'app"
+
+msgid "Need Help?"
+msgstr "Serve Aiuto?"
+
+msgid "AI Failure Detection"
+msgstr "Rilevamento dei guasti con l'IA"
+
+msgid "Sync with App"
+msgstr "Sincronizzazione con l'app"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "Inserisci il codice di verifica:"
+
+msgid "Syncraft synchronized successfully!"
+msgstr "Syncraft sincronizzato!"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

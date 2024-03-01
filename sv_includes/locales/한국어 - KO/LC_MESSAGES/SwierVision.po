@@ -1498,6 +1498,24 @@ msgstr "이 재료를 사용하면 인쇄 결과가 좋지 않거나 원하지 �
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "테스트되지 않은 재료를 사용하면 원치 않는 결과가 발생할 수 있습니다."
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "앱에 프린터 연결"
+
+msgid "Need Help?"
+msgstr "도움이 필요하십니까?"
+
+msgid "AI Failure Detection"
+msgstr "AI를 통한 장애 감지"
+
+msgid "Sync with App"
+msgstr "앱과 동기화"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "승인 번호를 입력하십시오:"
+
+msgid "Syncraft synchronized successfully!"
+msgstr "프린터가 동기화되었습니다!"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

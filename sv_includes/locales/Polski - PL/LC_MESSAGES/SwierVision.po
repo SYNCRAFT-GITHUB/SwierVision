@@ -1554,6 +1554,24 @@ msgstr "Używanie tego materiału może prowadzić do niepożądanych rezultató
 msgid "Using an untested material may lead to inaccurate print results."
 msgstr "Użycie nieprzetestowanego materiału może prowadzić do niepożądanych rezultatów."
 
+msgid "Connecting a Syncraft to the Mobile App"
+msgstr "Łączenie Syncrafta z aplikacją mobilną"
+
+msgid "Need Help?"
+msgstr "Potrzebna pomoc?"
+
+msgid "AI Failure Detection"
+msgstr "Wykrywanie awarii za pomocą SI"
+
+msgid "Sync with App"
+msgstr "Synchronizacja z aplikacją"
+
+msgid "Enter the 6-digit verification code:"
+msgstr "Wprowadź 6-cyfrowy kod weryfikacyjny:"
+
+msgid "Syncraft synchronized successfully!"
+msgstr "Syncraft zsynchronizowany!"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

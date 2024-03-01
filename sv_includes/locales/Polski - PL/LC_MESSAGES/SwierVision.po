@@ -1572,6 +1572,24 @@ msgstr "Wprowadź 6-cyfrowy kod weryfikacyjny:"
 msgid "Syncraft synchronized successfully!"
 msgstr "Syncraft zsynchronizowany!"
 
+msgid "Sensor Verification"
+msgstr "Weryfikacja czujnika"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "Przed rozpoczęciem druku zostanie sprawdzone, czy materiały są włożone."
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "Ta weryfikacja jest wykonywana za pomocą czujników i zapobiega błędom."
+
+msgid "However, you can disable this verification."
+msgstr "Możesz jednak wyłączyć tę weryfikację."
+
+msgid "Verification is enabled"
+msgstr "Weryfikacja jest włączona"
+
+msgid "Verification is disabled"
+msgstr "Weryfikacja jest wyłączona"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

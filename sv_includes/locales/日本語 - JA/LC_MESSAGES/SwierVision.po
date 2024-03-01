@@ -1449,6 +1449,24 @@ msgstr "確認コードを入力してください: "
 msgid "Syncraft synchronized successfully!"
 msgstr "プリンターが同期されました！"
 
+msgid "Sensor Verification"
+msgstr "センサーの検証"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "印刷を開始する前に、材料が挿入されているかどうかを確認します。"
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "この検証はセンサーを使用して行われ、エラーを防ぎます。"
+
+msgid "However, you can disable this verification."
+msgstr "ただし、この検証を無効にすることができます。"
+
+msgid "Verification is enabled"
+msgstr "検証が有効です"
+
+msgid "Verification is disabled"
+msgstr "検証が無効になっています"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

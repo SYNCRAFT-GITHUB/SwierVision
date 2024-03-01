@@ -1442,6 +1442,24 @@ msgstr ""
 msgid "Syncraft synchronized successfully!"
 msgstr ""
 
+msgid "Sensor Verification"
+msgstr ""
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr ""
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr ""
+
+msgid "However, you can disable this verification."
+msgstr ""
+
+msgid "Verification is enabled"
+msgstr ""
+
+msgid "Verification is disabled"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

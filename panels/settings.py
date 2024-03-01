@@ -59,6 +59,12 @@ class Panel(ScreenPanel):
             "panel": "sensors",
             "icon": "sensor"
         }})
+        options.append({"sensors_verify": {
+            "name": _("Sensor Verification"),
+            "type": "panel",
+            "panel": "sensors_verify",
+            "icon": "check_sensor"
+        }})
         options.append({"system_fixes": {
             "name": _("System Fixes"),
             "type": "panel",

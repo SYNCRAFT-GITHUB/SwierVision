@@ -1612,6 +1612,24 @@ msgstr "Introduzca el código de verificación:"
 msgid "Syncraft synchronized successfully!"
 msgstr "Syncraft sincronizado!"
 
+msgid "Sensor Verification"
+msgstr "Verificación del sensor"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "Antes de comenzar una impresión, se verificará si los materiales están insertados."
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "Esta verificación se realiza con sensores y previene errores."
+
+msgid "However, you can disable this verification."
+msgstr "Sin embargo, puede desactivar esta verificación."
+
+msgid "Verification is enabled"
+msgstr "La verificación está habilitada"
+
+msgid "Verification is disabled"
+msgstr "La verificación está deshabilitada"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

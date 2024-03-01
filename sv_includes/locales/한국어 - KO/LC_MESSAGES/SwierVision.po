@@ -1516,6 +1516,24 @@ msgstr "승인 번호를 입력하십시오:"
 msgid "Syncraft synchronized successfully!"
 msgstr "프린터가 동기화되었습니다!"
 
+msgid "Sensor Verification"
+msgstr "센서 검증"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "인쇄를 시작하기 전에 소재가 제대로 삽입되었는지 확인됩니다."
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "이 검증은 센서를 사용하여 오류를 방지합니다."
+
+msgid "However, you can disable this verification."
+msgstr "그러나 이 검증을 비활성화할 수 있습니다."
+
+msgid "Verification is enabled"
+msgstr "검증이 활성화되었습니다"
+
+msgid "Verification is disabled"
+msgstr "검증이 비활성화되었습니다"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

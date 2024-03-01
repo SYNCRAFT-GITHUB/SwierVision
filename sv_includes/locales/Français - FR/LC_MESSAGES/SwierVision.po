@@ -1636,6 +1636,24 @@ msgstr "Entrez le code de vérification à 6 chiffres :"
 msgid "Syncraft synchronized successfully!"
 msgstr "Syncraft synchronisé avec succès !"
 
+msgid "Sensor Verification"
+msgstr "Vérification du capteur"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "Avant de commencer une impression, il sera vérifié si les matériaux sont insérés."
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "Cette vérification est effectuée avec des capteurs et prévient les erreurs."
+
+msgid "However, you can disable this verification."
+msgstr "Cependant, vous pouvez désactiver cette vérification."
+
+msgid "Verification is enabled"
+msgstr "La vérification est activée"
+
+msgid "Verification is disabled"
+msgstr "La vérification est désactivée"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

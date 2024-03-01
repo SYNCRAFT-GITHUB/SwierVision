@@ -1589,6 +1589,24 @@ msgstr "输入验证码："
 msgid "Syncraft synchronized successfully!"
 msgstr "打印机同步！"
 
+msgid "Sensor Verification"
+msgstr "传感器验证"
+
+msgid "Before starting a print, it will be checked if the materials are inserted."
+msgstr "打印前会检查材料是否插入。"
+
+msgid "This verification is done with sensors to prevents errors."
+msgstr "该验证是通过传感器完成的，以防止错误。"
+
+msgid "However, you can disable this verification."
+msgstr "如果需要，您可以禁用此功能。"
+
+msgid "Verification is enabled"
+msgstr "验证已启用"
+
+msgid "Verification is disabled"
+msgstr "验证已禁用"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

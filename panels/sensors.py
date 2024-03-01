@@ -15,7 +15,7 @@ class Panel(ScreenPanel):
     def __init__(self, screen, title):
 
         super().__init__(screen, title)
-        self.menu = ['dev_panel']
+        self.menu = ['sensors_panel']
 
         self.process_index: int = 0
 

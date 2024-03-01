@@ -49,11 +49,11 @@ class Panel(ScreenPanel):
             return
         if self.verification == TRUE:
             self.verification = FALSE
-            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S0")
+            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S=0")
             return
         if self.verification == FALSE:
             self.verification = TRUE
-            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S1")
+            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S=1")
             return
 
     def verify(self):

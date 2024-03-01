@@ -69,10 +69,11 @@ class Panel(ScreenPanel):
 
     def process_update(self, action, data):
 
-        self.process_index += 1
-        if self.process_index % 16 == 0:
-            self.verify()
-            self.process_index = 0
+        if self.verification == UNKNOWN:
+            self.process_index += 1
+            if self.process_index % 16 == 0:
+                self.verify()
+                self.process_index = 0
 
         self.update_label()
 

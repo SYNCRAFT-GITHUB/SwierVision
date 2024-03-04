@@ -53,13 +53,9 @@ class Panel(ScreenPanel):
             del button
         del i, j
 
-        self.labels["focus_left"] = self._gtk.Button("key-left", None, "color1", 0.60)
-        self.labels["focus_left"].connect("clicked", self.focus_left)
-        grid.attach(self.labels["focus_left"], 0, 2, 1, 1)
-
-        self.labels["focus_right"] = self._gtk.Button("key-right", None, "color1", 0.60)
-        self.labels["focus_right"].connect("clicked", self.focus_right)
-        grid.attach(self.labels["focus_right"], 4, 2, 1, 1)
+        self.labels["backspace"] = self._gtk.Button("key-left", None, "color1", 0.60)
+        self.labels["backspace"].connect("clicked", self.backspace)
+        grid.attach(self.labels["backspace"], 0, 2, 1, 1)
 
         self.labels["delete_all"] = self._gtk.Button(None, _("Clear"), "color2")
         self.labels["delete_all"].connect("clicked", self.delete_all)
@@ -69,18 +65,26 @@ class Panel(ScreenPanel):
         self.labels["zero"].connect("clicked", self.add_digit, 0)
         grid.attach(self.labels["zero"], 0, 4, 1, 1)
 
-        self.labels["help"] = self._gtk.Button("help", None, "color1", 0.70)
+        self.labels["help"] = self._gtk.Button("help", None, "color1")
         self.labels["help"].connect("clicked", self.menu_item_clicked, {
             "name":_("Help"),
             "panel": "help"
         })
-        grid.attach(self.labels["help"], 4, 3, 1, 1)
+        grid.attach(self.labels["help"], 4, 2, 1, 2)
 
         self.labels["continue"] = self._gtk.Button("complete", None, "color3")
         self.labels["continue"].connect("clicked", self.finish)
         grid.attach(self.labels["continue"], 4, 4, 1, 1)
 
         self.content.add(grid)
+
+    def backspace(self, button):
+        if self.focus in range(2, 7):
+            self.focus_left(button=None)
+            self.digits[str(self.focus)] = None
+        else:
+            self.delete_all(button=None)
+        self.update_labels()
 
     def focus_right(self, button):
         if self.focus == 6:

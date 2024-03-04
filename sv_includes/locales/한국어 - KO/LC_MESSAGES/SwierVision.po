@@ -1534,6 +1534,18 @@ msgstr "검증이 활성화되었습니다"
 msgid "Verification is disabled"
 msgstr "검증이 비활성화되었습니다"
 
+msgid "ON/OFF"
+msgstr "켜기 / 끄기"
+
+msgid "Switch"
+msgstr "전환"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "필라멘트가 첫 번째 피더에 삽입되지 않았습니다."
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "필라멘트가 두 번째 피더에 삽입되지 않았습니다."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

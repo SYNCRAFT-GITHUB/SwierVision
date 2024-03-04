@@ -1598,6 +1598,18 @@ msgstr "La verifica è abilitata"
 msgid "Verification is disabled"
 msgstr "La verifica è disabilitata"
 
+msgid "ON/OFF"
+msgstr "ON/OFF"
+
+msgid "Switch"
+msgstr "Cambiare"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "Il filamento non è inserito nel primo alimentatore"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "Il filamento non è inserito nel secondo alimentatore"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

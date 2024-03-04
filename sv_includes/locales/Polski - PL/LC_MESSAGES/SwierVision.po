@@ -1590,6 +1590,18 @@ msgstr "Weryfikacja jest włączona"
 msgid "Verification is disabled"
 msgstr "Weryfikacja jest wyłączona"
 
+msgid "ON/OFF"
+msgstr "ON/OFF"
+
+msgid "Switch"
+msgstr "Przełącznik"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "Filament nie jest włożony do pierwszego podajnika"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "Filament nie jest włożony do drugiego podajnika"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

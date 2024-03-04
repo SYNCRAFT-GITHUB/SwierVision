@@ -11,6 +11,16 @@ class KnownError(Gtk.Window):
 
 known_errors = [
     KnownError(
+        error= 'The Filament is not inserted into the first feeder',
+        message= 'The Filament is not inserted into the first feeder',
+        code=None
+        ),
+    KnownError(
+        error= 'The Filament is not inserted into the second feeder',
+        message= 'The Filament is not inserted into the second feeder',
+        code=None
+        ),
+    KnownError(
         error= 'The inserted Extruder is incompatible with this File',
         message= 'The inserted Extruder is incompatible with this File',
         code=None

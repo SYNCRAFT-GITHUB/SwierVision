@@ -1607,6 +1607,18 @@ msgstr "验证已启用"
 msgid "Verification is disabled"
 msgstr "验证已禁用"
 
+msgid "ON/OFF"
+msgstr "开 / 关"
+
+msgid "Switch"
+msgstr "取代"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "该细丝未插入第一供料器"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "该细丝未插入第二供料器"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

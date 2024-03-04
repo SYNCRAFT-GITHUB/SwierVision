@@ -1630,6 +1630,18 @@ msgstr "La verificación está habilitada"
 msgid "Verification is disabled"
 msgstr "La verificación está deshabilitada"
 
+msgid "ON/OFF"
+msgstr "ON/OFF"
+
+msgid "Switch"
+msgstr "Para reemplazar"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "El filamento no está insertado en el primer alimentador"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "El filamento no está insertado en el segundo alimentador"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

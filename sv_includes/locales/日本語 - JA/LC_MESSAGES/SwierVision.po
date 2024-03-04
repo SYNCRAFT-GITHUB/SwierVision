@@ -1467,6 +1467,18 @@ msgstr "検証が有効です"
 msgid "Verification is disabled"
 msgstr "検証が無効になっています"
 
+msgid "ON/OFF"
+msgstr "オン / オフ"
+
+msgid "Switch"
+msgstr "切り替え"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "フィラメントが第1フィーダーに挿入されていません"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "フィラメントが第2フィーダーに挿入されていません"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

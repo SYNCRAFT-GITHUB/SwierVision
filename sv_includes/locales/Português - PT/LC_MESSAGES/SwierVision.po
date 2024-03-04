@@ -1485,6 +1485,18 @@ msgstr "Sonda foi acionada antes do movimento"
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Já se encontra em Sonda Manual (Eixo Z)."
 
+msgid "ON/OFF"
+msgstr "Ativar/Desativar"
+
+msgid "Switch"
+msgstr "Trocar"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "O Filamento deve estar inserido no primeiro alimentador"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "O Filamento deve estar inserido no segundo alimentador"
+
 msgid "ENDSTOP X STILL TRIGGERED AFTER RETRACT"
 msgstr "Endstop (Eixo X) continua acionado após retrair"
 

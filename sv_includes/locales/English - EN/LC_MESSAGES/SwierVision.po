@@ -1460,6 +1460,18 @@ msgstr ""
 msgid "Verification is disabled"
 msgstr ""
 
+msgid "ON/OFF"
+msgstr ""
+
+msgid "Switch"
+msgstr ""
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr ""
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

@@ -1606,6 +1606,18 @@ msgstr "Die Überprüfung ist aktiviert"
 msgid "Verification is disabled"
 msgstr "Die Überprüfung ist deaktiviert"
 
+msgid "ON/OFF"
+msgstr "Ein/Aus"
+
+msgid "Switch"
+msgstr "Ersetzen"
+
+msgid "The Filament is not inserted into the first feeder"
+msgstr "Das Filament muss in den ersten Zuführer eingelegt werden"
+
+msgid "The Filament is not inserted into the second feeder"
+msgstr "Das Filament muss in den zweiten Zuführer eingelegt werden"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

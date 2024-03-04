@@ -56,6 +56,8 @@ class Panel(ScreenPanel):
                 row = int(i / columns)
             grid.attach(self.button, col, row, 1, 1)
 
+        del columns
+
         self.labels['configurations'] = self._gtk.HomogeneousGrid()
         self.labels['configurations'].attach(grid, 0, 0, 1, 2)
 

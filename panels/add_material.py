@@ -133,6 +133,8 @@ class Panel(ScreenPanel):
         grid.attach(self.labels['clear_all'], 0, (i), 3, 1)
         i += 1
 
+        del i
+
 
     def set_fix_option_to(self, button, newfixoption):
         self._config.replace_fix_option(newvalue=newfixoption)

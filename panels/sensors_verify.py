@@ -31,7 +31,7 @@ class Panel(ScreenPanel):
 
         self.labels["info"] = Gtk.Label("...")
 
-        toggle = self._gtk.Button("check_sensor", "Apply", "color1")
+        toggle = self._gtk.Button("check_sensor", _("ON/OFF"), "color1")
         toggle.connect("clicked", self.set_verification)
 
         grid.attach(self.labels["text_01"], 0, 0, 1, 1)

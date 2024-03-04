@@ -1592,7 +1592,7 @@ msgid "Sensor Verification"
 msgstr "Sensorüberprüfung"
 
 msgid "Before starting a print, it will be checked if the materials are inserted."
-msgstr "Bevor ein Druckvorgang gestartet wird, wird überprüft, ob die Materialien eingelegt sind."
+msgstr "Vor dem Druck wird geprüft, ob die Materialien eingelegt sind."
 
 msgid "This verification is done with sensors to prevents errors."
 msgstr "Diese Überprüfung erfolgt mit Sensoren und verhindert Fehler."

@@ -1640,7 +1640,7 @@ msgid "Sensor Verification"
 msgstr "Vérification du capteur"
 
 msgid "Before starting a print, it will be checked if the materials are inserted."
-msgstr "Avant de commencer une impression, il sera vérifié si les matériaux sont insérés."
+msgstr "Avant l'impression, il sera vérifié si les matériaux sont insérés."
 
 msgid "This verification is done with sensors to prevents errors."
 msgstr "Cette vérification est effectuée avec des capteurs et prévient les erreurs."

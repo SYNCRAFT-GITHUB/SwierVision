@@ -136,6 +136,12 @@ class Panel(ScreenPanel):
         return text
 
     def finish(self, button):
+
+        if not self._config.internet_connection():
+            message = _("This procedure requires internet connection")
+            self._screen.show_popup_message(message, level=3)
+            return
+
         code = ""
         for digit in self.digits.values():
             if digit == None:
@@ -144,5 +150,17 @@ class Panel(ScreenPanel):
             else:
                 code += str(digit)
 
-        print(code)
+        obico_path = os.path.join("/home", "pi", "moonraker-obico")
+        imported_code_path = os.path.join(obico_path, "imported_code.txt")
+
+        if os.path.exists(imported_code_path):
+            try:
+                os.remove(imported_code_path)
+            except:
+                print(f"failed to remove {imported_code_path}")
+
+        with open(imported_code_path, "w") as text_file:
+            text_file.write(code)
+
+        os.system(f"bash {obico_path}/install.sh")
         

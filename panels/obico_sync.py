@@ -130,7 +130,7 @@ class Panel(ScreenPanel):
                     text += "   _   "
             else:
                 if i != self.focus:
-                    text += f" [ {self.digits[str(i)]} ] "
+                    text += f"   {self.digits[str(i)]}   "
                 else:
                     text += f" - {self.digits[str(i)]} - "
         return text

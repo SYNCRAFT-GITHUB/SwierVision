@@ -1472,6 +1472,12 @@ msgstr ""
 msgid "The Filament is not inserted into the second feeder"
 msgstr ""
 
+msgid "Check if the printer has been synchronized;"
+msgstr ""
+
+msgid "if so, you can already use the new features!"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

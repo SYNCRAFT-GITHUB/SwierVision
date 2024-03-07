@@ -371,8 +371,16 @@ class SwierVision(Gtk.Window):
         else:
             msg.get_style_context().add_class("message_popup_alert")
 
-        popup_screentime = 12 if level == 1 or level == 2 else 25
-        popup_length = -1 if level == 1 or level == 2 else (self.width * .9) * 0.2
+        if level in [1, 2]:
+            popup_screentime = 12
+        else:
+             popup_screentime = 25
+
+        if level in [1, 2]:
+            popup_length = (self.width * .9) * 0.15
+        else:
+            popup_length = (self.width * .9) * 0.2
+
         popup_width = self.width * 0.9
 
         self.pop_grid = self.gtk.HomogeneousGrid()

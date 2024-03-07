@@ -1479,6 +1479,12 @@ msgstr "フィラメントが第1フィーダーに挿入されていません"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "フィラメントが第2フィーダーに挿入されていません"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "プリンターが同期されているかどうかを確認してください；"
+
+msgid "if so, you can already use the new features!"
+msgstr "そうであれば、新機能をすでに使用できます！"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

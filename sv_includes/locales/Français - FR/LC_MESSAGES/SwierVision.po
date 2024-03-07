@@ -1666,6 +1666,12 @@ msgstr "Le filament n'est pas inséré dans le premier alimentateur"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "Le filament n'est pas inséré dans le deuxième alimentateur"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "Vérifiez si l'imprimante a été synchronisée;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Si c'est le cas, vous pouvez déjà utiliser les nouvelles fonctionnalités !"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

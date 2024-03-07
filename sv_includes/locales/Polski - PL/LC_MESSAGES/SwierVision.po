@@ -1602,6 +1602,12 @@ msgstr "Filament nie jest włożony do pierwszego podajnika"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "Filament nie jest włożony do drugiego podajnika"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "Sprawdź, czy drukarka została zsynchronizowana;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Jeśli tak, możesz już korzystać z nowych funkcji!"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

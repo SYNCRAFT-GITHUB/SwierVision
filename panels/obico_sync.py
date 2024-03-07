@@ -1,5 +1,6 @@
 import logging
 import shutil
+import time
 import os
 import gi
 
@@ -163,4 +164,11 @@ class Panel(ScreenPanel):
             text_file.write(code)
 
         os.system(f"bash {obico_path}/install.sh")
-        
+
+        time.sleep(1)
+
+        self.delete_all(button=None)
+
+        message = _("Check if the printer has been synchronized;") + " " + \
+            _("if so, you can already use the new features!")
+        self._screen.show_popup_message(message, level=1)

@@ -1618,6 +1618,12 @@ msgstr "Das Filament muss in den ersten Zuführer eingelegt werden"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "Das Filament muss in den zweiten Zuführer eingelegt werden"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "Überprüfen Sie, ob der Drucker synchronisiert wurde;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Wenn ja, können Sie bereits die neuen Funktionen nutzen!"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

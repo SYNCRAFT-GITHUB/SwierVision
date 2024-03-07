@@ -315,7 +315,7 @@ class SwierVisionConfig:
             {"use_dpms": {"section": "main", "name": _("Screen DPMS"), "type": "binary",
                           "value": "True", "callback": screen.set_dpms}},
             {"autoclose_popups": {"section": "main", "name": _("Auto-close notifications"), "type": "binary",
-                                  "value": "True"}},
+                                  "value": "False"}},
             {"show_heater_power": {"section": "main", "name": _("Show Heater Power"), "type": "binary",
                                    "value": "False", "callback": screen.reload_panels}},
             {"show_scroll_steppers": {"section": "main", "name": _("Show Scrollbars Buttons"), "type": "binary",

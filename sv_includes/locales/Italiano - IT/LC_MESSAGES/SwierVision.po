@@ -1610,6 +1610,12 @@ msgstr "Il filamento non è inserito nel primo alimentatore"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "Il filamento non è inserito nel secondo alimentatore"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "Controlla se la stampante è stata sincronizzata;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Se è così, puoi già utilizzare le nuove funzionalità!"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

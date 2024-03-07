@@ -1659,6 +1659,12 @@ msgstr "Филамент не вставлен в первый податчик"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "Филамент не вставлен во второй податчик"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "Проверьте, была ли принтер синхронизирована;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Если да, то вы уже можете использовать новые функции!"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

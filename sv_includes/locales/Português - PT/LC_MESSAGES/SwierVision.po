@@ -1479,12 +1479,6 @@ msgstr "A verificação está ativada"
 msgid "Verification is disabled"
 msgstr "A verificação está desativada"
 
-msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
-msgstr "Sonda foi acionada antes do movimento"
-
-msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
-msgstr "Já se encontra em Sonda Manual (Eixo Z)."
-
 msgid "ON/OFF"
 msgstr "Ativar/Desativar"
 
@@ -1496,6 +1490,18 @@ msgstr "O Filamento deve estar inserido no primeiro alimentador"
 
 msgid "The Filament is not inserted into the second feeder"
 msgstr "O Filamento deve estar inserido no segundo alimentador"
+
+msgid "Check if the printer has been synchronized;"
+msgstr "Verifique se a Syncraft foi sincronizada;"
+
+msgid "if so, you can already use the new features!"
+msgstr "Se sim, você já pode usar os novos recursos!"
+
+msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
+msgstr "Sonda foi acionada antes do movimento"
+
+msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
+msgstr "Já se encontra em Sonda Manual (Eixo Z)."
 
 msgid "ENDSTOP X STILL TRIGGERED AFTER RETRACT"
 msgstr "Endstop (Eixo X) continua acionado após retrair"

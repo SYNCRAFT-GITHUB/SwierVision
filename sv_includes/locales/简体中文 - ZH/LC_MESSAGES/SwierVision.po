@@ -1619,6 +1619,12 @@ msgstr "该细丝未插入第一供料器"
 msgid "The Filament is not inserted into the second feeder"
 msgstr "该细丝未插入第二供料器"
 
+msgid "Check if the printer has been synchronized;"
+msgstr "检查打印机是否已同步；"
+
+msgid "if so, you can already use the new features!"
+msgstr "如果是这样，您已经可以使用新功能了！"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

@@ -1608,6 +1608,36 @@ msgstr "Sprawdź, czy drukarka została zsynchronizowana;"
 msgid "if so, you can already use the new features!"
 msgstr "Jeśli tak, możesz już korzystać z nowych funkcji!"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "Połącz się z ukrytą siecią (Wprowadź identyfikator SSID)"
+
+msgid "Wired"
+msgstr "Ethernet"
+
+msgid "Wireless"
+msgstr "Wi-Fi"
+
+msgid "P2P"
+msgstr "P2P"
+
+msgid "Virtual Tunnel"
+msgstr "Tunel wirtualny"
+
+msgid "Bridge"
+msgstr "Most"
+
+msgid "Loopback"
+msgstr "Pętla zwrotna"
+
+msgid "Virtually Wired"
+msgstr "Wirtualnie przewodowy"
+
+msgid "Docker Bridge"
+msgstr "Mostek Docker"
+
+msgid "Connection is completed"
+msgstr "Podłączony do sieci"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

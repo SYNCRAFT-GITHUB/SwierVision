@@ -1625,6 +1625,36 @@ msgstr "检查打印机是否已同步；"
 msgid "if so, you can already use the new features!"
 msgstr "如果是这样，您已经可以使用新功能了！"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "输入 SSID 连接到隐藏网络"
+
+msgid "Wired"
+msgstr "有线"
+
+msgid "Wireless"
+msgstr "无线"
+
+msgid "P2P"
+msgstr "点对点"
+
+msgid "Virtual Tunnel"
+msgstr "虚拟隧道"
+
+msgid "Bridge"
+msgstr "桥接"
+
+msgid "Loopback"
+msgstr "环回"
+
+msgid "Virtually Wired"
+msgstr "虚拟有线"
+
+msgid "Docker Bridge"
+msgstr "Docker桥"
+
+msgid "Connection is completed"
+msgstr "打印机现已连接"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

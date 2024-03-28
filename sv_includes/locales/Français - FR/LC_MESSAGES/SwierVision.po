@@ -1672,6 +1672,36 @@ msgstr "Vérifiez si l'imprimante a été synchronisée;"
 msgid "if so, you can already use the new features!"
 msgstr "Si c'est le cas, vous pouvez déjà utiliser les nouvelles fonctionnalités !"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "Connectez-vous au Wi-Fi caché (Entrez le SSID)"
+
+msgid "Wired"
+msgstr "Ethernet"
+
+msgid "Wireless"
+msgstr "Wi-Fi"
+
+msgid "P2P"
+msgstr "P2P"
+
+msgid "Virtual Tunnel"
+msgstr "Tunnel Virtuel"
+
+msgid "Bridge"
+msgstr "Pont"
+
+msgid "Loopback"
+msgstr "Bouclage"
+
+msgid "Virtually Wired"
+msgstr "Virtuellement Filaire"
+
+msgid "Docker Bridge"
+msgstr "Pont Docker"
+
+msgid "Connection is completed"
+msgstr "Connecté au réseau"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

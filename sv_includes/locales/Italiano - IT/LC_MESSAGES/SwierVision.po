@@ -1616,6 +1616,36 @@ msgstr "Controlla se la stampante è stata sincronizzata;"
 msgid "if so, you can already use the new features!"
 msgstr "Se è così, puoi già utilizzare le nuove funzionalità!"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "Connettiti al Wi-Fi nascosto (Immettere l'SSID)"
+
+msgid "Wired"
+msgstr "Ethernet"
+
+msgid "Wireless"
+msgstr "Wi-Fi"
+
+msgid "P2P"
+msgstr "P2P"
+
+msgid "Virtual Tunnel"
+msgstr "Tunnel virtuale"
+
+msgid "Bridge"
+msgstr "Ponte"
+
+msgid "Loopback"
+msgstr "Loopback"
+
+msgid "Virtually Wired"
+msgstr "Virtualmente cablato"
+
+msgid "Docker Bridge"
+msgstr "Ponte Docker"
+
+msgid "Connection is completed"
+msgstr "Connesso alla rete"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

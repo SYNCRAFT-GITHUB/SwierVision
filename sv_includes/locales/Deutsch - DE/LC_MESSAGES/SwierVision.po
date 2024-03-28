@@ -1624,6 +1624,36 @@ msgstr "Überprüfen Sie, ob der Drucker synchronisiert wurde;"
 msgid "if so, you can already use the new features!"
 msgstr "Wenn ja, können Sie bereits die neuen Funktionen nutzen!"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "Geben Sie die SSID manuell ein"
+
+msgid "Wired"
+msgstr "Verkabelt"
+
+msgid "Wireless"
+msgstr "Kabellos"
+
+msgid "P2P"
+msgstr "P2P"
+
+msgid "Virtual Tunnel"
+msgstr "Virtueller Tunnel"
+
+msgid "Bridge"
+msgstr "Brücke"
+
+msgid "Loopback"
+msgstr "Loopback"
+
+msgid "Virtually Wired"
+msgstr "Virtuell Verkabelt"
+
+msgid "Docker Bridge"
+msgstr "Docker-Brücke"
+
+msgid "Connection is completed"
+msgstr "Die Verbindung ist abgeschlossen"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

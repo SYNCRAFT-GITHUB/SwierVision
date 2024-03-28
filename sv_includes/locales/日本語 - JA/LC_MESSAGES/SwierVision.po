@@ -1485,6 +1485,36 @@ msgstr "プリンターが同期されているかどうかを確認してくだ
 msgid "if so, you can already use the new features!"
 msgstr "そうであれば、新機能をすでに使用できます！"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "隠れたネットワークに接続する (SSIDを入力してください)"
+
+msgid "Wired"
+msgstr "有線"
+
+msgid "Wireless"
+msgstr "無線"
+
+msgid "P2P"
+msgstr "ピア・ツー・ピア"
+
+msgid "Virtual Tunnel"
+msgstr "仮想トンネル"
+
+msgid "Bridge"
+msgstr "ブリッジ"
+
+msgid "Loopback"
+msgstr "ループバック"
+
+msgid "Virtually Wired"
+msgstr "仮想有線"
+
+msgid "Docker Bridge"
+msgstr "Dockerブリッジ"
+
+msgid "Connection is completed"
+msgstr "接続が完了しました"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

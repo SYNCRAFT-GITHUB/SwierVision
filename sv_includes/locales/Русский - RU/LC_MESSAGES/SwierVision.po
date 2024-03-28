@@ -1665,6 +1665,36 @@ msgstr "Проверьте, была ли принтер синхронизир�
 msgid "if so, you can already use the new features!"
 msgstr "Если да, то вы уже можете использовать новые функции!"
 
+msgid "Connect to a hidden network (Insert SSID)"
+msgstr "Подключиться к скрытой сети (Введите SSID)"
+
+msgid "Wired"
+msgstr "Проводное"
+
+msgid "Wireless"
+msgstr "Беспроводное"
+
+msgid "P2P"
+msgstr "Точка-точка"
+
+msgid "Virtual Tunnel"
+msgstr "Виртуальный туннель"
+
+msgid "Bridge"
+msgstr "Мост"
+
+msgid "Loopback"
+msgstr "Обратная петля"
+
+msgid "Virtually Wired"
+msgstr "Почти проводное"
+
+msgid "Docker Bridge"
+msgstr "Мост Docker"
+
+msgid "Connection is completed"
+msgstr "Подключено к сети"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

@@ -1,10 +1,11 @@
 import logging
 import os
+
 import gi
 import netifaces
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, GLib, Pango
+from gi.repository import Gtk, Gdk, GLib, Pango
 from sv_includes.screen_panel import ScreenPanel
 
 
@@ -56,11 +57,36 @@ class Panel(ScreenPanel):
 
         self.labels['networks'] = {}
 
+        cn_type = _("Generic")
+        it = self.interface
+
+        if 'eth' in it or 'enp' in it:
+            cn_type = _("Wired")
+        elif 'wlp' in it or 'wlan' in it:
+            cn_type = _("Wireless")
+        elif 'ppp' in it: 
+            cn_type = _("P2P")
+        elif 'tun' in it:
+            cn_type = _("Virtual Tunnel")
+        elif it == 'lo':
+            cn_type = _("Loopback")
+        elif 'br0' in it:
+            cn_type = _("Bridge")
+        elif 'veth' in it:
+            cn_type = _("Virtually Wired")
+        elif 'docker' in it:
+            cn_type = _("Docker Bridge")
+
         self.labels['interface'] = Gtk.Label()
-        self.labels['interface'].set_text(" %s: %s  " % (_("Interface"), self.interface))
+        self.labels['interface'].set_text(" %s  " % (cn_type))
         self.labels['interface'].set_hexpand(True)
         self.labels['ip'] = Gtk.Label()
         self.labels['ip'].set_hexpand(True)
+
+        connect_hidden = self._gtk.Button("hidden", None, "color2", .66)
+        connect_hidden.connect("clicked", self.show_add_hidden_network)
+        connect_hidden.set_hexpand(False)
+
         reload_networks = self._gtk.Button("refresh", None, "color1", .66)
         reload_networks.connect("clicked", self.reload_networks)
         reload_networks.set_hexpand(False)
@@ -70,8 +96,9 @@ class Panel(ScreenPanel):
         sbox.set_vexpand(False)
         sbox.add(self.labels['interface'])
         if ip is not None:
-            self.labels['ip'].set_text(f"IP: {ip}  ")
+            self.labels['ip'].set_text(f"\t{ip}")
             sbox.add(self.labels['ip'])
+        sbox.add(connect_hidden)
         sbox.add(reload_networks)
 
         scroll = self._gtk.ScrolledWindow()
@@ -94,12 +121,16 @@ class Panel(ScreenPanel):
             if self.update_timeout is None:
                 self.update_timeout = GLib.timeout_add_seconds(5, self.update_all_networks)
         else:
-            self.labels['networkinfo'] = Gtk.Label()
+            self.labels['networkinfo'] = Gtk.Label("")
             self.labels['networkinfo'].get_style_context().add_class('temperature_entry')
             box.pack_start(self.labels['networkinfo'], False, False, 0)
             self.update_single_network_info()
             if self.update_timeout is None:
                 self.update_timeout = GLib.timeout_add_seconds(5, self.update_single_network_info)
+
+        self.labels['connect_hidden'] = self._gtk.Button(None, _("Connect to a hidden network (Insert SSID)"), "color2")
+        self.labels['connect_hidden'].connect("clicked", self.show_add_hidden_network)
+
 
         self.content.add(box)
         self.labels['main_box'] = box
@@ -113,7 +144,6 @@ class Panel(ScreenPanel):
             self.add_network(net, False)
         self.update_all_networks()
         self.content.show_all()
-        return False
 
     def add_network(self, ssid, show=True):
 
@@ -142,7 +172,7 @@ class Panel(ScreenPanel):
         if connected_ssid == ssid:
             display_name += " (" + _("Connected") + ")"
 
-        name = Gtk.Label()
+        name = Gtk.Label("")
         name.set_markup(f"<big><b>{display_name}</b></big>")
         name.set_hexpand(True)
         name.set_halign(Gtk.Align.START)
@@ -209,6 +239,11 @@ class Panel(ScreenPanel):
 
     def add_new_network(self, widget, ssid, connect=False):
         self._screen.remove_keyboard()
+        if not ssid:
+            try:
+                ssid = self.labels['network_ssid'].get_text()
+            except:
+                return
         psk = self.labels['network_psk'].get_text()
         result = self.wifi.add_network(ssid, psk)
 
@@ -218,7 +253,7 @@ class Panel(ScreenPanel):
             if result:
                 self.connect_network(widget, ssid, False)
             else:
-                self._screen.show_popup_message(f"Error adding network {ssid}")
+                self._screen.show_popup_message(_('An error has occurred'))
 
     def back(self):
         if self.show_add:
@@ -285,7 +320,8 @@ class Panel(ScreenPanel):
         self.labels['connecting_info'].set_halign(Gtk.Align.START)
         self.labels['connecting_info'].set_valign(Gtk.Align.START)
         scroll.add(self.labels['connecting_info'])
-        self._gtk.Dialog(_("Starting WiFi Association"), buttons, scroll, self._gtk.remove_dialog)
+        dialog = self._gtk.Dialog(self._screen, buttons, scroll, self._gtk.remove_dialog)
+        dialog.set_title(_("Starting WiFi Association"))
         self._screen.show_all()
 
         if ssid in list(self.networks):
@@ -317,10 +353,13 @@ class Panel(ScreenPanel):
         self.check_missing_networks()
 
     def scan_callback(self, new_networks, old_networks):
-        for net in old_networks:
-            self.remove_network(net, False)
-        for net in new_networks:
-            self.add_network(net, False)
+        try:
+            for net in old_networks:
+                self.remove_network(net, False)
+            for net in new_networks:
+                self.add_network(net, False)
+        except:
+            pass
         self.content.show_all()
 
     def show_add_network(self, widget, ssid):
@@ -333,7 +372,7 @@ class Panel(ScreenPanel):
         if "add_network" in self.labels:
             del self.labels['add_network']
 
-        label = self._gtk.Label(_("PSK for") + ' ssid')
+        label = self._gtk.Label(_("Enter Password"))
         label.set_hexpand(False)
         self.labels['network_psk'] = Gtk.Entry()
         self.labels['network_psk'].set_text('')
@@ -341,7 +380,7 @@ class Panel(ScreenPanel):
         self.labels['network_psk'].connect("activate", self.add_new_network, ssid, True)
         self.labels['network_psk'].connect("focus-in-event", self._screen.show_keyboard)
 
-        save = self._gtk.Button("sd", _("Save"), "color3")
+        save = self._gtk.Button("complete", _("Connect"), "color3")
         save.set_hexpand(False)
         save.connect("clicked", self.add_new_network, ssid, True)
 
@@ -358,6 +397,65 @@ class Panel(ScreenPanel):
 
         self.content.add(self.labels['add_network'])
         self.labels['network_psk'].grab_focus_without_selecting()
+        self.content.show_all()
+        self.show_add = True
+
+    def show_add_hidden_network(self, widget):
+        if self.show_add:
+            return
+
+        for child in self.content.get_children():
+            self.content.remove(child)
+
+        if "add_network" in self.labels:
+            del self.labels['add_network']
+
+        label = self._gtk.Label(_("Connect to a hidden network (Insert SSID)"))
+        label.set_hexpand(False)
+        self.labels['network_ssid'] = Gtk.Entry()
+        self.labels['network_ssid'].set_text('')
+        self.labels['network_ssid'].set_hexpand(True)
+        self.labels['network_ssid'].connect("focus-in-event", self._screen.remove_keyboard)
+        self.labels['network_ssid'].connect("focus-in-event", self._screen.show_keyboard)
+
+        box = Gtk.Box()
+        box.pack_start(self.labels['network_ssid'], True, True, 5)
+
+        self.labels['add_network'] = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
+        self.labels['add_network'].set_valign(Gtk.Align.CENTER)
+        self.labels['add_network'].set_hexpand(True)
+        self.labels['add_network'].set_vexpand(True)
+        self.labels['add_network'].pack_start(label, True, True, 5)
+        self.labels['add_network'].pack_start(box, True, True, 5)
+
+        self.content.add(self.labels['add_network'])
+        self.labels['network_ssid'].grab_focus_without_selecting()
+
+        label = self._gtk.Label(_("Enter Password"))
+        label.set_hexpand(False)
+        self.labels['network_psk'] = Gtk.Entry()
+        self.labels['network_psk'].set_text('')
+        self.labels['network_psk'].set_hexpand(True)
+        self.labels['network_psk'].connect("activate", self.add_new_network, None, True)
+        self.labels['network_psk'].connect("focus-in-event", self._screen.remove_keyboard)
+        self.labels['network_psk'].connect("focus-in-event", self._screen.show_keyboard)
+
+        save = self._gtk.Button(None, " " +_("Connect") + " ", "color3")
+        save.set_hexpand(False)
+        save.connect("clicked", self.add_new_network, None, True)
+
+        box = Gtk.Box()
+        box.pack_start(self.labels['network_psk'], True, True, 5)
+        box.pack_start(save, False, False, 5)
+
+        self.labels['add_network'] = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
+        self.labels['add_network'].set_valign(Gtk.Align.CENTER)
+        self.labels['add_network'].set_hexpand(True)
+        self.labels['add_network'].set_vexpand(True)
+        self.labels['add_network'].pack_start(label, True, True, 5)
+        self.labels['add_network'].pack_start(box, True, True, 5)
+
+        self.content.add(self.labels['add_network'])
         self.content.show_all()
         self.show_add = True
 
@@ -421,13 +519,13 @@ class Panel(ScreenPanel):
         good = 60 if self.use_network_manager else -60
         fair = 35 if self.use_network_manager else -70
         if signal_level > exc:
-            return self._gtk.Image('wifi_excellent')
+            return self._gtk.Image('wifi-excellent') # wifi-excellent
         elif signal_level > good:
-            return self._gtk.Image('wifi_good')
+            return self._gtk.Image('wifi-good')
         elif signal_level > fair:
-            return self._gtk.Image('wifi_fair')
+            return self._gtk.Image('wifi-fair')
         else:
-            return self._gtk.Image('wifi_weak')
+            return self._gtk.Image('wifi-weak')
 
     def update_single_network_info(self):
 

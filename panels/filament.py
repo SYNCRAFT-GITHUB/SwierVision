@@ -239,9 +239,9 @@ class Panel(ScreenPanel):
                     self._config.replace_filament_activity(None, "busy", replace="detected")
                     self._screen.delete_temporary_panels()
                     self.start_time = time.time()
-                    self.menu_item_clicked(widget="material_popup", item={
-                                        "name": _("Select the Material"),
-                                        "panel": "material_popup"
+                    self.menu_item_clicked(widget="nozzle_popup", item={
+                                        "name": _("Select Extruder"),
+                                        "panel": "nozzle_popup"
                                     })
             if x in data:
                 if 'enabled' in data[x]:

@@ -224,6 +224,10 @@ class Panel(ScreenPanel):
     def get_variable(self, key) -> str:
         return self._config.variables_value_reveal(key)
 
+    def full_back(self):
+        self._screen._menu_go_back()
+        self._screen._menu_go_back()
+
     def allow_custom(self, material: CustomPrinterMaterial) -> bool:
         pattern = r'[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]'
         name = material.name
@@ -247,12 +251,12 @@ class Panel(ScreenPanel):
     def confirm_set_default(self, widget, code):
         self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext()))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
-        self._screen._menu_go_back()
+        self.full_back()
 
     def confirm_set_empty(self, widget):
         self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
-        self._screen._menu_go_back()
+        self.full_back()
 
     def confirm_set_experimental(self, widget, code):
         script = Gcode.change_material(m=code, ext=self.ext())
@@ -264,7 +268,7 @@ class Panel(ScreenPanel):
             params
         )
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
-        self._screen._menu_go_back()
+        self.full_back()
 
     def confirm_set_custom(self, widget):
         script = Gcode.change_material(m='GENERIC', ext=self.ext())
@@ -276,7 +280,7 @@ class Panel(ScreenPanel):
             params
         )
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
-        self._screen._menu_go_back()
+        self.full_back()
 
     def set_invalid_material(self, widget=None):
         message: str = _("Incompatible Material")
@@ -284,8 +288,7 @@ class Panel(ScreenPanel):
         return None
 
     def change_type(self, button):
-        message: str = _("Cannot change ProExtruder type during filament insertion")
-        self._screen.show_popup_message(message, level=2)
+        self._screen._menu_go_back()
 
     def unknown_nozzle(self, button):
         message: str = _("Select compatible Extruder")

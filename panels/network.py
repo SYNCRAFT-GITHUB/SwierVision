@@ -519,7 +519,7 @@ class Panel(ScreenPanel):
         good = 60 if self.use_network_manager else -60
         fair = 35 if self.use_network_manager else -70
         if signal_level > exc:
-            return self._gtk.Image('wifi-excellent') # wifi-excellent
+            return self._gtk.Image('wifi-excellent')
         elif signal_level > good:
             return self._gtk.Image('wifi-good')
         elif signal_level > fair:

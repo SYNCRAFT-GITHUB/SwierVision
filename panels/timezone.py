@@ -121,7 +121,7 @@ class Panel(ScreenPanel):
         self.labels['timezone_name'].connect("activate", self.apply_timezone_by_text)
         self.labels['timezone_name'].connect("focus-in-event", self._screen.show_keyboard)
 
-        save = self._gtk.Button("complete", _("Save"), "color3")
+        save = self._gtk.Button(None, _("Save Config"), "color3")
         save.set_hexpand(False)
         save.connect("clicked", self.apply_timezone_by_text)
 

@@ -235,7 +235,7 @@ class BasePanel(ScreenPanel):
                 current_ext = _("Error")
             material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0
             material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1
-            self._screen.base_panel.set_title(f"{current_ext} - {material_ext0}, {material_ext1}")
+            self._screen.base_panel.set_title(f"{material_ext0}, {material_ext1}")
 
         if action == "notify_update_response":
             if self.update_dialog is None:

@@ -121,7 +121,7 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.gcode_script(f"G1 Z0 F{SPEED}")
             logging.debug("Moving Bed Up")
         elif direction == DOWN:
-            self._screen._ws.klippy.gcode_script(f"G1 Z340 F{SPEED}")
+            self._screen._ws.klippy.gcode_script(f"G28 Z F{SPEED}")
             logging.debug("Moving Bed Down")
         else:
             print("unknown direction")

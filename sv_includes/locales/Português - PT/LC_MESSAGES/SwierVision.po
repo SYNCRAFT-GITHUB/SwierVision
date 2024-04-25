@@ -1527,6 +1527,18 @@ msgstr "Bridge com Docker"
 msgid "Connection is completed"
 msgstr "A Conexão foi concluída"
 
+msgid "This action will fully raise the table."
+msgstr "Esta ação elevará completamente a mesa."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Verifique se a mesa está vazia antes de prosseguir."
+
+msgid "Export Firmware Logs"
+msgstr "Exportar Logs do Firmware"
+
+msgid "Export Print Logs"
+msgstr "Exportar Logs de Impressão"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

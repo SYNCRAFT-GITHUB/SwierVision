@@ -18,7 +18,7 @@ class Panel(ScreenPanel):
 
         self.buttons = {
             'UPDATE': self._gtk.Button("usb-save", _("Update via USB"), "color3"),
-            'LOGS': self._gtk.Button ("logs", _("Export Logs"), "color2"),
+            'LOGS': self._gtk.Button ("logs", _("Export Firmware Logs"), "color2"),
             'SLICER': self._gtk.Button("cura", _("Export Syncraft Packs"), "color1"),
         }
         self.buttons['UPDATE'].connect("clicked",self.set_fix_option_to,"UPDATE_USB")

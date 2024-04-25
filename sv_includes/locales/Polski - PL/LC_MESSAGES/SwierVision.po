@@ -1638,6 +1638,18 @@ msgstr "Mostek Docker"
 msgid "Connection is completed"
 msgstr "Podłączony do sieci"
 
+msgid "This action will fully raise the table."
+msgstr "To działanie w pełni podniesie stół."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Upewnij się, że stół jest pusty przed kontynuowaniem."
+
+msgid "Export Firmware Logs"
+msgstr "Eksportuj dzienniki oprogramowania układowego"
+
+msgid "Export Print Logs"
+msgstr "Eksportuj dzienniki wydruku"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

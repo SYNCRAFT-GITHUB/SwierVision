@@ -1695,6 +1695,18 @@ msgstr "Мост Docker"
 msgid "Connection is completed"
 msgstr "Подключено к сети"
 
+msgid "This action will fully raise the table."
+msgstr "Это действие полностью поднимет стол."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Убедитесь, что стол пуст перед продолжением."
+
+msgid "Export Firmware Logs"
+msgstr "Экспорт журналов прошивки"
+
+msgid "Export Print Logs"
+msgstr "Экспорт журналов печати"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

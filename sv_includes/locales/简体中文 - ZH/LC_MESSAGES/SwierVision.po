@@ -1655,6 +1655,18 @@ msgstr "Docker桥"
 msgid "Connection is completed"
 msgstr "打印机现已连接"
 
+msgid "This action will fully raise the table."
+msgstr "此操作将完全抬起桌子。"
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "确保桌子为空后再继续。"
+
+msgid "Export Firmware Logs"
+msgstr "导出固件日志"
+
+msgid "Export Print Logs"
+msgstr "导出打印日志"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

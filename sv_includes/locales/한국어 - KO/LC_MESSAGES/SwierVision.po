@@ -1582,6 +1582,18 @@ msgstr "도커 브리지"
 msgid "Connection is completed"
 msgstr "네트워크에 연결됨"
 
+msgid "This action will fully raise the table."
+msgstr "이 작업은 테이블을 완전히 들어 올립니다."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "계속하기 전에 테이블이 비어 있는지 확인하십시오."
+
+msgid "Export Firmware Logs"
+msgstr "펌웨어 로그 내보내기"
+
+msgid "Export Print Logs"
+msgstr "인쇄 로그 내보내기"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

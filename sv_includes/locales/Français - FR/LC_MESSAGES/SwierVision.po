@@ -1702,6 +1702,18 @@ msgstr "Pont Docker"
 msgid "Connection is completed"
 msgstr "Connecté au réseau"
 
+msgid "This action will fully raise the table."
+msgstr "Cette action élèvera entièrement la table."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Assurez-vous que la table est vide avant de continuer."
+
+msgid "Export Firmware Logs"
+msgstr "Exporter les journaux du micrologiciel"
+
+msgid "Export Print Logs"
+msgstr "Exporter les journaux d'impression"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

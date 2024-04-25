@@ -1515,6 +1515,18 @@ msgstr "Dockerブリッジ"
 msgid "Connection is completed"
 msgstr "接続が完了しました"
 
+msgid "This action will fully raise the table."
+msgstr "このアクションにより、テーブルが完全に上がります。"
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "先に進む前に、テーブルが空であることを確認してください。"
+
+msgid "Export Firmware Logs"
+msgstr "ファームウェアログをエクスポートする"
+
+msgid "Export Print Logs"
+msgstr "印刷ログをエクスポートする"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

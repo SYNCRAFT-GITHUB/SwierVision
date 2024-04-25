@@ -1283,7 +1283,7 @@ msgid "Insert Custom"
 msgstr "Insertar Valor Personalizado"
 
 msgid "Export Logs to USB"
-msgstr "Exportar registros a USB"
+msgstr "Exportar logs a USB"
 
 msgid "Tap the screen to confirm"
 msgstr "Toque la pantalla para confirmar"
@@ -1677,6 +1677,18 @@ msgstr "Puente Docker"
 
 msgid "Connection is completed"
 msgstr "Conectado a la red"
+
+msgid "This action will fully raise the table."
+msgstr "Esta acción elevará completamente la mesa."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Asegúrese de que la mesa esté vacía antes de continuar."
+
+msgid "Export Firmware Logs"
+msgstr "Exportar logs del firmware"
+
+msgid "Export Print Logs"
+msgstr "Exportar logs de impresión"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"

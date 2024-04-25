@@ -23,6 +23,11 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['move']
 
+        self.texts = [
+            _("This action will fully raise the table."),
+            _("Make sure the table is empty before proceeding.")
+        ]
+
         grid = self._gtk.HomogeneousGrid()
 
         self.buttons = {
@@ -118,7 +123,14 @@ class Panel(ScreenPanel):
 
     def move_bed(self, button, direction):
         if direction == UP:
-            self._screen._ws.klippy.gcode_script(f"G1 Z0 F{SPEED}")
+            script = f"G1 Z0 F{SPEED}"
+            params = {"script": script}
+            self._screen._confirm_send_action(
+            None,
+            self.texts[0] + "\n\n" + self.texts[1] + "\n\n",
+            "printer.gcode.script",
+            params
+            )
             logging.debug("Moving Bed Up")
         elif direction == DOWN:
             self._screen._ws.klippy.gcode_script(f"G28 Z F{SPEED}")

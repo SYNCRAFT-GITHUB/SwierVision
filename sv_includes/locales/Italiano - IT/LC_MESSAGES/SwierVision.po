@@ -1646,6 +1646,18 @@ msgstr "Ponte Docker"
 msgid "Connection is completed"
 msgstr "Connesso alla rete"
 
+msgid "This action will fully raise the table."
+msgstr "Questa azione alzerà completamente il tavolo."
+
+msgid "Make sure the table is empty before proceeding."
+msgstr "Assicurati che il tavolo sia vuoto prima di procedere."
+
+msgid "Export Firmware Logs"
+msgstr "Esporta i log del firmware"
+
+msgid "Export Print Logs"
+msgstr "Esporta i log di stampa"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

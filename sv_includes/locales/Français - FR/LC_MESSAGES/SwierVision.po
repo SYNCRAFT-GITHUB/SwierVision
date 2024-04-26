@@ -1714,6 +1714,18 @@ msgstr "Exporter les journaux du micrologiciel"
 msgid "Export Print Logs"
 msgstr "Exporter les journaux d'impression"
 
+msgid "Adjust"
+msgstr "Ajuster"
+
+msgid "Check Nozzle Height"
+msgstr "Vérifier la Hauteur des Buses"
+
+msgid "Nozzle height will be checked."
+msgstr "La hauteur des buses sera vérifiée."
+
+msgid "If not properly leveled, perform a mechanical calibration."
+msgstr "Si le niveau n'est pas correct, effectuez un calibrage mécanique."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

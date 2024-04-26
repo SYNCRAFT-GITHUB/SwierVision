@@ -1690,6 +1690,18 @@ msgstr "Exportar logs del firmware"
 msgid "Export Print Logs"
 msgstr "Exportar logs de impresión"
 
+msgid "Adjust"
+msgstr "Ajustar"
+
+msgid "Check Nozzle Height"
+msgstr "Analizar la altura de los dos extrusores."
+
+msgid "Nozzle height will be checked."
+msgstr "Mando ejecutado."
+
+msgid "If not properly leveled, perform a mechanical calibration."
+msgstr "Si no está correctamente nivelado, realice una calibración mecánica."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

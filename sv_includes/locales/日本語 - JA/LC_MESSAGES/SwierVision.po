@@ -1527,6 +1527,18 @@ msgstr "ファームウェアログをエクスポートする"
 msgid "Export Print Logs"
 msgstr "印刷ログをエクスポートする"
 
+msgid "Adjust"
+msgstr "調整する"
+
+msgid "Check Nozzle Height"
+msgstr "ノズルの高さを確認する"
+
+msgid "Nozzle height will be checked."
+msgstr "ノズルの高さが確認されます。"
+
+msgid "If not properly leveled, perform a mechanical calibration."
+msgstr "適切にレベルが合っていない場合は、機械的なキャリブレーションを行ってください。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

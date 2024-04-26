@@ -1667,6 +1667,18 @@ msgstr "导出固件日志"
 msgid "Export Print Logs"
 msgstr "导出打印日志"
 
+msgid "Adjust"
+msgstr "调整"
+
+msgid "Check Nozzle Height"
+msgstr "检查喷嘴高度"
+
+msgid "Nozzle height will be checked."
+msgstr "将检查喷嘴高度。"
+
+msgid "If not properly leveled, perform a mechanical calibration."
+msgstr "如果未正确调平，请执行机械校准。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

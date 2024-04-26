@@ -1658,6 +1658,18 @@ msgstr "Esporta i log del firmware"
 msgid "Export Print Logs"
 msgstr "Esporta i log di stampa"
 
+msgid "Adjust"
+msgstr "Regolare"
+
+msgid "Check Nozzle Height"
+msgstr "Verificare l'Altezza dell'Ugello"
+
+msgid "Nozzle height will be checked."
+msgstr "Verrà verificata l'altezza dell'ugello."
+
+msgid "If not properly leveled, perform a mechanical calibration."
+msgstr "Se non è correttamente livellato, eseguire una calibrazione meccanica."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

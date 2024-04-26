@@ -1726,6 +1726,42 @@ msgstr "La hauteur des buses sera vérifiée."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "Si le niveau n'est pas correct, effectuez un calibrage mécanique."
 
+msgid "HEPA Filter"
+msgstr "Filtre HEPA"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "Il semble que votre filtre HEPA doit être remplacé !"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "Le filtre doit être changé tous les 6 mois."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "Certains matériaux sont nocifs s'ils ne sont pas filtrés."
+
+msgid "Last date the filter was replaced:"
+msgstr "Date du dernier remplacement du filtre :"
+
+msgid "Times the filter was replaced:"
+msgstr "Nombre de fois où le filtre a été remplacé :"
+
+msgid "How do I replace the filter?"
+msgstr "Comment remplacer le filtre ?"
+
+msgid "How to replace the HEPA filter"
+msgstr "Comment remplacer le filtre HEPA"
+
+msgid "The filter has already been replaced."
+msgstr "Le filtre a déjà été remplacé."
+
+msgid "I have already replaced the filter."
+msgstr "J'ai déjà remplacé le filtre."
+
+msgid "I will replace it later."
+msgstr "Je le remplacerai plus tard."
+
+msgid "Remind me to replace the filter later."
+msgstr "Rappelez-moi de remplacer le filtre plus tard."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

@@ -1539,6 +1539,42 @@ msgstr "ノズルの高さが確認されます。"
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "適切にレベルが合っていない場合は、機械的なキャリブレーションを行ってください。"
 
+msgid "HEPA Filter"
+msgstr "HEPAフィルター"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "お使いのHEPAフィルターを交換する必要があるようです！"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "フィルターは6か月ごとに交換する必要があります。"
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "いくつかの材料は、フィルタリングされていないと有害です。"
+
+msgid "Last date the filter was replaced:"
+msgstr "最後にフィルターを交換した日付："
+
+msgid "Times the filter was replaced:"
+msgstr "フィルターを交換した回数："
+
+msgid "How do I replace the filter?"
+msgstr "フィルターを交換するにはどうすればよいですか？"
+
+msgid "How to replace the HEPA filter"
+msgstr "HEPAフィルターを交換する方法"
+
+msgid "The filter has already been replaced."
+msgstr "フィルターはすでに交換されています。"
+
+msgid "I have already replaced the filter."
+msgstr "すでにフィルターを交換しました。"
+
+msgid "I will replace it later."
+msgstr "後で交換します。"
+
+msgid "Remind me to replace the filter later."
+msgstr "後でフィルターを交換するように思い出させてください。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

@@ -1679,6 +1679,42 @@ msgstr "将检查喷嘴高度。"
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "如果未正确调平，请执行机械校准。"
 
+msgid "HEPA Filter"
+msgstr "HEPA过滤器"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "看起来你的HEPA过滤器需要更换！"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "过滤器必须每6个月更换一次。"
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "如果某些材料没有被过滤，它们可能是有害的。"
+
+msgid "Last date the filter was replaced:"
+msgstr "上次更换过滤器的日期："
+
+msgid "Times the filter was replaced:"
+msgstr "更换过滤器的次数："
+
+msgid "How do I replace the filter?"
+msgstr "我该如何更换过滤器？"
+
+msgid "How to replace the HEPA filter"
+msgstr "如何更换HEPA过滤器"
+
+msgid "The filter has already been replaced."
+msgstr "过滤器已经被更换了。"
+
+msgid "I have already replaced the filter."
+msgstr "我已经更换了过滤器。"
+
+msgid "I will replace it later."
+msgstr "我会稍后更换它。"
+
+msgid "Remind me to replace the filter later."
+msgstr "提醒我稍后更换过滤器。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

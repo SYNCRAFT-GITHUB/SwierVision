@@ -1702,6 +1702,42 @@ msgstr "Mando ejecutado."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "Si no está correctamente nivelado, realice una calibración mecánica."
 
+msgid "HEPA Filter"
+msgstr "Filtro HEPA"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "¡Parece que tu filtro HEPA necesita ser reemplazado!"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "El filtro debe ser cambiado cada 6 meses."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "Algunos materiales son dañinos si no se filtran."
+
+msgid "Last date the filter was replaced:"
+msgstr "Última fecha en que se reemplazó el filtro:"
+
+msgid "Times the filter was replaced:"
+msgstr "Veces que se ha reemplazado el filtro:"
+
+msgid "How do I replace the filter?"
+msgstr "¿Cómo puedo reemplazar el filtro?"
+
+msgid "How to replace the HEPA filter"
+msgstr "Cómo reemplazar el filtro HEPA"
+
+msgid "The filter has already been replaced."
+msgstr "El filtro ya ha sido reemplazado."
+
+msgid "I have already replaced the filter."
+msgstr "Ya he reemplazado el filtro."
+
+msgid "I will replace it later."
+msgstr "Lo reemplazaré más tarde."
+
+msgid "Remind me to replace the filter later."
+msgstr "Recuérdame que reemplace el filtro más tarde."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

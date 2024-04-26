@@ -1678,6 +1678,42 @@ msgstr "Die Düsenhöhe wird überprüft."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "Wenn die Düsen nicht richtig nivelliert sind, führen Sie eine mechanische Kalibrierung durch."
 
+msgid "HEPA Filter"
+msgstr "HEPA-Filter"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "Es scheint, als müsste Ihr HEPA-Filter ausgetauscht werden!"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "Der Filter muss alle 6 Monate gewechselt werden."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "Einige Materialien sind schädlich, wenn sie nicht gefiltert werden."
+
+msgid "Last date the filter was replaced:"
+msgstr "Letztes Austauschdatum des Filters:"
+
+msgid "Times the filter was replaced:"
+msgstr "Anzahl der Filteraustausche:"
+
+msgid "How do I replace the filter?"
+msgstr "Wie tausche ich den Filter aus?"
+
+msgid "How to replace the HEPA filter"
+msgstr "Wie man den HEPA-Filter austauscht"
+
+msgid "The filter has already been replaced."
+msgstr "Der Filter wurde bereits ausgetauscht."
+
+msgid "I have already replaced the filter."
+msgstr "Ich habe den Filter bereits ausgetauscht."
+
+msgid "I will replace it later."
+msgstr "Ich werde ihn später austauschen."
+
+msgid "Remind me to replace the filter later."
+msgstr "Erinnere mich später daran, den Filter auszutauschen."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

@@ -1719,6 +1719,42 @@ msgstr "Будет проверена высота сопла."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "Если не правильно выровнено, выполните механическую калибровку."
 
+msgid "HEPA Filter"
+msgstr "Фильтр HEPA"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "Похоже, что вашему фильтру HEPA требуется замена!"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "Фильтр нужно менять каждые 6 месяцев."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "Некоторые материалы опасны, если их не фильтровать."
+
+msgid "Last date the filter was replaced:"
+msgstr "Дата последней замены фильтра:"
+
+msgid "Times the filter was replaced:"
+msgstr "Количество замен фильтра:"
+
+msgid "How do I replace the filter?"
+msgstr "Как мне заменить фильтр?"
+
+msgid "How to replace the HEPA filter"
+msgstr "Как заменить фильтр HEPA"
+
+msgid "The filter has already been replaced."
+msgstr "Фильтр уже был заменен."
+
+msgid "I have already replaced the filter."
+msgstr "Я уже заменил фильтр."
+
+msgid "I will replace it later."
+msgstr "Я заменю его позже."
+
+msgid "Remind me to replace the filter later."
+msgstr "Напомните мне заменить фильтр позже."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

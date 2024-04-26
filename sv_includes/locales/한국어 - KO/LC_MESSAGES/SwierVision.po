@@ -1606,6 +1606,42 @@ msgstr "노즐 높이가 확인됩니다."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "적절하게 레벨 조정되지 않은 경우 기계적 캘리브레이션을 수행하십시오."
 
+msgid "HEPA Filter"
+msgstr "HEPA 필터"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "당신의 HEPA 필터를 교체해야 할 것 같아요!"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "필터는 매 6개월마다 교체되어야 합니다."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "일부 물질은 필터링되지 않으면 해로울 수 있습니다."
+
+msgid "Last date the filter was replaced:"
+msgstr "마지막 필터 교체 일자:"
+
+msgid "Times the filter was replaced:"
+msgstr "필터를 교체한 횟수:"
+
+msgid "How do I replace the filter?"
+msgstr "필터를 어떻게 교체하나요?"
+
+msgid "How to replace the HEPA filter"
+msgstr "HEPA 필터를 교체하는 방법"
+
+msgid "The filter has already been replaced."
+msgstr "필터가 이미 교체되었습니다."
+
+msgid "I have already replaced the filter."
+msgstr "이미 필터를 교체했습니다."
+
+msgid "I will replace it later."
+msgstr "나중에 교체하겠습니다."
+
+msgid "Remind me to replace the filter later."
+msgstr "나중에 필터를 교체하도록 알려주세요."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

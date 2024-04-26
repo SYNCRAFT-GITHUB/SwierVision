@@ -1662,6 +1662,42 @@ msgstr "Wysokość dysz zostanie sprawdzona."
 msgid "If not properly leveled, perform a mechanical calibration."
 msgstr "Jeśli nie są prawidłowo wyrównane, wykonaj kalibrację mechaniczną."
 
+msgid "HEPA Filter"
+msgstr "Filtr HEPA"
+
+msgid "It looks like your HEPA filter needs to be replaced!"
+msgstr "Wygląda na to, że Twój filtr HEPA wymaga wymiany!"
+
+msgid "The Filter must be changed every 6 months."
+msgstr "Filtr musi być wymieniany co 6 miesięcy."
+
+msgid "Some materials are harmful if they are not filtered."
+msgstr "Niektóre materiały są szkodliwe, jeśli nie są odfiltrowane."
+
+msgid "Last date the filter was replaced:"
+msgstr "Ostatnia data wymiany filtra:"
+
+msgid "Times the filter was replaced:"
+msgstr "Liczba wymian filtra:"
+
+msgid "How do I replace the filter?"
+msgstr "Jak wymienić filtr?"
+
+msgid "How to replace the HEPA filter"
+msgstr "Jak wymienić filtr HEPA"
+
+msgid "The filter has already been replaced."
+msgstr "Filtr został już wymieniony."
+
+msgid "I have already replaced the filter."
+msgstr "Już wymieniłem filtr."
+
+msgid "I will replace it later."
+msgstr "Wymienię go później."
+
+msgid "Remind me to replace the filter later."
+msgstr "Przypomnij mi później o wymianie filtra."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

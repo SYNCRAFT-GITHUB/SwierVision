@@ -1762,6 +1762,15 @@ msgstr "Je le remplacerai plus tard."
 msgid "Remind me to replace the filter later."
 msgstr "Rappelez-moi de remplacer le filtre plus tard."
 
+msgid "Year"
+msgstr "Année"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "Day"
+msgstr "Jour"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

@@ -1565,6 +1565,15 @@ msgstr ""
 msgid "I will replace it later."
 msgstr ""
 
+msgid "Year"
+msgstr ""
+
+msgid "Month"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
 msgid "Remind me to replace the filter later."
 msgstr ""
 

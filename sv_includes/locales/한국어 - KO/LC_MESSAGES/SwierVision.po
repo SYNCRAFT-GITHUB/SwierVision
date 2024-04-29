@@ -1642,6 +1642,15 @@ msgstr "나중에 교체하겠습니다."
 msgid "Remind me to replace the filter later."
 msgstr "나중에 필터를 교체하도록 알려주세요."
 
+msgid "Year"
+msgstr "년"
+
+msgid "Month"
+msgstr "월"
+
+msgid "Day"
+msgstr "일"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

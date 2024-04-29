@@ -1698,6 +1698,15 @@ msgstr "Wymienię go później."
 msgid "Remind me to replace the filter later."
 msgstr "Przypomnij mi później o wymianie filtra."
 
+msgid "Year"
+msgstr "Rok"
+
+msgid "Month"
+msgstr "Miesiąc"
+
+msgid "Day"
+msgstr "Dzień"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

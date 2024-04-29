@@ -1575,6 +1575,15 @@ msgstr "後で交換します。"
 msgid "Remind me to replace the filter later."
 msgstr "後でフィルターを交換するように思い出させてください。"
 
+msgid "Year"
+msgstr "年"
+
+msgid "Month"
+msgstr "月"
+
+msgid "Day"
+msgstr "日"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

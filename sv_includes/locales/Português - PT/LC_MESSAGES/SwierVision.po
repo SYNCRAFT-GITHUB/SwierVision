@@ -1587,6 +1587,15 @@ msgstr "Farei isso em outro momento."
 msgid "Remind me to replace the filter later."
 msgstr "Lembre-me de trocar o filtro mais tarde."
 
+msgid "Year"
+msgstr "Ano"
+
+msgid "Month"
+msgstr "Mês"
+
+msgid "Day"
+msgstr "Dia"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

@@ -1715,6 +1715,15 @@ msgstr "我会稍后更换它。"
 msgid "Remind me to replace the filter later."
 msgstr "提醒我稍后更换过滤器。"
 
+msgid "Year"
+msgstr "年"
+
+msgid "Month"
+msgstr "月"
+
+msgid "Day"
+msgstr "日"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

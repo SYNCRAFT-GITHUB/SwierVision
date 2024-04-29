@@ -1755,6 +1755,15 @@ msgstr "Я заменю его позже."
 msgid "Remind me to replace the filter later."
 msgstr "Напомните мне заменить фильтр позже."
 
+msgid "Year"
+msgstr "Год"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Day"
+msgstr "День"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

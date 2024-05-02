@@ -22,7 +22,6 @@ class Panel(ScreenPanel):
         self.page: int = 0
 
         self.texts = [
-            "VALIDO!!" if sv_func.valid_hepa() else "INVALIDO !! xxx",
             _("It looks like your HEPA filter needs to be replaced!"),
             _("The Filter must be changed every 6 months."),
             _("Some materials are harmful if they are not filtered."),

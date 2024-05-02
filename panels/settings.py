@@ -22,6 +22,12 @@ class Panel(ScreenPanel):
             "panel": "timezone",
             "icon": "timezone"
         }})
+        options.append({"A_TESTE": {
+            "name": "A_TESTE",
+            "type": "panel",
+            "panel": "hepa_warning",
+            "icon": "custom-script"
+        }})
         options.append({"system_info": {
             "name": _("System Information"),
             "type": "panel",

@@ -78,7 +78,7 @@ class Panel(ScreenPanel):
                 return None
 
     def check_height(self, button):
-        self._screen._ws.klippy.gcode_script("IDEX_DIFF")
+        self._screen._ws.klippy.gcode_script("IDEX_NOZZLE_CHECK")
         message: str = _("Nozzle height will be checked.") + "\n\n" \
         + _("If not properly leveled, perform a mechanical calibration.")
         self._screen.show_popup_message(message, level=4)

@@ -112,8 +112,8 @@ class Panel(MenuPanel):
             image = "heater"
             class_name = f"graph_label_sensor_{self.h}"
             dev_type = "sensor"
-        elif device.startswith("temperature_fan"):
-            f = 1 + sum("temperature_fan" in d for d in self.devices)
+        elif device.startswith("temperature_sensor"):
+            f = 1 + sum("temperature_sensor" in d for d in self.devices)
             devname = f' {_("Chamber")}'
             image = "fan"
             class_name = f"graph_label_fan_{f}"
@@ -187,7 +187,7 @@ class Panel(MenuPanel):
             self._screen._ws.klippy.set_bed_temp(temp)
         elif self.active_heater.startswith('heater_generic '):
             self._screen._ws.klippy.set_heater_temp(name, temp)
-        elif self.active_heater.startswith('temperature_fan '):
+        elif self.active_heater.startswith('temperature_sensor '):
             self._screen._ws.klippy.set_temp_fan_temp(name, temp)
         else:
             logging.info(f"Unknown heater: {self.active_heater}")

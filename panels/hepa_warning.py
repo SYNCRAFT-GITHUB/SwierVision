@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from sv_includes import functions as sv_func
 import logging
 import os
 import yaml
@@ -21,11 +22,11 @@ class Panel(ScreenPanel):
         self.page: int = 0
 
         self.texts = [
+            "VALIDO!!" if sv_func.valid_hepa() else "INVALIDO !! xxx",
             _("It looks like your HEPA filter needs to be replaced!"),
             _("The Filter must be changed every 6 months."),
             _("Some materials are harmful if they are not filtered."),
-            _("Last date the filter was replaced:"),
-            _("Times the filter was replaced:")
+            _("Last date the filter was replaced:")
         ]
 
         self.dates_str = [
@@ -41,7 +42,7 @@ class Panel(ScreenPanel):
 
         self.content.add(self.info)
 
-        self.labels['text'] = Gtk.Label(f"\n{self.texts[self.page]}\n\n\n")
+        self.labels['text'] = Gtk.Label(f"\n{self.texts[self.page]}\n\n")
         self.labels['text'].set_line_wrap(True)
         self.labels['text'].set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
         self.labels['text'].set_halign(Gtk.Align.CENTER)
@@ -65,13 +66,8 @@ class Panel(ScreenPanel):
     def prop_dir(self) -> str:
         return "/Users/rafael/Desktop/wb/git/syncraftcore-master/core/info.yaml"
 
-    def hepa_prop(self, prop_name: str):
-        with open(self.prop_dir(), 'r') as prop:
-            prop = yaml.safe_load(prop)
-            try:
-                return prop.get(prop_name)
-            except:
-                return "0000-00-00"
+    def hepa_prop(self, prop: str):
+        return sv_func.hepa_prop(prop_name=prop)
 
     def last_time_replaced(self, date_format='%Y-%m-%d'):
         try:
@@ -91,24 +87,21 @@ class Panel(ScreenPanel):
 
     def date_in_text(self) -> str:
         return f"""{self.dates_str[0]}: {self.last_time_replaced(date_format='%Y')} \
-        {self.dates_str[1]}: {self.last_time_replaced(date_format='%m')} \
-        {self.dates_str[2]}: {self.last_time_replaced(date_format='%d')}
+        {self.dates_str[1]}: {self.last_time_replaced(date_format='%m')}
         """
 
     def update_screen(self, button):
 
-        if (self.page < 4):
+        if (self.page < 3):
 
             self.page += 1
 
             if self.page == 3:
-                self.labels['text'].set_label(f"\n{self.texts[self.page]}\n{self.date_in_text()}\n")
-            elif self.page == 4:
-                self.labels['text'].set_label(f"\n{self.texts[self.page]} {self.hepa_count()}\n\n\n")
+                self.labels['text'].set_label(f"\n{self.texts[self.page]}\n{self.date_in_text()}")
             else:
-                self.labels['text'].set_label(f"\n{self.texts[self.page]}\n\n\n")
+                self.labels['text'].set_label(f"\n{self.texts[self.page]}\n\n")
 
-        if (self.page == 4):
+        if (self.page == 3):
 
             self.buttons['OK'].connect("clicked", self.menu_item_clicked, {
                 "name": _("Main Menu"),

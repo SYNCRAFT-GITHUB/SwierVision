@@ -1,12 +1,14 @@
 import logging
 import logging.handlers
 import os
+import yaml
 import re
 import subprocess
 import sys
 import threading
 import time
 import traceback
+from datetime import datetime, timedelta
 from queue import SimpleQueue as Queue
 
 import ctypes
@@ -144,6 +146,30 @@ class SwierVisionLoggingHandler(logging.handlers.RotatingFileHandler):
     def log_start(self):
         for line in self.rollover_info.values():
             logging.info(line)
+
+
+def hepa_prop(prop_name: str):
+    # prop_dir = os.path.join('/home', 'pi', 'SyncraftCore', 'core', 'info.yaml')
+    prop_dir = "/home/rafael/Desktop/git/syncraftcore-master/core/info.yaml"
+    with open(prop_dir, 'r') as prop:
+        prop = yaml.safe_load(prop)
+        try:
+            return prop.get(prop_name)
+        except:
+            return "0000-00-00"
+
+
+def valid_hepa() -> bool:
+    hepa_count = int(hepa_prop('hepa-count'))
+    hepa_start = datetime.strptime(hepa_prop('hepa-start'), '%Y-%m-%d')
+    days = int((182 * hepa_count))
+
+    hepa_start_plus_days = hepa_start + timedelta(days=days)
+    difference = datetime.now() - hepa_start_plus_days
+    if hepa_start_plus_days >= datetime.now():
+        return True
+    else:
+        return not (difference.days > 182)
 
 
 # Logging based on Arksine's logging setup

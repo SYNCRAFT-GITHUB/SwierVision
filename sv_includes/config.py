@@ -423,7 +423,7 @@ class SwierVisionConfig:
 
     def internet_connection(self) -> bool:
         try:
-            socket.create_connection(("www.google.com", 80))
+            socket.create_connection(("www.github.com", 80))
             return True
         except OSError:
             pass

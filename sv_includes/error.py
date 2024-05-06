@@ -46,6 +46,11 @@ known_errors = [
         code=None
         ),
     KnownError(
+        error= 'Nozzle height difference limit exceeded.',
+        message= 'Incompatible height, mechanically calibrate to fix.',
+        code=None
+        ),
+    KnownError(
         error= 'Probe triggered prior to movement',
         message= 'PROBE TRIGGERED PRIOR TO MOVEMENT',
         code=None

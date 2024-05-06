@@ -18,20 +18,20 @@ class Panel(ScreenPanel):
     def __init__(self, screen, title):
 
         super().__init__(screen, title)
-        self.menu = ['sensors_verif_panel']
+        self.menu = ['setup_verif_panel']
 
         self.process_index = 0
         self.verification = UNKNOWN
 
         grid = self._gtk.HomogeneousGrid()
 
-        self.labels["text_01"] = Gtk.Label(_("Before starting a print, it will be checked if the materials are inserted."))
+        self.labels["text_01"] = Gtk.Label(_("Before printing, it will be checked whether the materials and extruder type are compatible with the file."))
         self.labels["text_02"] = Gtk.Label(_("This verification is done with sensors to prevents errors."))
         self.labels["text_03"] = Gtk.Label(_("However, you can disable this verification."))
 
         self.labels["info"] = Gtk.Label("...")
 
-        toggle = self._gtk.Button("check-sensor", _("ON/OFF"), "color1")
+        toggle = self._gtk.Button("check-setup", _("ON/OFF"), "color1")
         toggle.connect("clicked", self.set_verification)
 
         grid.attach(self.labels["text_01"], 0, 0, 1, 1)
@@ -49,15 +49,15 @@ class Panel(ScreenPanel):
             return
         if self.verification == TRUE:
             self.verification = FALSE
-            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S=0")
+            self._screen._ws.klippy.gcode_script("SET_SETUP_VERIFICATION S=0")
             return
         if self.verification == FALSE:
             self.verification = TRUE
-            self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION S=1")
+            self._screen._ws.klippy.gcode_script("SET_SETUP_VERIFICATION S=1")
             return
 
     def verify(self):
-        self._screen._ws.klippy.gcode_script("SET_SENSORS_VERIFICATION")
+        self._screen._ws.klippy.gcode_script("SET_SETUP_VERIFICATION")
 
     def update_label(self):
         if self.verification == TRUE:
@@ -79,8 +79,8 @@ class Panel(ScreenPanel):
 
         if action == "notify_gcode_response":
 
-            if 'sensors_verification:' in data:
-                if 'sensors_verification:1' in data:
+            if 'setup_verification:' in data:
+                if 'setup_verification:1' in data:
                     self.verification = TRUE
-                if 'sensors_verification:0' in data:
+                if 'setup_verification:0' in data:
                     self.verification = FALSE

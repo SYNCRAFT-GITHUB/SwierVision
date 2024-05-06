@@ -1723,6 +1723,15 @@ msgstr "Monat"
 msgid "Day"
 msgstr "Tag"
 
+msgid "Incompatible height, mechanically calibrate to fix."
+msgstr "Inkompatible Höhe, mechanisch kalibrieren, um das Problem zu beheben."
+
+msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgstr "Vor Beginn eines Drucks wird überprüft, ob die ausgewählten Materialien und Extrudertypen mit der Druckdatei kompatibel sind."
+
+msgid "General compatibility check"
+msgstr "Kompatibilitätsprüfung"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

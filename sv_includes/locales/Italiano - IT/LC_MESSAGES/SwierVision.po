@@ -1715,6 +1715,15 @@ msgstr "Mese"
 msgid "Day"
 msgstr "Giorno"
 
+msgid "Incompatible height, mechanically calibrate to fix."
+msgstr "Altezza incompatibile, calibrare meccanicamente per correggere."
+
+msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgstr "Prima di iniziare una stampa, verrà verificato se i materiali selezionati e il tipo di estrusore sono compatibili con il file di stampa."
+
+msgid "General compatibility check"
+msgstr "Controllo di compatibilità"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

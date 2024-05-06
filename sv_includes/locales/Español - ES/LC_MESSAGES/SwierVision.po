@@ -1747,6 +1747,15 @@ msgstr "Mes"
 msgid "Day"
 msgstr "Día"
 
+msgid "Incompatible height, mechanically calibrate to fix."
+msgstr "Altura incompatible, calibre mecánicamente para corregir."
+
+msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgstr "Antes de comenzar una impresión, se comprobará si los materiales seleccionados y el tipo de extrusor son compatibles con el archivo."
+
+msgid "General compatibility check"
+msgstr "Verificación de Compatibilidad"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

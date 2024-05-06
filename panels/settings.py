@@ -22,12 +22,6 @@ class Panel(ScreenPanel):
             "panel": "timezone",
             "icon": "timezone"
         }})
-        options.append({"A_TESTE": {
-            "name": "A_TESTE",
-            "type": "panel",
-            "panel": "hepa_warning",
-            "icon": "custom-script"
-        }})
         options.append({"system_info": {
             "name": _("System Information"),
             "type": "panel",
@@ -69,7 +63,13 @@ class Panel(ScreenPanel):
             "name": _("Sensor Verification"),
             "type": "panel",
             "panel": "sensors_verify",
-            "icon": "check_sensor"
+            "icon": "check-sensor"
+        }})
+        options.append({"setup_verify": {
+            "name": _("General compatibility check"),
+            "type": "panel",
+            "panel": "setup_verify",
+            "icon": "check-setup"
         }})
         options.append({"system_fixes": {
             "name": _("System Fixes"),

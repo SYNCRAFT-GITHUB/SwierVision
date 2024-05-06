@@ -1577,6 +1577,15 @@ msgstr ""
 msgid "Remind me to replace the filter later."
 msgstr ""
 
+msgid "Incompatible height, mechanically calibrate to fix."
+msgstr ""
+
+msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgstr ""
+
+msgid "General compatibility check"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

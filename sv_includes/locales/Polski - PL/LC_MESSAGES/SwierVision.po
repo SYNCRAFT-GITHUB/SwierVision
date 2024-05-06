@@ -1707,6 +1707,15 @@ msgstr "Miesiąc"
 msgid "Day"
 msgstr "Dzień"
 
+msgid "Incompatible height, mechanically calibrate to fix."
+msgstr "Niekompatybilna wysokość, mechaniczna kalibracja w celu naprawy."
+
+msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgstr "Przed rozpoczęciem druku zostanie sprawdzone, czy wybrane materiały i rodzaj ekstrudera są kompatybilne z plikiem drukowanym."
+
+msgid "General compatibility check"
+msgstr "Kontrola kompatybilności"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

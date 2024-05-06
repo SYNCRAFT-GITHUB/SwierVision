@@ -1580,7 +1580,7 @@ msgstr ""
 msgid "Incompatible height, mechanically calibrate to fix."
 msgstr ""
 
-msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
+msgid "Before printing, it will be checked both material and extruder type."
 msgstr ""
 
 msgid "General compatibility check"

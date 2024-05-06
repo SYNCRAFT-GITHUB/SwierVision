@@ -1774,8 +1774,8 @@ msgstr "Jour"
 msgid "Incompatible height, mechanically calibrate to fix."
 msgstr "Hauteur incompatible, calibrer mécaniquement pour corriger."
 
-msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
-msgstr "Avant de commencer une impression, il sera vérifié si les matériaux sélectionnés et le type d'extrudeur sont compatibles avec le fichier d'impression."
+msgid "Before printing, it will be checked both material and extruder type."
+msgstr "Avant de commencer une impression, il sera vérifié si les\nmatériaux sélectionnés et le type d'extrudeur sont compatibles avec\nle fichier d'impression."
 
 msgid "General compatibility check"
 msgstr "Vérification de compatibilité"

@@ -25,9 +25,8 @@ class Panel(ScreenPanel):
 
         grid = self._gtk.HomogeneousGrid()
 
-        self.labels["text_01"] = Gtk.Label(_("Before printing, it will be checked whether the materials and extruder type are compatible with the file."))
-        self.labels["text_02"] = Gtk.Label(_("This verification is done with sensors to prevents errors."))
-        self.labels["text_03"] = Gtk.Label(_("However, you can disable this verification."))
+        self.labels["text_01"] = Gtk.Label(_("Before printing, it will be checked both material and extruder type."))
+        self.labels["text_02"] = Gtk.Label(_("However, you can disable this verification."))
 
         self.labels["info"] = Gtk.Label("...")
 
@@ -36,7 +35,6 @@ class Panel(ScreenPanel):
 
         grid.attach(self.labels["text_01"], 0, 0, 1, 1)
         grid.attach(self.labels["text_02"], 0, 1, 1, 1)
-        grid.attach(self.labels["text_03"], 0, 2, 1, 1)
         grid.attach(self.labels["info"], 0, 3, 1, 1)
         grid.attach(toggle, 0, 4, 1, 2)
         

@@ -1726,8 +1726,8 @@ msgstr "Tag"
 msgid "Incompatible height, mechanically calibrate to fix."
 msgstr "Inkompatible Höhe, mechanisch kalibrieren, um das Problem zu beheben."
 
-msgid "Before printing, it will be checked whether the materials and extruder type are compatible with the file."
-msgstr "Vor Beginn eines Drucks wird überprüft, ob die ausgewählten Materialien und Extrudertypen mit der Druckdatei kompatibel sind."
+msgid "Before printing, it will be checked both material and extruder type."
+msgstr "Vor Beginn eines Drucks wird überprüft,\nob die ausgewählten Materialien und Extrudertypen mit der\nDruckdatei kompatibel sind."
 
 msgid "General compatibility check"
 msgstr "Kompatibilitätsprüfung"

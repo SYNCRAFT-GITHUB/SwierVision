@@ -33,15 +33,19 @@ class Panel(ScreenPanel):
             Timezone(region='America', location='Mexico_City'),
             Timezone(region='America', location='New_York'),
             Timezone(region='America', location='Sao_Paulo'),
-            Timezone(region='America', location='Rio_Branco'),
-            Timezone(region='America', location='Manaus'),
-            Timezone(region='America', location='Belem'),
-            Timezone(region='America', location='Fortaleza'),
-            Timezone(region='America', location='Recife'),
             Timezone(region='America', location='Araguaina'),
             Timezone(region='America', location='Bahia'),
+            Timezone(region='America', location='Belem'),
+            Timezone(region='America', location='Boa_Vista'),
+            Timezone(region='America', location='Campo_Grande'),
+            Timezone(region='America', location='Paramaribo'),
+            Timezone(region='America', location='Porto_Velho'),
+            Timezone(region='America', location='Rio_Branco'),
+            Timezone(region='America', location='Santarem'),
             Timezone(region='America', location='Buenos_Aires'),
+            Timezone(region='America', location='Catamarca'),
             Timezone(region='America', location='Cordoba'),
+            Timezone(region='America', location='La_Rioja'),
             Timezone(region='America', location='Lima'),
             Timezone(region='America', location='Toronto'),
             Timezone(region='America', location='Vancouver'),
@@ -156,7 +160,7 @@ class Panel(ScreenPanel):
 
         code = self.labels['timezone_name'].get_text()
 
-        magic_words = ['welcome', 'help', 'kill']
+        magic_words = ['welcome', 'help', 'kill', 'hepareset']
         if code in magic_words:
             self.magic(code=code)
             return
@@ -178,6 +182,11 @@ class Panel(ScreenPanel):
             message: str = _("Let me guess... Someone stole your Sweetroll")
             self._screen.show_popup_message(message, level=1)
             self._screen.remove_keyboard()
+
+        if code == 'hepareset':
+            path = os.path.join("/home", "pi", "SyncraftCore")
+            os.system(f"cd {path} && python3 -m core.hepa reset")
+            self._screen.reload_panels()
 
         if code == 'kill':
             kill_command = "sudo service SwierVision stop"

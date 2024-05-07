@@ -54,11 +54,9 @@ class Panel(ScreenPanel):
 
     def last_time_replaced(self, date_format='%Y-%m-%d'):
         try:
-            date = self.hepa_prop("hepa-start")
-            hepa_start = datetime.strptime(date, "%Y-%m-%d")
-            days_to_remove = self.hepa_count() * 132
-            last_time_replaced_date = hepa_start - timedelta(days=days_to_remove)
-            return last_time_replaced_date.strftime(date_format)
+            date = self.hepa_prop("last-hepa-replacement")
+            date = datetime.strptime(date, "%Y-%m-%d")
+            return date.strftime(date_format)
         except:
             return "?"
 
@@ -74,12 +72,6 @@ class Panel(ScreenPanel):
             r = 0
         return f"{self.dates_str[r][0]}: {self.last_time_replaced(date_format=format)}"
 
-    def hepa_count(self) -> int:
-        try:
-            return int(self.hepa_prop("hepa-count"))
-        except:
-            return 0
-
     def check_availability(self):
         if sv_func.valid_hepa():
             self.confirm_replace_btn.set_sensitive(False)
@@ -90,5 +82,5 @@ class Panel(ScreenPanel):
 
     def confirm_replace(self, button):
         path = os.path.join("/home", "pi", "SyncraftCore")
-        os.system(f"cd {path} && python3 -m core.hepa +")
+        os.system(f"cd {path} && python3 -m core.hepa renew")
         self._screen.reload_panels()

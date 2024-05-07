@@ -67,11 +67,9 @@ class Panel(ScreenPanel):
 
     def last_time_replaced(self, date_format='%Y-%m-%d'):
         try:
-            date = self.hepa_prop("hepa-start")
-            hepa_start = datetime.strptime(date, "%Y-%m-%d")
-            days_to_remove = self.hepa_count() * 132
-            last_time_replaced_date = hepa_start - timedelta(days=days_to_remove)
-            return last_time_replaced_date.strftime(date_format)
+            date = self.hepa_prop("last-hepa-replacement")
+            date = datetime.strptime(date, "%Y-%m-%d")
+            return date.strftime(date_format)
         except:
             return "?"
 

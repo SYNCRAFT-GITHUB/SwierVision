@@ -163,18 +163,13 @@ def hepa_prop(prop_name: str):
 
 def valid_hepa() -> bool:
     try:
-        hepa_count = int(hepa_prop('hepa-count'))
-        hepa_start = datetime.strptime(hepa_prop('hepa-start'), '%Y-%m-%d')
+        hepa_start = datetime.strptime(hepa_prop('last-hepa-replacement'), '%Y-%m-%d')
     except:
         return True
-    days = int((182 * hepa_count))
+    days = 182
 
-    hepa_start_plus_days = hepa_start + timedelta(days=days)
-    difference = datetime.now() - hepa_start_plus_days
-    if hepa_start_plus_days >= datetime.now():
-        return True
-    else:
-        return not (difference.days > 182)
+    difference = datetime.now() - hepa_start
+    return not (difference.days > 182)
 
 
 # Logging based on Arksine's logging setup

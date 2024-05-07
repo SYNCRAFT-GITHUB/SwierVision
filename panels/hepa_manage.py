@@ -74,24 +74,21 @@ class Panel(ScreenPanel):
             r = 0
         return f"{self.dates_str[r][0]}: {self.last_time_replaced(date_format=format)}"
 
-
     def hepa_count(self) -> int:
         try:
             return int(self.hepa_prop("hepa-count"))
         except:
             return 0
 
-
     def check_availability(self):
         if sv_func.valid_hepa():
             self.confirm_replace_btn.set_sensitive(False)
-
 
     def replace_later(self, button):
         for _ in range(0, 3):
             self._screen._menu_go_back()
 
-
     def confirm_replace(self, button):
         path = os.path.join("/home", "pi", "SyncraftCore")
         os.system(f"cd {path} && python3 -m core.hepa +")
+        self._screen.reload_panels()

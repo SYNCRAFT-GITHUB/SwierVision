@@ -149,8 +149,10 @@ class SwierVisionLoggingHandler(logging.handlers.RotatingFileHandler):
 
 
 def hepa_prop(prop_name: str):
-    # prop_dir = os.path.join('/home', 'pi', 'SyncraftCore', 'core', 'info.yaml')
-    prop_dir = "/home/rafael/Desktop/git/syncraftcore-master/core/info.yaml"
+    prop_dir = os.path.join('/home', 'pi', 'SyncraftCore', 'core', 'info.yaml')
+    # prop_dir = "/home/rafael/Desktop/git/syncraftcore-master/core/info.yaml"
+    if not os.path.exists(prop_dir):
+        return False
     with open(prop_dir, 'r') as prop:
         prop = yaml.safe_load(prop)
         try:
@@ -160,8 +162,11 @@ def hepa_prop(prop_name: str):
 
 
 def valid_hepa() -> bool:
-    hepa_count = int(hepa_prop('hepa-count'))
-    hepa_start = datetime.strptime(hepa_prop('hepa-start'), '%Y-%m-%d')
+    try:
+        hepa_count = int(hepa_prop('hepa-count'))
+        hepa_start = datetime.strptime(hepa_prop('hepa-start'), '%Y-%m-%d')
+    except:
+        return True
     days = int((182 * hepa_count))
 
     hepa_start_plus_days = hepa_start + timedelta(days=days)

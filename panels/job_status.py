@@ -435,6 +435,7 @@ class Panel(ScreenPanel):
     def close_panel(self, widget=None):
         if self.can_close:
             logging.debug("Closing job_status panel")
+            self._screen._ws.klippy.gcode_script("PROGRESS_BAR_IDLE")
             self._screen.state_ready(wait=False)
 
     def enable_button(self, *args):

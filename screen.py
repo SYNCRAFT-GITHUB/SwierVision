@@ -97,6 +97,7 @@ class SwierVision(Gtk.Window):
     popup_timeout = None
     wayland = False
     windowed = False
+    hepa_conscious = False
     notification_log = []
 
     def __init__(self, args):
@@ -748,8 +749,14 @@ class SwierVision(Gtk.Window):
             self.printer.state = "not ready"
             return
         self._config.set_ready_timestamp()
-        self.first_panel = "welcome" if self._config.get_hidden_config().getboolean('welcome', False) else "main_menu"
-        if "welcome" in self.first_panel:
+        if self._config.get_hidden_config().getboolean('welcome', False):
+            self.first_panel = "welcome"
+        elif not functions.valid_hepa() and not self.hepa_conscious:
+            self.first_panel = "hepa_warning"
+        else:
+            self.first_panel = "main_menu"
+        if self.first_panel != "main_menu":
+            self.hepa_conscious = True
             self.show_panel(self.first_panel, None, remove_all=True)
         else:
             self.show_panel(self.first_panel, None, remove_all=True, items=self._config.get_menu_items("__main"))

@@ -62,9 +62,6 @@ class Panel(ScreenPanel):
         self.labels['hepa_warning'].attach(grid, 0, 0, 2, 2)
         self.content.add(self.labels['hepa_warning'])
 
-    def prop_dir(self) -> str:
-        return "/Users/rafael/Desktop/wb/git/syncraftcore-master/core/info.yaml"
-
     def hepa_prop(self, prop: str):
         return sv_func.hepa_prop(prop_name=prop)
 
@@ -91,18 +88,15 @@ class Panel(ScreenPanel):
 
     def update_screen(self, button):
 
-        if (self.page < 3):
+        self.page += 1
 
-            self.page += 1
+        if (self.page <= 3):
 
             if self.page == 3:
                 self.labels['text'].set_label(f"\n{self.texts[self.page]}\n{self.date_in_text()}")
             else:
                 self.labels['text'].set_label(f"\n{self.texts[self.page]}\n\n")
 
-        if (self.page == 3):
+        if (self.page >= 4):
 
-            self.buttons['OK'].connect("clicked", self.menu_item_clicked, {
-                "name": _("Main Menu"),
-                "panel": "main_menu"
-                })
+            self._screen.reload_panels()

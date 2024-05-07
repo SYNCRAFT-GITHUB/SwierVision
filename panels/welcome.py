@@ -79,4 +79,9 @@ class Panel(ScreenPanel):
 
     def finish_all(self, button):
         self.set_bool_config_option(section="hidden", option="welcome", boolean=False)
+        
+        syncraftcore_path = os.path.join("/home", "pi", "SyncraftCore")
+        if os.path.exists(syncraftcore_path):
+            os.system(f"cd {syncraftcore_path} && python3 -m core.hepa reset")
+
         self._screen.reload_panels()

@@ -37,10 +37,10 @@ class Panel(ScreenPanel):
         self.buttons = {
             'load': self._gtk.Button("arrow-up", _("Load"), "color3", Gtk.PositionType.BOTTOM, 3),
             'unload': self._gtk.Button("arrow-down", _("Unload"), "color2", Gtk.PositionType.BOTTOM, 3),
-            'material_ext0': self._gtk.Button("filament", None, "color1", .68),
-            'material_ext1': self._gtk.Button("filament", None, "color1", .68),
-            'settings_ext0': self._gtk.Button("settings", None, "color3", .68),
-            'settings_ext1': self._gtk.Button("settings", None, "color3", .68),
+            'material_ext0': self._gtk.Button("filament", None, "color1", .70),
+            'material_ext1': self._gtk.Button("filament", None, "color1", .70),
+            'settings_ext0': self._gtk.Button("gear-1", None, "color3", .79),
+            'settings_ext1': self._gtk.Button("gear-2", None, "color3", .79),
         }
 
         grid = self._gtk.HomogeneousGrid()
@@ -213,6 +213,8 @@ class Panel(ScreenPanel):
                 material = self._config.variables_value_reveal('material_ext1')
             if 'empty' in material:
                 material = _("Empty")
+            if 'none' in material:
+                material = _("Out of Date")
             if 'GENERIC' in material:
                 material = _("Generic")
             self.labels[extruder].set_label(material)

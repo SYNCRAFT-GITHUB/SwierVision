@@ -64,7 +64,7 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.menu = ['material_set_menu_popup']
 
-        if self._config.get_spool_option() == '1':
+        if 'two' in self._config.get_spool_option():
             self.nozzle = self._config.variables_value_reveal('nozzle1')
         else:
             self.nozzle = self._config.variables_value_reveal('nozzle0')

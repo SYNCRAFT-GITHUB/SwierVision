@@ -1756,6 +1756,24 @@ msgstr "Antes de comenzar una impresión,\nse comprobará si los materiales sele
 msgid "General compatibility check"
 msgstr "Verificación de Compatibilidad"
 
+msgid "After this quick procedure, the machine will restart."
+msgstr "Después de este procedimiento, la máquina se reiniciará."
+
+msgid "Do not proceed if you are not sure what you are doing."
+msgstr "No proceda si no está seguro de lo que está haciendo."
+
+msgid "This procedure will flash the controller board."
+msgstr "Este procedimiento flasheará la placa controladora."
+
+msgid "Flash Controller Board"
+msgstr "Flashear la placa controladora"
+
+msgid "First Flash (Jumper required)"
+msgstr "Primera vez (se requiere Jumper)"
+
+msgid "Re-flash (Jumper not required)"
+msgstr "Reflasheo (no se requiere Jumper)"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

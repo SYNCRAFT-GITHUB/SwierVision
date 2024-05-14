@@ -1773,6 +1773,24 @@ msgstr "Перед началом печати будет\nпроверено, �
 msgid "General compatibility check"
 msgstr "Проверка совместимости"
 
+msgid "After this quick procedure, the machine will restart."
+msgstr "После этой быстрой процедуры машина перезагрузится."
+
+msgid "Do not proceed if you are not sure what you are doing."
+msgstr "Не продолжайте, если не уверены в том, что делаете."
+
+msgid "This procedure will flash the controller board."
+msgstr "Эта процедура прошьет плату контроллера."
+
+msgid "Flash Controller Board"
+msgstr "Прошить плату контроллера"
+
+msgid "First Flash (Jumper required)"
+msgstr "Первая прошивка (требуется джампер)"
+
+msgid "Re-flash (Jumper not required)"
+msgstr "Перепрошивка (джампер не требуется)"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

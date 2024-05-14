@@ -1660,6 +1660,24 @@ msgstr "인쇄를 시작하기 전에 선택한 재료와 압출기\n유형이 �
 msgid "General compatibility check"
 msgstr "호환성 확인"
 
+msgid "After this quick procedure, the machine will restart."
+msgstr "이 빠른 절차 후에 기계가 다시 시작됩니다."
+
+msgid "Do not proceed if you are not sure what you are doing."
+msgstr "자신이 무엇을 하는지 확실하지 않은 경우 진행하지 마십시오."
+
+msgid "This procedure will flash the controller board."
+msgstr "이 절차는 컨트롤러 보드를 플래시합니다."
+
+msgid "Flash Controller Board"
+msgstr "컨트롤러 보드 플래시"
+
+msgid "First Flash (Jumper required)"
+msgstr "첫 번째 플래시 (점퍼 필요)"
+
+msgid "Re-flash (Jumper not required)"
+msgstr "재플래시 (점퍼 필요 없음)"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

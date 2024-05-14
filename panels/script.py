@@ -81,6 +81,8 @@ class Panel(ScreenPanel):
                 CAMERA = os.path.join(core, 'fixes', 'camera.sh')
                 LIGHT = os.path.join(core, 'fixes', 'light.sh')
                 MOONRAKER = os.path.join(core, 'fixes', 'moonraker.sh')
+                FLASH = os.path.join(core, 'fixes', 'flash.sh')
+                REFLASH = os.path.join(core, 'fixes', 'reflash.sh')
             class UPDATE:
                 DOWNLOAD = os.path.join(core, 'core', 'update.py')
                 APPLY = os.path.join(core, 'state', 'upgrade', 'apply.sh')
@@ -139,4 +141,12 @@ class Panel(ScreenPanel):
         if (fix_option == "CLEAR_GCODES"):
             core_script(SCRIPT.MACHINE.SXUSB)
             os.system('sudo reboot')
+            return
+
+        if (fix_option == "FLASH_BOARD"):
+            core_script(SCRIPT.FIXES.FLASH)
+            return
+
+        if (fix_option == "REFLASH_BOARD"):
+            core_script(SCRIPT.FIXES.REFLASH)
             return

@@ -413,9 +413,15 @@ class SwierVision(Gtk.Window):
 
         return False
 
-    def delete_temporary_panels(self):
+    def delete_temporary_panels(self, exclude=None):
         temp = ["material_load", "material_popup", "nozzle_popup", "material_set", "steps"]
+        temp_remove = []
         for panel in temp:
+            if panel == exclude:
+                continue
+            else:
+                temp_remove.append(panel)
+        for panel in temp_remove:
             try:
                 del self.panels[panel]
             except:

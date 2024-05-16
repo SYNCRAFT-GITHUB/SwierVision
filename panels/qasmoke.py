@@ -56,7 +56,7 @@ class Panel(ScreenPanel):
             index_button.connect("clicked", self.teleport, panel_name)
             gridvariable.attach(index_button, repeat_three, i, 1, 1)
             
-            if repeat_three == 4:
+            if repeat_three == 3:
                 repeat_three = 0
                 i += 1
             else:

@@ -160,7 +160,7 @@ class Panel(ScreenPanel):
 
         code = self.labels['timezone_name'].get_text()
 
-        magic_words = ['welcome', 'help', 'kill', 'hepareset']
+        magic_words = ['welcome', 'help', 'kill', 'hepareset', 'qasmoke']
         if code in magic_words:
             self.magic(code=code)
             return
@@ -187,6 +187,13 @@ class Panel(ScreenPanel):
             path = os.path.join("/home", "pi", "SyncraftCore")
             os.system(f"cd {path} && python3 -m core.hepa reset")
             self._screen.reload_panels()
+
+        if code == 'qasmoke':
+            self._screen.remove_keyboard()
+            self.menu_item_clicked(widget="QASMOKE", item={
+                "name": "QASMOKE",
+                "panel": "qasmoke"
+            })
 
         if code == 'kill':
             kill_command = "sudo service SwierVision stop"

@@ -61,20 +61,16 @@ class Panel(ScreenPanel):
             })
 
     def nozzlegcodescript(self, widget, nozzle: str):
-        if '1' in str(self.extruder_option):
+        if 'two' in self._config.get_spool_option():
             self._screen._ws.klippy.gcode_script(f"NOZZLE_SET CARRIAGE=1 NZ='{nozzle}'")
         else:
             self._screen._ws.klippy.gcode_script(f"NOZZLE_SET CARRIAGE=0 NZ='{nozzle}'")
 
     def process_update(self, action, data):
 
-        self.extruder_option = self._config.get_extruder_option()
-
         for x in self._printer.get_filament_sensors():
-
             try:
                 if x in data:
-                    
                     if 'enabled' in data[x]:
                         self._printer.set_dev_stat(x, "enabled", data[x]['enabled'])
                     if 'filament_detected' in data[x]:

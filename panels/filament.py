@@ -162,6 +162,7 @@ class Panel(ScreenPanel):
                 self._screen.show_popup_message("Macro UNLOAD_FILAMENT not found")
             else:
                 self._screen._ws.klippy.gcode_script(f"UNLOAD_FILAMENT SPEED={self.speed * 60}")
+                self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
         if direction == "+":
             if not self.load_filament:
                 self._screen.show_popup_message("Macro LOAD_FILAMENT not found")
@@ -270,3 +271,6 @@ class Panel(ScreenPanel):
     def change_extruder(self, widget, extruder):
         logging.info(f"Changing extruder to {extruder}")
         self._screen._ws.klippy.gcode_script(f"T{self._printer.get_tool_number(extruder)}")
+
+    def ext(self) -> int:
+        return 0 if self._config.get_extruder_option() == "extruder" else 1

@@ -1798,6 +1798,12 @@ msgstr "Premier flashage (jumper requis)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Reflashage (jumper non requis)"
 
+msgid "Birth"
+msgstr "Date de création"
+
+msgid "HEPA Replacements"
+msgstr "Remplacements HEPA"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

@@ -1734,6 +1734,12 @@ msgstr "Pierwsze flashowanie (wymagany zworka)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Ponowne flashowanie (zworka niewymagana)"
 
+msgid "Birth"
+msgstr "Data utworzenia"
+
+msgid "HEPA Replacements"
+msgstr "Zamienniki HEPA"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

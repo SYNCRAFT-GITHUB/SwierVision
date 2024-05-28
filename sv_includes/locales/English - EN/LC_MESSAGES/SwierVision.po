@@ -1604,6 +1604,12 @@ msgstr ""
 msgid "Re-flash (Jumper not required)"
 msgstr ""
 
+msgid "Birth"
+msgstr ""
+
+msgid "HEPA Replacements"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

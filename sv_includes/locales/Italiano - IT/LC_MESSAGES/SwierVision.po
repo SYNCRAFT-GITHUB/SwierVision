@@ -1748,6 +1748,12 @@ msgstr "Primo flash (jumper richiesto)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Riflash (jumper non richiesto)"
 
+msgid "Birth"
+msgstr "Data di creazione"
+
+msgid "HEPA Replacements"
+msgstr "Sostituzioni HEPA"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

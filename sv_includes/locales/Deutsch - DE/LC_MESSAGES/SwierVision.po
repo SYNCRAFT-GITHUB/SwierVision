@@ -1750,6 +1750,12 @@ msgstr "Erstes Flashen (Jumper erforderlich)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Erneutes Flashen (Jumper nicht erforderlich)"
 
+msgid "Birth"
+msgstr "Erstellungsdatum"
+
+msgid "HEPA Replacements"
+msgstr "HEPA-Ersatzteile"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

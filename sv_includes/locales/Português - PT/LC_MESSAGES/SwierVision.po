@@ -1623,6 +1623,12 @@ msgstr "Primeiro Flash (Jumper obrigatório)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Re-Flash (Sem Jumper)"
 
+msgid "Birth"
+msgstr "Criado em"
+
+msgid "HEPA Replacements"
+msgstr "Substituições HEPA"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

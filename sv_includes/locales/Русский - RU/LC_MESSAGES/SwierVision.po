@@ -1791,6 +1791,12 @@ msgstr "Первая прошивка (требуется джампер)"
 msgid "Re-flash (Jumper not required)"
 msgstr "Перепрошивка (джампер не требуется)"
 
+msgid "Birth"
+msgstr "Дата создания"
+
+msgid "HEPA Replacements"
+msgstr "Замена фильтров"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

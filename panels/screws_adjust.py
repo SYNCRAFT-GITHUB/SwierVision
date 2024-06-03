@@ -1,5 +1,6 @@
 import logging
-
+import time
+import threading
 import gi
 
 gi.require_version("Gtk", "3.0")
@@ -56,6 +57,7 @@ class Panel(ScreenPanel):
     def off_state(self):
         self.started = False
         self.amount = 0
+        self.buttons['START'].set_sensitive(True)
         self.buttons['FINISH'].set_sensitive(False)
         self.buttons['CANCEL'].set_sensitive(False)
         self.buttons['NOW_ADJUSTED'].set_sensitive(False)
@@ -83,13 +85,19 @@ class Panel(ScreenPanel):
         if self._printer.config_section_exists("z_tilt"):
             self._screen._ws.klippy.gcode_script("Z_TILT_ADJUST")
 
-    def screws_tilt_calculate(self, widget):
-        self.started = True
+    def allow_screws_btn(self):
         self.buttons['CANCEL'].set_sensitive(True)
         self.buttons['NOW_ADJUSTED'].set_sensitive(True)
         self.buttons['ALREADY_ADJUSTED'].set_sensitive(True)
+
+    def screws_tilt_calculate(self, widget):
+        self.started = True
         self._screen._ws.klippy.gcode_script("BED_SCREWS_ADJUST")
+        self.buttons['START'].set_sensitive(False)
+        timer = threading.Timer(39.0, self.allow_screws_btn)
+        timer.start()
 
     def finish(self, button):
         self.off_state()
+        self._screen._ws.klippy.gcode_script("G28")
         self._screen._menu_go_back()

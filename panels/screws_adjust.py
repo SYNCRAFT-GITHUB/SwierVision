@@ -65,6 +65,8 @@ class Panel(ScreenPanel):
 
     def check_finish(self):
         if self.started and self.amount >= 3:
+            self.buttons['NOW_ADJUSTED'].set_sensitive(False)
+            self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
             self.buttons['FINISH'].set_sensitive(True)
 
     def accept(self, widget):

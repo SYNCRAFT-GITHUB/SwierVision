@@ -1012,7 +1012,7 @@ msgid "Screen Brightness"
 msgstr "Brilho da Tela"
 
 msgid "Change Screen Brightness"
-msgstr "Mudar o brilho na barra lateral"
+msgstr "Atalho para alterar o brilho da tela"
 
 msgid "Almost Off"
 msgstr "Quase Desligado"
@@ -1308,8 +1308,8 @@ msgstr "Adicionar Material Customizado"
 msgid "Remove Material"
 msgstr "Remover Material"
 
-msgid "Delete all custom Materials"
-msgstr "Limpar lista de Materias Customizados"
+msgid "Delete all custom Materials (click three times)"
+msgstr "Limpar Materias Customizados (clique três vezes)"
 
 msgid "The maximum limit has been reached"
 msgstr "O limite máximo foi atingido"
@@ -1480,7 +1480,7 @@ msgid "Verification is disabled"
 msgstr "A verificação está desativada"
 
 msgid "ON/OFF"
-msgstr "Ativar/Desativar"
+msgstr "LIGAR/DESLIGAR"
 
 msgid "Switch"
 msgstr "Trocar"

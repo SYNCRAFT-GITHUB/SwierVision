@@ -1363,8 +1363,8 @@ msgstr "사용자 정의 자료 추가"
 msgid "Remove Material"
 msgstr "자료 제거"
 
-msgid "Delete all custom Materials"
-msgstr "모든 사용자 정의 재료 삭제"
+msgid "Delete all custom Materials (click three times)"
+msgstr "모든 재료 삭제(세 번 클릭)"
 
 msgid "The maximum limit has been reached"
 msgstr "최대 제한에 도달했습니다"

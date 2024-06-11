@@ -28,15 +28,16 @@ class Panel(ScreenPanel):
         self.labels["text_01"] = Gtk.Label(_("Before printing, it will be checked both material and extruder type."))
         self.labels["text_02"] = Gtk.Label(_("However, you can disable this verification."))
 
-        self.labels["info"] = Gtk.Label("...")
+        self.labels["info"] = Gtk.Label(_("Please wait"))
 
-        toggle = self._gtk.Button("check-setup", _("ON/OFF"), "color1")
-        toggle.connect("clicked", self.set_verification)
+        self.toggle = self._gtk.Button("switch", _("ON/OFF"), "color1")
+        self.toggle.connect("clicked", self.set_verification)
+        self.toggle.set_sensitive(False)
 
         grid.attach(self.labels["text_01"], 0, 0, 1, 1)
         grid.attach(self.labels["text_02"], 0, 1, 1, 1)
         grid.attach(self.labels["info"], 0, 3, 1, 1)
-        grid.attach(toggle, 0, 4, 1, 2)
+        grid.attach(self.toggle, 0, 4, 1, 2)
         
         self.content.add(grid)
 
@@ -46,11 +47,13 @@ class Panel(ScreenPanel):
             self._screen.show_popup_message(message, level=2)
             return
         if self.verification == TRUE:
-            self.verification = FALSE
+            self.verification = UNKNOWN
+            self.toggle.set_sensitive(False)
             self._screen._ws.klippy.gcode_script("SET_SETUP_VERIFICATION S=0")
             return
         if self.verification == FALSE:
-            self.verification = TRUE
+            self.verification = UNKNOWN
+            self.toggle.set_sensitive(False)
             self._screen._ws.klippy.gcode_script("SET_SETUP_VERIFICATION S=1")
             return
 
@@ -63,7 +66,7 @@ class Panel(ScreenPanel):
         elif self.verification == FALSE:
             self.labels["info"].set_label(_("Verification is disabled"))
         else:
-            self.labels["info"].set_label("...")
+            self.labels["info"].set_label(_("Please wait"))
 
     def process_update(self, action, data):
 
@@ -78,6 +81,7 @@ class Panel(ScreenPanel):
         if action == "notify_gcode_response":
 
             if 'setup_verification:' in data:
+                self.toggle.set_sensitive(True)
                 if 'setup_verification:1' in data:
                     self.verification = TRUE
                 if 'setup_verification:0' in data:

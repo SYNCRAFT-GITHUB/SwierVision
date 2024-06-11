@@ -150,8 +150,12 @@ class Panel(ScreenPanel):
                 _("Icon Theme"),
                 _("Font Size"),
             ]
+
             if not option['name'] in allowed_options:
-                return None
+                if ' - ' in option['name']:
+                    pass
+                else:
+                    return None
 
         dev.add(labels)
         if option['type'] == "binary":

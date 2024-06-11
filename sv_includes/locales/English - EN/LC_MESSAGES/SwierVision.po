@@ -1289,7 +1289,7 @@ msgstr ""
 msgid "Remove Material"
 msgstr ""
 
-msgid "Delete all custom Materials"
+msgid "Delete all custom Materials (click three times)"
 msgstr ""
 
 msgid "The maximum limit has been reached"

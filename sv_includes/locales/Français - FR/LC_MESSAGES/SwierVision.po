@@ -1483,8 +1483,8 @@ msgstr "Ajouter un matériau personnalisé"
 msgid "Remove Material"
 msgstr "Supprimer le matériau"
 
-msgid "Delete all custom Materials"
-msgstr "Supprimer tous les matériaux"
+msgid "Delete all custom Materials (click three times)"
+msgstr "Supprimer tous les matériaux (cliquez trois fois)"
 
 msgid "The maximum limit has been reached"
 msgstr "La limite maximale a été atteinte"

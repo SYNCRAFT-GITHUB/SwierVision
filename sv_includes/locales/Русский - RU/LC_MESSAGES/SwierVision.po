@@ -1797,6 +1797,18 @@ msgstr "Дата создания"
 msgid "HEPA Replacements"
 msgstr "Замена фильтров"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Попробуйте снова выбрать материал для каждого из экструдеров."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Вставьте и выберите совместимую насадку для калибровки."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Ваша комбинация насадок не совместима с этим методом калибровки."
+
+msgid "Check the calibration details carefully:"
+msgstr "Тщательно проверьте детали калибровки:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

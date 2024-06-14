@@ -1629,6 +1629,18 @@ msgstr "Criado em"
 msgid "HEPA Replacements"
 msgstr "Substituições HEPA"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Tente selecionar um material novamente para cada um dos extrusores."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Insira e selecione um ProExtruder compatível para calibração."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Essa combinação de ProExtruder não é compatível com a calibração."
+
+msgid "Check the calibration details carefully:"
+msgstr "Verifique os detalhes da calibração:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

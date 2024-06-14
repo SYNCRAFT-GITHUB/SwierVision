@@ -1804,6 +1804,18 @@ msgstr "Date de création"
 msgid "HEPA Replacements"
 msgstr "Remplacements HEPA"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Essayez de sélectionner à nouveau un matériau pour chacun des extrudeurs."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Insérez et sélectionnez une buse compatible pour l'étalonnage."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Votre combinaison de buses n'est pas compatible."
+
+msgid "Check the calibration details carefully:"
+msgstr "Vérifiez les détails de l'étalonnage :"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

@@ -192,6 +192,7 @@ class Panel(ScreenPanel):
                             compatible=item['compatible'],
                             experimental=item['experimental'],
                             temp=item['temp'],
+                            print_temp=item['print_temp']
                         )
                         return_array.append(material)
                 return return_array

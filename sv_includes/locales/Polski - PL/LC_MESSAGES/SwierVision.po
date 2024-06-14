@@ -1740,6 +1740,18 @@ msgstr "Data utworzenia"
 msgid "HEPA Replacements"
 msgstr "Zamienniki HEPA"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Spróbuj ponownie wybrać materiał dla każdego z ekstruderów."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Włóż i wybierz kompatybilną dyszę do kalibracji."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Twoja kombinacja dysz nie jest kompatybilna z tą metodą kalibracji."
+
+msgid "Check the calibration details carefully:"
+msgstr "Sprawdź dokładnie szczegóły kalibracji:"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

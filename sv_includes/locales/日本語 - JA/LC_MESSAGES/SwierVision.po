@@ -1617,6 +1617,18 @@ msgstr "作成日"
 msgid "HEPA Replacements"
 msgstr "フィルターの交換"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "各エクストルーダーに適した素材を再度選択してください。"
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "キャリブレーション用の互換性のあるノズルを挿入し、選択してください。"
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "ノズルの組み合わせはこのキャリブレーション方法と互換性がありません。"
+
+msgid "Check the calibration details carefully:"
+msgstr "キャリブレーションの詳細を注意深く確認してください。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

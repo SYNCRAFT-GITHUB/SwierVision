@@ -1756,6 +1756,18 @@ msgstr "Erstellungsdatum"
 msgid "HEPA Replacements"
 msgstr "HEPA-Ersatzteile"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Versuchen Sie, für jeden Extruder erneut ein Material auszuwählen."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Setzen Sie eine kompatible Düse zur Kalibrierung ein und wählen Sie diese aus."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Ihre Düsenkombination ist nicht kompatibel."
+
+msgid "Check the calibration details carefully:"
+msgstr "Überprüfen Sie die Kalibrierungsdetails:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

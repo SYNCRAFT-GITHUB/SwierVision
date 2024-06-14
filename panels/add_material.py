@@ -226,9 +226,12 @@ class Panel(ScreenPanel):
 
     def clear_click(self, button):
         if self.clear_clicks >= 2:
+            self.labels['clear_all'].set_label(_('Please wait'))
             self.clear_all()
         else:
             self.clear_clicks += 1
+            self.labels['clear_all'].set_label(_('Delete all custom Materials (click three times)'\
+                + ' ' + str(self.clear_clicks)))
 
     def clear_all(self):
 

@@ -11,7 +11,8 @@
         "experimental": [
             "Standard 0.8mm"
         ],
-        "temp": 220
+        "temp": 220,
+        "print_temp": 225
     },
     {
         "name": "ABS",
@@ -27,7 +28,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 245
+        "temp": 245,
+        "print_temp": 230
     },
     {
         "name": "ASA",
@@ -38,7 +40,8 @@
             "Standard 0.4mm"
         ],
         "experimental": [],
-        "temp": 255
+        "temp": 255,
+        "print_temp": 260
     },
     {
         "name": "BVOH",
@@ -49,7 +52,8 @@
             "Standard 0.4mm"
         ],
         "experimental": [],
-        "temp": 210
+        "temp": 210,
+        "print_temp": 205
     },
     {
         "name": "CPE",
@@ -65,7 +69,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 255
+        "temp": 255,
+        "print_temp": 245
     },
     {
         "name": "CPE +",
@@ -81,7 +86,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 275
+        "temp": 275,
+        "print_temp": 270
     },
     {
         "name": "I 150",
@@ -95,7 +101,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 250
+        "temp": 250,
+        "print_temp": 235
     },
     {
         "name": "I 151",
@@ -106,7 +113,8 @@
             "Metal 0.4mm"
         ],
         "experimental": [],
-        "temp": 245
+        "temp": 245,
+        "print_temp": 240
     },
     {
         "name": "I 180",
@@ -118,7 +126,8 @@
             "Metal 0.4mm"
         ],
         "experimental": [],
-        "temp": 255
+        "temp": 255,
+        "print_temp": 260
     },
     {
         "name": "NYLON",
@@ -134,7 +143,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 250
+        "temp": 250,
+        "print_temp": 250
     },
     {
         "name": "PAHT CF15",
@@ -145,7 +155,8 @@
             "Fiber 0.6mm"
         ],
         "experimental": [],
-        "temp": 275
+        "temp": 275,
+        "print_temp": 270
     },
     {
         "name": "PC",
@@ -161,7 +172,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 285
+        "temp": 285,
+        "print_temp": 280
     },
     {
         "name": "PC/ABS",
@@ -176,7 +188,8 @@
             "Standard 0.8mm",
             "Metal 0.4mm"
         ],
-        "temp": 280
+        "temp": 280,
+        "print_temp": 280
     },
     {
         "name": "PET",
@@ -191,7 +204,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 250
+        "temp": 250,
+        "print_temp": 225
     },
     {
         "name": "PET CF15",
@@ -202,7 +216,8 @@
             "Fiber 0.6mm"
         ],
         "experimental": [],
-        "temp": 270
+        "temp": 270,
+        "print_temp": 270
     },
     {
         "name": "PETG",
@@ -218,7 +233,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 250
+        "temp": 250,
+        "print_temp": 240
     },
     {
         "name": "PLA",
@@ -234,7 +250,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 225
+        "temp": 225,
+        "print_temp": 205
     },
     {
         "name": "PLA +",
@@ -250,7 +267,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 230
+        "temp": 230,
+        "print_temp": 205
     },
     {
         "name": "PP",
@@ -266,7 +284,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 225
+        "temp": 225,
+        "print_temp": 207
     },
     {
         "name": "PP GF30",
@@ -277,7 +296,8 @@
             "Fiber 0.6mm"
         ],
         "experimental": [],
-        "temp": 260
+        "temp": 260,
+        "print_temp": 250
     },
     {
         "name": "PVA",
@@ -288,7 +308,8 @@
             "Standard 0.4mm"
         ],
         "experimental": [],
-        "temp": 210
+        "temp": 215,
+        "print_temp": 210
     },
     {
         "name": "TO. PLA",
@@ -304,7 +325,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 225
+        "temp": 225,
+        "print_temp": 215
     },
     {
         "name": "TPU 64D",
@@ -320,7 +342,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 235
+        "temp": 235,
+        "print_temp": 225
     },
     {
         "name": "TPU 95A",
@@ -336,7 +359,8 @@
             "Fiber 0.6mm",
             "Metal 0.4mm"
         ],
-        "temp": 235
+        "temp": 235,
+        "print_temp": 225
     },
     {
         "name": "17-4PH",
@@ -347,7 +371,8 @@
             "Metal 0.4mm"
         ],
         "experimental": [],
-        "temp": 260
+        "temp": 260,
+        "print_temp": 245
     },
     {
         "name": "316 L",
@@ -358,6 +383,7 @@
             "Metal 0.4mm"
         ],
         "experimental": [],
-        "temp": 260
+        "temp": 260,
+        "print_temp": 240
     }
 ]

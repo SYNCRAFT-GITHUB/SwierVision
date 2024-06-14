@@ -1610,6 +1610,18 @@ msgstr ""
 msgid "HEPA Replacements"
 msgstr ""
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr ""
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr ""
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr ""
+
+msgid "Check the calibration details carefully:"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

@@ -1684,6 +1684,18 @@ msgstr "생산 일"
 msgid "HEPA Replacements"
 msgstr "필터 교체"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "각 익스트루더에 사용할 재료를 다시 선택해 보세요."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "보정용으로 호환되는 노즐을 삽입하고 선택하세요."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "노즐 조합이 이 보정 방법과 호환되지 않습니다."
+
+msgid "Check the calibration details carefully:"
+msgstr "보정 세부 사항을 주의 깊게 확인하세요:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

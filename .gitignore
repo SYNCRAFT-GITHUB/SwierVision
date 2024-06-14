@@ -2,6 +2,7 @@
 .DS_Store
 .idea/
 SwierVision.conf
+idex_calibrate.gcode
 __pycache__/
 *.py[cod]
 *$py.class

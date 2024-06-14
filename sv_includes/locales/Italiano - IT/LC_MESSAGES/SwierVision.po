@@ -1754,6 +1754,18 @@ msgstr "Data di creazione"
 msgid "HEPA Replacements"
 msgstr "Sostituzioni HEPA"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Prova a selezionare un materiale per ciascuno degli estrusori di nuovo."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Inserisci e seleziona un ugello compatibile per la calibrazione."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "La tua combinazione di ugelli non è compatibile."
+
+msgid "Check the calibration details carefully:"
+msgstr "Vedi i dettagli della calibrazione:"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

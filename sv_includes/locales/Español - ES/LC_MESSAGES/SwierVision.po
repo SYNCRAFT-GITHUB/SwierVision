@@ -1780,6 +1780,18 @@ msgstr "Creado en"
 msgid "HEPA Replacements"
 msgstr "Reemplazos HEPA"
 
+msgid "Try selecting a material for each of the extruders again."
+msgstr "Intenta seleccionar un material para cada uno de los extrusores nuevamente."
+
+msgid "Insert and select a compatible nozzle for calibration."
+msgstr "Inserta y selecciona una boquilla compatible para la calibración."
+
+msgid "Your nozzle combination is not compatible with this calibration method."
+msgstr "Tu combinación de boquillas no es compatible con este método de calibración."
+
+msgid "Check the calibration details carefully:"
+msgstr "Revisa cuidadosamente los detalles de la calibración:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

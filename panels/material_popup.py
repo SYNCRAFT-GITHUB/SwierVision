@@ -10,24 +10,10 @@ from gi.repository import Gtk, Pango
 
 from sv_includes.KlippyGcodes import KlippyGcodes as Gcode
 from sv_includes.screen_panel import ScreenPanel
-
-class PrinterMaterial:
-    def __init__ (self, name: str, code: str, compatible: [str] = [], experimental: [str] = [], temp: int=0):
-        self.name = name
-        self.code = code
-        self.compatible = compatible
-        self.experimental = experimental
-        self.temp = temp
-
-class CustomPrinterMaterial:
-    def __init__ (self, name: str, code: str, compatible: [str] = [], temp: int=0):
-        self.name = name
-        self.code = code
-        self.compatible = compatible
-        self.temp = temp
+from panels.material_load import PrinterMaterial
+from panels.material_load import CustomPrinterMaterial
 
 def read_materials_from_json(file_path: str, custom: bool = False):
-
     try:
         with open(file_path, 'r') as json_file:
             data = json.load(json_file)
@@ -48,6 +34,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                         compatible=item['compatible'],
                         experimental=item['experimental'],
                         temp=item['temp'],
+                        print_temp=item['print_temp']
                     )
                     return_array.append(material)
             return return_array

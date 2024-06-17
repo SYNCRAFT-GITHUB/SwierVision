@@ -748,7 +748,7 @@ class Panel(ScreenPanel):
     def beauty(self, text):
         if "idex_calibrate" in text:
             return _("IDEX Calibration")
-        delete = ["SX1", "SX2", ".JOB/"]
+        delete = ["SX1", "SX2", "SI", ".JOB/"]
         i = text.replace("_", " ")
         for keyword in delete:
             i = i.replace(keyword, "")

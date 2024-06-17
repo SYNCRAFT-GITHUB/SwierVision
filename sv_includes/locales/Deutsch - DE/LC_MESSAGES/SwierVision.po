@@ -1768,6 +1768,9 @@ msgstr "Ihre Düsenkombination ist nicht kompatibel."
 msgid "Check the calibration details carefully:"
 msgstr "Überprüfen Sie die Kalibrierungsdetails:"
 
+msgid "IDEX Calibration"
+msgstr "IDEX-Kalibrierung"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

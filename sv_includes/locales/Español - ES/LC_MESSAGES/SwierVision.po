@@ -1792,6 +1792,9 @@ msgstr "Tu combinación de boquillas no es compatible con este método de calibr
 msgid "Check the calibration details carefully:"
 msgstr "Revisa cuidadosamente los detalles de la calibración:"
 
+msgid "IDEX Calibration"
+msgstr "Calibración IDEX"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

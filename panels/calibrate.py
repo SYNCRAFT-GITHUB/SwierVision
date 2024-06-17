@@ -166,6 +166,8 @@ class Panel(ScreenPanel):
 
         gcodes_path = os.path.join('/home', 'pi', 'printer_data', 'gcodes')
         calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))
+        if os.path.exists(calib_file_gcodes):
+            os.remove(calib_file_gcodes)
         if os.path.exists(calib_new_file_path):
             try:
                 shutil.copyfile(calib_new_file_path, calib_file_gcodes)
@@ -175,8 +177,8 @@ class Panel(ScreenPanel):
                     f"{_('This procedure will start printing a specific 3D model for calibration.')}" + "\n" +
                     f"{_('It is recommended to use materials of the same type with different colors.')}" + "\n\n" +
                     f"{_('Check the calibration details carefully:')}" + "\n\n" +
-                    f"1: {nozzle0}\t{_('Temp (°C)')}: {str(ext0_temp)}\t{_('Material')}: {mat0}" + "\n" +
-                    f"2: {nozzle1}\t{_('Temp (°C)')}: {str(ext1_temp)}\t{_('Material')}: {mat1}" + "\n",
+                    f"1: {nozzle0}\n{_('Temp (°C)')}: {str(ext0_temp)}\n{_('Material')}: {mat0}" + "\n\n" +
+                    f"2: {nozzle1}\n{_('Temp (°C)')}: {str(ext1_temp)}\n{_('Material')}: {mat1}" + "\n",
                     "printer.print.start",
                     params
                 )

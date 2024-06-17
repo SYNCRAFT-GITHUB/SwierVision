@@ -1809,6 +1809,9 @@ msgstr "Ваша комбинация насадок не совместима �
 msgid "Check the calibration details carefully:"
 msgstr "Тщательно проверьте детали калибровки:"
 
+msgid "IDEX Calibration"
+msgstr "Калибровка Дупла"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

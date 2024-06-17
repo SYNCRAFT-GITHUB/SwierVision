@@ -1769,6 +1769,9 @@ msgstr "您的喷嘴组合与此校准方法不兼容。"
 msgid "Check the calibration details carefully:"
 msgstr "仔细检查校准细节："
 
+msgid "IDEX Calibration"
+msgstr "独立双挤出校准"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

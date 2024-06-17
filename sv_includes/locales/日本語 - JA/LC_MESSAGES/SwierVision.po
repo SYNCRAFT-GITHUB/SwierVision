@@ -1629,6 +1629,9 @@ msgstr "ノズルの組み合わせはこのキャリブレーション方法と
 msgid "Check the calibration details carefully:"
 msgstr "キャリブレーションの詳細を注意深く確認してください。"
 
+msgid "IDEX Calibration"
+msgstr "キャリブレーションデュプラ"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

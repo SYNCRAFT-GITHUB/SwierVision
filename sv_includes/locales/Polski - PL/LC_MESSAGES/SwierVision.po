@@ -1752,6 +1752,9 @@ msgstr "Twoja kombinacja dysz nie jest kompatybilna z tą metodą kalibracji."
 msgid "Check the calibration details carefully:"
 msgstr "Sprawdź dokładnie szczegóły kalibracji:"
 
+msgid "IDEX Calibration"
+msgstr "Kalibracja IDEX"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

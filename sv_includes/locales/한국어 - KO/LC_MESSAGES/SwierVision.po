@@ -1696,6 +1696,9 @@ msgstr "노즐 조합이 이 보정 방법과 호환되지 않습니다."
 msgid "Check the calibration details carefully:"
 msgstr "보정 세부 사항을 주의 깊게 확인하세요:"
 
+msgid "IDEX Calibration"
+msgstr "독립적인 이중 압출 교정"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

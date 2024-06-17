@@ -1622,6 +1622,9 @@ msgstr ""
 msgid "Check the calibration details carefully:"
 msgstr ""
 
+msgid "IDEX Calibration"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

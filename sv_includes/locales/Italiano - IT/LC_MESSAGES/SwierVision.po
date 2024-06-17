@@ -1766,6 +1766,9 @@ msgstr "La tua combinazione di ugelli non è compatibile."
 msgid "Check the calibration details carefully:"
 msgstr "Vedi i dettagli della calibrazione:"
 
+msgid "IDEX Calibration"
+msgstr "Calibrazione IDEX"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

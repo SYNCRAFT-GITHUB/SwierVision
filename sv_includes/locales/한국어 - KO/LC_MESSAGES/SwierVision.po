@@ -1699,6 +1699,9 @@ msgstr "보정 세부 사항을 주의 깊게 확인하세요:"
 msgid "IDEX Calibration"
 msgstr "독립적인 이중 압출 교정"
 
+msgid "Estimated:"
+msgstr "추정된:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

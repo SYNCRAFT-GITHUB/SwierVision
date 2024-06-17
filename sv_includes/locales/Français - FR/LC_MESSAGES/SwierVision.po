@@ -1819,6 +1819,9 @@ msgstr "Vérifiez les détails de l'étalonnage :"
 msgid "IDEX Calibration"
 msgstr "Calibration IDEX"
 
+msgid "Estimated:"
+msgstr "Estimé:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

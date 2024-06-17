@@ -323,15 +323,20 @@ class Panel(ScreenPanel):
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL}
         ]
 
-        job_path: str = f"{home}/printer_data/gcodes/.JOB"
-        if not os.path.exists(job_path):
-            os.makedirs(job_path)
-        destination = os.path.join(job_path, os.path.basename(filename))
-        filetocopy = os.path.join(f"{home}/printer_data/gcodes", filename)
-        if filetocopy != destination:
-            shutil.copy2(filetocopy, destination)
-        filename = f".JOB/{os.path.basename(filename)}"
-        filename = filename.replace(".ufp", ".gcode")
+        if 'XDG_CURRENT_DESKTOP' in os.environ \
+        or platform.system() in ["Darwin", "Windows"]:
+            logging.warning("Desktop environment detected.")
+            logging.warning("Skipping steps of transferring gcode file to .JOB folder")
+        else:
+            job_path: str = f"{home}/printer_data/gcodes/.JOB"
+            if not os.path.exists(job_path):
+                os.makedirs(job_path)
+            destination = os.path.join(job_path, os.path.basename(filename))
+            filetocopy = os.path.join(f"{home}/printer_data/gcodes", filename)
+            if filetocopy != destination:
+                shutil.copy2(filetocopy, destination)
+            filename = f".JOB/{os.path.basename(filename)}"
+            filename = filename.replace(".ufp", ".gcode")
 
         label = Gtk.Label()
         label.set_markup(f"<b>{os.path.basename(filename)}</b>\n")
@@ -399,21 +404,47 @@ class Panel(ScreenPanel):
         self.dir_panels[directory].show_all()
         self.files.pop(filename)
 
+    def check_same_day(self, date_1: datetime, date_2: datetime):
+        da = mo = ye = False
+        if date_1.day == date_2.day:
+            da = True
+        if date_1.month == date_2.month:
+            mo = True
+        if date_1.year == date_2.year:
+            ye = True
+        if False in [da, mo, ye]:
+            return False
+        else:
+            return True
+
+    def check_same_year(self, date_1: datetime, date_2: datetime):
+        return date_1.year == date_2.year
+
     def get_file_info_str(self, filename):
+
+        now = datetime.now()
+        formatted_time = f"<b>{now:%Y-%m-%d %H:%M}</b>\n"
 
         fileinfo = self._screen.files.get_file_info(filename)
         if fileinfo is None:
             return
         info = _("Uploaded")
-        if self.time_24:
-            info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %H:%M}</b>\n'
+        if self.check_same_day(now, datetime.fromtimestamp(fileinfo['modified'])):
+            info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%H:%M}</b>\n'
         else:
-            info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %I:%M %p}</b>\n'
+            if self.check_same_year(now, datetime.fromtimestamp(fileinfo['modified'])):
+                if self.time_24:
+                    info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%m-%d %H:%M}</b>\n'
+                else:
+                    info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%m-%d %I:%M %p}</b>\n'
+            else:
+                if self.time_24:
+                    info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %H:%M}</b>\n'
+                else:
+                    info += f':<b>  {datetime.fromtimestamp(fileinfo["modified"]):%Y-%m-%d %I:%M %p}</b>\n'
 
-        if "size" in fileinfo:
-            info += _("Size") + f':  <b>{self.format_size(fileinfo["size"])}</b>\n'
         if "estimated_time" in fileinfo:
-            info += _("Print Time") + f':  <b>{self.format_time(fileinfo["estimated_time"])}</b>'
+            info += _("Estimated:") + f' <b>{self.format_time(fileinfo["estimated_time"])}</b>'
         return info
 
     def reload_files(self, widget=None):

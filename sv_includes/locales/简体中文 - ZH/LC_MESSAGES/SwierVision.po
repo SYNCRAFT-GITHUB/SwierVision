@@ -1772,6 +1772,9 @@ msgstr "仔细检查校准细节："
 msgid "IDEX Calibration"
 msgstr "独立双挤出校准"
 
+msgid "Estimated:"
+msgstr "估计的："
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

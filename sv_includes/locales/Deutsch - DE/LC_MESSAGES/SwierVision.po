@@ -1771,6 +1771,9 @@ msgstr "Überprüfen Sie die Kalibrierungsdetails:"
 msgid "IDEX Calibration"
 msgstr "IDEX-Kalibrierung"
 
+msgid "Estimated:"
+msgstr "Geschätzt:"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

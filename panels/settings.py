@@ -77,13 +77,13 @@ class Panel(ScreenPanel):
             "panel": "fix",
             "icon": "compass"
         }})
-        options.append({"factory_reset": {
-            "name": _("Factory Reset"),
-            "type": "panel",
-            "panel": "script",
-            "script": "REVERT_ALL",
-            "icon": "stock"
-        }})
+        #options.append({"factory_reset": {
+        #    "name": _("Factory Reset"),
+        #    "type": "panel",
+        #    "panel": "script",
+        #    "script": "REVERT_ALL",
+        #    "icon": "stock"
+        #}})
 
         self.labels['settings_menu'] = self._gtk.ScrolledWindow()
         self.labels['settings'] = Gtk.Grid()

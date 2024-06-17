@@ -796,7 +796,7 @@ msgid "Updating"
 msgstr "Atualizando"
 
 msgid "Uploaded"
-msgstr "Carregado"
+msgstr "Enviado"
 
 msgid "XY Move Speed (mm/s)"
 msgstr "Velocidade de Movimento XY (mm/s)"
@@ -1643,6 +1643,9 @@ msgstr "Verifique os detalhes da calibração:"
 
 msgid "IDEX Calibration"
 msgstr "Calibração IDEX"
+
+msgid "Estimated:"
+msgstr "Estimado:"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"

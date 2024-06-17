@@ -1632,6 +1632,9 @@ msgstr "キャリブレーションの詳細を注意深く確認してくださ
 msgid "IDEX Calibration"
 msgstr "キャリブレーションデュプラ"
 
+msgid "Estimated:"
+msgstr "推定："
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

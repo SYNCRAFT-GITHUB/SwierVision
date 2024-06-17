@@ -20,6 +20,8 @@ def read_materials_from_json(file_path: str):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
+                        brand=item['brand'],
+                        color=item['color'],
                         compatible=item['compatible'],
                         experimental=item['experimental'],
                         temp=item['temp'],
@@ -97,12 +99,6 @@ class Panel(ScreenPanel):
         nozzle0 = self._config.variables_value_reveal('nozzle0')
         nozzle1 = self._config.variables_value_reveal('nozzle1')
 
-        # CENARIO FAKE
-        mat0 = "PLA"
-        mat1 = "PP"
-        nozzle0 = "Standard 0.4mm"
-        nozzle1 = "Standard 0.8mm"
-
         materials = read_materials_from_json(self._config.materials_path(custom=False))
 
         try:
@@ -151,7 +147,9 @@ class Panel(ScreenPanel):
             shorts[nozzle0], f'idex_calibrate_{shorts[nozzle0]}_{shorts[nozzle1]}.gcode')
 
         calib_new_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate', 'idex_calibrate.gcode')
-        os.remove(calib_new_file_path)
+        
+        if os.path.exists(calib_new_file_path):
+            os.remove(calib_new_file_path)
 
         try:
             with open(calib_file_path, 'r', encoding='utf-8') as gcode_file:
@@ -162,9 +160,9 @@ class Panel(ScreenPanel):
             
             with open(calib_new_file_path, 'w', encoding='utf-8') as new_gcode_file:
                 new_gcode_file.write(content)
-        
         except Exception as e:
             print(f"Error: {e}")
+            return self._screen.show_popup_message(_('An error has occurred'), level=3)
 
         gcodes_path = os.path.join('/home', 'pi', 'printer_data', 'gcodes')
         calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))
@@ -177,12 +175,11 @@ class Panel(ScreenPanel):
                     f"{_('This procedure will start printing a specific 3D model for calibration.')}" + "\n" +
                     f"{_('It is recommended to use materials of the same type with different colors.')}" + "\n\n" +
                     f"{_('Check the calibration details carefully:')}" + "\n\n" +
-                    f"{_('Main Extruder')} ({nozzle0}): {mat0}. {_('Temp (°C)')}: {str(ext0_temp)}." + "\n" +
-                    f"{_('Secondary Extruder')} ({nozzle1}): {mat1}. {_('Temp (°C)')}: {str(ext1_temp)}." + "\n",
+                    f"1: {nozzle0}\t{_('Temp (°C)')}: {str(ext0_temp)}\t{_('Material')}: {mat0}" + "\n" +
+                    f"2: {nozzle1}\t{_('Temp (°C)')}: {str(ext1_temp)}\t{_('Material')}: {mat1}" + "\n",
                     "printer.print.start",
                     params
                 )
-            except:
-                msg = _("An error has occurred")
-                self._screen.show_popup_message(msg, level=3)
-                return None
+            except Exception as e:
+                print(f"Error: {e}")
+                return self._screen.show_popup_message(_("An error has occurred"), level=3)

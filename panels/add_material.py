@@ -230,8 +230,7 @@ class Panel(ScreenPanel):
             self.clear_all()
         else:
             self.clear_clicks += 1
-            self.labels['clear_all'].set_label(_('Delete all custom Materials (click three times)'\
-                + ' ' + str(self.clear_clicks)))
+            self.labels['clear_all'].set_label(str(self.clear_clicks))
 
     def clear_all(self):
 

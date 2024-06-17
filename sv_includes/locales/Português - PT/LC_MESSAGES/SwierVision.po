@@ -1641,6 +1641,9 @@ msgstr "Essa combinação de ProExtruder não é compatível com a calibração.
 msgid "Check the calibration details carefully:"
 msgstr "Verifique os detalhes da calibração:"
 
+msgid "IDEX Calibration"
+msgstr "Calibração IDEX"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

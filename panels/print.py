@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+import platform
 import os
 import shutil
 import re

@@ -31,7 +31,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
-                        id=item['id'],
+                        m_id=item['id'],
                         brand=item['brand'],
                         color=item['color'],
                         compatible=item['compatible'],
@@ -150,7 +150,7 @@ class Panel(ScreenPanel):
 
             if self.nozzle in material.compatible:
                 index_button = self._gtk.Button("circle-green", material.name, "color3")
-                index_button.connect("clicked", self.confirm_set_default, material.code, material.id)
+                index_button.connect("clicked", self.confirm_set_default, material.code, material.m_id)
                 gridvariable.attach(index_button, repeat_three, i, 1, 1)
                 
                 if repeat_three == 4:

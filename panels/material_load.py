@@ -12,9 +12,10 @@ from sv_includes.KlippyGcodes import KlippyGcodes as Gcode
 from sv_includes.screen_panel import ScreenPanel
 
 class PrinterMaterial:
-    def __init__ (self, name: str, code: str, brand: str, color: str, compatible: [str] = [], experimental: [str] = [], temp: int=0, print_temp: int=0):
+    def __init__ (self, name: str, code: str, m_id: str, brand: str, color: str, compatible: [str] = [], experimental: [str] = [], temp: int=0, print_temp: int=0):
         self.name = name
         self.code = code
+        self.m_id = m_id
         self.brand = brand
         self.color = color
         self.compatible = compatible
@@ -47,7 +48,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
-                        id=item['id'],
+                        m_id=item['id'],
                         brand=item['brand'],
                         color=item['color'],
                         compatible=item['compatible'],
@@ -121,7 +122,7 @@ class Panel(ScreenPanel):
 
             if self.nozzle in material.compatible:
                 index_button = self._gtk.Button("circle-green", material.name, "color3")
-                index_button.connect("clicked", self.confirm_print_default, material.code, material.id, material.temp)
+                index_button.connect("clicked", self.confirm_print_default, material.code, material.m_id, material.temp)
                 gridvariable.attach(index_button, repeat_three, i, 1, 1)
                 
                 if repeat_three == 4:

@@ -149,8 +149,8 @@ class Panel(ScreenPanel):
             except:
                 self.materials = []
             for m in self.materials:
-                if m.id == material_id:
-                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, m.id, nozzle))
+                if m.m_id == material_id:
+                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, m.m_id, nozzle))
         else:
             self.menu_item_clicked(widget=widget, item={
                 "name": _("Select the Material"),
@@ -188,7 +188,7 @@ class Panel(ScreenPanel):
                         material = PrinterMaterial(
                             name=item['name'],
                             code=item['code'],
-                            id=item['id'],
+                            m_id=item['id'],
                             brand=item['brand'],
                             color=item['color'],
                             compatible=item['compatible'],

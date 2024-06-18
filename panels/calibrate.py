@@ -9,31 +9,6 @@ from gi.repository import Gtk, Pango
 
 from sv_includes.KlippyGcodes import KlippyGcodes
 from sv_includes.screen_panel import ScreenPanel
-from panels.material_load import PrinterMaterial
-
-def read_materials_from_json(file_path: str):
-    try:
-        with open(file_path, 'r') as json_file:
-            data = json.load(json_file)
-            return_array = []
-            for item in data:
-                    material = PrinterMaterial(
-                        name=item['name'],
-                        code=item['code'],
-                        id=item['id'],
-                        brand=item['brand'],
-                        color=item['color'],
-                        compatible=item['compatible'],
-                        experimental=item['experimental'],
-                        temp=item['temp'],
-                        print_temp=item['print_temp'],
-                    )
-                    return_array.append(material)
-            return return_array
-    except FileNotFoundError:
-        print(f"Not found: {file_path}")
-    except json.JSONDecodeError:
-        print(f"Error decoding JSON: {file_path}")
 
 
 class Panel(ScreenPanel):
@@ -99,8 +74,6 @@ class Panel(ScreenPanel):
 
         nozzle0 = self._config.variables_value_reveal('nozzle0')
         nozzle1 = self._config.variables_value_reveal('nozzle1')
-
-        materials = read_materials_from_json(self._config.materials_path(custom=False))
 
         try:
             iter(materials)

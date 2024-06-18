@@ -1714,6 +1714,9 @@ msgstr "진행하기 전에 확인해주세요"
 msgid "Confirm"
 msgstr "확인하다"
 
+msgid "Confirmed"
+msgstr "확인됨"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

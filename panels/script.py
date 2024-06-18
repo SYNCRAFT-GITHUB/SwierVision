@@ -59,6 +59,7 @@ class Panel(ScreenPanel):
     def confirm(self, button):
         self.buttons['EXECUTE'].set_sensitive(True)
         self.buttons['CONFIRM'].set_sensitive(False)
+        self.buttons['CONFIRM'].set_label(_("Confirmed"))
 
     def execute(self, button):
 
@@ -66,6 +67,7 @@ class Panel(ScreenPanel):
 
         self.buttons['EXECUTE'].set_sensitive(False)
         self.buttons['CONFIRM'].set_sensitive(True)
+        self.buttons['CONFIRM'].set_label(_("Confirm"))
 
         def core_script(core_script_dir: str, usb = False, web=False):
 

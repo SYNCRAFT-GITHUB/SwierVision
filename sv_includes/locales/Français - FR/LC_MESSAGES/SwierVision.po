@@ -1834,6 +1834,9 @@ msgstr "Veuillez confirmer avant de continuer"
 msgid "Confirm"
 msgstr "Confirmer"
 
+msgid "Confirmed"
+msgstr "Confirmé"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

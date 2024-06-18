@@ -1640,6 +1640,9 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+msgid "Confirmed"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

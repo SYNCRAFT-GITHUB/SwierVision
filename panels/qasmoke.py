@@ -52,7 +52,7 @@ class Panel(ScreenPanel):
             if panel_name in ignore_list:
                 continue
 
-            index_button = self._gtk.Button("marker", panel_name, "color3")
+            index_button = self._gtk.Button("door", panel_name, "color3")
             index_button.connect("clicked", self.teleport, panel_name)
             gridvariable.attach(index_button, repeat_three, i, 1, 1)
             

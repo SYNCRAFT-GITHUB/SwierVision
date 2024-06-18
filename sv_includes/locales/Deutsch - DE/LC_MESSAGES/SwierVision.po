@@ -1786,6 +1786,9 @@ msgstr "Bitte bestätigen Sie, bevor Sie fortfahren"
 msgid "Confirm"
 msgstr "Bestätigen"
 
+msgid "Confirmed"
+msgstr "Bestätigt"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

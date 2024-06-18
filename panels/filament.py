@@ -232,10 +232,7 @@ class Panel(ScreenPanel):
 
             if material_label == "":
                 material_label = _("Out of Date")
-                self.buttons['load'].set_sensitive(False)
-            else:
-                self.buttons['load'].set_sensitive(True)
-                
+
             self.labels[extruder].set_label(material_label)
             del material_var, material_id, material_label
 

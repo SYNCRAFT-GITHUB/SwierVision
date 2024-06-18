@@ -1784,6 +1784,9 @@ msgstr "Si prega di confermare prima di procedere"
 msgid "Confirm"
 msgstr "Confermare"
 
+msgid "Confirmed"
+msgstr "Confermato"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

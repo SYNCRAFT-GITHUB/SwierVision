@@ -1647,6 +1647,9 @@ msgstr "続行する前に確認してください。"
 msgid "Confirm"
 msgstr "確認する"
 
+msgid "Confirmed"
+msgstr "確認済み"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

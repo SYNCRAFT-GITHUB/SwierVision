@@ -7,7 +7,7 @@ class KlippyGcodes:
 
     @staticmethod
     def change_material(m, ext, m_id: str):
-        return f"CHANGE_MATERIAL M='{m}' EXT={ext} M_ID={m_id}"
+        return f"CHANGE_MATERIAL M='{m}' EXT={ext} M_ID='{m_id}'"
 
     @staticmethod
     def load_filament(t, m, m_id, nz):

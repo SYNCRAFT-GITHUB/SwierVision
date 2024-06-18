@@ -143,7 +143,7 @@ class Panel(ScreenPanel):
         material = self._config.variables_value_reveal(f"material_ext{active_carriage}")
         material_id = self._config.variables_value_reveal(f"material_ext{active_carriage}_id")
 
-        if not material in ["empty", "GENERIC"]:
+        if not material_id in ["empty", "basic"]:
             try:
                 iter(self.materials)
             except:
@@ -212,24 +212,33 @@ class Panel(ScreenPanel):
 
         for extruder in self._printer.get_tools():
             if extruder == "extruder":
+                material_var = self._config.variables_value_reveal('material_ext0')
                 material_id = self._config.variables_value_reveal('material_ext0_id')
             else:
+                material_var = self._config.variables_value_reveal('material_ext1')
                 material_id = self._config.variables_value_reveal('material_ext1_id')
-            material: PrinterMaterial
-            material_label: str
+            
+            material_label: str = ""
+
+            if material_id == 'basic' or material_var == 'GENERIC':
+                material_label = _("Generic")
+            if material_id == 'empty' or material_var == 'empty':
+                material_label = _("Empty")
+
             for index_material in self.materials:
                 if index_material.m_id == material_id:
-                    material = index_material
+                    material_label = index_material.name
                     break
-            material_label = material.name
-            if 'empty' in material.code:
-                material_label = _("Empty")
-            if 'none' in material.code:
+
+            if material_label == "":
                 material_label = _("Out of Date")
-            if 'GENERIC' in material.code:
-                material_label = _("Generic")
+                self.buttons['load'].set_sensitive(False)
+            else:
+                self.buttons['load'].set_sensitive(True)
+                
             self.labels[extruder].set_label(material_label)
-            del material, material_label, material_id
+            del material_var, material_id, material_label
+
             if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             else:

@@ -1635,6 +1635,18 @@ msgstr "キャリブレーションデュプラ"
 msgid "Estimated:"
 msgstr "推定："
 
+msgid "Rename/Move:"
+msgstr "名前変更/移動:"
+
+msgid "Rename File"
+msgstr "ファイル名を変更する"
+
+msgid "Please confirm before proceeding"
+msgstr "続行する前に確認してください。"
+
+msgid "Confirm"
+msgstr "確認する"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

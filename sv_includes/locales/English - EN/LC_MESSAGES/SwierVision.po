@@ -1628,6 +1628,18 @@ msgstr ""
 msgid "Estimated:"
 msgstr ""
 
+msgid "Rename/Move:"
+msgstr ""
+
+msgid "Rename File"
+msgstr ""
+
+msgid "Please confirm before proceeding"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

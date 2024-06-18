@@ -1647,6 +1647,18 @@ msgstr "Calibração IDEX"
 msgid "Estimated:"
 msgstr "Estimado:"
 
+msgid "Rename/Move:"
+msgstr "Renomear/Mover:"
+
+msgid "Rename File"
+msgstr "Renomear Arquivo"
+
+msgid "Please confirm before proceeding"
+msgstr "Confirme antes de prosseguir"
+
+msgid "Confirm"
+msgstr "Confirmar"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

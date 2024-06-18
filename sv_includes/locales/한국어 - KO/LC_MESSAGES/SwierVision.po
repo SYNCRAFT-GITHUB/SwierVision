@@ -1702,6 +1702,18 @@ msgstr "독립적인 이중 압출 교정"
 msgid "Estimated:"
 msgstr "추정된:"
 
+msgid "Rename/Move:"
+msgstr "이름 변경/이동:"
+
+msgid "Rename File"
+msgstr "파일 이름 변경"
+
+msgid "Please confirm before proceeding"
+msgstr "진행하기 전에 확인해주세요"
+
+msgid "Confirm"
+msgstr "확인하다"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

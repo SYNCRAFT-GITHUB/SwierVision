@@ -47,6 +47,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
+                        id=item['id'],
                         brand=item['brand'],
                         color=item['color'],
                         compatible=item['compatible'],
@@ -120,7 +121,7 @@ class Panel(ScreenPanel):
 
             if self.nozzle in material.compatible:
                 index_button = self._gtk.Button("circle-green", material.name, "color3")
-                index_button.connect("clicked", self.confirm_print_default, material.code, material.temp)
+                index_button.connect("clicked", self.confirm_print_default, material.code, material.id, material.temp)
                 gridvariable.attach(index_button, repeat_three, i, 1, 1)
                 
                 if repeat_three == 4:
@@ -200,12 +201,12 @@ class Panel(ScreenPanel):
             return False
         return True
 
-    def confirm_print_default(self, widget, code, temp: int):
-        self._screen._ws.klippy.gcode_script(Gcode.load_filament(temp, code, self.nozzle))
+    def confirm_print_default(self, widget, code, m_id, temp: int):
+        self._screen._ws.klippy.gcode_script(Gcode.load_filament(temp, code, m_id, self.nozzle))
         self._screen._menu_go_back()
 
     def confirm_print_experimental(self, widget, code, temp: int):
-        script = Gcode.load_filament(temp, code, self.nozzle)
+        script = Gcode.load_filament(temp, code, 'basic', self.nozzle)
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -216,7 +217,7 @@ class Panel(ScreenPanel):
         self._screen._menu_go_back()
 
     def confirm_print_custom(self, widget, temp: int):
-        script = Gcode.load_filament(temp, "GENERIC", self.nozzle)
+        script = Gcode.load_filament(temp, "GENERIC", 'basic', self.nozzle)
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -228,7 +229,7 @@ class Panel(ScreenPanel):
 
     def confirm_print_generic(self, widget):
         generic_temp: int = 255
-        script = Gcode.load_filament(generic_temp, "GENERIC", self.nozzle)
+        script = Gcode.load_filament(generic_temp, "GENERIC", 'basic', self.nozzle)
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

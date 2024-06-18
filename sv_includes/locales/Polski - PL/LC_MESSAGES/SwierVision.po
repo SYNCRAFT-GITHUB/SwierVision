@@ -1758,6 +1758,18 @@ msgstr "Kalibracja IDEX"
 msgid "Estimated:"
 msgstr "Szacowany:"
 
+msgid "Rename/Move:"
+msgstr "Zmień nazwę/Przenieś:"
+
+msgid "Rename File"
+msgstr "Zmień nazwę pliku"
+
+msgid "Please confirm before proceeding"
+msgstr "Potwierdź przed kontynuowaniem"
+
+msgid "Confirm"
+msgstr "Potwierdzać"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

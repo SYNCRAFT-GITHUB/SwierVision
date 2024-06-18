@@ -6,12 +6,12 @@ class KlippyGcodes:
     EXTRUDE_REL = "M83"
 
     @staticmethod
-    def change_material(m, ext=0):
-        return f"CHANGE_MATERIAL M='{m}' EXT={ext}"
+    def change_material(m, ext, m_id: str):
+        return f"CHANGE_MATERIAL M='{m}' EXT={ext} ID={m_id}"
 
     @staticmethod
-    def load_filament(t, m, nz):
-        return f"LOAD_FILAMENT T={t} M='{m}' NZ='{nz}'"
+    def load_filament(t, m, m_id, nz):
+        return f"LOAD_FILAMENT T={t} M='{m}' M_ID='{m_id}' NZ='{nz}'"
 
     @staticmethod
     def set_bed_temp(temp):

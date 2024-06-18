@@ -31,6 +31,7 @@ def read_materials_from_json(file_path: str, custom: bool = False):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
+                        id=item['id'],
                         brand=item['brand'],
                         color=item['color'],
                         compatible=item['compatible'],
@@ -149,7 +150,7 @@ class Panel(ScreenPanel):
 
             if self.nozzle in material.compatible:
                 index_button = self._gtk.Button("circle-green", material.name, "color3")
-                index_button.connect("clicked", self.confirm_set_default, material.code)
+                index_button.connect("clicked", self.confirm_set_default, material.code, material.id)
                 gridvariable.attach(index_button, repeat_three, i, 1, 1)
                 
                 if repeat_three == 4:
@@ -237,18 +238,18 @@ class Panel(ScreenPanel):
         else:
             return 0
 
-    def confirm_set_default(self, widget, code):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext()))
+    def confirm_set_default(self, widget, code, m_id):
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m=code, ext=self.ext(), m_id=m_id))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
         self.full_back()
 
     def confirm_set_empty(self, widget):
-        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
+        self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext(), m_id='empty'))
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
         self.full_back()
 
     def confirm_set_experimental(self, widget, code):
-        script = Gcode.change_material(m=code, ext=self.ext())
+        script = Gcode.change_material(m=code, ext=self.ext(), m_id='basic')
         params = {"script": script}
         self._screen._confirm_send_action(
             None,
@@ -260,7 +261,7 @@ class Panel(ScreenPanel):
         self.full_back()
 
     def confirm_set_custom(self, widget):
-        script = Gcode.change_material(m='GENERIC', ext=self.ext())
+        script = Gcode.change_material(m='GENERIC', ext=self.ext(), m_id='basic')
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

@@ -192,7 +192,7 @@ class Panel(ScreenPanel):
 
         delete = self._gtk.Button("delete", style="color1", scale=self.bts)
         delete.set_hexpand(False)
-        rename = self._gtk.Button("files", style="color2", scale=self.bts)
+        rename = self._gtk.Button("write", style="color2", scale=self.bts)
         rename.set_hexpand(False)
 
         if filename:
@@ -499,7 +499,7 @@ class Panel(ScreenPanel):
         self.showing_rename = True
 
     def _create_rename_box(self, fullpath):
-        lbl = self._gtk.Label(_("Rename/Move:"))
+        lbl = self._gtk.Label(_("Rename File"))
         lbl.set_halign(Gtk.Align.START)
         lbl.set_hexpand(False)
         self.labels['new_name'] = Gtk.Entry()

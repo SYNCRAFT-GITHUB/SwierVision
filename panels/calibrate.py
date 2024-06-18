@@ -20,6 +20,7 @@ def read_materials_from_json(file_path: str):
                     material = PrinterMaterial(
                         name=item['name'],
                         code=item['code'],
+                        id=item['id'],
                         brand=item['brand'],
                         color=item['color'],
                         compatible=item['compatible'],

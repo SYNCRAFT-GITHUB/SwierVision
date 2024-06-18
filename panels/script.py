@@ -22,11 +22,24 @@ class Panel(ScreenPanel):
 
         super().__init__(screen, title)
         self.menu = ['execute_script_panel']
-
+        
         self.buttons = {
-            'EXECUTE': self._gtk.Button("resume", None, None),
+            'CONFIRM': self._gtk.Button("complete", _("Confirm"), "color1"),
+            'EXECUTE': self._gtk.Button("resume", _("Start"), "color2"),
         }
+        self.buttons['CONFIRM'].connect("clicked", self.confirm)
         self.buttons['EXECUTE'].connect("clicked", self.execute)
+
+        text = Gtk.Label()
+        text.set_markup(f"<b>{_('Please confirm before proceeding')}</b>\n")
+        text.set_hexpand(True)
+        text.set_halign(Gtk.Align.CENTER)
+        text.set_vexpand(True)
+        text.set_valign(Gtk.Align.CENTER)
+        text.set_line_wrap(True)
+        text.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
+
+        self.buttons['EXECUTE'].set_sensitive(False)
 
         grid = self._gtk.HomogeneousGrid()
 
@@ -34,16 +47,25 @@ class Panel(ScreenPanel):
         self.info = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.info.pack_start(self.image, True, True, 8)
 
-        grid.attach(self.buttons['EXECUTE'], 0, 0, 1, 1)
+        grid.attach(text, 0, 0, 3, 1)
+        grid.attach(self.buttons['CONFIRM'], 0, 1, 1, 3)
+        grid.attach(self.buttons['EXECUTE'], 1, 1, 2, 3)
 
         self.labels['execute_script_panel'] = self._gtk.HomogeneousGrid()
         self.labels['execute_script_panel'].attach(grid, 0, 0, 1, 2)
         self.content.add(self.labels['execute_script_panel'])
 
+    
+    def confirm(self, button):
+        self.buttons['EXECUTE'].set_sensitive(True)
+        self.buttons['CONFIRM'].set_sensitive(False)
 
     def execute(self, button):
 
         fix_option = self._config.get_fix_option()
+
+        self.buttons['EXECUTE'].set_sensitive(False)
+        self.buttons['CONFIRM'].set_sensitive(True)
 
         def core_script(core_script_dir: str, usb = False, web=False):
 

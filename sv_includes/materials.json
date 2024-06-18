@@ -2,6 +2,7 @@
     {
         "name": "Breakaway",
         "code": "Breakaway",
+        "id": "s1ya4",
         "brand": null,
         "color": null,
         "compatible": [
@@ -17,6 +18,7 @@
     {
         "name": "ABS",
         "code": "ABS",
+        "id": "2ln8s",
         "brand": null,
         "color": null,
         "compatible": [
@@ -34,6 +36,7 @@
     {
         "name": "ASA",
         "code": "ASA",
+        "id": "g67ur",
         "brand": null,
         "color": null,
         "compatible": [
@@ -46,6 +49,7 @@
     {
         "name": "BVOH",
         "code": "BVOH",
+        "id": "rdzs4",
         "brand": null,
         "color": null,
         "compatible": [
@@ -58,6 +62,7 @@
     {
         "name": "CPE",
         "code": "CPE",
+        "id": "q492i",
         "brand": null,
         "color": null,
         "compatible": [
@@ -75,6 +80,7 @@
     {
         "name": "CPE +",
         "code": "CPE+",
+        "id": "n2ak3",
         "brand": null,
         "color": null,
         "compatible": [
@@ -92,6 +98,7 @@
     {
         "name": "I 150",
         "code": "I150",
+        "id": "y4ezp",
         "brand": null,
         "color": null,
         "compatible": [
@@ -107,6 +114,7 @@
     {
         "name": "I 151",
         "code": "I151",
+        "id": "30yw1",
         "brand": null,
         "color": null,
         "compatible": [
@@ -119,6 +127,7 @@
     {
         "name": "I 180",
         "code": "I180",
+        "id": "iwx0a",
         "brand": null,
         "color": null,
         "compatible": [
@@ -132,6 +141,7 @@
     {
         "name": "NYLON",
         "code": "Nylon",
+        "id": "dnuf4",
         "brand": null,
         "color": null,
         "compatible": [
@@ -149,6 +159,7 @@
     {
         "name": "PAHT CF15",
         "code": "PAHT CF15",
+        "id": "s2uxd",
         "brand": null,
         "color": null,
         "compatible": [
@@ -161,6 +172,7 @@
     {
         "name": "PC",
         "code": "PC",
+        "id": "yk882",
         "brand": null,
         "color": null,
         "compatible": [
@@ -178,6 +190,7 @@
     {
         "name": "PC/ABS",
         "code": "PC-ABS",
+        "id": "zpwr6",
         "brand": null,
         "color": null,
         "compatible": [
@@ -194,6 +207,7 @@
     {
         "name": "PET",
         "code": "PET",
+        "id": "w8rwi",
         "brand": null,
         "color": null,
         "compatible": [],
@@ -210,6 +224,7 @@
     {
         "name": "PET CF15",
         "code": "PET CF15",
+        "id": "6apoa",
         "brand": null,
         "color": null,
         "compatible": [
@@ -222,6 +237,7 @@
     {
         "name": "PETG",
         "code": "PETG",
+        "id": "0z6hs",
         "brand": null,
         "color": null,
         "compatible": [
@@ -239,6 +255,7 @@
     {
         "name": "PLA",
         "code": "PLA",
+        "id": "ily3m",
         "brand": null,
         "color": null,
         "compatible": [
@@ -255,7 +272,8 @@
     },
     {
         "name": "PLA +",
-        "code": "PLA+",
+        "code": "PLA",
+        "id": "s1ya4",
         "brand": null,
         "color": null,
         "compatible": [
@@ -273,6 +291,7 @@
     {
         "name": "PP",
         "code": "PP",
+        "id": "3nbc3",
         "brand": null,
         "color": null,
         "compatible": [
@@ -290,6 +309,7 @@
     {
         "name": "PP GF30",
         "code": "PP GF30",
+        "id": "tpvc7",
         "brand": null,
         "color": null,
         "compatible": [
@@ -302,6 +322,7 @@
     {
         "name": "PVA",
         "code": "PVA",
+        "id": "9yqgz",
         "brand": null,
         "color": null,
         "compatible": [
@@ -314,6 +335,7 @@
     {
         "name": "TO. PLA",
         "code": "Tough PLA",
+        "id": "fe2y9",
         "brand": null,
         "color": null,
         "compatible": [
@@ -331,6 +353,7 @@
     {
         "name": "TPU 64D",
         "code": "TPU 64D",
+        "id": "q9xq7",
         "brand": null,
         "color": null,
         "compatible": [
@@ -348,6 +371,7 @@
     {
         "name": "TPU 95A",
         "code": "TPU 95A",
+        "id": "3nb80",
         "brand": null,
         "color": null,
         "compatible": [
@@ -365,6 +389,7 @@
     {
         "name": "17-4PH",
         "code": "17-4PH",
+        "id": "evd2t",
         "brand": null,
         "color": null,
         "compatible": [
@@ -377,6 +402,7 @@
     {
         "name": "316 L",
         "code": "316L",
+        "id": "236cy",
         "brand": null,
         "color": null,
         "compatible": [

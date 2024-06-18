@@ -1815,6 +1815,18 @@ msgstr "Калибровка Дупла"
 msgid "Estimated:"
 msgstr "Оцененный:"
 
+msgid "Rename/Move:"
+msgstr "Переименовать/Переместить:"
+
+msgid "Rename File"
+msgstr "Переименовать файл"
+
+msgid "Please confirm before proceeding"
+msgstr "Пожалуйста, подтвердите перед продолжением"
+
+msgid "Confirm"
+msgstr "Подтверждать"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

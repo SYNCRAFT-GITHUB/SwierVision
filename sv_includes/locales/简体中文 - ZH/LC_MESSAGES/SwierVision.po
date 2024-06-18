@@ -1775,6 +1775,18 @@ msgstr "独立双挤出校准"
 msgid "Estimated:"
 msgstr "估计的："
 
+msgid "Rename/Move:"
+msgstr "重命名/移动:"
+
+msgid "Rename File"
+msgstr "更改文件名"
+
+msgid "Please confirm before proceeding"
+msgstr "请在继续之前确认"
+
+msgid "Confirm"
+msgstr "确认"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

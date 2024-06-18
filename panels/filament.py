@@ -141,6 +141,7 @@ class Panel(ScreenPanel):
         self._screen.delete_temporary_panels()
 
         material = self._config.variables_value_reveal(f"material_ext{active_carriage}")
+        material_id = self._config.variables_value_reveal(f"material_ext{active_carriage}_id")
 
         if not material in ["empty", "GENERIC"]:
             try:
@@ -148,8 +149,8 @@ class Panel(ScreenPanel):
             except:
                 self.materials = []
             for m in self.materials:
-                if m.code == material:
-                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, nozzle))
+                if m.id == material_id:
+                    self._screen._ws.klippy.gcode_script(KlippyGcodes.load_filament(m.temp, m.code, m.id, nozzle))
         else:
             self.menu_item_clicked(widget=widget, item={
                 "name": _("Select the Material"),
@@ -187,6 +188,7 @@ class Panel(ScreenPanel):
                         material = PrinterMaterial(
                             name=item['name'],
                             code=item['code'],
+                            id=item['id'],
                             brand=item['brand'],
                             color=item['color'],
                             compatible=item['compatible'],

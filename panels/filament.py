@@ -163,7 +163,7 @@ class Panel(ScreenPanel):
                 self._screen.show_popup_message("Macro UNLOAD_FILAMENT not found")
             else:
                 self._screen._ws.klippy.gcode_script(f"UNLOAD_FILAMENT SPEED={self.speed * 60}")
-                self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext()))
+                self._screen._ws.klippy.gcode_script(Gcode.change_material(m='empty', ext=self.ext(), m_id='empty'))
         if direction == "+":
             if not self.load_filament:
                 self._screen.show_popup_message("Macro LOAD_FILAMENT not found")

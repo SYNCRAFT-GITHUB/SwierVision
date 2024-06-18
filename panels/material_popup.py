@@ -192,7 +192,7 @@ class Panel(ScreenPanel):
             
             if self.nozzle in material.experimental and self.nozzle in allowed_for_experimental:
                 index_button = self._gtk.Button("circle-orange", material.name, "color1")
-                index_button.connect("clicked", self.confirm_set_experimental, material.code)
+                index_button.connect("clicked", self.confirm_set_experimental, material.code, material.m_id)
                 if show_experimental:
                     gridvariable.attach(index_button, repeat_three, i, 1, 1)
                     if repeat_three == 4:
@@ -201,7 +201,7 @@ class Panel(ScreenPanel):
                     else:
                         repeat_three += 1
 
-            if material.code == self.materials[-1].code:
+            if material.m_id == self.materials[-1].m_id:
                 size: int = 1
                 index: int = repeat_three
                 while index != 4:
@@ -248,8 +248,8 @@ class Panel(ScreenPanel):
         self._config.replace_filament_activity(self._config.get_spool_option(), "busy")
         self.full_back()
 
-    def confirm_set_experimental(self, widget, code):
-        script = Gcode.change_material(m=code, ext=self.ext(), m_id='basic')
+    def confirm_set_experimental(self, widget, code, m_id):
+        script = Gcode.change_material(m=code, ext=self.ext(), m_id=m_id)
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

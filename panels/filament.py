@@ -212,16 +212,24 @@ class Panel(ScreenPanel):
 
         for extruder in self._printer.get_tools():
             if extruder == "extruder":
-                material = self._config.variables_value_reveal('material_ext0')
+                material_id = self._config.variables_value_reveal('material_ext0_id')
             else:
-                material = self._config.variables_value_reveal('material_ext1')
-            if 'empty' in material:
-                material = _("Empty")
-            if 'none' in material:
-                material = _("Out of Date")
-            if 'GENERIC' in material:
-                material = _("Generic")
-            self.labels[extruder].set_label(material)
+                material_id = self._config.variables_value_reveal('material_ext1_id')
+            material: PrinterMaterial
+            material_label: str
+            for index_material in self.materials:
+                if index_material.m_id == material_id:
+                    material = index_material
+                    break
+            material_label = material.name
+            if 'empty' in material.code:
+                material_label = _("Empty")
+            if 'none' in material.code:
+                material_label = _("Out of Date")
+            if 'GENERIC' in material.code:
+                material_label = _("Generic")
+            self.labels[extruder].set_label(material_label)
+            del material, material_label, material_id
             if self.ext_feeder[extruder] != str(self.active_carriage()):
                 self.labels[extruder].set_property("opacity", 0.3)
             else:

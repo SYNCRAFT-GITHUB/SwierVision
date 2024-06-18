@@ -164,7 +164,7 @@ class Panel(ScreenPanel):
             
             if self.nozzle in material.experimental and self.nozzle in allowed_for_experimental:
                 index_button = self._gtk.Button("circle-orange", material.name, "color1")
-                index_button.connect("clicked", self.confirm_print_experimental, material.code, material.temp)
+                index_button.connect("clicked", self.confirm_print_experimental, material.code, material.m_id, material.temp)
                 if show_experimental:
                     gridvariable.attach(index_button, repeat_three, i, 1, 1)
                     if repeat_three == 4:
@@ -174,7 +174,7 @@ class Panel(ScreenPanel):
                         repeat_three += 1
 
             if self.nozzle in allowed_for_experimental:
-                if material.code == self.materials[-1].code:
+                if material.m_id == self.materials[-1].m_id:
                     size: int = 1
                     if repeat_three == 0:
                         break
@@ -206,8 +206,8 @@ class Panel(ScreenPanel):
         self._screen._ws.klippy.gcode_script(Gcode.load_filament(temp, code, m_id, self.nozzle))
         self._screen._menu_go_back()
 
-    def confirm_print_experimental(self, widget, code, temp: int):
-        script = Gcode.load_filament(temp, code, 'basic', self.nozzle)
+    def confirm_print_experimental(self, widget, code, m_id, temp: int):
+        script = Gcode.load_filament(temp, code, m_id, self.nozzle)
         params = {"script": script}
         self._screen._confirm_send_action(
             None,

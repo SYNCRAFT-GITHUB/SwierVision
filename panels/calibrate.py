@@ -10,6 +10,8 @@ from gi.repository import Gtk, Pango
 from sv_includes.KlippyGcodes import KlippyGcodes
 from sv_includes.screen_panel import ScreenPanel
 
+from panels.material_load import PrinterMaterial, read_materials_from_json
+
 
 class Panel(ScreenPanel):
 
@@ -75,6 +77,9 @@ class Panel(ScreenPanel):
         nozzle0 = self._config.variables_value_reveal('nozzle0')
         nozzle1 = self._config.variables_value_reveal('nozzle1')
 
+        materials_json_path = self._config.materials_path(custom=False)
+        materials = read_materials_from_json(materials_json_path)
+
         try:
             iter(materials)
         except:
@@ -83,9 +88,9 @@ class Panel(ScreenPanel):
         ext0_temp = ext1_temp = 0
 
         for material in materials:
-            if material.name == mat0:
+            if material.code == mat0:
                 ext0_temp = material.print_temp
-            if material.name == mat1:
+            if material.code == mat1:
                 ext1_temp = material.print_temp
 
         if ext0_temp == 0 or ext1_temp == 0:

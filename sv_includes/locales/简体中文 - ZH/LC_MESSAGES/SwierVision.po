@@ -1790,6 +1790,21 @@ msgstr "确认"
 msgid "Confirmed"
 msgstr "已确认"
 
+msgid "Yes"
+msgstr "是"
+
+msgid "No"
+msgstr "否"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Firmware was turned off by user"
+msgstr "固件已由用户关闭"
+
+msgid "No connection to the Extruder"
+msgstr "与挤出机没有连接"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

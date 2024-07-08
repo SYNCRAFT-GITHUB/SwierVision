@@ -1837,6 +1837,21 @@ msgstr "Confirmer"
 msgid "Confirmed"
 msgstr "Confirmé"
 
+msgid "Yes"
+msgstr "Oui"
+
+msgid "No"
+msgstr "Non"
+
+msgid "About"
+msgstr "À propos"
+
+msgid "Firmware was turned off by user"
+msgstr "Le firmware a été éteint par l'utilisateur"
+
+msgid "No connection to the Extruder"
+msgstr "Pas de connexion à l'extrudeuse"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

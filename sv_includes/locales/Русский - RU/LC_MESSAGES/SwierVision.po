@@ -1830,6 +1830,21 @@ msgstr "Подтверждать"
 msgid "Confirmed"
 msgstr "Подтверждено"
 
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "About"
+msgstr "О программе"
+
+msgid "Firmware was turned off by user"
+msgstr "Прошивка была выключена пользователем"
+
+msgid "No connection to the Extruder"
+msgstr "Нет подключения к экструдеру"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

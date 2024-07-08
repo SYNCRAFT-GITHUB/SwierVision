@@ -1650,6 +1650,21 @@ msgstr "確認する"
 msgid "Confirmed"
 msgstr "確認済み"
 
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "About"
+msgstr "約"
+
+msgid "Firmware was turned off by user"
+msgstr "ユーザーによってファームウェアがオフになりました"
+
+msgid "No connection to the Extruder"
+msgstr "押出機に接続されていません"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

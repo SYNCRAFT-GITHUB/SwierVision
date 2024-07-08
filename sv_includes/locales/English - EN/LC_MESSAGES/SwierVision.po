@@ -1643,6 +1643,21 @@ msgstr ""
 msgid "Confirmed"
 msgstr ""
 
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Firmware was turned off by user"
+msgstr ""
+
+msgid "No connection to the Extruder"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

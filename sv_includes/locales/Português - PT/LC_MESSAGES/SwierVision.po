@@ -1345,7 +1345,7 @@ msgid "Internal Lights"
 msgstr "Luzes Internas"
 
 msgid "You cannot perform this action while printing"
-msgstr "Você não pode realizar esta ação enquanto estiver imprimindo"
+msgstr "Esta ação não pode ser executada durante uma impressão!"
 
 msgid "Hot Unload"
 msgstr "Aquecer e Descarregar"

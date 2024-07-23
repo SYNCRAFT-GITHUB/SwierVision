@@ -1658,6 +1658,9 @@ msgstr ""
 msgid "No connection to the Extruder"
 msgstr ""
 
+msgid "Internal error, this should not happen."
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

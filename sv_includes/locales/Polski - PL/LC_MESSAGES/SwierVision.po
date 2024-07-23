@@ -1788,6 +1788,9 @@ msgstr "Oprogramowanie układowe zostało wyłączone przez użytkownika"
 msgid "No connection to the Extruder"
 msgstr "Brak połączenia z ekstruderem"
 
+msgid "Internal error, this should not happen."
+msgstr "Błąd wewnętrzny, to nie powinno się zdarzyć."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

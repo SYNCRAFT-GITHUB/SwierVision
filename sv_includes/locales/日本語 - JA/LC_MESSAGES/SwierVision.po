@@ -1665,6 +1665,9 @@ msgstr "ユーザーによってファームウェアがオフになりました
 msgid "No connection to the Extruder"
 msgstr "押出機に接続されていません"
 
+msgid "Internal error, this should not happen."
+msgstr "内部エラーが発生しました。これは起こるべきではありません。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

@@ -1852,6 +1852,9 @@ msgstr "Le firmware a été éteint par l'utilisateur"
 msgid "No connection to the Extruder"
 msgstr "Pas de connexion à l'extrudeuse"
 
+msgid "Internal error, this should not happen."
+msgstr "Erreur interne, cela ne devrait pas arriver."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

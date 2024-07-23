@@ -136,7 +136,7 @@ class Panel(ScreenPanel):
             zip_ref.extractall(calib_new_file_path)
 
         try:
-            with open(calib_file_path, 'r', encoding='utf-8') as gcode_file:
+            with open(calib_new_file_path_w_gcode, 'r', encoding='utf-8') as gcode_file:
                 content = gcode_file.read()
 
             content = content.replace('<TEMPERATURE_LAYER_ZERO_VALUE>', str(ext0_temp))
@@ -146,7 +146,7 @@ class Panel(ScreenPanel):
                 new_gcode_file.write(content)
         except Exception as e:
             print(f"Error: {e}")
-            return self._screen.show_popup_message(_('An error has occurred'), level=3)
+            return self._screen.show_popup_message(_('Internal error, this should not happen.'), level=3)
 
         gcodes_path = os.path.join('/home', 'pi', 'printer_data', 'gcodes')
         calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))

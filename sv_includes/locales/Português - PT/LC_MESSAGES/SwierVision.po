@@ -1677,6 +1677,9 @@ msgstr "Firmware desligado pelo usuário"
 msgid "No connection to the Extruder"
 msgstr "Sem conexão com o ProExtruder"
 
+msgid "Internal error, this should not happen."
+msgstr "Erro interno."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

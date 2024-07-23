@@ -1845,6 +1845,9 @@ msgstr "Прошивка была выключена пользователем"
 msgid "No connection to the Extruder"
 msgstr "Нет подключения к экструдеру"
 
+msgid "Internal error, this should not happen."
+msgstr "Внутренняя ошибка, этого не должно происходить."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

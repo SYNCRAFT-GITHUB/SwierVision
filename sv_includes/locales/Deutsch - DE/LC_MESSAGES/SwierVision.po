@@ -1804,6 +1804,9 @@ msgstr "Firmware wurde vom Benutzer ausgeschaltet"
 msgid "No connection to the Extruder"
 msgstr "Keine Verbindung zum Extruder"
 
+msgid "Internal error, this should not happen."
+msgstr "Interner Fehler, das sollte nicht passieren."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

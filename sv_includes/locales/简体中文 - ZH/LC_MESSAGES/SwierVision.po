@@ -1805,6 +1805,9 @@ msgstr "固件已由用户关闭"
 msgid "No connection to the Extruder"
 msgstr "与挤出机没有连接"
 
+msgid "Internal error, this should not happen."
+msgstr "内部错误，不应发生这种情况。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

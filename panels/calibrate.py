@@ -1,4 +1,5 @@
 import logging
+import zipfile
 import shutil
 import json
 import os
@@ -123,12 +124,16 @@ class Panel(ScreenPanel):
             return self._screen.show_popup_message(msg, level=3)
 
         calib_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate', \
-            shorts[nozzle0], f'idex_calibrate_{shorts[nozzle0]}_{shorts[nozzle1]}.gcode')
+            shorts[nozzle0], f'idex_calibrate_{shorts[nozzle0]}_{shorts[nozzle1]}.zip')
 
-        calib_new_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate', 'idex_calibrate.gcode')
-        
-        if os.path.exists(calib_new_file_path):
-            os.remove(calib_new_file_path)
+        calib_new_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate')
+        calib_new_file_path_w_gcode = os.path.join(calib_new_file_path, 'idex_calibrate.gcode')
+
+        if os.path.exists(calib_new_file_path_w_gcode):
+            os.remove(calib_new_file_path_w_gcode)
+
+        with zipfile.ZipFile(calib_file_path, 'r') as zip_ref:
+            zip_ref.extractall(calib_new_file_path)
 
         try:
             with open(calib_file_path, 'r', encoding='utf-8') as gcode_file:
@@ -137,7 +142,7 @@ class Panel(ScreenPanel):
             content = content.replace('<TEMPERATURE_LAYER_ZERO_VALUE>', str(ext0_temp))
             content = content.replace('<TEMPERATURE_LAYER_ONE_VALUE>', str(ext1_temp))
             
-            with open(calib_new_file_path, 'w', encoding='utf-8') as new_gcode_file:
+            with open(calib_new_file_path_w_gcode, 'w', encoding='utf-8') as new_gcode_file:
                 new_gcode_file.write(content)
         except Exception as e:
             print(f"Error: {e}")
@@ -147,9 +152,9 @@ class Panel(ScreenPanel):
         calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))
         if os.path.exists(calib_file_gcodes):
             os.remove(calib_file_gcodes)
-        if os.path.exists(calib_new_file_path):
+        if os.path.exists(calib_new_file_path_w_gcode):
             try:
-                shutil.copyfile(calib_new_file_path, calib_file_gcodes)
+                shutil.copyfile(calib_new_file_path_w_gcode, calib_file_gcodes)
                 params = {"filename": ".idex_calibrate.gcode"}
                 self._screen._confirm_send_action(
                     None,

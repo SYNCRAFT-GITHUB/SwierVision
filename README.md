@@ -20,8 +20,5 @@ SwierVision would not be possible without the KlipperScreen development team, th
 ## Settings Panel
 <img width="475" alt="picture2" src="https://github.com/SYNCRAFT-GITHUB/SwierVision/assets/110249038/02bf70eb-ed26-4f1a-9249-117c3f99c062">
 
-## Select Material
-<img width="475" alt="picture4" src="https://github.com/SYNCRAFT-GITHUB/SwierVision/assets/110249038/35523057-50be-416b-aece-f30226885d33">
-
 ## Sensors
 <img width="475" alt="picture3" src="https://github.com/SYNCRAFT-GITHUB/SwierVision/assets/110249038/bbc36def-04a4-4401-94a7-4128b2aebd08">

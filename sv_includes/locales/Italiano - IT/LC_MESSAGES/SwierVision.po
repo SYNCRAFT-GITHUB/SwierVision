@@ -1787,6 +1787,27 @@ msgstr "Confermare"
 msgid "Confirmed"
 msgstr "Confermato"
 
+msgid "Yes"
+msgstr "Sì"
+
+msgid "No"
+msgstr "No"
+
+msgid "About"
+msgstr "Informazioni"
+
+msgid "Firmware was turned off by user"
+msgstr "Il firmware è stato spento dall'utente"
+
+msgid "No connection to the Extruder"
+msgstr "Nessuna connessione con l'estrusore"
+
+msgid "Internal error, this should not happen."
+msgstr "Errore interno, questo non dovrebbe accadere."
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Non è possibile calibrare utilizzando materiali personalizzati o generici."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

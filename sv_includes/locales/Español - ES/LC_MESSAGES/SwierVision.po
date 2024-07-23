@@ -1813,6 +1813,27 @@ msgstr "Confirmar"
 msgid "Confirmed"
 msgstr "Confirmado"
 
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
+
+msgid "About"
+msgstr "Acerca de"
+
+msgid "Firmware was turned off by user"
+msgstr "El firmware fue apagado por el usuario"
+
+msgid "No connection to the Extruder"
+msgstr "Sin conexión con el extrusor"
+
+msgid "Internal error, this should not happen."
+msgstr "Error interno, esto no debería suceder."
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "No se puede calibrar utilizando materiales personalizados o genéricos."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

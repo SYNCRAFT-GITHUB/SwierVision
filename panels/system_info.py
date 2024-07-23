@@ -25,14 +25,19 @@ class Panel(ScreenPanel):
         self.info = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.info.pack_start(self.image, True, True, 8)
 
+        self.about_btn = self._gtk.Button("info-bubble", _("About"), None, 1, Gtk.PositionType.LEFT)
+
+        self.about_btn.connect("clicked", self.menu_item_clicked, {
+            "name": _("About"),
+            "panel": "about_tab"
+        })
+
         self.content.add(self.info)
 
         self.text: str = f"""
         {_('Hostname')}: {socket.gethostname()}
         {_('Version')}: {platform.release()}
-        {_('System')}: {platform.system()}
         {_('Mac')}: {getmac.get_mac_address()}
-        {_('Model')}: {self.getProp("model", "Syncraft IDEX")}
         {_('Birth')}: {self.getProp("birth", "?")}
         {_('HEPA Replacements')}: {self.getProp("hepa-count", "?")}
         {_('SyncraftCore')}: {os.path.exists(self.core_path)}
@@ -43,6 +48,7 @@ class Panel(ScreenPanel):
         self.labels['text'].set_valign(Gtk.Align.CENTER)
 
         self.content.add(self.labels['text'])
+        self.content.add(self.about_btn)
 
         grid = self._gtk.HomogeneousGrid()
 

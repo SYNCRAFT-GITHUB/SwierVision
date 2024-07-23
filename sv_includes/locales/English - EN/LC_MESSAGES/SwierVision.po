@@ -1643,6 +1643,27 @@ msgstr ""
 msgid "Confirmed"
 msgstr ""
 
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Firmware was turned off by user"
+msgstr ""
+
+msgid "No connection to the Extruder"
+msgstr ""
+
+msgid "Internal error, this should not happen."
+msgstr ""
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

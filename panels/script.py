@@ -79,7 +79,7 @@ class Panel(ScreenPanel):
                         self._screen.show_popup_message(message, level=2)
                         return None
                 else:
-                    message: str = _("An error has occurred")
+                    message: str = _("Internal error, this should not happen.")
                     self._screen.show_popup_message(message, level=2)
                     return None
             if not self._config.internet_connection() and web:

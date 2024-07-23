@@ -1790,6 +1790,27 @@ msgstr "确认"
 msgid "Confirmed"
 msgstr "已确认"
 
+msgid "Yes"
+msgstr "是"
+
+msgid "No"
+msgstr "否"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Firmware was turned off by user"
+msgstr "固件已由用户关闭"
+
+msgid "No connection to the Extruder"
+msgstr "与挤出机没有连接"
+
+msgid "Internal error, this should not happen."
+msgstr "内部错误，不应发生这种情况。"
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "无法使用自定义或通用材料进行校准。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

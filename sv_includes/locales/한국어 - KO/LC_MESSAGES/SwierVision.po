@@ -1717,6 +1717,27 @@ msgstr "확인하다"
 msgid "Confirmed"
 msgstr "확인됨"
 
+msgid "Yes"
+msgstr "예"
+
+msgid "No"
+msgstr "아니오"
+
+msgid "About"
+msgstr "정보"
+
+msgid "Firmware was turned off by user"
+msgstr "사용자에 의해 펌웨어가 꺼졌습니다"
+
+msgid "No connection to the Extruder"
+msgstr "익스트루더에 연결되지 않음"
+
+msgid "Internal error, this should not happen."
+msgstr "내부 오류, 이런 일이 일어나서는 안 됩니다."
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "맞춤형 또는 일반 소재를 사용하여 보정할 수 없습니다."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

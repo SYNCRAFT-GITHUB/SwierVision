@@ -1345,7 +1345,7 @@ msgid "Internal Lights"
 msgstr "Luzes Internas"
 
 msgid "You cannot perform this action while printing"
-msgstr "Você não pode realizar esta ação enquanto estiver imprimindo"
+msgstr "Esta ação não pode ser executada durante uma impressão!"
 
 msgid "Hot Unload"
 msgstr "Aquecer e Descarregar"
@@ -1661,6 +1661,27 @@ msgstr "Confirmar"
 
 msgid "Confirmed"
 msgstr "Confirmado"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Não"
+
+msgid "About"
+msgstr "Sobre"
+
+msgid "Firmware was turned off by user"
+msgstr "Firmware desligado pelo usuário"
+
+msgid "No connection to the Extruder"
+msgstr "Sem conexão com o ProExtruder"
+
+msgid "Internal error, this should not happen."
+msgstr "Erro interno."
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Você não pode calibrar usando materiais customizados ou genéricos."
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"

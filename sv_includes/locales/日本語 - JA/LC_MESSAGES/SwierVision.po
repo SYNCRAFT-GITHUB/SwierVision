@@ -1650,6 +1650,27 @@ msgstr "確認する"
 msgid "Confirmed"
 msgstr "確認済み"
 
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "About"
+msgstr "約"
+
+msgid "Firmware was turned off by user"
+msgstr "ユーザーによってファームウェアがオフになりました"
+
+msgid "No connection to the Extruder"
+msgstr "押出機に接続されていません"
+
+msgid "Internal error, this should not happen."
+msgstr "内部エラーが発生しました。これは起こるべきではありません。"
+
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "カスタムまたは汎用材料を使用してキャリブレーションすることはできません。"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

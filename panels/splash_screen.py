@@ -27,7 +27,7 @@ class Panel(ScreenPanel):
                 "name": _("Restart"),
                 "panel": "confirm_restart"
             })
-        self.labels['retry'] = self._gtk.Button("extrude", _('Retry'), "color3")
+        self.labels['retry'] = self._gtk.Button("refresh", _('Retry'), "color3")
         self.labels['retry'].connect("clicked", self.firmware_restart)
 
         self.labels['actions'] = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -56,6 +56,10 @@ class Panel(ScreenPanel):
 
     def update_text(self, text):
         self.labels['text'].set_label(f"{text}")
+        if "ADC out of range" in text:
+            self.labels['text'].set_label(_("No connection to the Extruder"))
+        if "Shutdown due to webhooks request" in text:
+            self.labels['text'].set_label(_("Firmware was turned off by user"))
         self.show_restart_buttons()
 
     def clear_action_bar(self):

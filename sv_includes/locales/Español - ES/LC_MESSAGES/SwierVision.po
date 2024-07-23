@@ -1834,6 +1834,24 @@ msgstr "Error interno, esto no debería suceder."
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "No se puede calibrar utilizando materiales personalizados o genéricos."
 
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Deshabilitar botones"
+
+msgid "Re-enable buttons"
+msgstr "Habilitar botones"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Guardar automáticamente la sonda al terminar una impresión"
+
+msgid "Return to main menu and save probe?"
+msgstr "¿Volver al menú principal y guardar la sonda?"
+
+msgid "Save probe and return to main menu"
+msgstr "Guardar la sonda y volver al menú principal"
+
+msgid "Check LED"
+msgstr "Revisar LED"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

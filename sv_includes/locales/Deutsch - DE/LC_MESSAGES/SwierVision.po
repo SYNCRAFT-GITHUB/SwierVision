@@ -1810,6 +1810,24 @@ msgstr "Interner Fehler, das sollte nicht passieren."
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "Sie können nicht mit benutzerdefinierten oder generischen Materialien kalibrieren."
 
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Schaltflächen deaktivieren"
+
+msgid "Re-enable buttons"
+msgstr "Tasten wieder aktivieren"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Sonde automatisch speichern, wenn der Druck abgeschlossen ist"
+
+msgid "Return to main menu and save probe?"
+msgstr "Zum Hauptmenü zurückkehren und die Sonde speichern?"
+
+msgid "Save probe and return to main menu"
+msgstr "Sonde speichern und zum Hauptmenü zurückkehren"
+
+msgid "Check LED"
+msgstr "LED überprüfen"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

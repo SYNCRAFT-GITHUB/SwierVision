@@ -1664,6 +1664,24 @@ msgstr ""
 msgid "You cannot calibrate using custom or generic materials."
 msgstr ""
 
+msgid "Prevent accidental presses by hiding buttons"
+msgstr ""
+
+msgid "Re-enable buttons"
+msgstr ""
+
+msgid "Automatically save probe when finishing a print"
+msgstr ""
+
+msgid "Return to main menu and save probe?"
+msgstr ""
+
+msgid "Save probe and return to main menu"
+msgstr ""
+
+msgid "Check LED"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

@@ -47,6 +47,12 @@ class Panel(ScreenPanel):
             "panel": "add_material",
             "icon": "filament_plus"
         }})
+        options.append({"check_led": {
+            "name": _("Check LED"),
+            "type": "panel",
+            "panel": "led_check",
+            "icon": "light"
+        }})
         options.append({"console": {
             "name": _("Console"),
             "type": "panel",

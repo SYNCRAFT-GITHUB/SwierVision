@@ -65,7 +65,7 @@ class Panel(ScreenPanel):
         self.hidden = not self.hidden
 
     def start_calibration(self, button):
-        #self._screen._ws.klippy.gcode_script("PROBE_CALIBRATE_AUTOMATIC")
+        self._screen._ws.klippy.gcode_script("PROBE_CALIBRATE_AUTOMATIC")
         self.finish_btn.set_sensitive(True)
         self.above_text.set_property("opacity", 1.0)
         self.below_text.set_property("opacity", 1.0)
@@ -74,12 +74,12 @@ class Panel(ScreenPanel):
 
     def finish_calibration(self, button):
         self.transparent()
-        #self._screen._ws.klippy.gcode_script("IDEX_OFFSET Z=0")
-        #self._screen._ws.klippy.gcode_script("G28 Z")
-        #self._screen._ws.klippy.gcode_script("M84")
+        self._screen._ws.klippy.gcode_script("IDEX_OFFSET Z=0")
+        self._screen._ws.klippy.gcode_script("G28 Z")
+        self._screen._ws.klippy.gcode_script("M84")
         self.start_btn.set_label(f'  {_("Start")}')
         self.running = False
-        #self._screen._menu_go_back()
+        self._screen._menu_go_back()
 
     def transparent(self):
         self.above_text.set_property("opacity", 0.3)

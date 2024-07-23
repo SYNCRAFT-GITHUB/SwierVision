@@ -1805,6 +1805,9 @@ msgstr "Nessuna connessione con l'estrusore"
 msgid "Internal error, this should not happen."
 msgstr "Errore interno, questo non dovrebbe accadere."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Non è possibile calibrare utilizzando materiali personalizzati o generici."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

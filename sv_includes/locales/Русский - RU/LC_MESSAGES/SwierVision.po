@@ -1848,6 +1848,9 @@ msgstr "Нет подключения к экструдеру"
 msgid "Internal error, this should not happen."
 msgstr "Внутренняя ошибка, этого не должно происходить."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Невозможно откалибровать, используя настраиваемые или общие материалы."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

@@ -1791,6 +1791,9 @@ msgstr "Brak połączenia z ekstruderem"
 msgid "Internal error, this should not happen."
 msgstr "Błąd wewnętrzny, to nie powinno się zdarzyć."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Nie można kalibrować przy użyciu niestandardowych lub ogólnych materiałów."
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

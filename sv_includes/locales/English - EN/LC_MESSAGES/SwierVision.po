@@ -1661,6 +1661,9 @@ msgstr ""
 msgid "Internal error, this should not happen."
 msgstr ""
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

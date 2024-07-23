@@ -75,6 +75,10 @@ class Panel(ScreenPanel):
         mat0 = self._config.variables_value_reveal('material_ext0')
         mat1 = self._config.variables_value_reveal('material_ext1')
 
+        if mat0 == "GENERIC" or mat1 == "GENERIC":
+            msg = _("You cannot calibrate using custom or generic materials.")
+            return self._screen.show_popup_message(msg, level=3)
+
         nozzle0 = self._config.variables_value_reveal('nozzle0')
         nozzle1 = self._config.variables_value_reveal('nozzle1')
 

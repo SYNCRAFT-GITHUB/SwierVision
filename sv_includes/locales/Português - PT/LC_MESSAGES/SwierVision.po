@@ -1680,6 +1680,9 @@ msgstr "Sem conexão com o ProExtruder"
 msgid "Internal error, this should not happen."
 msgstr "Erro interno."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Você não pode calibrar usando materiais customizados ou genéricos."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

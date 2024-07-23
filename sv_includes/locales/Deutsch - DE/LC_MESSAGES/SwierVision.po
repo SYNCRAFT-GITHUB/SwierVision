@@ -1807,6 +1807,9 @@ msgstr "Keine Verbindung zum Extruder"
 msgid "Internal error, this should not happen."
 msgstr "Interner Fehler, das sollte nicht passieren."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "Sie können nicht mit benutzerdefinierten oder generischen Materialien kalibrieren."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"
 

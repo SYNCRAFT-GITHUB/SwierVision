@@ -1735,6 +1735,9 @@ msgstr "익스트루더에 연결되지 않음"
 msgid "Internal error, this should not happen."
 msgstr "내부 오류, 이런 일이 일어나서는 안 됩니다."
 
+msgid "You cannot calibrate using custom or generic materials."
+msgstr "맞춤형 또는 일반 소재를 사용하여 보정할 수 없습니다."
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

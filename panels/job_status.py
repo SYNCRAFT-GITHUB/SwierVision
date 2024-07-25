@@ -39,6 +39,7 @@ class Panel(ScreenPanel):
         self.mms2 = _("mm/s²")
         self.mms3 = _("mm³/s")
         self.status_grid = self.move_grid = self.time_grid = self.extrusion_grid = None
+        self.manual_probe_save = self._config.get_main_config().getboolean('manual_probe_save', True)
 
         data = ['pos_x', 'pos_y', 'pos_z', 'time_left', 'duration', 'slicer_time', 'file_time',
                 'filament_time', 'est_time', 'speed_factor', 'req_speed', 'max_accel', 'extrude_factor', 'zoffset',
@@ -343,12 +344,12 @@ class Panel(ScreenPanel):
             'cancel': self._gtk.Button("stop", _("Cancel"), "color2"),
             'control': self._gtk.Button("settings", _("Settings"), "color3"),
             'fine_tune': self._gtk.Button("fine-tune", _("Fine Tuning"), "color4"),
-            'calibrate': self._gtk.Button("calibrate", _("Calibrate"), "color2"),
+            'calibrate': self._gtk.Button("idex", _("Calibrate IDEX"), "color2"),
             'menu': self._gtk.Button("complete", _("Main Menu"), "color4"),
             'pause': self._gtk.Button("pause", _("Pause"), "color3"),
             'restart': self._gtk.Button("refresh", _("Restart"), "color3"),
             'resume': self._gtk.Button("unpause", _("Resume"), "color1"),
-            'save_probe': self._gtk.Button("letter-z", _("Save") + " Probe", None),
+            'save_probe': self._gtk.Button("letter-z", _("Save") + " Probe", "color2"),
             'idex_offset': self._gtk.Button("idex", _("Calibrate"), None),
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
@@ -437,6 +438,8 @@ class Panel(ScreenPanel):
             logging.debug("Closing job_status panel")
             self._screen._ws.klippy.gcode_script("PROGRESS_BAR_IDLE")
             self._screen.state_ready(wait=False)
+            if self._printer.get_probe() and not self.manual_probe_save:
+                self._screen._ws.klippy.gcode_script("Z_OFFSET_APPLY_PROBE")
 
     def enable_button(self, *args):
         for arg in args:
@@ -699,8 +702,9 @@ class Panel(ScreenPanel):
             if self.zoffset != 0:
                 self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
             else:
-                if not 'idex_calibrate' in self.filename:
-                    self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
+                if self.filename:
+                    if not 'idex_calibrate' in self.filename:
+                        self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
 
             if self.filename:
                 self.buttons['button_grid'].attach(self.buttons['restart'], 2, 0, 1, 1)
@@ -708,9 +712,11 @@ class Panel(ScreenPanel):
             else:
                 self.disable_button("restart")
             if self.state != "cancelling":
-                if 'idex_calibrate' in self.filename:
-                    self.buttons['button_grid'].attach(self.buttons["idex_offset"], 0, 0, 1, 1)
-                self.buttons['button_grid'].attach(self.buttons["save_probe"], 1, 0, 1, 1)
+                if self.filename:
+                    if 'idex_calibrate' in self.filename:
+                        self.buttons['button_grid'].attach(self.buttons["idex_offset"], 0, 0, 1, 1)
+                if self._printer.get_probe() and self.manual_probe_save:
+                    self.buttons['button_grid'].attach(self.buttons["save_probe"], 1, 0, 1, 1)
                 self.buttons['button_grid'].attach(self.buttons['menu'], 3, 0, 1, 1)
                 self.can_close = True
         self.content.show_all()

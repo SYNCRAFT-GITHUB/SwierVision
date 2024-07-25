@@ -1526,7 +1526,7 @@ msgid "Hot Unload"
 msgstr "Chauffer et décharger"
 
 msgid "Calibrate IDEX"
-msgstr "Calibrage IDEX"
+msgstr "Calib. IDEX"
 
 msgid "Empty"
 msgstr "Vide"
@@ -1857,6 +1857,36 @@ msgstr "Erreur interne, cela ne devrait pas arriver."
 
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "Vous ne pouvez pas calibrer en utilisant des matériaux personnalisés ou génériques."
+
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Désactiver les boutons"
+
+msgid "Re-enable buttons"
+msgstr "Réactiver les boutons"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Enregistrer automatiquement la sonde à la fin de l'impression"
+
+msgid "Return to main menu and save probe?"
+msgstr "Retourner au menu principal et enregistrer la sonde ?"
+
+msgid "Save probe and return to main menu"
+msgstr "Enregistrer la sonde et retourner au menu principal"
+
+msgid "Check LED"
+msgstr "Vérifier LED"
+
+msgid "Manually save probe after printing"
+msgstr "Enregistrer manuellement la sonde après l'impression"
+
+msgid "Save changes?"
+msgstr "Enregistrer les modifications ?"
+
+msgid "Accessibility"
+msgstr "Accessibilité"
+
+msgid "Change language"
+msgstr "Changer de langue"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"

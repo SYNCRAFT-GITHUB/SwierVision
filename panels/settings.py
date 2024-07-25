@@ -12,7 +12,7 @@ class Panel(ScreenPanel):
         self.menu = ['settings_menu']
         options = self._config.get_configurable_options().copy()
         options.append({"lang": {
-            "name": _("Language"),
+            "name": _("Change language"),
             "type": "menu",
             "menu": "lang"
         }})
@@ -46,6 +46,12 @@ class Panel(ScreenPanel):
             "type": "panel",
             "panel": "add_material",
             "icon": "filament_plus"
+        }})
+        options.append({"check_led": {
+            "name": _("Check LED"),
+            "type": "panel",
+            "panel": "led_check",
+            "icon": "light"
         }})
         options.append({"console": {
             "name": _("Console"),
@@ -145,10 +151,13 @@ class Panel(ScreenPanel):
 
         if self._config.get_hidden_config().getboolean('welcome', True):
             allowed_options = [
+                _("Display materials in the top"),
                 _("Change Screen Brightness"),
-                _("Language"),
-                _("Icon Theme"),
-                _("Font Size"),
+                _("Show Scrollbars Buttons"),
+                _("Confirm Emergency Stop"),
+                _("Change Timezone"),
+                _("Change language"),
+                _("24 Hour Time"),
             ]
 
             if not option['name'] in allowed_options:

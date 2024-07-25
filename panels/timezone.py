@@ -110,7 +110,7 @@ class Panel(ScreenPanel):
             grid.attach(self.labels[name], col, row, 1, 1)
 
         name: str = timezone.name()
-        self.labels[name] = self._gtk.Button(None, _("My timezone is not on the list"), None)
+        self.labels[name] = self._gtk.Button("timezone-error", _("My timezone is not on the list"), "color1")
         self.labels[name].connect("clicked", self.show_insert_custom_timezone)
         if self._screen.vertical_mode:
             row = i % columns
@@ -186,6 +186,11 @@ class Panel(ScreenPanel):
         if code == 'hepareset':
             path = os.path.join("/home", "pi", "SyncraftCore")
             os.system(f"cd {path} && python3 -m core.hepa reset")
+            self._screen.reload_panels()
+
+        if code == 'carefulboy':
+            path = os.path.join("/home", "pi", "SyncraftCore")
+            os.system(f"cd {path} && python3 -m core.hepa renew")
             self._screen.reload_panels()
 
         if code == 'qasmoke':

@@ -1462,7 +1462,7 @@ msgid "Hot Unload"
 msgstr "Podgrzej i rozładuj"
 
 msgid "Calibrate IDEX"
-msgstr "Skalibruj IDEX"
+msgstr "IDEX"
 
 msgid "This procedure will start printing a specific 3D model for calibration."
 msgstr "Ta procedura spowoduje wydrukowanie dedykowanej części do kalibracji."
@@ -1793,6 +1793,36 @@ msgstr "Błąd wewnętrzny, to nie powinno się zdarzyć."
 
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "Nie można kalibrować przy użyciu niestandardowych lub ogólnych materiałów."
+
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Wyłącz przyciski"
+
+msgid "Re-enable buttons"
+msgstr "Ponownie włącz przyciski"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Automatycznie zapisz sondę po zakończeniu drukowania"
+
+msgid "Return to main menu and save probe?"
+msgstr "Wrócić do menu głównego i zapisać sondę?"
+
+msgid "Save probe and return to main menu"
+msgstr "Zapisz sondę i wróć do menu głównego"
+
+msgid "Check LED"
+msgstr "Sprawdź LED"
+
+msgid "Manually save probe after printing"
+msgstr "Ręcznie zapisz sondę po drukowaniu"
+
+msgid "Save changes?"
+msgstr "Zapisać zmiany?"
+
+msgid "Accessibility"
+msgstr "Dostępność"
+
+msgid "Change language"
+msgstr "Zmień język"
 
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"

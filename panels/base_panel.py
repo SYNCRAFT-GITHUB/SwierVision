@@ -227,15 +227,15 @@ class BasePanel(ScreenPanel):
 
         if self._config.get_main_config().getboolean('materials_on_top', True):
             current_ext = self._config.variables_value_reveal('active_carriage', isString=False)
-            material_ext0 = self._config.variables_value_reveal('material_ext0')
-            material_ext1 = self._config.variables_value_reveal('material_ext1')
+            m_ext0 = self._config.variables_value_reveal('material_ext0')
+            m_ext1 = self._config.variables_value_reveal('material_ext1')
             try:
                 current_ext = f'{_("Feeder")[0]}{current_ext+1}'
             except:
                 current_ext = _("Error")
-            material_ext0 = _("Empty") if 'empty' in str(material_ext0) else material_ext0
-            material_ext1 = _("Empty") if 'empty' in str(material_ext1) else material_ext1
-            self._screen.base_panel.set_title(f"{material_ext0} - {material_ext1}")
+            m_ext0 = _("Empty") if 'empty' in str(m_ext0) or 'none' in str(m_ext0) else m_ext0
+            m_ext1 = _("Empty") if 'empty' in str(m_ext1) or 'none' in str(m_ext1) else m_ext1
+            self._screen.base_panel.set_title(f"{m_ext0} - {m_ext1}")
 
         if action == "notify_update_response":
             if self.update_dialog is None:

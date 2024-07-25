@@ -1519,7 +1519,7 @@ msgid "Hot Unload"
 msgstr "Нагрев и разгрузка"
 
 msgid "Calibrate IDEX"
-msgstr "Калибровочная часть двух экструдеров"
+msgstr "IDEX"
 
 msgid "Empty"
 msgstr "Пустой"
@@ -1850,6 +1850,36 @@ msgstr "Внутренняя ошибка, этого не должно прои
 
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "Невозможно откалибровать, используя настраиваемые или общие материалы."
+
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Отключить кнопки"
+
+msgid "Re-enable buttons"
+msgstr "Включить кнопки снова"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Автоматически сохранять зонд после завершения печати"
+
+msgid "Return to main menu and save probe?"
+msgstr "Вернуться в главное меню и сохранить зонд?"
+
+msgid "Save probe and return to main menu"
+msgstr "Сохранить зонд и вернуться в главное меню"
+
+msgid "Check LED"
+msgstr "Проверить светодиод"
+
+msgid "Manually save probe after printing"
+msgstr "Ручное сохранение зонда после печати"
+
+msgid "Save changes?"
+msgstr "Сохранить изменения?"
+
+msgid "Accessibility"
+msgstr "Доступность"
+
+msgid "Change language"
+msgstr "Изменить язык"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"

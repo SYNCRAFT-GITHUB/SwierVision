@@ -1476,7 +1476,7 @@ msgid "Hot Unload"
 msgstr "Riscalda e scarica"
 
 msgid "Calibrate IDEX"
-msgstr "Calibrare IDEX"
+msgstr "Calib. IDEX"
 
 msgid "Empty"
 msgstr "Vuoto"
@@ -1807,6 +1807,36 @@ msgstr "Errore interno, questo non dovrebbe accadere."
 
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "Non è possibile calibrare utilizzando materiali personalizzati o generici."
+
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "Previeni pressioni accidentali nascondendo i pulsanti"
+
+msgid "Re-enable buttons"
+msgstr "Riabilita i pulsanti"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "Salva automaticamente la sonda al termine della stampa"
+
+msgid "Return to main menu and save probe?"
+msgstr "Tornare al menu principale e salvare la sonda?"
+
+msgid "Save probe and return to main menu"
+msgstr "Salva la sonda e torna al menu principale"
+
+msgid "Check LED"
+msgstr "Controlla LED"
+
+msgid "Manually save probe after printing"
+msgstr "Salva manualmente la sonda dopo la stampa"
+
+msgid "Save changes?"
+msgstr "Salvare le modifiche?"
+
+msgid "Accessibility"
+msgstr "Accessibilità"
+
+msgid "Change language"
+msgstr "Cambia lingua"
 
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."

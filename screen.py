@@ -842,7 +842,7 @@ class SwierVision(Gtk.Window):
                     script = {"script": "SAVE_CONFIG"}
                     self._confirm_send_action(
                         None,
-                        _("Save configuration?") + "\n\n" + _("Klipper will reboot"),
+                        _("Save changes?"),
                         "printer.gcode.script",
                         script
                     )

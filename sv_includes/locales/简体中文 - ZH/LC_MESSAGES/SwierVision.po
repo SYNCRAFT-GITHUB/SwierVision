@@ -1811,6 +1811,36 @@ msgstr "内部错误，不应发生这种情况。"
 msgid "You cannot calibrate using custom or generic materials."
 msgstr "无法使用自定义或通用材料进行校准。"
 
+msgid "Prevent accidental presses by hiding buttons"
+msgstr "通过隐藏按钮防止意外按压"
+
+msgid "Re-enable buttons"
+msgstr "重新启用按钮"
+
+msgid "Automatically save probe when finishing a print"
+msgstr "打印完成时自动保存探针"
+
+msgid "Return to main menu and save probe?"
+msgstr "返回主菜单并保存探针？"
+
+msgid "Save probe and return to main menu"
+msgstr "保存探针并返回主菜单"
+
+msgid "Check LED"
+msgstr "检查LED"
+
+msgid "Manually save probe after printing"
+msgstr "打印后手动保存探针"
+
+msgid "Save changes?"
+msgstr "保存更改？"
+
+msgid "Accessibility"
+msgstr "无障碍"
+
+msgid "Change language"
+msgstr "更改语言"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

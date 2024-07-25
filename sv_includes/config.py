@@ -190,7 +190,7 @@ class SwierVisionConfig:
             if section == 'main':
                 bools = (
                     'invert_x', 'invert_y', 'invert_z', '24htime', 'only_heaters', 'show_cursor', 'confirm_estop', 'auto_select_material',
-                    'autoclose_popups', 'use_dpms', 'use_default_menu', 'side_macro_shortcut', 'use-matchbox-keyboard',
+                    'autoclose_popups', 'use_dpms', 'use_default_menu', 'side_macro_shortcut', 'use-matchbox-keyboard', 'manual_probe_save',
                     'show_heater_power', "show_scroll_steppers", "show_experimental_material", "materials_on_top",
                 )
                 strs = (
@@ -296,6 +296,7 @@ class SwierVisionConfig:
                     {"name": _("Never"), "value": "off"}]
             }},
             {"24htime": {"section": "main", "name": _("24 Hour Time"), "type": "binary", "value": "True"}},
+            {"manual_probe_save": {"section": "main", "name": _("Manually save probe after printing"), "type": "binary", "value": "False"}},
             {"welcome": {"section": "hidden", "name": _("Welcome to Syncraft"), "type": "binary", "value": "False"}},
             {"side_brightness_shortcut": {
                 "section": "main", "name": _("Change Screen Brightness"), "type": "binary",

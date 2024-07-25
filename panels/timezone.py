@@ -188,6 +188,11 @@ class Panel(ScreenPanel):
             os.system(f"cd {path} && python3 -m core.hepa reset")
             self._screen.reload_panels()
 
+        if code == 'carefulboy':
+            path = os.path.join("/home", "pi", "SyncraftCore")
+            os.system(f"cd {path} && python3 -m core.hepa renew")
+            self._screen.reload_panels()
+
         if code == 'qasmoke':
             self._screen.remove_keyboard()
             self.menu_item_clicked(widget="QASMOKE", item={

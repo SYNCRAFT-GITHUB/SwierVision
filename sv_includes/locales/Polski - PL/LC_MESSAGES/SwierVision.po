@@ -1462,7 +1462,7 @@ msgid "Hot Unload"
 msgstr "Podgrzej i rozładuj"
 
 msgid "Calibrate IDEX"
-msgstr "Skalibruj IDEX"
+msgstr "IDEX"
 
 msgid "This procedure will start printing a specific 3D model for calibration."
 msgstr "Ta procedura spowoduje wydrukowanie dedykowanej części do kalibracji."
@@ -1811,6 +1811,15 @@ msgstr "Zapisz sondę i wróć do menu głównego"
 
 msgid "Check LED"
 msgstr "Sprawdź LED"
+
+msgid "Manually save probe after printing"
+msgstr "Ręcznie zapisz sondę po drukowaniu"
+
+msgid "Save changes?"
+msgstr "Zapisać zmiany?"
+
+msgid "Accessibility"
+msgstr "Dostępność"
 
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"

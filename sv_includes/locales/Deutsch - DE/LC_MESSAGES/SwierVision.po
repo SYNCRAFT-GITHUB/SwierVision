@@ -1478,7 +1478,7 @@ msgid "Hot Unload"
 msgstr "Heißentladung"
 
 msgid "Calibrate IDEX"
-msgstr "IDEX-Kalibrierung"
+msgstr "IDEX"
 
 msgid "Empty"
 msgstr "Leer"
@@ -1827,6 +1827,15 @@ msgstr "Sonde speichern und zum Hauptmenü zurückkehren"
 
 msgid "Check LED"
 msgstr "LED überprüfen"
+
+msgid "Manually save probe after printing"
+msgstr "Sonde manuell nach dem Drucken speichern"
+
+msgid "Save changes?"
+msgstr "Änderungen speichern?"
+
+msgid "Accessibility"
+msgstr "Barrierefreiheit"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonde wurde vor der Bewegung ausgelöst"

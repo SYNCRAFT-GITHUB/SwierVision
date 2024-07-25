@@ -151,10 +151,13 @@ class Panel(ScreenPanel):
 
         if self._config.get_hidden_config().getboolean('welcome', True):
             allowed_options = [
+                _("Display materials in the top"),
                 _("Change Screen Brightness"),
+                _("Show Scrollbars Buttons"),
+                _("Confirm Emergency Stop"),
+                _("Change Timezone"),
+                _("24 Hour Time"),
                 _("Language"),
-                _("Icon Theme"),
-                _("Font Size"),
             ]
 
             if not option['name'] in allowed_options:

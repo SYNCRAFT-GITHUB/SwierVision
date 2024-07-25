@@ -1526,7 +1526,7 @@ msgid "Hot Unload"
 msgstr "Chauffer et décharger"
 
 msgid "Calibrate IDEX"
-msgstr "Calibrage IDEX"
+msgstr "Calib. IDEX"
 
 msgid "Empty"
 msgstr "Vide"
@@ -1875,6 +1875,15 @@ msgstr "Enregistrer la sonde et retourner au menu principal"
 
 msgid "Check LED"
 msgstr "Vérifier LED"
+
+msgid "Manually save probe after printing"
+msgstr "Enregistrer manuellement la sonde après l'impression"
+
+msgid "Save changes?"
+msgstr "Enregistrer les modifications ?"
+
+msgid "Accessibility"
+msgstr "Accessibilité"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"

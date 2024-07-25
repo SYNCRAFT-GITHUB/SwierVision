@@ -961,7 +961,7 @@ msgid "Remove Password Protection"
 msgstr "Remover proteção por senha"
 
 msgid "Welcome to Syncraft"
-msgstr "Dê um \"Oi\" para sua nova Syncraft!"
+msgstr "Setup Inicial da Syncraft IDEX"
 
 msgid "No, I don't agree."
 msgstr "Não, não concordo."
@@ -1351,7 +1351,7 @@ msgid "Hot Unload"
 msgstr "Aquecer e Descarregar"
 
 msgid "Calibrate IDEX"
-msgstr "Calibrar IDEX"
+msgstr "Calib. IDEX"
 
 msgid "Empty"
 msgstr "Vazio"
@@ -1700,6 +1700,15 @@ msgstr "Salvar probe e retornar ao menu principal"
 
 msgid "Check LED"
 msgstr "Checar LED"
+
+msgid "Manually save probe after printing"
+msgstr "Salvar probe manualmente após imprimir"
+
+msgid "Save changes?"
+msgstr "Salvar modificações?"
+
+msgid "Accessibility"
+msgstr "Acessibilidade"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"

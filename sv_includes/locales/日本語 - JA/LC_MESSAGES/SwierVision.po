@@ -1339,7 +1339,7 @@ msgid "Hot Unload"
 msgstr "加熱してアンロードする"
 
 msgid "Calibrate IDEX"
-msgstr "IDEX 校正"
+msgstr "IDEX"
 
 msgid "Empty"
 msgstr "空の"
@@ -1688,6 +1688,15 @@ msgstr "プローブを保存してメインメニューに戻る"
 
 msgid "Check LED"
 msgstr "LEDを確認"
+
+msgid "Manually save probe after printing"
+msgstr "印刷後にプローブを手動で保存"
+
+msgid "Save changes?"
+msgstr "変更を保存しますか？"
+
+msgid "Accessibility"
+msgstr "アクセシビリティ"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"

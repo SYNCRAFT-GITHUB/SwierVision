@@ -1519,7 +1519,7 @@ msgid "Hot Unload"
 msgstr "Нагрев и разгрузка"
 
 msgid "Calibrate IDEX"
-msgstr "Калибровочная часть двух экструдеров"
+msgstr "IDEX"
 
 msgid "Empty"
 msgstr "Пустой"
@@ -1868,6 +1868,15 @@ msgstr "Сохранить зонд и вернуться в главное ме
 
 msgid "Check LED"
 msgstr "Проверить светодиод"
+
+msgid "Manually save probe after printing"
+msgstr "Ручное сохранение зонда после печати"
+
+msgid "Save changes?"
+msgstr "Сохранить изменения?"
+
+msgid "Accessibility"
+msgstr "Доступность"
 
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"

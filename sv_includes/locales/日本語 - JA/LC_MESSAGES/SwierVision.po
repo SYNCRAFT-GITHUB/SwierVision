@@ -1698,6 +1698,9 @@ msgstr "変更を保存しますか？"
 msgid "Accessibility"
 msgstr "アクセシビリティ"
 
+msgid "Change language"
+msgstr "言語を変更する"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "動きの前にプローブがトリガーされました"
 

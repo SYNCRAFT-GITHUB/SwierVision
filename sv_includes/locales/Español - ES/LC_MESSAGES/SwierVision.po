@@ -1861,6 +1861,9 @@ msgstr "¿Guardar cambios?"
 msgid "Accessibility"
 msgstr "Accesibilidad"
 
+msgid "Change language"
+msgstr "Cambiar idioma"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonda se activó antes del movimiento"
 

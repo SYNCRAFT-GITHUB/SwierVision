@@ -1838,6 +1838,9 @@ msgstr "保存更改？"
 msgid "Accessibility"
 msgstr "无障碍"
 
+msgid "Change language"
+msgstr "更改语言"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "在移动前探针已被触发"
 

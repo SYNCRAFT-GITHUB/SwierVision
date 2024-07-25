@@ -1691,6 +1691,9 @@ msgstr ""
 msgid "Accessibility"
 msgstr ""
 
+msgid "Change language"
+msgstr ""
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr ""
 

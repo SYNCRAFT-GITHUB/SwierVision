@@ -1835,6 +1835,9 @@ msgstr "Salvare le modifiche?"
 msgid "Accessibility"
 msgstr "Accessibilità"
 
+msgid "Change language"
+msgstr "Cambia lingua"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Già in modalità sonda Z manuale."
 

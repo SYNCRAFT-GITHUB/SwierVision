@@ -1765,6 +1765,9 @@ msgstr "변경 사항을 저장하시겠습니까?"
 msgid "Accessibility"
 msgstr "접근성"
 
+msgid "Change language"
+msgstr "언어 변경"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "이동 전에 프로브가 작동되었습니다."
 

@@ -1885,6 +1885,9 @@ msgstr "Enregistrer les modifications ?"
 msgid "Accessibility"
 msgstr "Accessibilité"
 
+msgid "Change language"
+msgstr "Changer de langue"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "La sonde a été déclenchée avant le mouvement"
 

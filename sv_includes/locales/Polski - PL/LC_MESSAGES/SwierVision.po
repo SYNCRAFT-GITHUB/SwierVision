@@ -1821,6 +1821,9 @@ msgstr "Zapisać zmiany?"
 msgid "Accessibility"
 msgstr "Dostępność"
 
+msgid "Change language"
+msgstr "Zmień język"
+
 msgid "ALREADY IN A MANUAL Z PROBE. USE ABORT TO ABORT IT"
 msgstr "Jesteś już w trybie ręcznej sondy Z"
 

@@ -1878,6 +1878,9 @@ msgstr "Сохранить изменения?"
 msgid "Accessibility"
 msgstr "Доступность"
 
+msgid "Change language"
+msgstr "Изменить язык"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Сработала зонд до движения"
 

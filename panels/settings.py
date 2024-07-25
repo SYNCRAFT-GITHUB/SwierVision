@@ -12,7 +12,7 @@ class Panel(ScreenPanel):
         self.menu = ['settings_menu']
         options = self._config.get_configurable_options().copy()
         options.append({"lang": {
-            "name": _("Language"),
+            "name": _("Change language"),
             "type": "menu",
             "menu": "lang"
         }})
@@ -156,8 +156,8 @@ class Panel(ScreenPanel):
                 _("Show Scrollbars Buttons"),
                 _("Confirm Emergency Stop"),
                 _("Change Timezone"),
+                _("Change language"),
                 _("24 Hour Time"),
-                _("Language"),
             ]
 
             if not option['name'] in allowed_options:

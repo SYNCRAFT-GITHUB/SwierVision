@@ -1710,6 +1710,9 @@ msgstr "Salvar modificações?"
 msgid "Accessibility"
 msgstr "Acessibilidade"
 
+msgid "Change language"
+msgstr "Alterar Idioma"
+
 msgid "PROBE TRIGGERED PRIOR TO MOVEMENT"
 msgstr "Sonda foi acionada antes do movimento"
 

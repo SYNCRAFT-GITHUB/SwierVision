@@ -335,7 +335,7 @@ class SwierVision(Gtk.Window):
         if self.popup_message is not None:
             self.close_popup_message()
 
-        ignore_list = ['timeout', 'inotify']
+        ignore_list = ['timeout', 'inotify', 'moonraker.asvc']
 
         for keyword in ignore_list:
             if keyword in message.lower():

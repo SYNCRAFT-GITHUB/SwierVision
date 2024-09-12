@@ -22,21 +22,14 @@ class Panel(ScreenPanel):
         self.menu = ['calibrate_panel']
 
         self.buttons = {
+            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check Nozzle Height"), "color2", 1, Gtk.PositionType.LEFT, 1),
             'CALIB_MEC': self._gtk.Button("screw-adjust", "   " + _("IDEX Calibration for Z Axis"), "color3", 1, Gtk.PositionType.LEFT, 1),
+            'CALIB_Z': self._gtk.Button ("bed-level", "   " + _("Bed Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
             'CALIB_IDEX': self._gtk.Button("resume", "   " + _("Print IDEX Calibration File for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
             'IDEX_OFFSET': self._gtk.Button("idex", _("Adjust"), "color4"),
-            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check Nozzle Height"), "color2", 1, Gtk.PositionType.LEFT, 1),
-            'CALIB_Z': self._gtk.Button ("bed-level", "   " + _("Bed Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
         }
 
-        self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
-
         self.buttons['HEIGHT_CHECK'].connect("clicked",self.check_height)
-        
-        self.buttons['IDEX_OFFSET'].connect("clicked", self.menu_item_clicked, {
-            "name":_("Calibrar IDEX"),
-            "panel": "idex_offset"
-        })
 
         self.buttons['CALIB_MEC'].connect("clicked", self.menu_item_clicked, {
             "name":_("Mechanical Calibration"),
@@ -48,13 +41,20 @@ class Panel(ScreenPanel):
             "panel": "zcalibrate"
         })
 
+        self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
+        
+        self.buttons['IDEX_OFFSET'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Calibrar IDEX"),
+            "panel": "idex_offset"
+        })
+
         grid = self._gtk.HomogeneousGrid()
 
+        grid.attach(self.buttons['HEIGHT_CHECK'], 0, 0, 5, 1)
         grid.attach(self.buttons['CALIB_MEC'], 0, 1, 5, 1)
         grid.attach(self.buttons['CALIB_Z'], 0, 2, 5, 1)
         grid.attach(self.buttons['CALIB_IDEX'], 0, 3, 4, 1)
         grid.attach(self.buttons['IDEX_OFFSET'], 4, 3, 1, 1)
-        grid.attach(self.buttons['HEIGHT_CHECK'], 0, 0, 5, 1)
 
         self.labels['calibrate_panel'] = self._gtk.HomogeneousGrid()
         self.labels['calibrate_panel'].attach(grid, 0, 0, 1, 2)

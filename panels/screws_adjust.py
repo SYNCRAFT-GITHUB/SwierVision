@@ -77,7 +77,6 @@ class Panel(ScreenPanel):
 
     def apply(self, widget):
         if self.started:
-            self.amount += 1
             self._screen._ws.klippy.gcode_script("ADJUSTED")
             self.check_finish()
 

@@ -18,7 +18,9 @@ class Panel(ScreenPanel):
         self.menu = ['screws-adjust']
 
         self.started: bool = False
-        self.amount: int = 0
+
+        self.screws_adjusted = 0
+        self.current_screw_index = 0
 
         self.buttons = {
             'START': self._gtk.Button("resume", _("Start"), "color1"),
@@ -63,22 +65,34 @@ class Panel(ScreenPanel):
         self.buttons['NOW_ADJUSTED'].set_sensitive(False)
         self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
 
+    def advance_screw_index(self):
+        self.current_screw_index += 1
+        if self.current_screw_index == len(self.screws):
+            self.current_screw_index = 0
+            self.screws_adjusted = 0
+
     def check_finish(self):
-        if self.started and self.amount >= 3:
+        if self.started and self.screws_adjusted == 3:
             self.buttons['NOW_ADJUSTED'].set_sensitive(False)
             self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
             self.buttons['FINISH'].set_sensitive(True)
+            return True
+        return False
 
     def accept(self, widget):
+        """Screw is already adjusted"""
         if self.started:
-            self.amount += 1
+            self.screws_adjusted += 1
             self._screen._ws.klippy.gcode_script("ACCEPT")
-            self.check_finish()
+            if self.check_finish():
+                return
+            self.advance_screw_index()
 
     def apply(self, widget):
+        """Screw has been adjusted"""
         if self.started:
             self._screen._ws.klippy.gcode_script("ADJUSTED")
-            self.check_finish()
+            self.advance_screw_index()
 
     def home(self):
         if self._printer.get_stat("toolhead", "homed_axes") != "xyz":

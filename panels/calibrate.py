@@ -22,39 +22,46 @@ class Panel(ScreenPanel):
         self.menu = ['calibrate_panel']
 
         self.buttons = {
+            'BED_CALIBRATION': self._gtk.Button ("bed-level", "   " + _("Bed Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
+            'PROBE_CALIBRATION': self._gtk.Button("idex-height-check", "   " + _("Probe Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
+            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check height"), "color2", 1, Gtk.PositionType.LEFT, 1),
             'CALIB_MEC': self._gtk.Button("screw-adjust", "   " + _("IDEX Calibration for Z Axis"), "color3", 1, Gtk.PositionType.LEFT, 1),
             'CALIB_IDEX': self._gtk.Button("resume", "   " + _("Print IDEX Calibration File for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
             'IDEX_OFFSET': self._gtk.Button("idex", _("Adjust"), "color4"),
-            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check Nozzle Height"), "color2", 1, Gtk.PositionType.LEFT, 1),
-            'CALIB_Z': self._gtk.Button ("bed-level", "   " + _("Bed Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
         }
 
-        self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
+        self.buttons['BED_CALIBRATION'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Bed Calibration"),
+            "panel": "screws_adjust"
+        })
+
+        self.buttons['PROBE_CALIBRATION'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Probe Calibration"),
+            "panel": "zcalibrate"
+        })
 
         self.buttons['HEIGHT_CHECK'].connect("clicked",self.check_height)
-        
-        self.buttons['IDEX_OFFSET'].connect("clicked", self.menu_item_clicked, {
-            "name":_("Calibrar IDEX"),
-            "panel": "idex_offset"
-        })
 
         self.buttons['CALIB_MEC'].connect("clicked", self.menu_item_clicked, {
             "name":_("Mechanical Calibration"),
             "panel": "mcalibrate"
         })
 
-        self.buttons['CALIB_Z'].connect("clicked", self.menu_item_clicked, {
-            "name":_("Z Calibrate"),
-            "panel": "zcalibrate"
+        self.buttons['CALIB_IDEX'].connect("clicked",self.calibrate_idex)
+        
+        self.buttons['IDEX_OFFSET'].connect("clicked", self.menu_item_clicked, {
+            "name":_("Calibrar IDEX"),
+            "panel": "idex_offset"
         })
 
         grid = self._gtk.HomogeneousGrid()
 
-        grid.attach(self.buttons['HEIGHT_CHECK'], 0, 1, 5, 1)
-        grid.attach(self.buttons['CALIB_MEC'], 0, 2, 5, 1)
-        grid.attach(self.buttons['CALIB_IDEX'], 0, 3, 4, 1)
-        grid.attach(self.buttons['IDEX_OFFSET'], 4, 3, 1, 1)
-        grid.attach(self.buttons['CALIB_Z'], 0, 0, 5, 1)
+        grid.attach(self.buttons['BED_CALIBRATION'], 0, 0, 6, 1)
+        grid.attach(self.buttons['PROBE_CALIBRATION'], 0, 1, 6, 1)
+        grid.attach(self.buttons['HEIGHT_CHECK'], 0, 2, 3, 1)
+        grid.attach(self.buttons['CALIB_MEC'], 3, 2, 3, 1)
+        grid.attach(self.buttons['CALIB_IDEX'], 0, 3, 5, 1)
+        grid.attach(self.buttons['IDEX_OFFSET'], 5, 3, 1, 1)
 
         self.labels['calibrate_panel'] = self._gtk.HomogeneousGrid()
         self.labels['calibrate_panel'].attach(grid, 0, 0, 1, 2)
@@ -71,105 +78,4 @@ class Panel(ScreenPanel):
         self._config.replace_fix_option(newvalue=newfixoption)
 
     def calibrate_idex(self, button):
-
-        mat0 = self._config.variables_value_reveal('material_ext0')
-        mat1 = self._config.variables_value_reveal('material_ext1')
-
-        if mat0 == "GENERIC" or mat1 == "GENERIC":
-            msg = _("You cannot calibrate using custom or generic materials.")
-            return self._screen.show_popup_message(msg, level=3)
-
-        nozzle0 = self._config.variables_value_reveal('nozzle0')
-        nozzle1 = self._config.variables_value_reveal('nozzle1')
-
-        materials_json_path = self._config.materials_path(custom=False)
-        materials = read_materials_from_json(materials_json_path)
-
-        try:
-            iter(materials)
-        except:
-            materials = []
-
-        ext0_temp = ext1_temp = 0
-
-        for material in materials:
-            if material.code == mat0:
-                ext0_temp = material.print_temp
-            if material.code == mat1:
-                ext1_temp = material.print_temp
-
-        if ext0_temp == 0 or ext1_temp == 0:
-            msg = f"{_('An error has occurred')}\n{_('Try selecting a material for each of the extruders again.')}"
-            return self._screen.show_popup_message(msg, level=3)
-
-        compatibles = {
-            'Standard 0.25mm':  ['Standard 0.25mm', 'Standard 0.4mm', 'Standard 0.8mm'],
-            'Standard 0.4mm':   ['Standard 0.25mm', 'Standard 0.4mm', 'Standard 0.8mm', 'Fiber 0.6mm'],
-            'Standard 0.8mm':   ['Standard 0.25mm', 'Standard 0.4mm', 'Standard 0.8mm', 'Fiber 0.6mm'],
-            'Fiber 0.6mm':      ['Standard 0.4mm', 'Standard 0.8mm']
-        }
-
-        shorts = {
-            'Standard 0.25mm': 'STD25',
-            'Standard 0.4mm': 'STD04',
-            'Standard 0.8mm': 'STD08',
-            'Fiber 0.6mm': 'FIB06'
-        }
-
-        try:
-            compatibles[nozzle0]
-            compatibles[nozzle1]
-        except:
-            msg = _("Insert and select a compatible nozzle for calibration.")
-            return self._screen.show_popup_message(msg, level=3)
-
-        if nozzle1 not in compatibles[nozzle0]:
-            msg = _("Your nozzle combination is not compatible with this calibration method.")
-            return self._screen.show_popup_message(msg, level=3)
-
-        calib_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate', \
-            shorts[nozzle0], f'idex_calibrate_{shorts[nozzle0]}_{shorts[nozzle1]}.zip')
-
-        calib_new_file_path = os.path.join(os.path.dirname( __file__ ), '..', 'sv_includes', 'idex_calibrate')
-        calib_new_file_path_w_gcode = os.path.join(calib_new_file_path, 'idex_calibrate.gcode')
-
-        if os.path.exists(calib_new_file_path_w_gcode):
-            os.remove(calib_new_file_path_w_gcode)
-
-        with zipfile.ZipFile(calib_file_path, 'r') as zip_ref:
-            zip_ref.extractall(calib_new_file_path)
-
-        try:
-            with open(calib_new_file_path_w_gcode, 'r', encoding='utf-8') as gcode_file:
-                content = gcode_file.read()
-
-            content = content.replace('<TEMPERATURE_LAYER_ZERO_VALUE>', str(ext0_temp))
-            content = content.replace('<TEMPERATURE_LAYER_ONE_VALUE>', str(ext1_temp))
-            
-            with open(calib_new_file_path_w_gcode, 'w', encoding='utf-8') as new_gcode_file:
-                new_gcode_file.write(content)
-        except Exception as e:
-            print(f"Error: {e}")
-            return self._screen.show_popup_message(_('Internal error, this should not happen.'), level=3)
-
-        gcodes_path = os.path.join('/home', 'pi', 'printer_data', 'gcodes')
-        calib_file_gcodes = (os.path.join(gcodes_path, '.idex_calibrate.gcode'))
-        if os.path.exists(calib_file_gcodes):
-            os.remove(calib_file_gcodes)
-        if os.path.exists(calib_new_file_path_w_gcode):
-            try:
-                shutil.copyfile(calib_new_file_path_w_gcode, calib_file_gcodes)
-                params = {"filename": ".idex_calibrate.gcode"}
-                self._screen._confirm_send_action(
-                    None,
-                    f"{_('This procedure will start printing a specific 3D model for calibration.')}" + "\n" +
-                    f"{_('It is recommended to use materials of the same type with different colors.')}" + "\n\n" +
-                    f"{_('Check the calibration details carefully:')}" + "\n\n" +
-                    f"1: {nozzle0}\n{_('Temp (°C)')}: {str(ext0_temp)}\n{_('Material')}: {mat0}" + "\n\n" +
-                    f"2: {nozzle1}\n{_('Temp (°C)')}: {str(ext1_temp)}\n{_('Material')}: {mat1}" + "\n",
-                    "printer.print.start",
-                    params
-                )
-            except Exception as e:
-                print(f"Error: {e}")
-                return self._screen.show_popup_message(_("An error has occurred"), level=3)
+        self._screen._ws.klippy.gcode_script("print_calibration")

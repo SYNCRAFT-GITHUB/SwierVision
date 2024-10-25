@@ -65,12 +65,12 @@ class Panel(ScreenPanel):
         self.hidden = not self.hidden
 
     def prompt_for_extruder1_raise(self, button):
-        self._screen._ws.klippy.gcode_script("PROMPT_FOR_EXTRUDER1_RAISE")
+        self._screen._ws.klippy.gcode_script("EXTRUDER_SCREW_PLACEMENT")
         self._screen._confirm_send_action(
             None,
             "Iniciar a calibração mecânica?",
             "printer.gcode.script",
-            "PROBE_CALIBRATE_AUTOMATIC"
+            {"script": "PROBE_CALIBRATE_AUTOMATIC"}
         )
         self.finish_btn.set_sensitive(True)
         self.above_text.set_property("opacity", 1.0)

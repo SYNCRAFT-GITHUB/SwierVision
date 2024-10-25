@@ -33,7 +33,7 @@ class Panel(ScreenPanel):
         self.start_btn = self._gtk.Button("screw-adjust", f'  {_("Start")}', "color2", 1, Gtk.PositionType.LEFT)
         self.finish_btn = self._gtk.Button("complete", f'  {_("Finish")}', "color3", 1, Gtk.PositionType.LEFT)
         self.hide_btn.connect("clicked", self.hide_buttons)
-        self.start_btn.connect("clicked", self.start_calibration)
+        self.start_btn.connect("clicked", self.prompt_for_extruder1_raise)
         self.finish_btn.connect("clicked", self.finish_calibration)
         self.transparent()
         grid.attach(self.hide_btn, 0, 0, 1, 1)
@@ -64,8 +64,14 @@ class Panel(ScreenPanel):
                 self.finish_btn.set_sensitive(False)
         self.hidden = not self.hidden
 
-    def start_calibration(self, button):
-        self._screen._ws.klippy.gcode_script("PROBE_CALIBRATE_AUTOMATIC")
+    def prompt_for_extruder1_raise(self, button):
+        self._screen._ws.klippy.gcode_script("PROMPT_FOR_EXTRUDER1_RAISE")
+        self._screen._confirm_send_action(
+            None,
+            "Iniciar a calibração mecânica?",
+            "printer.gcode.script",
+            "PROBE_CALIBRATE_AUTOMATIC"
+        )
         self.finish_btn.set_sensitive(True)
         self.above_text.set_property("opacity", 1.0)
         self.below_text.set_property("opacity", 1.0)

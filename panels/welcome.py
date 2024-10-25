@@ -57,7 +57,7 @@ class Panel(ScreenPanel):
         })
         self.buttons['STEP_03'].connect("clicked", self.menu_item_clicked, {
             "name": _("Calibrate"),
-            "panel": "zcalibrate"
+            "panel": "calibrate"
         })
         self.buttons['FINISH'].connect("clicked", self.finish_all)
 

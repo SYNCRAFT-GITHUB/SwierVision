@@ -24,7 +24,7 @@ class Panel(ScreenPanel):
         self.buttons = {
             'BED_CALIBRATION': self._gtk.Button ("bed-level", "   " + _("Bed Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
             'PROBE_CALIBRATION': self._gtk.Button("idex-height-check", "   " + _("Probe Calibration"), "color2", 1, Gtk.PositionType.LEFT, 1),
-            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check height"), "color2", 1, Gtk.PositionType.LEFT, 1),
+            'HEIGHT_CHECK': self._gtk.Button("idex-height-check", "   " + _("Check"), "color2"),
             'CALIB_MEC': self._gtk.Button("screw-adjust", "   " + _("IDEX Calibration for Z Axis"), "color3", 1, Gtk.PositionType.LEFT, 1),
             'CALIB_IDEX': self._gtk.Button("resume", "   " + _("Print IDEX Calibration File for XY Axes"), "color4", 1, Gtk.PositionType.LEFT, 1),
             'IDEX_OFFSET': self._gtk.Button("idex", _("Adjust"), "color4"),
@@ -58,8 +58,8 @@ class Panel(ScreenPanel):
 
         grid.attach(self.buttons['BED_CALIBRATION'], 0, 0, 6, 1)
         grid.attach(self.buttons['PROBE_CALIBRATION'], 0, 1, 6, 1)
-        grid.attach(self.buttons['HEIGHT_CHECK'], 0, 2, 3, 1)
-        grid.attach(self.buttons['CALIB_MEC'], 3, 2, 3, 1)
+        grid.attach(self.buttons['CALIB_MEC'], 0, 2, 5, 1)
+        grid.attach(self.buttons['HEIGHT_CHECK'], 5, 2, 1, 1)
         grid.attach(self.buttons['CALIB_IDEX'], 0, 3, 5, 1)
         grid.attach(self.buttons['IDEX_OFFSET'], 5, 3, 1, 1)
 

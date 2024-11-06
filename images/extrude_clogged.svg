@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24mm" height="24mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2400 2400"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
+ sodipodi:docname="extruder.svg"
+ inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+ xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil2 {fill:#ED3237;fill-rule:nonzero}
+    .fil1 {fill:#E2E2E2;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" x="-2.27" y="2.27" width="2400" height="2400"/>
+  <g id="_2145475588224">
+   <sodipodi:namedview id="namedview894" pagecolor="#505050" bordercolor="#ffffff" borderopacity="1" inkscape:pageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="1" showgrid="false" inkscape:zoom="26" inkscape:cx="-0.38461538" inkscape:cy="12.019231" inkscape:window-width="1600" inkscape:window-height="826" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg892"/>
+   <g>
+    <path id="path890" class="fil1" d="M618.24 44.71l1162.42 0 0 697.49 232.51 0 0 581.18 -290.64 0 -406.85 464.98 -232.51 0 -406.8 -464.98 -290.64 0 0 -581.18 232.51 0 0 -697.49 0 0zm348.72 2324.88l-581.23 0 0 -232.46 581.23 0c64.23,-0.05 116.25,-52.11 116.25,-116.3l-0.04 -116.21 232.51 0 0 116.25c0,192.53 -156.15,348.72 -348.72,348.72l0 0z"/>
+   </g>
+  </g>
+  <polygon class="fil2" points="1039.27,1207.11 311.15,349.34 632.34,349.34 1199.45,1018.49 1766.97,349.34 2087.75,349.34 1360.05,1207.11 2087.75,2064.88 1766.97,2064.88 1199.45,1395.73 632.34,2064.88 311.15,2064.88 "/>
+ </g>
+</svg>

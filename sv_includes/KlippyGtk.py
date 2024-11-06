@@ -158,7 +158,7 @@ class KlippyGtk:
         stream.close_async(2)
         return pixbuf
 
-    def Button(self, image_name=None, label=None, style=None, scale=None, position=Gtk.PositionType.TOP, lines=2):
+    def Button(self, image_name=None, label=None, style=None, scale=None, position=Gtk.PositionType.TOP, lines=2, universal=False):
         if self.font_size_type == "max" and label is not None and scale is None:
             image_name = None
         b = Gtk.Button()
@@ -175,7 +175,7 @@ class KlippyGtk:
             if label is None:
                 scale = scale * 1.4
             width = height = self.img_scale * scale
-            b.set_image(self.Image(image_name, width, height))
+            b.set_image(self.Image(image_name, width, height, universal=universal))
             spinner = Gtk.Spinner.new()
             spinner.set_no_show_all(True)
             spinner.set_size_request(width, height)

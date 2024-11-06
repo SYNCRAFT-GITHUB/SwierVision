@@ -342,7 +342,7 @@ class Panel(ScreenPanel):
 
         self.buttons = {
             'cancel': self._gtk.Button("stop", _("Cancel"), "color2"),
-            'cancel_clogged': self._gtk.Button("cancel", _("Entupido"), "color2"),
+            'cancel_clogged': self._gtk.Button("extrude_clogged", _("Entupido"), "color2", universal=True),
             'control': self._gtk.Button("settings", _("Settings"), "color3"),
             'fine_tune': self._gtk.Button("fine-tune", _("Fine Tuning"), "color4"),
             'calibrate': self._gtk.Button("idex", _("Calibrate IDEX"), "color2"),

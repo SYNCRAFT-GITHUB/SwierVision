@@ -115,14 +115,21 @@ class KlippyGtk:
         if image_name is None:
             return Gtk.Image()
         pixbuf = self.PixbufFromIcon(image_name, width, height, universal)
-        return Gtk.Image.new_from_pixbuf(pixbuf) if pixbuf is not None else Gtk.Image()
+
+        if isinstance(pixbuf, GdkPixbuf.PixbufAnimation):
+            return Gtk.Image.new_from_animation(pixbuf)
+        elif pixbuf is not None:
+            return Gtk.Image.new_from_pixbuf(pixbuf)
+
+        return Gtk.Image()
+
 
     def PixbufFromIcon(self, filename, width=None, height=None, universal=False):
         width = width if width is not None else self.img_width
         height = height if height is not None else self.img_height
         contentdir = self.themedir if not universal else self.imagesdir
         filename = os.path.join(contentdir, filename)
-        for ext in ["svg", "png"]:
+        for ext in ["svg", "png", "gif"]:
             pixbuf = self.PixbufFromFile(f"{filename}.{ext}", int(width), int(height))
             if pixbuf is not None:
                 return pixbuf
@@ -131,6 +138,8 @@ class KlippyGtk:
     @staticmethod
     def PixbufFromFile(filename, width=-1, height=-1):
         try:
+            if filename.endswith('.gif'):
+                return GdkPixbuf.PixbufAnimation.new_from_file(filename)
             return GdkPixbuf.Pixbuf.new_from_file_at_size(filename, int(width), int(height))
         except Exception as e:
             logging.error(f"Unable to find image {filename}")
@@ -149,7 +158,7 @@ class KlippyGtk:
         stream.close_async(2)
         return pixbuf
 
-    def Button(self, image_name=None, label=None, style=None, scale=None, position=Gtk.PositionType.TOP, lines=2):
+    def Button(self, image_name=None, label=None, style=None, scale=None, position=Gtk.PositionType.TOP, lines=2, universal=False):
         if self.font_size_type == "max" and label is not None and scale is None:
             image_name = None
         b = Gtk.Button()
@@ -166,7 +175,7 @@ class KlippyGtk:
             if label is None:
                 scale = scale * 1.4
             width = height = self.img_scale * scale
-            b.set_image(self.Image(image_name, width, height))
+            b.set_image(self.Image(image_name, width, height, universal=universal))
             spinner = Gtk.Spinner.new()
             spinner.set_no_show_all(True)
             spinner.set_size_request(width, height)

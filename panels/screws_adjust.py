@@ -9,6 +9,7 @@ from gi.repository import Gtk, Pango
 from sv_includes.KlippyGcodes import KlippyGcodes
 from sv_includes.screen_panel import ScreenPanel
 
+# Panels are not created everytime theyre accessed
 
 class Panel(ScreenPanel):
 
@@ -18,9 +19,7 @@ class Panel(ScreenPanel):
         self.menu = ['screws-adjust']
 
         self.started: bool = False
-
         self.screws_adjusted = 0
-        self.current_screw_index = 0
 
         self.buttons = {
             'START': self._gtk.Button("resume", _("Start"), "color1"),
@@ -31,7 +30,7 @@ class Panel(ScreenPanel):
         }
         self.buttons['START'].connect("clicked", self.screws_tilt_calculate)
         self.buttons['CANCEL'].connect("clicked", self.abort)
-        self.buttons['NOW_ADJUSTED'].connect("clicked", self.apply)
+        self.buttons['NOW_ADJUSTED'].connect("clicked", self.adjusted)
         self.buttons['ALREADY_ADJUSTED'].connect("clicked", self.accept)
         self.buttons['FINISH'].connect("clicked", self.finish)
 
@@ -58,26 +57,14 @@ class Panel(ScreenPanel):
 
     def off_state(self):
         self.started = False
-        self.amount = 0
         self.buttons['START'].set_sensitive(True)
         self.buttons['FINISH'].set_sensitive(False)
         self.buttons['CANCEL'].set_sensitive(False)
         self.buttons['NOW_ADJUSTED'].set_sensitive(False)
         self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
 
-    def advance_screw_index(self):
-        self.current_screw_index += 1
-        if self.current_screw_index == len(self.screws):
-            self.current_screw_index = 0
-            self.screws_adjusted = 0
-
     def check_finish(self):
-        if self.started and self.screws_adjusted == 3:
-            self.buttons['NOW_ADJUSTED'].set_sensitive(False)
-            self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
-            self.buttons['FINISH'].set_sensitive(True)
-            return True
-        return False
+        return self.started and self.screws_adjusted == 3
 
     def accept(self, widget):
         """Screw is already adjusted"""
@@ -85,14 +72,17 @@ class Panel(ScreenPanel):
             self.screws_adjusted += 1
             self._screen._ws.klippy.gcode_script("ACCEPT")
             if self.check_finish():
+                self.buttons['NOW_ADJUSTED'].set_sensitive(False)
+                self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
+                self.buttons['CANCEL'].set_sensitive(False)
+                self.buttons['FINISH'].set_sensitive(True)
                 return
-            self.advance_screw_index()
 
-    def apply(self, widget):
+    def adjusted(self, widget):
         """Screw has been adjusted"""
         if self.started:
+            self.screws_adjusted = 0
             self._screen._ws.klippy.gcode_script("ADJUSTED")
-            self.advance_screw_index()
 
     def home(self):
         if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
@@ -106,9 +96,11 @@ class Panel(ScreenPanel):
         self.buttons['ALREADY_ADJUSTED'].set_sensitive(True)
 
     def screws_tilt_calculate(self, widget):
-        self.started = True
         self._screen._ws.klippy.gcode_script("BED_SCREWS_ADJUST")
+        self.started = True
         self.buttons['START'].set_sensitive(False)
+
+        # Fallback if notify_busy: False is not emmited
         timer = threading.Timer(39.0, self.allow_screws_btn)
         timer.start()
 
@@ -116,3 +108,19 @@ class Panel(ScreenPanel):
         self.off_state()
         self._screen._ws.klippy.gcode_script("G28")
         self._screen._menu_go_back()
+
+    def process_update(self, action, data):
+        if action == "notify_busy":
+            if not self.started or self.check_finish():
+                return
+            
+            is_busy: bool = data
+
+            if is_busy:
+                self.buttons['NOW_ADJUSTED'].set_sensitive(False)
+                self.buttons['ALREADY_ADJUSTED'].set_sensitive(False)
+                self.buttons['CANCEL'].set_sensitive(False)
+            else:
+                self.buttons['NOW_ADJUSTED'].set_sensitive(True)
+                self.buttons['ALREADY_ADJUSTED'].set_sensitive(True)
+                self.buttons['CANCEL'].set_sensitive(True)

@@ -317,18 +317,36 @@ class Panel(ScreenPanel):
         self._config.set("main", "print_sort_dir", f'{key}_{"asc" if self.sort_current[1] == 0 else "desc"}')
         self._config.save_user_config_options()
 
-    def confirm_print(self, widget, filename):
+    def confirm_print(self, widget, filename: str):
 
         buttons = [
             {"name": _("Print"), "response": Gtk.ResponseType.OK},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL}
         ]
 
+        usb_prints: str = f"{home}/printer_data/gcodes/USB_PRINTS"
+        job_path: str = f"{home}/printer_data/gcodes/.JOB"
+
+
         if 'XDG_CURRENT_DESKTOP' in os.environ \
         or platform.system() in ["Darwin", "Windows"]:
             logging.warning("Desktop environment detected.")
             logging.warning("Skipping steps of transferring gcode file to .JOB folder")
         else:
+            thumb_filename = filename.replace(".gcode", ".png")
+            filetocopy = os.path.join(f"{home}/printer_data/gcodes/.thumbs", thumb_filename)
+            destination = os.path.join(f"{job_path}/.thumbs", thumb_filename)
+
+            # create thumb dir if not exists
+            if not os.path.isdir(os.path.join(f"{job_path}/.thumbs")):
+                os.mkdir(os.path.join(f"{job_path}/.thumbs"))
+
+            try:
+                shutil.copy2(filetocopy, destination)
+            except FileNotFoundError:
+                # Thumb does not exists
+                pass
+
             job_path: str = f"{home}/printer_data/gcodes/.JOB"
             if not os.path.exists(job_path):
                 os.makedirs(job_path)

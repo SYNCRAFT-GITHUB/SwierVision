@@ -289,6 +289,24 @@
         "print_temp": 205
     },
     {
+        "name": "PLA HT",
+        "code": "PLA HT",
+        "id": "a32dw",
+        "brand": null,
+        "color": null,
+        "compatible": [
+            "Standard 0.25mm",
+            "Standard 0.4mm",
+            "Standard 0.8mm"
+        ],
+        "experimental": [
+            "Fiber 0.6mm",
+            "Metal 0.4mm"
+        ],
+        "temp": 240,
+        "print_temp": 205
+    },
+    {
         "name": "PP",
         "code": "PP",
         "id": "3nbc3",

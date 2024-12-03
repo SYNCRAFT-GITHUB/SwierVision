@@ -21,7 +21,6 @@ class Panel(ScreenPanel):
         self.menu = ['about_tab']
 
         self.image = self._gtk.Image("info-bubble", self._gtk.content_width * .2, self._gtk.content_height * .2)
-        self.core_path = os.path.join('/home', 'pi', 'SyncraftCore')
         self.info = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.info.pack_start(self.image, True, True, 8)
 

@@ -397,30 +397,7 @@ class SwierVisionConfig:
                 return None
 
     def materials_path(self, custom: bool) -> str:
-        core_path = os.path.join('/home', 'pi', 'SyncraftCore')
-        if not os.path.exists(core_path):
-            print("SyncraftCore does not exist, this should not happen!")
-            if custom:
-                custom_path = os.path.join(os.getcwd(), "sv_includes", "custom.json")
-                if not os.path.exists(custom_path):
-                    with open(custom_path, 'w') as _:
-                        print(f"custom.json file created at {custom_path}")
-                        return custom_path
-                else:
-                    return custom_path
-            else:
-                return os.path.join(os.getcwd(), "sv_includes", "materials.json")
-        else:
-            if custom:
-                custom_path = os.path.join(core_path, "materials", "custom.json")
-                if not os.path.exists(custom_path):
-                    with open(custom_path, 'w') as _:
-                        print(f"custom.json file created at {custom_path}")
-                        return custom_path
-                else:
-                    return custom_path
-            else:
-                return os.path.join(core_path, "materials", "stock.json")
+        return os.path.join(os.getcwd(), "sv_includes", "materials.json")
 
     def internet_connection(self) -> bool:
         try:

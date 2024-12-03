@@ -149,16 +149,8 @@ class SwierVisionLoggingHandler(logging.handlers.RotatingFileHandler):
 
 
 def hepa_prop(prop_name: str):
-    prop_dir = os.path.join('/home', 'pi', 'SyncraftCore', 'core', 'info.yaml')
-    # prop_dir = "/home/rafael/Desktop/git/syncraftcore-master/core/info.yaml"
-    if not os.path.exists(prop_dir):
-        return False
-    with open(prop_dir, 'r') as prop:
-        prop = yaml.safe_load(prop)
-        try:
-            return prop.get(prop_name)
-        except:
-            return "0000-00-00"
+    # TODO: Deal with missing SyncraftCore stuff
+    return "0000-00-00"
 
 
 def valid_hepa() -> bool:

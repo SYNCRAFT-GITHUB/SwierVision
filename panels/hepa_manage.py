@@ -81,6 +81,5 @@ class Panel(ScreenPanel):
             self._screen._menu_go_back()
 
     def confirm_replace(self, button):
-        path = os.path.join("/home", "pi", "SyncraftCore")
-        os.system(f"cd {path} && python3 -m core.hepa renew")
-        self._screen.reload_panels()
+        # TODO: Deal with missing SyncraftCore stuff
+        return

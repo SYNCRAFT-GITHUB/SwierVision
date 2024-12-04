@@ -183,16 +183,6 @@ class Panel(ScreenPanel):
             self._screen.show_popup_message(message, level=1)
             self._screen.remove_keyboard()
 
-        if code == 'hepareset':
-            path = os.path.join("/home", "pi", "SyncraftCore")
-            os.system(f"cd {path} && python3 -m core.hepa reset")
-            self._screen.reload_panels()
-
-        if code == 'carefulboy':
-            path = os.path.join("/home", "pi", "SyncraftCore")
-            os.system(f"cd {path} && python3 -m core.hepa renew")
-            self._screen.reload_panels()
-
         if code == 'qasmoke':
             self._screen.remove_keyboard()
             self.menu_item_clicked(widget="QASMOKE", item={

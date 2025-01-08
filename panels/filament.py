@@ -220,9 +220,9 @@ class Panel(ScreenPanel):
             
             material_label: str = ""
 
-            if material_id == 'basic' or material_var == 'GENERIC':
+            if material_var == 'GENERIC':
                 material_label = _("Generic")
-            if material_id == 'empty' or material_var == 'empty':
+            if material_var == 'empty':
                 material_label = _("Empty")
 
             for index_material in self.materials:

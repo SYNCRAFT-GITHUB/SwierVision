@@ -342,7 +342,6 @@ class Panel(ScreenPanel):
 
         self.buttons = {
             'cancel': self._gtk.Button("stop", _("Cancel"), "color2"),
-            'cancel_clogged': self._gtk.Button("extrude_clogged", _("Entupido"), "color2", universal=True),
             'control': self._gtk.Button("settings", _("Settings"), "color3"),
             'fine_tune': self._gtk.Button("fine-tune", _("Fine Tuning"), "color4"),
             'calibrate': self._gtk.Button("idex", _("Calibrate IDEX"), "color2"),
@@ -354,7 +353,6 @@ class Panel(ScreenPanel):
             'idex_offset': self._gtk.Button("idex", _("Calibrate"), None),
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
-        self.buttons['cancel_clogged'].connect("clicked", self.cancel_clogged)
         self.buttons['control'].connect("clicked", self._screen._go_to_submenu, "")
         self.buttons['fine_tune'].connect("clicked", self.menu_item_clicked, {
             "panel": "fine_tune", "name": _("Fine Tuning")})
@@ -421,24 +419,6 @@ class Panel(ScreenPanel):
         label = Gtk.Label(hexpand=True, vexpand=True, wrap=True)
         label.set_markup(_("Are you sure you wish to cancel this print?"))
         self._gtk.Dialog(_("Cancel"), buttons, label, self.cancel_confirm)
-
-    def cancel_clogged(self, widget):
-        buttons = [
-            {"name": _("Cancel Print"), "response": Gtk.ResponseType.OK, "style": 'dialog-error'},
-            {"name": _("Go Back"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-info'}
-        ]
-        label = Gtk.Label(hexpand=True, vexpand=True, wrap=True)
-        label.set_markup(_("Are you sure you wish to cancel this print?"))
-        self._gtk.Dialog(_("Cancel"), buttons, label, self.cancel_clogged_confirm)
-
-    def cancel_clogged_confirm(self, dialog, response_id):
-        self._gtk.remove_dialog(dialog)
-        if response_id == Gtk.ResponseType.CANCEL:
-            self.enable_button("pause", "cancel")
-            return
-        self.set_state("cancelling")
-        self.disable_button("pause", "resume", "cancel")
-        self._screen._ws.klippy.gcode_script('CANCEL_PRINT_CLOGGED')
 
     def cancel_confirm(self, dialog, response_id):
         self._gtk.remove_dialog(dialog)
@@ -703,7 +683,6 @@ class Panel(ScreenPanel):
         if self.state == "printing":
             self.buttons['button_grid'].attach(self.buttons['pause'], 0, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['cancel'], 1, 0, 1, 1)
-            self.buttons['button_grid'].attach(self.buttons['cancel_clogged'], 2, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['fine_tune'], 3, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['calibrate'], 4, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['control'], 5, 0, 1, 1)
@@ -712,7 +691,6 @@ class Panel(ScreenPanel):
         elif self.state == "paused":
             self.buttons['button_grid'].attach(self.buttons['resume'], 0, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['cancel'], 1, 0, 1, 1)
-            self.buttons['button_grid'].attach(self.buttons['cancel_clogged'], 2, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['fine_tune'], 3, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['calibrate'], 4, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['control'], 5, 0, 1, 1)
